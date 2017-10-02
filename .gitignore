@@ -1,0 +1,36 @@
+# Prerequisites
+*.d
+
+# Ignored paths
+Studious-Engine/.vs/
+Studious-Engine/x64/
+Studious-Engine/Studious-Engine/x64
+Studious-Engine/packages/glfw.3.2.1/build/native/docs/
+
+# Compiled Object files
+*.slo
+*.lo
+*.o
+*.obj
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+
+# Fortran module files
+*.mod
+*.smod
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+
+# Executables
+*.exe
+*.out
+*.app
