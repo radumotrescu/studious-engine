@@ -1,0 +1,10 @@
+Basic requirements:
+    basic window - Marius
+    primitive ( transformari ) - George + Adina
+    input + event handling - Marius
+    randare - Radu
+
+Intermediate requirements:
+    coliziuni - Miruna
+    fonturi
+
