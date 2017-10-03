@@ -30,6 +30,13 @@ auto Window::init() -> bool
 	}
 
 	glfwMakeContextCurrent(*this->m_window.get());
+
+	if(glewInit() != GLEW_OK)
+	{
+		MessageBox(nullptr, "Failed to initialize GLEW", "Error", MB_OK | MB_ICONERROR);
+
+		return false;
+	}
 	
 	return true;
 }
