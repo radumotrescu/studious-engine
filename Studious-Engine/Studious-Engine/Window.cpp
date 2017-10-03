@@ -13,7 +13,7 @@ Window::Window(std::string name, int width, int height)
 
 auto Window::init() -> bool
 {
-	if(!glfwInit())
+	if (!glfwInit())
 	{
 		MessageBox(nullptr, "Failed to initialize GLFW", "Error", MB_OK | MB_ICONERROR);
 
@@ -31,19 +31,25 @@ auto Window::init() -> bool
 
 	glfwMakeContextCurrent(*this->m_window.get());
 
-	if(glewInit() != GLEW_OK)
+	if (glewInit() != GLEW_OK)
 	{
 		MessageBox(nullptr, "Failed to initialize GLEW", "Error", MB_OK | MB_ICONERROR);
 
 		return false;
 	}
-	
+
 	return true;
+}
+
+
+auto Window::clear() ->void const
+{
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 }
 
 auto Window::closed() const -> bool
 {
-	return glfwWindowShouldClose(*this->m_window.get());
+	return glfwWindowShouldClose(*this->m_window.get())!=0;
 }
 
 auto Window::update() -> void

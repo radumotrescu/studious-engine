@@ -1,8 +1,8 @@
 #pragma once
 
+#include <windows.h>
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
-#include <windows.h>
 #include <iostream>
 #include <memory>
 
@@ -25,6 +25,7 @@ public:
 
 	auto closed() const -> bool;
 	auto update() -> void;
+	auto clear()->void const;
 
 	~Window();
 };
