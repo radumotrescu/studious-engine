@@ -14,17 +14,16 @@ private:
 	std::string m_name;
 	std::unique_ptr<GLFWwindow*> m_window;
 
-	bool init();
+	auto init() -> bool;
 
 public:
 	Window(std::string name, int width, int height);
 
-	bool closed() const;
-	void update();
+	inline auto getWidth() const -> auto { return m_width; }
+	inline auto getHeight() const -> auto { return m_height; }
 
-	int width() const { return m_width; }
-	int height() const { return m_height; }
-
+	auto closed() const -> bool;
+	auto update() -> void;
 
 	~Window();
 };

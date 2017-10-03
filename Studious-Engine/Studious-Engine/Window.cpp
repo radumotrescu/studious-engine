@@ -1,6 +1,17 @@
 #include "Window.h"
 
-bool Window::init()
+Window::Window(std::string name, int width, int height)
+	: m_width(width),
+	m_height(height),
+	m_name(name)
+{
+	if (!init())
+	{
+		glfwTerminate();
+	}
+}
+
+auto Window::init() -> bool
 {
 	if(!glfwInit())
 	{
@@ -23,23 +34,12 @@ bool Window::init()
 	return true;
 }
 
-Window::Window(std::string name, int width, int height)
-	: m_width(width),
-	m_height(height),
-	m_name(name)
-{
-	if(!init())
-	{
-		glfwTerminate();
-	}
-}
-
-bool Window::closed() const
+auto Window::closed() const -> bool
 {
 	return glfwWindowShouldClose(*this->m_window.get());
 }
 
-void Window::update()
+auto Window::update() -> void
 {
 	glfwSwapBuffers(*this->m_window.get());
 	glfwGetFramebufferSize(*this->m_window.get(), &this->m_width, &this->m_height);

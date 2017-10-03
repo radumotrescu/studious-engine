@@ -2,7 +2,7 @@
 
 using namespace std;
 
-void main()
+auto main() -> void
 {
 	auto window = new Window("Test", 600, 800);
 
@@ -10,4 +10,6 @@ void main()
 	{
 		window->update();
 	}
+
+	delete window;
 }
