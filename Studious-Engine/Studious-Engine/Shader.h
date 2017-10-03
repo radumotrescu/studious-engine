@@ -10,11 +10,11 @@
 class Shader {
 
 private:
-	GLuint m_shaderID;
 	std::string m_vertexPath;
 	std::string m_fragmentPath;
 
 public:
+	GLuint m_shaderID;
 	auto enable() ->void const;
 	auto disable()->void const;
 
