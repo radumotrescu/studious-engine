@@ -8,17 +8,17 @@ IndexBuffer::IndexBuffer(std::vector<GLushort> data, GLsizei count) : m_count(co
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
 }
 
-auto IndexBuffer::bind() -> void const
+auto IndexBuffer::bind()const -> void 
 {
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_bufferID);
 }
 
-auto IndexBuffer::unbind() -> void const
+auto IndexBuffer::unbind() const-> void 
 {
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
 }
 
-auto IndexBuffer::getCount() -> GLuint const
+auto IndexBuffer::getCount()const -> GLuint 
 {
 	return m_count;
 }

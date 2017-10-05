@@ -16,8 +16,8 @@ public:
 	VertexArray();
 	~VertexArray();
 
-	auto addBuffer(std::shared_ptr<Buffer> buffer, GLuint index)->void;
-	auto bind()->void;
-	auto unbind()->void;
+	auto addBuffer(std::shared_ptr<Buffer>& buffer, GLuint index)->void;
+	auto bind()const ->void;
+	auto unbind()const ->void;
 };
 

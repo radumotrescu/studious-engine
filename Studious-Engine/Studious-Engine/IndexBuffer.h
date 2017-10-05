@@ -9,9 +9,9 @@ private:
 	GLuint m_count;
 public:
 	IndexBuffer::IndexBuffer(std::vector<GLushort> data, GLsizei count);
-	auto bind()->void const;
-	auto unbind()->void const;
-	auto getCount()->GLuint const;
+	auto bind()const->void ;
+	auto unbind()const->void ;
+	auto getCount()const->GLuint;
 	~IndexBuffer();
 };
 

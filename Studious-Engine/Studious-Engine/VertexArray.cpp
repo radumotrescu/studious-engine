@@ -13,24 +13,24 @@ VertexArray::~VertexArray()
 	m_buffers.clear();
 }
 
-auto VertexArray::addBuffer(std::shared_ptr<Buffer> buffer, GLuint index) ->void
+auto VertexArray::addBuffer(std::shared_ptr<Buffer>& buffer, GLuint index) ->void
 {
 	bind();
 	buffer->bind();
 
-	glEnableVertexAttribArray(index);
 	glVertexAttribPointer(index, buffer->getComponentCount(), GL_FLOAT, GL_FALSE, 0, 0);
+	glEnableVertexAttribArray(index);
 
 	buffer->unbind();
 	unbind();
 }
 
-auto VertexArray::bind()->void
+auto VertexArray::bind()const ->void
 {
 	glBindVertexArray(m_arrayID);
 }
 
-auto VertexArray::unbind()->void
+auto VertexArray::unbind()const ->void
 {
 	glBindVertexArray(0);
 }

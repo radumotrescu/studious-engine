@@ -11,10 +11,10 @@ private:
 	GLuint m_componentCount;
 public:
 	Buffer(std::vector<GLfloat> data, GLsizei count, GLuint componentCount);
-	auto bind()->void const;
-	auto unbind()->void const;
+	auto bind()const->void ;
+	auto unbind()const->void ;
 
-	auto getComponentCount()->GLuint const;
+	auto getComponentCount()const->GLuint ;
 	~Buffer();
 };
 

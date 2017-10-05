@@ -10,17 +10,17 @@ Buffer::Buffer(std::vector<GLfloat> data, GLsizei count, GLuint componentCount):
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 }
 
-auto Buffer::bind() -> void const
+auto Buffer::bind() const-> void 
 {
 	glBindBuffer(GL_ARRAY_BUFFER, m_bufferID);
 }
 
-auto Buffer::unbind() -> void const
+auto Buffer::unbind() const-> void 
 {
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 }
 
-auto Buffer::getComponentCount() -> GLuint const
+auto Buffer::getComponentCount() const-> GLuint 
 {
 	return m_componentCount;
 }
