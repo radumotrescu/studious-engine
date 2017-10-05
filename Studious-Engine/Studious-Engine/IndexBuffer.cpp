@@ -1,5 +1,9 @@
 #include "IndexBuffer.h"
 
+IndexBuffer::IndexBuffer()
+{
+}
+
 IndexBuffer::IndexBuffer(std::vector<GLushort> data, GLsizei count) : m_count(count)
 {
 	glGenBuffers(1, &m_bufferID);

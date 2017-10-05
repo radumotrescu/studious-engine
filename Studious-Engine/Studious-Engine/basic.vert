@@ -1,15 +1,20 @@
 #version 330 core
-    in vec2 position;
+
+layout(location=0 ) in vec4 position;
+layout(location=1 ) in vec4 color;
 	
-	out vec4 pos;
+out vec4 pos;
 
-    //in vec3 color;
+out DATA
+{
+	vec4 position;
+	vec4 color;
+}vs_out;
 
-    //out vec3 colorV;
-
-    void main()
-    {
-        //colorV = color;
-        gl_Position = vec4(position, 0.0, 1.0);
-		pos=gl_Position;
-    }
+void main()
+{
+    //colorV = color;
+    gl_Position = vec4(position);
+	vs_out.position=gl_Position;
+	vs_out.color=color;	
+}
