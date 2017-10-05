@@ -67,7 +67,28 @@ mat4 mat4::orthographic(float left, float right, float bottom, float top, float 
 
 	return result;
 }
+float toRadians(float degrees)
+{
+	return degrees * (M_PI / 180.0f);
+}
+mat4 mat4::perspective(float fov, float aspectRatio, float near, float far)
+{
+	mat4 result(1.0f);
 
+	float q = 1.0f / tan(toRadians(0.5f * fov));
+	float a = q / aspectRatio;
+
+	float b = (near + far) / (near - far);
+	float c = (2.0f * near * far) / (near - far);
+
+	result.elements[0 + 0 * 4] = a;
+	result.elements[1 + 1 * 4] = q;
+	result.elements[2 + 2 * 4] = b;
+	result.elements[3 + 2 * 4] = -1.0f;
+	result.elements[2 + 3 * 4] = c;
+
+	return result;
+}
 
 mat4 mat4::translation(const vec3& translation)
 {
