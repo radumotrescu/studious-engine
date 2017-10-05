@@ -1,6 +1,8 @@
 #pragma once
 #include"Vec4.h"
 #include"Vec3.h"
+
+const double M_PI = 3.14159265359;
 struct mat4
 {
 	union
