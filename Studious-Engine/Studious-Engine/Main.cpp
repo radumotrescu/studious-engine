@@ -12,7 +12,7 @@ auto main() -> void
 	auto window = new Window("Test", 600, 800);
 
 
-	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+	glClearColor(1.0f, 0.0f, 0.0f, 1.0f);
 	Shader shader("basic.vert", "basic.frag");
 	shader.enable();
 
