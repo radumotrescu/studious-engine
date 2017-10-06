@@ -37,6 +37,20 @@ void Rectangle::resetMatrix()
 	}
 }
 
+auto Rectangle::calculateCenter() -> Point3D
+{
+	float x = 0, y = 0, z = 0;
+	for (auto point : m_points)
+	{
+		x += point.x;
+		y += point.y;
+		z += point.z;
+	}
+	float size = m_points.size();
+	Point3D result = { x / size, y / size, z / size };
+	return result;
+}
+
 Rectangle::Rectangle()
 {
 	// the points are assigned counterclockwise starting from the lower left corner
@@ -140,6 +154,20 @@ auto Rectangle::translate(const vec3& translate) -> void
 
 auto Rectangle::resize(const vec3 & resize) -> void
 {
+	auto center = calculateCenter();
+
+	//translate center to origin
+	translate(vec3(-center.x, -center.y, -center.z));
+
+	//resize
+	resetMatrix();
+	m_matrix[0][0] = resize.x;
+	m_matrix[1][1] = resize.y;
+	m_matrix[2][2] = resize.z;
+	applyChanges();
+
+	//translate center back to original position
+	translate(vec3(center.x, center.y, center.z));
 }
 
 auto Rectangle::rotate(const vec3 & rotate, Point3D axis) -> void
