@@ -32,7 +32,7 @@ auto SimpleRenderer::draw() -> void
 	for (auto& sprite : m_drawVector)
 	{
 
-	sprite->m_shader.setUniformMat4("ml_matrix", mat4::translation(sprite->position));
+	sprite->m_shader.setUniformMat4("ml_matrix", mat4::translation(sprite->m_position));
 		sprite->Draw();
 	}
 }

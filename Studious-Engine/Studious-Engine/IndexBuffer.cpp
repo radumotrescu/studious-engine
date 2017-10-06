@@ -4,7 +4,7 @@ IndexBuffer::IndexBuffer()
 {
 }
 
-IndexBuffer::IndexBuffer(std::vector<GLushort> data, GLsizei count) : m_count(count)
+IndexBuffer::IndexBuffer(std::vector<GLushort> data, const GLsizei count) : m_count(count)
 {
 	glGenBuffers(1, &m_bufferID);
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_bufferID);

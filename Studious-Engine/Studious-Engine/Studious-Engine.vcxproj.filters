@@ -13,49 +13,58 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Math">
+      <UniqueIdentifier>{a30f559d-64a9-4d03-894c-d5873d56f99a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Graphics">
+      <UniqueIdentifier>{f8050080-949b-465d-855b-f91f97e05dfe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Shapes">
+      <UniqueIdentifier>{215179f5-dba8-4cce-8595-a30e2e2a3c8b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Window.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Shader.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Buffer.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Graphics</Filter>
     </ClCompile>
     <ClCompile Include="IndexBuffer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="VertexArray.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Mat4.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Rectangle.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Triangle.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Vec3.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Vec4.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Sprite.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Graphics</Filter>
     </ClCompile>
     <ClCompile Include="SimpleRenderer.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="Shader.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="Sprite.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="VertexArray.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="Window.cpp">
+      <Filter>Graphics</Filter>
     </ClCompile>
     <ClCompile Include="Vec2.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Vec3.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Vec4.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Mat4.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Triangle.cpp">
+      <Filter>Shapes</Filter>
+    </ClCompile>
+    <ClCompile Include="Rectangle.cpp">
+      <Filter>Shapes</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -68,47 +77,47 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Window.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Shader.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Buffer.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="IndexBuffer.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="VertexArray.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Entity.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Mat4.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Rectangle.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Triangle.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="Vec2.h">
+      <Filter>Math</Filter>
     </ClInclude>
     <ClInclude Include="Vec3.h">
-      <Filter>Header Files</Filter>
+      <Filter>Math</Filter>
     </ClInclude>
     <ClInclude Include="Vec4.h">
-      <Filter>Header Files</Filter>
+      <Filter>Math</Filter>
     </ClInclude>
-    <ClInclude Include="Sprite.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="Buffer.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="IndexBuffer.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Shader.h">
+      <Filter>Graphics</Filter>
     </ClInclude>
     <ClInclude Include="SimpleRenderer.h">
-      <Filter>Header Files</Filter>
+      <Filter>Graphics</Filter>
     </ClInclude>
-    <ClInclude Include="Vec2.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="Sprite.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="VertexArray.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Window.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Mat4.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Triangle.h">
+      <Filter>Shapes</Filter>
+    </ClInclude>
+    <ClInclude Include="Rectangle.h">
+      <Filter>Shapes</Filter>
+    </ClInclude>
+    <ClInclude Include="Entity.h">
+      <Filter>Shapes</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

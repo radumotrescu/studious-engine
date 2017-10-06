@@ -11,6 +11,11 @@ Window::Window(std::string name, int width, int height)
 	}
 }
 
+auto Window::getWidth() const -> int
+{
+	return m_width;
+}
+
 auto Window::init() -> bool
 {
 	if (!glfwInit())
@@ -45,6 +50,11 @@ auto Window::init() -> bool
 auto Window::clear() ->void const
 {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+}
+
+auto Window::getHeight() const -> int
+{
+	return m_height;
 }
 
 auto Window::closed() const -> bool
