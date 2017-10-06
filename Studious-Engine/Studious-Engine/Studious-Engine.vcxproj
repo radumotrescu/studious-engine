@@ -140,6 +140,7 @@
     <ClCompile Include="SimpleRenderer.cpp" />
     <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="Triangle.cpp" />
+    <ClCompile Include="Vec2.cpp" />
     <ClCompile Include="Vec3.cpp" />
     <ClCompile Include="Vec4.cpp" />
     <ClCompile Include="VertexArray.cpp" />
@@ -160,6 +161,7 @@
     <ClInclude Include="SimpleRenderer.h" />
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="Triangle.h" />
+    <ClInclude Include="Vec2.h" />
     <ClInclude Include="Vec3.h" />
     <ClInclude Include="Vec4.h" />
     <ClInclude Include="VertexArray.h" />
