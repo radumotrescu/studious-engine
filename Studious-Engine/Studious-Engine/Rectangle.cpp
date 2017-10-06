@@ -10,12 +10,12 @@ auto Rectangle::applyChanges() -> void
 
 auto Rectangle::changePointCoordinates(const Point3D & vertex) -> Point3D
 {
-	double vertexAsMatrix[MATRIX_DIMENSION][1] = { vertex.x, vertex.y, vertex.z, 1.0f };
+	float vertexAsMatrix[MATRIX_DIMENSION][1] = { vertex.x, vertex.y, vertex.z, 1.0f };
 
-	double resultVector[MATRIX_DIMENSION][1];
+	float resultVector[MATRIX_DIMENSION][1];
 	for (int i = 0; i < MATRIX_DIMENSION; i++)
 	{
-		double aux = 0;
+		float aux = 0;
 		for (int j = 0; j < MATRIX_DIMENSION; j++)
 			aux = aux + m_matrix[i][j] * vertexAsMatrix[j][0];
 		resultVector[i][0] = aux;

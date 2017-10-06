@@ -8,15 +8,15 @@ const int MATRIX_DIMENSION = 4;
 
 struct Point3D
 {
-	double x;
-	double y;
-	double z;
+	float x;
+	float y;
+	float z;
 };
 
 class IEntity
 {
 protected:
-	double m_matrix[MATRIX_DIMENSION][MATRIX_DIMENSION];
+	float m_matrix[MATRIX_DIMENSION][MATRIX_DIMENSION];
 
 public:
 	virtual auto getPoints() const -> std::vector<Point3D> = 0;
