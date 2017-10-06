@@ -29,6 +29,17 @@ auto Sprite::UpdateLocation(const GLfloat pos1, const GLfloat pos2, const  GLflo
 	vao.addBuffer(std::make_shared<Buffer>(matrixPosition, matrixPosition.size(), 2), 0);
 }
 
+auto Sprite::UpdateLocation(const vec3 & position) -> void
+{
+	this->position = position;
+}
+
+auto Sprite::UpdateLocation(const vec3 & position, const unsigned priority) -> void
+{
+	this->position = position;
+	m_priority = priority;
+}
+
 auto Sprite::Draw()->void
 {
 
@@ -61,21 +72,13 @@ Sprite::Sprite(const vec4 & position, const vec3 & color, const unsigned priorit
 	vao.addBuffer(std::make_shared<Buffer>(colors, colors.size(), 4), 1);
 }
 
-auto Sprite::UpdateLocation(const vec4 & position) -> void
+Sprite::Sprite(const vec3 & position, const float dim1, const float dim2, const vec3& color,const unsigned priority)
 {
-	matrixPosition[3] = position.x;
-	matrixPosition[4] = position.y;
-	matrixPosition[5] = position.z;
-	matrixPosition[6] = position.w;
+	this->position = position;
+	ibo = IndexBuffer(indexes, static_cast<GLsizei>(indexes.size()));
+	matrixPosition = { 0,0,0,dim2,dim1,dim2,dim1,0 };
+	colors = { color.x,color.y,color.z,1.0f,color.x,color.y,color.z,1.0f,color.x,color.y,color.z,1.0f,color.x,color.y,color.z,1.0f };
+	//ibo = IndexBuffer(indexes, static_cast<GLsizei>(indexes.size()));
 	vao.addBuffer(std::make_shared<Buffer>(matrixPosition, matrixPosition.size(), 2), 0);
-}
-
-auto Sprite::UpdateLocation(const vec4 & position, const unsigned priority) -> void
-{
-	m_priority = priority;
-	matrixPosition[3] = position.x;
-	matrixPosition[4] = position.y;
-	matrixPosition[5] = position.z;
-	matrixPosition[6] = position.w;
-	vao.addBuffer(std::make_shared<Buffer>(matrixPosition, matrixPosition.size(), 2), 0);
+	vao.addBuffer(std::make_shared<Buffer>(colors, colors.size(), 4), 1);
 }

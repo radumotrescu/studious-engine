@@ -1,6 +1,11 @@
 #include "Shader.h"
 
 
+auto Shader::getUniformLocation(const std::string & name) -> GLint
+{
+	return glGetUniformLocation(m_shaderID, name.data());
+}
+
 auto Shader::enable() -> void const
 {
 	glUseProgram(m_shaderID);
@@ -11,6 +16,11 @@ auto Shader::enable() -> void const
 Shader::Shader(const std::string & vert, const std::string & frag) :m_vertexPath(vert), m_fragmentPath(frag)
 {
 	m_shaderID = load();
+}
+
+auto Shader::setUniformMat4(const std::string & name, const mat4 & matrix)->void
+{
+	glUniformMatrix4fv(getUniformLocation(name), 1, GL_FALSE, matrix.elements);
 }
 
 auto readFile(const std::string& path) -> std::string
@@ -81,6 +91,10 @@ GLuint Shader::load()
 auto Shader::disable() -> void const
 {
 	glUseProgram(0);
+}
+
+Shader::Shader()
+{
 }
 
 Shader::~Shader()
