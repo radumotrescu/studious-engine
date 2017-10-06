@@ -23,15 +23,20 @@ private:
 	//calculate center of entity
 	auto calculateCenter()->Point3D;
 
+	float m_width;
+	float m_height;
 public:
 	Rectangle();
-	Rectangle(Point3D, Point3D, Point3D, Point3D, int);
+	Rectangle(Point3D, float,float, int);
 public:
 	auto getPoints() const->std::vector<Point3D>;
 	auto getPriority() const -> int;
-	auto getMatrix() const->mat4;
+	auto getMatrix() const -> mat4;
 
 	virtual auto translate(const vec3& translate) -> void override;
 	virtual auto resize(const vec3& resize) -> void override;
 	virtual auto rotate(const vec3 & rotate, Point3D axis) -> void override;
+
+
+
 };
