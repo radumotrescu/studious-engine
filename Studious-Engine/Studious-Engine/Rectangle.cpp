@@ -11,12 +11,12 @@ auto Rectangle::applyChanges() -> void
 auto Rectangle::changePointCoordinates(const Point3D & vertex) -> Point3D
 {
 	double vertexAsMatrix[MATRIX_DIMENSION][1] = { vertex.x, vertex.y, vertex.z, 1.0f };
-	
+
 	double resultVector[MATRIX_DIMENSION][1];
-	for (int i = 0; i<MATRIX_DIMENSION; i++)
+	for (int i = 0; i < MATRIX_DIMENSION; i++)
 	{
 		double aux = 0;
-		for (int j = 0; j<MATRIX_DIMENSION; j++)
+		for (int j = 0; j < MATRIX_DIMENSION; j++)
 			aux = aux + m_matrix[i][j] * vertexAsMatrix[j][0];
 		resultVector[i][0] = aux;
 	}
@@ -41,7 +41,7 @@ Rectangle::Rectangle()
 {
 	// the points are assigned counterclockwise starting from the lower left corner
 	Point3D temporaryPoint;
-	
+
 	temporaryPoint.x = 0.0;
 	temporaryPoint.y = 0.0;
 	temporaryPoint.z = 0.0;
@@ -138,10 +138,23 @@ auto Rectangle::translate(const vec3& translate) -> void
 	applyChanges();
 }
 
-auto Rectangle::resize(const vec3 & translate) -> void
+auto Rectangle::resize(const vec3 & resize) -> void
 {
 }
 
-auto Rectangle::rotate(const vec3 & translate, Point3D axis) -> void
+auto Rectangle::rotate(const vec3 & rotate, Point3D axis) -> void
 {
+	//translate axis to origin
+	translate(vec3(-axis.x, -axis.y, -axis.z));
+
+	//rotate
+	resetMatrix();
+	m_matrix[0][0] = cos(rotate.x);
+	m_matrix[0][1] = -sin(rotate.y);
+	m_matrix[1][0] = sin(rotate.x);
+	m_matrix[1][1] = cos(rotate.y);
+	applyChanges();
+
+	//translate axis to original position
+	translate(vec3(axis.x, axis.y, axis.z));
 }

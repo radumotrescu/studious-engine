@@ -29,10 +29,10 @@ public:
 
 	//translate
 	virtual auto translate(const vec3 & translate) -> void override;
-	virtual auto resize(const vec3 & translate) -> void override;
+	virtual auto resize(const vec3 & resize) -> void override;
 	
 	//translate axis in the middle of the screen
 	//rotate
 	//translate axis in the original position
-	virtual auto rotate(const vec3 & translate, Point3D axis) -> void override;
+	virtual auto rotate(const vec3 & rotate, Point3D axis) -> void override;
 };

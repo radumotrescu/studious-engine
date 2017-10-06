@@ -129,10 +129,23 @@ auto Triangle::translate(const vec3 & translate) -> void
 	applyChanges();
 }
 
-auto Triangle::resize(const vec3 & translate) -> void
+auto Triangle::resize(const vec3 & resize) -> void
 {
 }
 
-auto Triangle::rotate(const vec3 & translate, Point3D axis) -> void
-{
+auto Triangle::rotate(const vec3 & rotate, Point3D axis) -> void
+{	
+	//translate axis to origin
+	translate(vec3(-axis.x, -axis.y, -axis.z));
+
+	//rotate
+	resetMatrix();
+	m_matrix[0][0] = cos(rotate.x);
+	m_matrix[0][1] = -sin(rotate.y);
+	m_matrix[1][0] = sin(rotate.x);
+	m_matrix[1][1] = cos(rotate.y);
+	applyChanges();
+
+	//translate axis to original position
+	translate(vec3(axis.x, axis.y, axis.z));
 }

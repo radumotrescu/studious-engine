@@ -28,6 +28,6 @@ public:
 	auto getMatrix() const -> mat4;
 
 	virtual auto translate(const vec3& translate) -> void override;
-	virtual auto resize(const vec3& translate) -> void override;
-	virtual auto rotate(const vec3 & translate, Point3D axis) -> void override;
+	virtual auto resize(const vec3& resize) -> void override;
+	virtual auto rotate(const vec3 & rotate, Point3D axis) -> void override;
 };
