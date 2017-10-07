@@ -132,7 +132,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Buffer.cpp" />
-    <ClCompile Include="IMoving.cpp" />
     <ClCompile Include="IndexBuffer.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Mat4.cpp" />
@@ -142,6 +141,7 @@
     <ClCompile Include="SimpleRenderer.cpp" />
     <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="Triangle.cpp" />
+    <ClCompile Include="Vec2.cpp" />
     <ClCompile Include="Vec3.cpp" />
     <ClCompile Include="Vec4.cpp" />
     <ClCompile Include="VertexArray.cpp" />
@@ -155,7 +155,6 @@
   <ItemGroup>
     <ClInclude Include="Buffer.h" />
     <ClInclude Include="Entity.h" />
-    <ClInclude Include="IMoving.h" />
     <ClInclude Include="IndexBuffer.h" />
     <ClInclude Include="Mat4.h" />
     <ClInclude Include="InputManager.h" />
@@ -164,6 +163,7 @@
     <ClInclude Include="SimpleRenderer.h" />
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="Triangle.h" />
+    <ClInclude Include="Vec2.h" />
     <ClInclude Include="Vec3.h" />
     <ClInclude Include="Vec4.h" />
     <ClInclude Include="VertexArray.h" />

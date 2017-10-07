@@ -2,16 +2,16 @@
 
 #include <unordered_map>
 
-#include "Sprite.h"
 #include "GLFW/glfw3.h"
+#include <functional>
 
 class InputManager
 {
 public:
-	static InputManager& getInstance();
+	static auto getInstance() -> InputManager&;
 
-	static void init(GLFWwindow* window);
-	static void registerSpriteAction(int key, Sprite sprite);
+	static auto init(GLFWwindow* window) -> void;
+	static auto registerSpriteAction(std::function<void(void)> ,int) -> void;
 
 	InputManager(InputManager const&) = delete;
 	void operator=(InputManager const&) const = delete;
@@ -19,8 +19,7 @@ public:
 private:
 	InputManager();
 
-	static std::unordered_multimap<int, Sprite> m_sprites;
+	static std::unordered_multimap<int, std::function<void(void)>> m_actionKey;
 
-	static void keyCallback(GLFWwindow* window, int key, int scancode, int action, int mods);
+	static auto keyCallback(GLFWwindow* window, int key, int scancode, int action, int mods) -> void;
 };
-

@@ -6,5 +6,10 @@ Basic requirements:
 
 Intermediate requirements:
     coliziuni - Miruna
-    fonturi
+	
+	PART 2:
+
+    fonturi : marius -> radu
+	texturi : adina + george -> radu
+	brick breaker: marius + miruna
 

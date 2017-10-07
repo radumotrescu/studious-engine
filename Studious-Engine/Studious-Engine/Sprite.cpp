@@ -1,45 +1,27 @@
 #include "Sprite.h"
-Sprite::Sprite(GLfloat pos1, GLfloat pos2, GLfloat pos3, GLfloat pos4, GLfloat R, GLfloat G, GLfloat B)
-{
-	m_pos1 = pos1;
-	m_pos2 = pos2;
-	m_pos3 = pos3;
-	m_pos4 = pos4;
-	ibo = IndexBuffer(indexes, static_cast<GLsizei>(indexes.size()));
-	matrixPosition = { 0,0,0,m_pos1,m_pos2,m_pos3,m_pos4,0 };
-	colors = { R,G,B,1.0f,R,G,B,1.0f,R,G,B,1.0f,R,G,B,1.0f };
-	//ibo = IndexBuffer(indexes, static_cast<GLsizei>(indexes.size()));
-	vao.addBuffer(std::make_shared<Buffer>(matrixPosition, matrixPosition.size(), 2), 0);
-	vao.addBuffer(std::make_shared<Buffer>(colors, colors.size(), 4), 1);
 
+auto Sprite::UpdateLocation(const vec3 & position) -> void
+{
+	this->m_position = position;
 }
 
-
-auto Sprite::UpdateLocation(const GLfloat pos1, const GLfloat pos2, const  GLfloat pos3, const  GLfloat pos4)->void
+auto Sprite::UpdateLocation(const vec3 & position, const unsigned priority) -> void
 {
-
-	m_pos1 = pos1;
-	m_pos2 = pos2;
-	m_pos3 = pos3;
-	m_pos4 = pos4;
-	matrixPosition[3] = m_pos1;
-	matrixPosition[4] = m_pos2;
-	matrixPosition[5] = m_pos3;
-	matrixPosition[6] = m_pos4;
-	vao.addBuffer(std::make_shared<Buffer>(matrixPosition, matrixPosition.size(), 2), 0);
+	this->m_position = position;
+	m_priority = priority;
 }
 
 auto Sprite::Draw()->void
 {
 
-	vao.bind();
+	m_vao.bind();
 	ibo.bind();
 	glDrawElements(GL_TRIANGLES, ibo.getCount(), GL_UNSIGNED_SHORT, 0);
 	ibo.unbind();
-	vao.unbind();
+	m_vao.unbind();
 }
 
-auto Sprite::getPosition() const -> vec4
+auto Sprite::getPosition() const -> vec3
 {
 	return m_position;
 }
@@ -51,31 +33,23 @@ auto Sprite::getPriority() const -> unsigned
 {
 	return m_priority;
 }
-Sprite::Sprite(const vec4 & position, const vec3 & color, const unsigned priority):m_position(position),m_color(color),m_priority(priority)
+
+auto Sprite::action() -> void
 {
+	float inc = -1.0f;
+	this->UpdateLocation(this->m_position.add(vec3(-inc*0.1f, -inc* 0.1f, 0.0f)));
+	if (this->m_position.y > 200 || this->m_position.y < 0)
+		inc = -inc;
+}
+
+
+Sprite::Sprite(const vec3 & position, const vec2& dimension, const vec3& color,const unsigned priority)
+{
+	this->m_position = position;
 	ibo = IndexBuffer(indexes, static_cast<GLsizei>(indexes.size()));
-	matrixPosition = { 0,0,0,position.x,position.y,position.z,position.w,0 };
+	matrixPosition = { 0,0,0,dimension.y,dimension.x,dimension.y,dimension.x,0 };
 	colors = { color.x,color.y,color.z,1.0f,color.x,color.y,color.z,1.0f,color.x,color.y,color.z,1.0f,color.x,color.y,color.z,1.0f };
 	//ibo = IndexBuffer(indexes, static_cast<GLsizei>(indexes.size()));
-	vao.addBuffer(std::make_shared<Buffer>(matrixPosition, matrixPosition.size(), 2), 0);
-	vao.addBuffer(std::make_shared<Buffer>(colors, colors.size(), 4), 1);
-}
-
-auto Sprite::UpdateLocation(const vec4 & position) -> void
-{
-	matrixPosition[3] = position.x;
-	matrixPosition[4] = position.y;
-	matrixPosition[5] = position.z;
-	matrixPosition[6] = position.w;
-	vao.addBuffer(std::make_shared<Buffer>(matrixPosition, matrixPosition.size(), 2), 0);
-}
-
-auto Sprite::UpdateLocation(const vec4 & position, const unsigned priority) -> void
-{
-	m_priority = priority;
-	matrixPosition[3] = position.x;
-	matrixPosition[4] = position.y;
-	matrixPosition[5] = position.z;
-	matrixPosition[6] = position.w;
-	vao.addBuffer(std::make_shared<Buffer>(matrixPosition, matrixPosition.size(), 2), 0);
+	m_vao.addBuffer(std::make_shared<Buffer>(matrixPosition, matrixPosition.size(), 2), 0);
+	m_vao.addBuffer(std::make_shared<Buffer>(colors, colors.size(), 4), 1);
 }

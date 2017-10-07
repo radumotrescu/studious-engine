@@ -1,19 +1,18 @@
 #include "InputManager.h"
-#include <algorithm>
 
-std::unordered_multimap<int, Sprite> InputManager::m_sprites;
+std::unordered_multimap<int, std::function<void()>> InputManager::m_actionKey;
 
 InputManager::InputManager()
 {
 }
 
-void InputManager::keyCallback(GLFWwindow* window, int key, int scancode, int action, int mods)
+auto InputManager::keyCallback(GLFWwindow* window, int key, int scancode, int action, int mods) -> void
 {
-	const auto range = m_sprites.equal_range(key);
+	const auto range = m_actionKey.equal_range(key);
 
 	for(auto it = range.first; it != range.second; ++it)
 	{
-		it->second.action();
+		it->second();
 	}
 }
 
@@ -24,14 +23,13 @@ InputManager& InputManager::getInstance()
 	return instance;
 }
 
-void InputManager::init(GLFWwindow* window)
+auto InputManager::init(GLFWwindow* window) -> void
 {
 	glfwSetKeyCallback(window, InputManager::keyCallback);
 }
 
-
-void InputManager::registerSpriteAction(int key, Sprite sprite)
+auto InputManager::registerSpriteAction(std::function<void()> action, int key) -> void
 {
-	m_sprites.emplace(std::make_pair(key, sprite));
+	m_actionKey.insert(std::make_pair(key, action));
 }
 

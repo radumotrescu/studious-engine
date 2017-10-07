@@ -1,10 +1,22 @@
 #pragma once
 
-#include "Entity.h"
 #include <iostream>
 
-class Rectangle : public IEntity
-{
+#include "Entity.h"
+
+class Rectangle : public IEntity{
+
+public:
+	Rectangle();
+	Rectangle(Point3D, float,float, int);
+	auto getPoints() const->std::vector<Point3D>;
+	auto getPriority() const -> int;
+	auto getMatrix() const -> mat4;
+
+	virtual auto translate(const vec3& translate) -> void override;
+	virtual auto resize(const vec3& resize) -> void override;
+	virtual auto rotate(const vec3 & rotate, Point3D axis) -> void override;
+
 private:
 	// the objects in front of everything get priority 0 
 	// the objects in the background get higher priority 
@@ -23,15 +35,9 @@ private:
 	//calculate center of entity
 	auto calculateCenter()->Point3D;
 
-public:
-	Rectangle();
-	Rectangle(Point3D, Point3D, Point3D, Point3D, int);
-public:
-	auto getPoints() const->std::vector<Point3D>;
-	auto getPriority() const -> int;
-	auto getMatrix() const->mat4;
+	float m_width;
+	float m_height;
 
-	virtual auto translate(const vec3& translate) -> void override;
-	virtual auto resize(const vec3& resize) -> void override;
-	virtual auto rotate(const vec3 & rotate, Point3D axis) -> void override;
+
+
 };

@@ -10,12 +10,12 @@ auto Rectangle::applyChanges() -> void
 
 auto Rectangle::changePointCoordinates(const Point3D & vertex) -> Point3D
 {
-	double vertexAsMatrix[MATRIX_DIMENSION][1] = { vertex.x, vertex.y, vertex.z, 1.0f };
+	float vertexAsMatrix[MATRIX_DIMENSION][1] = { vertex.x, vertex.y, vertex.z, 1.0f };
 
-	double resultVector[MATRIX_DIMENSION][1];
+	float resultVector[MATRIX_DIMENSION][1];
 	for (int i = 0; i < MATRIX_DIMENSION; i++)
 	{
-		double aux = 0;
+		float aux = 0;
 		for (int j = 0; j < MATRIX_DIMENSION; j++)
 			aux = aux + m_matrix[i][j] * vertexAsMatrix[j][0];
 		resultVector[i][0] = aux;
@@ -27,7 +27,7 @@ auto Rectangle::changePointCoordinates(const Point3D & vertex) -> Point3D
 	return result;
 }
 
-void Rectangle::resetMatrix()
+auto Rectangle::resetMatrix()->void
 {
 	for (int i = 0; i < MATRIX_DIMENSION; i++)
 	{
@@ -82,38 +82,24 @@ Rectangle::Rectangle()
 
 	m_priority = 0;
 
+	m_width = 1.0f;
+	m_height = 1.0f;
 	resetMatrix();
 }
 
-Rectangle::Rectangle(Point3D lowerLeftVertex, Point3D lowerRightVertex, Point3D upperRightVertex, Point3D upperLeftVertex, int priority = 0)
+Rectangle::Rectangle(Point3D upperLeftVertex, float width, float height, int priority = 0)
 {
 	Point3D temporaryPoint;
+	m_points.push_back(upperLeftVertex);
 
-	temporaryPoint.x = lowerLeftVertex.x;
-	temporaryPoint.y = lowerLeftVertex.y;
-	temporaryPoint.z = lowerLeftVertex.z;
-
+	temporaryPoint = { upperLeftVertex.x + width, upperLeftVertex.y, upperLeftVertex.z };
 	m_points.push_back(temporaryPoint);
 
-	temporaryPoint.x = lowerRightVertex.x;
-	temporaryPoint.y = lowerRightVertex.y;
-	temporaryPoint.z = lowerRightVertex.z;
-
+	temporaryPoint = { upperLeftVertex.x + width, upperLeftVertex.y+height, upperLeftVertex.z };
 	m_points.push_back(temporaryPoint);
 
-	temporaryPoint.x = upperRightVertex.x;
-	temporaryPoint.y = upperRightVertex.y;
-	temporaryPoint.z = upperRightVertex.z;
-
+	temporaryPoint = { upperLeftVertex.x, upperLeftVertex.y+height, upperLeftVertex.z };
 	m_points.push_back(temporaryPoint);
-
-	temporaryPoint.x = upperLeftVertex.x;
-	temporaryPoint.y = upperLeftVertex.y;
-	temporaryPoint.z = upperLeftVertex.z;
-
-	m_points.push_back(temporaryPoint);
-
-	m_priority = priority;
 
 	resetMatrix();
 }

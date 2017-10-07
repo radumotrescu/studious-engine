@@ -1,45 +1,42 @@
 #include "Window.h"
 #include "Shader.h"
-
 #include "Sprite.h"
 #include "SimpleRenderer.h"
 #include "InputManager.h"
 
 auto main() -> void
 {
-	auto window = new Window("Test", 600, 800);
-
+	auto window = std::make_unique<Window>("Test", 600, 800);
 
 	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
-	//Shader shader("basic.vert", "basic.frag");
-	//shader.enable();
-
-	//Sprite s1(0.5f, 1.0f, 0.5f, 1.0f, 1.0, 0.0, 0.0);
-	Sprite s1(vec4(0.5f, 1.0f, 0.5f, 1.0f), vec3(1.0, 0.0, 0.0), 0);
-
-	//Sprite s2(-0.5f, -1, -0.5, -1, 1.0, 0.0, 1.0);
-	Sprite s2(vec4(-0.5f, -1.0f, -0.5f, -1.0f), vec3(1.0, 0.0, 1.0), 0);
-
-	InputManager::getInstance().init(window->getGLFWWindow());
-
-	InputManager::getInstance().registerSpriteAction(GLFW_KEY_W, s1);
 
 	SimpleRenderer ren;
+
+	auto s1 = std::make_shared<Sprite>(vec3(3.0f, 4.0f, 0.0f), vec2(10,10), vec3(0.0, 1.0, 0.0), 1);
+	auto s2 = std::make_shared<Sprite>(vec3(50.0f, 100.0f, 0.0f),vec2(50,50), vec3(1.0, 0.0, 1.0), 2);
+	auto s3 = std::make_shared<Sprite>(vec3(25.0f, 33.0f, 0.0f), vec2(25, 25), vec3(0.0, 0.0, 1.0), 0);
+
+	InputManager::getInstance().init(window.get()->getWindow());
+	InputManager::getInstance().registerSpriteAction(std::bind(&Sprite::action, *s2.get()), GLFW_KEY_W);
+	//or even
+	float inc = -.1f;
+	auto funcPointer = static_cast<void(Sprite::*)(const vec3&)>(&Sprite::UpdateLocation);
+	InputManager::getInstance().registerSpriteAction(std::bind(funcPointer, *s3.get(), s3->m_position.add(vec3(-inc*0.1f, -inc* 0.1f, 0.0f))), GLFW_KEY_S);
+
 	ren.addToDrawCall(s1);
 	ren.addToDrawCall(s2);
+	ren.addToDrawCall(s3);
 	//auto y = glGetUniformLocation(shader.m_shaderID, "lpos");
 	//glUniform2f(y, 0.0f, 0.0f);
-
 	while (!window->closed())
 	{
 		window->clear();
-		//s1.UpdateLocation(s1.getPosition().x, s1.getPosition().y, s1.getPosition().z, s1.getPosition().w);
-		//s1.Draw();
-		//s2.Draw();
+		//s1->UpdateLocation(s1->m_position.add(vec3(-inc*0.1f, -inc* 0.1f, 0.0f)));
+		if (s1->m_position.y > 200 || s1->m_position.y < 0)
+			inc = -inc;
 		ren.draw();
 
 		window->update();
 	}
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
-	delete window;
 }
