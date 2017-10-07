@@ -1,11 +1,9 @@
 #include "Window.h"
 #include "Shader.h"
 
-#include "Buffer.h"
-#include "IndexBuffer.h"
-#include "VertexArray.h"
 #include "Sprite.h"
 #include "SimpleRenderer.h"
+#include "InputManager.h"
 
 auto main() -> void
 {
@@ -21,6 +19,10 @@ auto main() -> void
 
 	//Sprite s2(-0.5f, -1, -0.5, -1, 1.0, 0.0, 1.0);
 	Sprite s2(vec4(-0.5f, -1.0f, -0.5f, -1.0f), vec3(1.0, 0.0, 1.0), 0);
+
+	InputManager::getInstance().init(window->getGLFWWindow());
+
+	InputManager::getInstance().registerSpriteAction(GLFW_KEY_W, s1);
 
 	SimpleRenderer ren;
 	ren.addToDrawCall(s1);

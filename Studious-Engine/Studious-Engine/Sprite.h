@@ -32,7 +32,7 @@ private:
 public:
 	Sprite(GLfloat pos1, GLfloat pos2, GLfloat pos3, GLfloat pos4, GLfloat R, GLfloat G, GLfloat B);
 
-	Sprite(const vec4& position, const vec3& color,const unsigned priority);
+	Sprite(const vec4& position, const vec3& color, const unsigned priority);
 
 	auto UpdateLocation(const GLfloat pos1, const GLfloat pos2, const  GLfloat pos3, const  GLfloat pos4)->void;
 
@@ -41,6 +41,13 @@ public:
 	auto UpdateLocation(const vec4& position, const unsigned priority)->void;
 
 	auto Draw()->void;
+
+	auto action() -> void
+	{
+		this->UpdateLocation(this->m_pos1 + 0.001f, this->m_pos2 + 0.001f, this->m_pos3, this->m_pos4);
+
+		std::cout << "Sprite2 ation";
+	}
 
 	auto getPosition()const->vec4;
 	auto getColor()const->vec3;

@@ -20,8 +20,9 @@ private:
 public:
 	Window(std::string name, int width, int height);
 
-	inline auto getWidth() const -> auto { return m_width; }
-	inline auto getHeight() const -> auto { return m_height; }
+	inline auto getWidth() const -> auto { return this->m_width; }
+	inline auto getHeight() const -> auto { return this->m_height; }
+	inline auto getGLFWWindow() const -> auto { return *this->m_window.get(); }
 
 	auto closed() const -> bool;
 	auto update() -> void;
