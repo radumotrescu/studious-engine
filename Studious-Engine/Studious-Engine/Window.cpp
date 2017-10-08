@@ -47,7 +47,7 @@ auto Window::init() -> bool
 }
 
 
-auto Window::clear() ->void const
+auto Window::clear() -> void const
 {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 }
@@ -57,9 +57,14 @@ auto Window::getHeight() const -> int
 	return m_height;
 }
 
+auto Window::getWindow() const -> GLFWwindow*
+{
+	return *this->m_window.get();
+}
+
 auto Window::closed() const -> bool
 {
-	return glfwWindowShouldClose(*this->m_window.get())!=0;
+	return glfwWindowShouldClose(*this->m_window.get()) != 0;
 }
 
 auto Window::update() -> void

@@ -34,6 +34,14 @@ auto Sprite::getPriority() const -> unsigned
 	return m_priority;
 }
 
+auto Sprite::action() -> void
+{
+	float inc = -1.0f;
+	this->UpdateLocation(this->m_position.add(vec3(-inc*0.1f, -inc* 0.1f, 0.0f)));
+	if (this->m_position.y > 200 || this->m_position.y < 0)
+		inc = -inc;
+}
+
 
 Sprite::Sprite(const vec3 & position, const vec2& dimension, const vec3& color,const unsigned priority):m_position(position),m_priority(priority)
 {

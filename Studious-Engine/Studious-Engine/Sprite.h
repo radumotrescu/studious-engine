@@ -2,15 +2,16 @@
 
 #include <glew.h>
 #include <vector>
+#include <iostream>
 
 #include "VertexArray.h"
 #include "IndexBuffer.h"
-#include "Vec4.h"
 #include "Vec3.h"
 #include "Vec2.h"
 #include "Shader.h"
 
-class Sprite {
+class Sprite
+{
 
 public:
 	vec3 m_position;
@@ -24,6 +25,7 @@ public:
 	auto getPosition()const->vec3;
 	auto getColor()const->vec3;
 	auto getPriority()const ->unsigned;
+	auto action() -> void;
 
 private:
 	unsigned int m_priority;
@@ -37,4 +39,8 @@ private:
 	};
 	vec3 m_color;
 
+	GLfloat m_pos1;
+	GLfloat m_pos2;
+	GLfloat m_pos3;
+	GLfloat m_pos4;
 };

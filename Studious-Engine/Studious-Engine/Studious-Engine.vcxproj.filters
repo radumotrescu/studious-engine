@@ -22,6 +22,12 @@
     <Filter Include="Shapes">
       <UniqueIdentifier>{215179f5-dba8-4cce-8595-a30e2e2a3c8b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Managers">
+      <UniqueIdentifier>{b0e45f34-5877-448c-a08e-8f01306b9726}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Interfaces">
+      <UniqueIdentifier>{fabd4207-dee7-4455-9e84-43adec8ef4c8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -65,6 +71,9 @@
     </ClCompile>
     <ClCompile Include="Rectangle.cpp">
       <Filter>Shapes</Filter>
+    </ClCompile>
+    <ClCompile Include="InputManager.cpp">
+      <Filter>Managers</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -118,6 +127,9 @@
     </ClInclude>
     <ClInclude Include="Entity.h">
       <Filter>Shapes</Filter>
+    </ClInclude>
+    <ClInclude Include="InputManager.h">
+      <Filter>Managers</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

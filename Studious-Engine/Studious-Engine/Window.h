@@ -6,12 +6,14 @@
 #include <iostream>
 #include <memory>
 
-class Window {
+class Window
+{
 
 public:
 	Window(std::string name, int width, int height);
-	auto getWidth() const -> int; 
-	auto getHeight() const -> int; 
+	auto getWidth() const -> int;
+	auto getHeight() const -> int;
+	auto getWindow() const -> GLFWwindow*;
 	auto closed() const -> bool;
 	auto update() -> void;
 	auto clear()->void const;
@@ -24,6 +26,5 @@ private:
 	std::unique_ptr<GLFWwindow*> m_window;
 
 	auto init() -> bool;
-
 };
 
