@@ -39,8 +39,4 @@ private:
 	};
 	vec3 m_color;
 
-	GLfloat m_pos1;
-	GLfloat m_pos2;
-	GLfloat m_pos3;
-	GLfloat m_pos4;
 };

@@ -16,34 +16,32 @@ auto main() -> void
 	auto s2 = std::make_shared<Sprite>(vec3(50.0f, 100.0f, 0.0f),vec2(50,50), vec3(1.0, 0.0, 1.0), 2);
 	auto s3 = std::make_shared<Sprite>(vec3(25.0f, 33.0f, 0.0f), vec2(25, 25), vec3(0.0, 0.0, 1.0), 0);
 
-<<<<<<< HEAD
-	auto s1 = std::make_shared<Sprite>(vec3(3.0f, 4.0f, 0.0f), vec2(10,10), vec3(0.0, 1.0, 0.0), 0);
-	auto s2 = std::make_shared<Sprite >(vec3(50.0f, 100.0f, 0.0f),vec2(50,50), vec3(1.0, 0.0, 1.0), 1);
-=======
+	//auto s1 = std::make_shared<Sprite>(vec3(3.0f, 4.0f, 0.0f), vec2(10,10), vec3(0.0, 1.0, 0.0), 0);
+	//auto s2 = std::make_shared<Sprite >(vec3(50.0f, 100.0f, 0.0f),vec2(50,50), vec3(1.0, 0.0, 1.0), 1);
 	InputManager::getInstance().init(window.get()->getWindow());
-	InputManager::getInstance().registerSpriteAction(std::bind(&Sprite::action, *s2.get()), GLFW_KEY_W);
+	InputManager::getInstance().registerSpriteAction(std::bind(&Sprite::action, s2.get()), GLFW_KEY_W);
+	auto x=*s2.get();
 	//or even
-	float inc = -.1f;
+
+	float inc = -2.0f;
 	auto funcPointer = static_cast<void(Sprite::*)(const vec3&)>(&Sprite::UpdateLocation);
-	InputManager::getInstance().registerSpriteAction(std::bind(funcPointer, *s3.get(), s3->m_position.add(vec3(-inc*0.1f, -inc* 0.1f, 0.0f))), GLFW_KEY_S);
->>>>>>> 1693611069a10c5e7f2664651b6cfe54419edcee
+	InputManager::getInstance().registerSpriteAction(std::bind(funcPointer, s3.get(), s3->m_position.add(vec3(10, 10, 0.0f))), GLFW_KEY_S);
 
 	ren.addToDrawCall(s1);
 	ren.addToDrawCall(s2);
 	ren.addToDrawCall(s3);
 	//auto y = glGetUniformLocation(shader.m_shaderID, "lpos");
 	//glUniform2f(y, 0.0f, 0.0f);
-<<<<<<< HEAD
-	float inc = -0.1f;
-=======
->>>>>>> 1693611069a10c5e7f2664651b6cfe54419edcee
+	//float inc = -0.1f;
+
 	while (!window->closed())
 	{
 		window->clear();
 		//s1->UpdateLocation(s1->m_position.add(vec3(-inc*0.1f, -inc* 0.1f, 0.0f)));
-		if (s1->m_position.y > 200 || s1->m_position.y < 0)
-			inc = -inc;
+		//if (s1->m_position.y > 200 || s1->m_position.y < 0)
+		//	inc = -inc;
 		ren.draw();
+		//std::cout << " ---------- " << s2->getPosition().x << " --------------- " << std::endl;
 
 		window->update();
 	}

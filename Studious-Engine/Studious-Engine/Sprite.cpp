@@ -3,6 +3,8 @@
 auto Sprite::UpdateLocation(const vec3 & position) -> void
 {
 	this->m_position = position;
+	//std::cout << position.x << " " << position.y << " " << position.z << " ======= ";
+	//std::cout << m_position.x << " " << m_position.y << " " << m_position.z << std::endl;
 }
 
 auto Sprite::UpdateLocation(const vec3 & position, const unsigned priority) -> void
@@ -36,7 +38,7 @@ auto Sprite::getPriority() const -> unsigned
 
 auto Sprite::action() -> void
 {
-	float inc = -1.0f;
+	float inc = -5.0f;
 	this->UpdateLocation(this->m_position.add(vec3(-inc*0.1f, -inc* 0.1f, 0.0f)));
 	if (this->m_position.y > 200 || this->m_position.y < 0)
 		inc = -inc;

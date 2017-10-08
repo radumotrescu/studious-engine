@@ -7,6 +7,9 @@ Studious-Engine/x64/
 Studious-Engine/Studious-Engine/x64
 Studious-Engine/packages/glfw.3.2.1/build/native/docs/
 
+# Visual Studio files
+*.vcxproj
+
 # Compiled Object files
 *.slo
 *.lo
