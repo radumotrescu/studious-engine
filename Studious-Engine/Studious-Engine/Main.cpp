@@ -11,14 +11,14 @@ auto main() -> void
 	SimpleRenderer ren;
 
 
-	auto s1 = std::make_shared<Sprite>(vec3(3.0f, 4.0f, 0.0f), vec2(10,10), vec3(0.0, 1.0, 0.0), 2);
+	auto s1 = std::make_shared<Sprite>(vec3(3.0f, 4.0f, 0.0f), vec2(10,10), vec3(0.0, 1.0, 0.0), 0);
 	auto s2 = std::make_shared<Sprite >(vec3(50.0f, 100.0f, 0.0f),vec2(50,50), vec3(1.0, 0.0, 1.0), 1);
 
 	ren.addToDrawCall(s1);
 	ren.addToDrawCall(s2);
 	//auto y = glGetUniformLocation(shader.m_shaderID, "lpos");
 	//glUniform2f(y, 0.0f, 0.0f);
-	float inc = -1.0f;
+	float inc = -0.1f;
 	while (!window->closed())
 	{
 		window->clear();

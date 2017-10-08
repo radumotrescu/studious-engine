@@ -35,13 +35,11 @@ auto Sprite::getPriority() const -> unsigned
 }
 
 
-Sprite::Sprite(const vec3 & position, const vec2& dimension, const vec3& color,const unsigned priority)
+Sprite::Sprite(const vec3 & position, const vec2& dimension, const vec3& color,const unsigned priority):m_position(position),m_priority(priority)
 {
-	this->m_position = position;
 	ibo = IndexBuffer(indexes, static_cast<GLsizei>(indexes.size()));
 	matrixPosition = { 0,0,0,dimension.y,dimension.x,dimension.y,dimension.x,0 };
 	colors = { color.x,color.y,color.z,1.0f,color.x,color.y,color.z,1.0f,color.x,color.y,color.z,1.0f,color.x,color.y,color.z,1.0f };
-	//ibo = IndexBuffer(indexes, static_cast<GLsizei>(indexes.size()));
 	m_vao.addBuffer(std::make_shared<Buffer>(matrixPosition, matrixPosition.size(), 2), 0);
 	m_vao.addBuffer(std::make_shared<Buffer>(colors, colors.size(), 4), 1);
 }
