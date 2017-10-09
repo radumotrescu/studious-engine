@@ -10,14 +10,14 @@ auto Triangle::applyChanges() -> void
 
 auto Triangle::changePointCoordinates(const Point3D & vertex) -> Point3D
 {
-	double vertexAsMatrix[MATRIX_DIMENSION][1] = { vertex.x, vertex.y, vertex.z, 1.0f };
+	float vertexAsMatrix[MATRIX_DIMENSION][1] = { vertex.x, vertex.y, vertex.z, 1.0f };
 
-	double resultVector[MATRIX_DIMENSION][1];
+	float resultVector[MATRIX_DIMENSION][1];
 
 	//multiply between a matrix and a vector
 	for (int i = 0; i<MATRIX_DIMENSION; i++)
 	{
-		double aux = 0;
+		float aux = 0;
 		for (int j = 0; j<MATRIX_DIMENSION; j++)
 			aux = aux + m_matrix[i][j] * vertexAsMatrix[j][0];
 		resultVector[i][0] = aux;
@@ -176,4 +176,9 @@ auto Triangle::rotate(const vec3 & rotate, Point3D axis) -> void
 
 	//translate axis to original position
 	translate(vec3(axis.x, axis.y, axis.z));
+}
+
+auto Triangle::getType() const -> Type
+{
+	return Type::TRIANGLE;
 }

@@ -172,3 +172,18 @@ auto Rectangle::rotate(const vec3 & rotate, Point3D axis) -> void
 	//translate axis to original position
 	translate(vec3(axis.x, axis.y, axis.z));
 }
+
+auto Rectangle::getWidth() -> float const
+{
+	return m_width;
+}
+
+auto Rectangle::getHeight() -> float const
+{
+	return m_height;
+}
+
+auto Rectangle::getType() const -> Type
+{
+	return Type::RECTANGLE;
+}
