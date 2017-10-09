@@ -71,25 +71,25 @@ auto Application::inRange(float value, float minRange, float maxRange) -> bool
 
 auto Application::isCollided(Rectangle rect1, Rectangle rect2) -> bool
 {
-	auto minRange1X = rect1.getPoints().at(0).x;
-	auto maxRange1X = rect1.getPoints().at(0).x + rect1.getWidth();
-	auto minRange2X = rect2.getPoints().at(0).x;
-	auto maxRange2X = rect2.getPoints().at(0).x + rect2.getWidth();
+	auto minRange1X = rect1.getOrigin().x;
+	auto maxRange1X = rect1.getOrigin().x + rect1.getWidth();
+	auto minRange2X = rect2.getOrigin().x;
+	auto maxRange2X = rect2.getOrigin().x + rect2.getWidth();
 
-	auto minRange1Y = rect1.getPoints().at(0).y;
-	auto maxRange1Y = rect1.getPoints().at(0).y + rect1.getHeight();
-	auto minRange2Y = rect2.getPoints().at(0).y;
-	auto maxRange2Y = rect2.getPoints().at(0).y + rect2.getHeight();
+	auto minRange1Y = rect1.getOrigin().y;
+	auto maxRange1Y = rect1.getOrigin().y + rect1.getHeight();
+	auto minRange2Y = rect2.getOrigin().y;
+	auto maxRange2Y = rect2.getOrigin().y + rect2.getHeight();
 	return rangeIntersection(minRange1X, maxRange1X, minRange2X, maxRange2X) &&
 		rangeIntersection(minRange1Y, maxRange1Y, minRange2Y, maxRange2Y);
 }
 
 auto Application::isCollided(Point3D point, Rectangle rect) -> bool
 {
-	auto minRangeX = rect.getPoints().at(0).x;
-	auto maxRangeX = rect.getPoints().at(0).x + rect.getWidth();
-	auto minRangeY = rect.getPoints().at(0).y;
-	auto maxRangeY = rect.getPoints().at(0).y + rect.getHeight();
+	auto minRangeX = rect.getOrigin().x;
+	auto maxRangeX = rect.getOrigin().x + rect.getWidth();
+	auto minRangeY = rect.getOrigin().y;
+	auto maxRangeY = rect.getOrigin().y + rect.getHeight();
 	return inRange(point.x, minRangeX, maxRangeX) && inRange(point.y, minRangeY, maxRangeY);
 }
 
