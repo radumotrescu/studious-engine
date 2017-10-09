@@ -41,4 +41,5 @@ public:
 
 	auto getWidth()->float const;
 	auto getHeight()->float const;
+	auto getOrigin()->Point3D const;
 };

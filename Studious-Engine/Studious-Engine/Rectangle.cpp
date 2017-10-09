@@ -53,7 +53,7 @@ auto Rectangle::calculateCenter() -> Point3D
 
 Rectangle::Rectangle()
 {
-	// the points are assigned counterclockwise starting from the lower left corner
+	// the points are assigned clockwise starting from the upper left corner
 	Point3D temporaryPoint;
 
 	temporaryPoint.x = 0.0;
@@ -181,6 +181,11 @@ auto Rectangle::getWidth() -> float const
 auto Rectangle::getHeight() -> float const
 {
 	return m_height;
+}
+
+auto Rectangle::getOrigin() -> Point3D const
+{
+	return m_points[0];
 }
 
 auto Rectangle::getType() const -> Type
