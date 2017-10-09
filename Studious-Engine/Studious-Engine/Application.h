@@ -12,7 +12,7 @@ public:
 	Application() = default;
 	~Application() = default;
 
-	auto isCollided(IEntity* a, IEntity* b)->bool;
+	auto isCollided(IEntity* entity1, IEntity* entity2)->bool;
 
 private:
 	auto approximatelyEqual(float a, float b, float epsilon = EPSILON)->bool;
