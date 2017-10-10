@@ -4,7 +4,6 @@
 #include "SimpleRenderer.h"
 #include "InputManager.h"
 #include "Application.h"
-
 #include "Rectangle.h"
 
 auto main() -> void

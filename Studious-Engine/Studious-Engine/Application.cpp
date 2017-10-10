@@ -71,10 +71,12 @@ auto Application::rangeIntersection(float minRange1, float maxRange1, float minR
 
 auto Application::inRange(float value, float minRange, float maxRange) -> bool
 {
-	auto greaterOrEqual = essentiallyEqual((std::min)(minRange, maxRange), value) || definitelyGreaterThan((std::min)(minRange, maxRange), value);
-	auto lessOrEqual = essentiallyEqual((std::min)(minRange, maxRange), value) || definitelyGreaterThan(value, (std::min)(minRange, maxRange));
+	auto min = (std::min)(minRange, maxRange);
+	auto max = (std::max)(minRange, maxRange);
+	auto minLessOrEqualToValue = essentiallyEqual(min, value) || definitelyLessThan(min, value);
+	auto valueLessOrEqualToMax = essentiallyEqual(value, max) || definitelyLessThan(value, max);
 
-	return lessOrEqual && greaterOrEqual;
+	return minLessOrEqualToValue && valueLessOrEqualToMax;
 }
 
 auto Application::isCollided(stud::Rectangle rect1, stud::Rectangle rect2) -> bool
