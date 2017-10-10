@@ -10,33 +10,22 @@
 #include "Vec2.h"
 #include "Shader.h"
 
-class Sprite
-{
+class Sprite {
 
 public:
-	vec3 m_position;
-	vec2 m_dimension;
-	Shader m_shader;
+	Sprite();
+	Sprite::Sprite(const std::vector<GLfloat>& matrix, const std::vector<GLfloat>& colors, const std::vector<GLushort>&indexes);
 
-	Sprite(const vec3& position, const vec2& dimension, const vec3&color,const unsigned priority);
-	auto UpdateLocation(const vec3& position)->void;
-	auto UpdateLocation(const vec3& position, const unsigned priority)->void;
 	auto Draw()->void;
-	auto getPosition()const->vec3;
-	auto getColor()const->vec3;
-	auto getPriority()const ->unsigned;
-	auto action() -> void;
+	//auto action() -> void;
+
+	auto getVAO()->VertexArray;
+	auto getIBO()->IndexBuffer;
 
 private:
-	unsigned int m_priority;
-	std::vector<GLfloat> matrixPosition;
-	std::vector<GLfloat> colors;
 	VertexArray m_vao;
-	IndexBuffer ibo;
-	std::vector<GLushort> indexes = {
-		0,2,3,
-		1,2,0
-	};
-	vec3 m_color;
+	IndexBuffer m_ibo;
 
+	auto activateIBO(const std::vector<GLushort>& indexes)->void;
+	auto Sprite::activateVAO(const std::vector<GLfloat>& matrix, const std::vector<GLfloat>& colors)->void;
 };

@@ -1,45 +1,58 @@
 #pragma once
 
 #include "Entity.h"
+#include "vec2.h"
+#include "Sprite.h"
+
+#include <glew.h>
 #include <iostream>
 
-class Rectangle : public IEntity
-{
-private:
-	// the objects in front of everything get priority 0 
-	// the objects in the background get higher priority 
-	int m_priority;
-	std::vector<Point3D> m_points;
+namespace stud {
 
-	//after any modify of m_matrix, this function will be called
-	auto applyChanges()->void;
+	class Rectangle : public IEntity {
+	private:
 
-	//changes coordinates of vertex
-	auto changePointCoordinates(const Point3D & vertex)->Point3D;
+		Sprite m_sprite;
 
-	//sets m_matrix to identity matrix
-	auto resetMatrix()->void;
+		vec3 m_origin;
+		vec2 m_dimension;
+		unsigned m_priority;
+		vec3 m_color;
 
-	//calculate center of entity
-	auto calculateCenter()->Point3D;
+		std::vector<GLfloat> matrix;
+		std::vector<GLfloat> colors;
 
-	float m_width;
-	float m_height;
-public:
-	Rectangle();
-	Rectangle(Point3D, float,float, int);
-public:
-	auto getPoints() const->std::vector<Point3D>;
-	auto getPriority() const -> int;
-	auto getMatrix() const -> mat4;
+		std::vector<GLushort> indexes = {
+			0,2,3,
+			1,2,0
+		};
 
-	virtual auto getType() const->Type override;
+	public:
+		Rectangle(const vec3& position, const vec2& dimension, const vec3& color, const unsigned priority);
 
-	virtual auto translate(const vec3& translate) -> void override;
-	virtual auto resize(const vec3& resize) -> void override;
-	virtual auto rotate(const vec3 & rotate, Point3D axis) -> void override;
+		auto changePointCoordinates(const vec3 & vertex)->void;
+		auto changePriority(const unsigned priority) -> void;
 
-	auto getWidth()->float const;
-	auto getHeight()->float const;
-	auto getOrigin()->Point3D const;
-};
+		auto getPriority() const -> unsigned;
+
+		virtual auto getType() const->Type override;
+
+		virtual auto translate(const vec3& translate) -> void override;
+		virtual auto resize(const vec3& resize) -> void override;
+		//virtual auto rotate(const vec3 & rotate, const vec3& axis) -> void override;
+
+		auto getWidth()->float const;
+		auto getHeight()->float const;
+		auto getOrigin()->vec3 const;
+
+		auto getSprite()->Sprite;
+
+		// Inherited via IEntity
+		virtual auto rotate(const vec3 & translate, const vec3 & axis) -> void;
+
+		auto moveLeft()->void;
+		auto moveRight()->void;
+		auto moveUp()->void;
+		auto moveDown()->void;
+	};
+}
