@@ -11,24 +11,24 @@ auto Application::isCollided(IEntity * entity1, IEntity * entity2) -> bool
 		stud::Rectangle* rect2 = dynamic_cast<stud::Rectangle*>(entity2);
 		return isCollided(*rect1, *rect2);
 	}
-	//else if (entity1->getType() == Type::RECTANGLE && entity2->getType() == Type::TRIANGLE)
-	//{
-	//	Rectangle* rectangle = dynamic_cast<Rectangle*>(entity1);
-	//	Triangle* triangle = dynamic_cast<Triangle*>(entity2);
-	//	return isCollided(rectangle, triangle);
-	//}
-	//else  if (entity1->getType() == Type::TRIANGLE && entity2->getType() == Type::RECTANGLE)
-	//{
-	//	Rectangle* rectangle = dynamic_cast<Rectangle*>(entity2);
-	//	Triangle* triangle = dynamic_cast<Triangle*>(entity1);
-	//	return isCollided(rectangle, triangle);
-	//}
-	//else if (entity1->getType() == Type::TRIANGLE && entity2->getType() == Type::TRIANGLE)
-	//{
-	//	Triangle* triangle1 = dynamic_cast<Triangle*>(entity1);
-	//	Triangle* triangle2 = dynamic_cast<Triangle*>(entity2);
-	//	return isCollided(triangle1, triangle2);
-	//}
+	/*else if (entity1->getType() == Type::RECTANGLE && entity2->getType() == Type::TRIANGLE)
+	{
+		Rectangle* rectangle = dynamic_cast<Rectangle*>(entity1);
+		Triangle* triangle = dynamic_cast<Triangle*>(entity2);
+		return isCollided(*rectangle, *triangle);
+	}
+	else  if (entity1->getType() == Type::TRIANGLE && entity2->getType() == Type::RECTANGLE)
+	{
+		Rectangle* rectangle = dynamic_cast<Rectangle*>(entity2);
+		Triangle* triangle = dynamic_cast<Triangle*>(entity1);
+		return isCollided(*rectangle, *triangle);
+	}
+	else if (entity1->getType() == Type::TRIANGLE && entity2->getType() == Type::TRIANGLE)
+	{
+		Triangle* triangle1 = dynamic_cast<Triangle*>(entity1);
+		Triangle* triangle2 = dynamic_cast<Triangle*>(entity2);
+		return isCollided(*triangle1, *triangle2);
+	}*/
 
 	return false;
 }
