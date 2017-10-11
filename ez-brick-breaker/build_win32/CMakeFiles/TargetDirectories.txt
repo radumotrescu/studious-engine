@@ -1,4 +1,0 @@
-D:/mechanics/studious-engine/ez-brick-breaker/build_win32/CMakeFiles/INSTALL.dir
-D:/mechanics/studious-engine/ez-brick-breaker/build_win32/CMakeFiles/ALL_BUILD.dir
-D:/mechanics/studious-engine/ez-brick-breaker/build_win32/brick-breaker/CMakeFiles/brick-breaker.dir
-D:/mechanics/studious-engine/ez-brick-breaker/build_win32/brick-breaker/CMakeFiles/INSTALL.dir

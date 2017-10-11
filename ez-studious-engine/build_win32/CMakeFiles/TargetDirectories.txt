@@ -1,4 +1,0 @@
-D:/mechanics/studious-engine/ez-studious-engine/build_win32/CMakeFiles/INSTALL.dir
-D:/mechanics/studious-engine/ez-studious-engine/build_win32/CMakeFiles/ALL_BUILD.dir
-D:/mechanics/studious-engine/ez-studious-engine/build_win32/studious-engine/CMakeFiles/studious-engine.dir
-D:/mechanics/studious-engine/ez-studious-engine/build_win32/studious-engine/CMakeFiles/INSTALL.dir
