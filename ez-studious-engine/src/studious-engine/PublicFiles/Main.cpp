@@ -50,7 +50,7 @@ auto main() -> void
 		//s1->translate(og.add(vec3(-inc*0.1f, -inc* 0.1f, 0.0f)));
 		if (s1->getOrigin().y > 200 || s1->getOrigin().y < 0)
 			inc = -inc;
-		//std::cout << app.isCollided(s1.get(), s2.get());
+		std::cout << app.isCollided(s1.get(), s2.get());
 		ren.draw();
 		//std::cout << " ---------- " << s1->getOrigin().x << " --------------- " << std::endl;
 
