@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Project ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="D:\mechanics\studious-engine\ez-studious-engine\build_win32\CMakeFiles\36959124dc3259ba0de59056a8fd3a17\INSTALL_force.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{7562C316-D563-361D-B997-D8BCF8337F9C}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,117 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Project ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="D:\mechanics\studious-engine\ez-studious-engine\src\studious-engine\PublicFiles\Application.cpp">
+      <Filter>PublicFiles</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\mechanics\studious-engine\ez-studious-engine\src\studious-engine\PublicFiles\Buffer.cpp">
+      <Filter>PublicFiles</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\mechanics\studious-engine\ez-studious-engine\src\studious-engine\PublicFiles\IndexBuffer.cpp">
+      <Filter>PublicFiles</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\mechanics\studious-engine\ez-studious-engine\src\studious-engine\PublicFiles\InputManager.cpp">
+      <Filter>PublicFiles</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\mechanics\studious-engine\ez-studious-engine\src\studious-engine\PublicFiles\Main.cpp">
+      <Filter>PublicFiles</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\mechanics\studious-engine\ez-studious-engine\src\studious-engine\PublicFiles\Mat4.cpp">
+      <Filter>PublicFiles</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\mechanics\studious-engine\ez-studious-engine\src\studious-engine\PublicFiles\Rectangle.cpp">
+      <Filter>PublicFiles</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\mechanics\studious-engine\ez-studious-engine\src\studious-engine\PublicFiles\Shader.cpp">
+      <Filter>PublicFiles</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\mechanics\studious-engine\ez-studious-engine\src\studious-engine\PublicFiles\SimpleRenderer.cpp">
+      <Filter>PublicFiles</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\mechanics\studious-engine\ez-studious-engine\src\studious-engine\PublicFiles\Sprite.cpp">
+      <Filter>PublicFiles</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\mechanics\studious-engine\ez-studious-engine\src\studious-engine\PublicFiles\Square.cpp">
+      <Filter>PublicFiles</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\mechanics\studious-engine\ez-studious-engine\src\studious-engine\PublicFiles\Triangle.cpp">
+      <Filter>PublicFiles</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\mechanics\studious-engine\ez-studious-engine\src\studious-engine\PublicFiles\Vec2.cpp">
+      <Filter>PublicFiles</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\mechanics\studious-engine\ez-studious-engine\src\studious-engine\PublicFiles\Vec3.cpp">
+      <Filter>PublicFiles</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\mechanics\studious-engine\ez-studious-engine\src\studious-engine\PublicFiles\Vec4.cpp">
+      <Filter>PublicFiles</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\mechanics\studious-engine\ez-studious-engine\src\studious-engine\PublicFiles\VertexArray.cpp">
+      <Filter>PublicFiles</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\mechanics\studious-engine\ez-studious-engine\src\studious-engine\PublicFiles\Window.cpp">
+      <Filter>PublicFiles</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="D:\mechanics\studious-engine\ez-studious-engine\src\studious-engine\PublicFiles\Application.h">
+      <Filter>PublicFiles</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\mechanics\studious-engine\ez-studious-engine\src\studious-engine\PublicFiles\Buffer.h">
+      <Filter>PublicFiles</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\mechanics\studious-engine\ez-studious-engine\src\studious-engine\PublicFiles\Entity.h">
+      <Filter>PublicFiles</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\mechanics\studious-engine\ez-studious-engine\src\studious-engine\PublicFiles\IEntity.h">
+      <Filter>PublicFiles</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\mechanics\studious-engine\ez-studious-engine\src\studious-engine\PublicFiles\IndexBuffer.h">
+      <Filter>PublicFiles</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\mechanics\studious-engine\ez-studious-engine\src\studious-engine\PublicFiles\InputManager.h">
+      <Filter>PublicFiles</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\mechanics\studious-engine\ez-studious-engine\src\studious-engine\PublicFiles\Mat4.h">
+      <Filter>PublicFiles</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\mechanics\studious-engine\ez-studious-engine\src\studious-engine\PublicFiles\Rectangle.h">
+      <Filter>PublicFiles</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\mechanics\studious-engine\ez-studious-engine\src\studious-engine\PublicFiles\Shader.h">
+      <Filter>PublicFiles</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\mechanics\studious-engine\ez-studious-engine\src\studious-engine\PublicFiles\SimpleRenderer.h">
+      <Filter>PublicFiles</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\mechanics\studious-engine\ez-studious-engine\src\studious-engine\PublicFiles\Sprite.h">
+      <Filter>PublicFiles</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\mechanics\studious-engine\ez-studious-engine\src\studious-engine\PublicFiles\Square.h">
+      <Filter>PublicFiles</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\mechanics\studious-engine\ez-studious-engine\src\studious-engine\PublicFiles\Triangle.h">
+      <Filter>PublicFiles</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\mechanics\studious-engine\ez-studious-engine\src\studious-engine\PublicFiles\Vec2.h">
+      <Filter>PublicFiles</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\mechanics\studious-engine\ez-studious-engine\src\studious-engine\PublicFiles\Vec3.h">
+      <Filter>PublicFiles</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\mechanics\studious-engine\ez-studious-engine\src\studious-engine\PublicFiles\Vec4.h">
+      <Filter>PublicFiles</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\mechanics\studious-engine\ez-studious-engine\src\studious-engine\PublicFiles\VertexArray.h">
+      <Filter>PublicFiles</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\mechanics\studious-engine\ez-studious-engine\src\studious-engine\PublicFiles\Window.h">
+      <Filter>PublicFiles</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="PublicFiles">
+      <UniqueIdentifier>{0A6CE464-A095-3D8B-9230-B92EB71740C1}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

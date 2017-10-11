@@ -1,6 +1,0 @@
-{
-    "name":"studious-engine",
-    "type":"Executable",
-    "dependencies": ["glew32s","glfw3","opengl32"],
-    "additionalCMakeCommands": ["if(WIN32)", "add_definitions(-DGLEW_STATIC)", "endif(WIN32)"]
-}

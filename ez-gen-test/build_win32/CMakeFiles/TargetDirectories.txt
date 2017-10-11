@@ -1,4 +1,0 @@
-C:/ez-gen-test/build_win32/CMakeFiles/INSTALL.dir
-C:/ez-gen-test/build_win32/CMakeFiles/ALL_BUILD.dir
-C:/ez-gen-test/build_win32/studious-engine/CMakeFiles/studious-engine.dir
-C:/ez-gen-test/build_win32/studious-engine/CMakeFiles/INSTALL.dir
