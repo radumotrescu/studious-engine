@@ -56,18 +56,26 @@ namespace SE {
 
 	auto Application::rangeIntersection(float minRange1, float maxRange1, float minRange2, float maxRange2) -> bool
 	{
-		auto greaterOrEqual = essentiallyEqual((std::max)(minRange1, maxRange1), (std::min)(minRange1, maxRange1)) || definitelyGreaterThan((std::max)(minRange1, maxRange1), (std::min)(minRange1, maxRange1));
-		auto lessOrEqual = essentiallyEqual((std::max)(minRange1, maxRange1), (std::min)(minRange1, maxRange1)) || definitelyGreaterThan((std::min)(minRange1, maxRange1), (std::max)(minRange1, maxRange1));
+		auto min1 = (std::min)(minRange1, maxRange1);
+		auto min2 = (std::min)(minRange2, maxRange2);
+		auto max1 = (std::max)(minRange1, maxRange1);
+		auto max2 = (std::max)(minRange2, maxRange2);
+		auto minLessOrEqualToValue1 = essentiallyEqual(min1, min2) || definitelyLessThan(min1, min2);
+		auto value1LessOrEqualToMax = essentiallyEqual(min2, max1) || definitelyLessThan(min2, max1);
 
-		return  lessOrEqual && greaterOrEqual;
+		auto minLessOrEqualToValue2 = essentiallyEqual(min1, max2) || definitelyLessThan(min1, max2);
+		auto value2LessOrEqualToMax = essentiallyEqual(max2, max1) || definitelyLessThan(max2, max1);
+
+		return  (minLessOrEqualToValue1 && value1LessOrEqualToMax) || (minLessOrEqualToValue2 && value2LessOrEqualToMax);
 	}
 
 	auto Application::inRange(float value, float minRange, float maxRange) -> bool
 	{
-		auto greaterOrEqual = essentiallyEqual((std::min)(minRange, maxRange), value) || definitelyGreaterThan((std::min)(minRange, maxRange), value);
-		auto lessOrEqual = essentiallyEqual((std::min)(minRange, maxRange), value) || definitelyGreaterThan(value, (std::min)(minRange, maxRange));
-
-		return lessOrEqual && greaterOrEqual;
+		auto min = (std::min)(minRange, maxRange);
+		auto max = (std::max)(minRange, maxRange);
+		auto minLessOrEqualToValue = essentiallyEqual(min, value) || definitelyLessThan(min, value);
+		auto valueLessOrEqualToMax = essentiallyEqual(value, max) || definitelyLessThan(value, max);
+		return minLessOrEqualToValue && valueLessOrEqualToMax;
 	}
 
 	auto Application::isCollided(Rectangle rect1, Rectangle rect2) -> bool

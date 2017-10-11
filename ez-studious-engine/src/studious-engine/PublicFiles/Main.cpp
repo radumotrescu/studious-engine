@@ -7,7 +7,7 @@
 
 #include "Rectangle.h"
 
-using namespace SE;
+#include "freetype-gl.h"
 
 auto main() -> void
 {
@@ -17,19 +17,19 @@ auto main() -> void
 
 	SE::SimpleRenderer ren;
 
-	auto s1 = std::make_shared<SE::Rectangle>(SE::vec3(3.0f, 4.0f, 0.0f), vec2(100, 100), vec3(0.0, 1.0, 0.0), 2);
-	auto s2 = std::make_shared<SE::Rectangle>(vec3(50.0f, 100.0f, 0.0f), vec2(50, 50), vec3(1.0, 0.0, 1.0), 1);
-	auto s3 = std::make_shared<SE::Rectangle>(vec3(25.0f, 33.0f, 0.0f), vec2(25, 25), vec3(0.0, 0.0, 1.0), 0);
+	auto s1 = std::make_shared<SE::Rectangle>(SE::vec3(3.0f, 4.0f, 0.0f), SE::vec2(100, 100), SE::vec3(0.0, 1.0, 0.0), 2);
+	auto s2 = std::make_shared<SE::Rectangle>(SE::vec3(50.0f, 100.0f, 0.0f), SE::vec2(50, 50), SE::vec3(1.0, 0.0, 1.0), 1);
+	auto s3 = std::make_shared<SE::Rectangle>(SE::vec3(25.0f, 33.0f, 0.0f), SE::vec2(25, 25), SE::vec3(0.0, 0.0, 1.0), 0);
 
 	SE::Application app;
 	//auto s1 = std::make_shared<Sprite>(vec3(3.0f, 4.0f, 0.0f), vec2(10,10), vec3(0.0, 1.0, 0.0), 0);
 	//auto s2 = std::make_shared<Sprite >(vec3(50.0f, 100.0f, 0.0f),vec2(50,50), vec3(1.0, 0.0, 1.0), 1);
 
-	InputManager::getInstance().init(window.get()->getWindow());
-	InputManager::getInstance().registerSpriteAction(std::bind(&SE::Rectangle::moveLeft, s2.get()), GLFW_KEY_A);
-	InputManager::getInstance().registerSpriteAction(std::bind(&SE::Rectangle::moveRight, s2.get()), GLFW_KEY_D);
-	InputManager::getInstance().registerSpriteAction(std::bind(&SE::Rectangle::moveUp, s2.get()), GLFW_KEY_W);
-	InputManager::getInstance().registerSpriteAction(std::bind(&SE::Rectangle::moveDown, s2.get()), GLFW_KEY_S);
+	SE::InputManager::getInstance().init(window.get()->getWindow());
+	SE::InputManager::getInstance().registerSpriteAction(std::bind(&SE::Rectangle::moveLeft, s2.get()), GLFW_KEY_A);
+	SE::InputManager::getInstance().registerSpriteAction(std::bind(&SE::Rectangle::moveRight, s2.get()), GLFW_KEY_D);
+	SE::InputManager::getInstance().registerSpriteAction(std::bind(&SE::Rectangle::moveUp, s2.get()), GLFW_KEY_W);
+	SE::InputManager::getInstance().registerSpriteAction(std::bind(&SE::Rectangle::moveDown, s2.get()), GLFW_KEY_S);
 	//or even
 
 	float inc = -2.0f;
@@ -50,7 +50,7 @@ auto main() -> void
 		//s1->translate(og.add(vec3(-inc*0.1f, -inc* 0.1f, 0.0f)));
 		if (s1->getOrigin().y > 200 || s1->getOrigin().y < 0)
 			inc = -inc;
-		//std::cout << app.isCollided(s1.get(), s2.get());
+		std::cout << app.isCollided(s1.get(), s2.get());
 		ren.draw();
 		//std::cout << " ---------- " << s1->getOrigin().x << " --------------- " << std::endl;
 
