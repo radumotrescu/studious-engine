@@ -6,56 +6,10 @@
 #include "Application.h"
 
 #include <Rectangle.h>
+#include <Utils.h>
 
 using namespace SE;
-float EPSILON = std::numeric_limits<float>::epsilon();
 
-
-auto approximatelyEqual(float a, float b, float epsilon = EPSILON)->bool
-{
-	return fabs(a - b) <= ((fabs(a) < fabs(b) ? fabs(b) : fabs(a)) * epsilon);
-}
-
-auto essentiallyEqual(float a, float b, float epsilon = EPSILON)->bool
-{
-	return fabs(a - b) <= ((fabs(a) > fabs(b) ? fabs(b) : fabs(a)) * epsilon);
-}
-
-auto definitelyGreaterThan(float a, float b, float epsilon = EPSILON)->bool
-{
-	return (a - b) > ((fabs(a) < fabs(b) ? fabs(b) : fabs(a)) * epsilon);
-}
-
-auto definitelyLessThan(float a, float b, float epsilon = EPSILON)->bool
-{
-	return (b - a) > ((fabs(a) < fabs(b) ? fabs(b) : fabs(a)) * epsilon);
-}
-
-auto rangeIntersection(float minRange1, float maxRange1, float minRange2, float maxRange2) -> bool
-{
-	auto min1 = (std::min)(minRange1, maxRange1);
-	auto min2 = (std::min)(minRange2, maxRange2);
-	auto max1 = (std::max)(minRange1, maxRange1);
-	auto max2 = (std::max)(minRange2, maxRange2);
-
-	auto minLessOrEqualToValue1 = essentiallyEqual(min1, min2) || definitelyLessThan(min1, min2);
-	auto value1LessOrEqualToMax = essentiallyEqual(min2, max1) || definitelyLessThan(min2, max1);
-
-	auto minLessOrEqualToValue2 = essentiallyEqual(min1, max2) || definitelyLessThan(min1, max2);
-	auto value2LessOrEqualToMax = essentiallyEqual(max2, max1) || definitelyLessThan(max2, max1);
-
-	return  (minLessOrEqualToValue1 && value1LessOrEqualToMax) || (minLessOrEqualToValue2 && value2LessOrEqualToMax);
-}
-
-auto inRange(float value, float minRange, float maxRange) -> bool
-{
-	auto min = (std::min)(minRange, maxRange);
-	auto max = (std::max)(minRange, maxRange);
-	auto minLessOrEqualToValue = essentiallyEqual(min, value) || definitelyLessThan(min, value);
-	auto valueLessOrEqualToMax = essentiallyEqual(value, max) || definitelyLessThan(value, max);
-
-	return minLessOrEqualToValue && valueLessOrEqualToMax;
-}
 class Pad
 {
 public:
@@ -79,7 +33,7 @@ public:
 	{
 		auto origin = pad->getOrigin();
 		//std::cout << origin.x << std::endl;
-		if (!inRange(origin.x, LEFT_MOVING_LIMIT, RIGHT_MOVING_LIMIT - pad->getWidth()))
+		if (!SE::Utils::inRange(origin.x, LEFT_MOVING_LIMIT, RIGHT_MOVING_LIMIT - pad->getWidth()))
 		{
 			velocityX = -velocityX;
 		}
@@ -134,13 +88,13 @@ public:
 	{
 		auto origin = ball->getOrigin();
 		//std::cout << origin.x << std::endl;
-		if (!inRange(origin.x, LEFT_MOVING_LIMIT, RIGHT_MOVING_LIMIT - ball->getWidth()))
+		if (!SE::Utils::inRange(origin.x, LEFT_MOVING_LIMIT, RIGHT_MOVING_LIMIT - ball->getWidth()))
 		{
 			velocityX = -velocityX;
 			velocityY = -velocityY;
 		}
 
-		//origin = origin.add(vec3(velocityX*0.1f, velocityY* 0.1f, 0.0f));
+		origin = origin.add(vec3(velocityX*0.1f, velocityY* 0.1f, 0.0f));
 		ball->translate(origin);
 	}
 	void onCollision()
@@ -191,9 +145,9 @@ auto main() -> void
 	//auto funcPointer = static_cast<void(Sprite::*)(const vec3&)>(&Sprite::UpdateLocation);
 	//InputManager::getInstance().registerSpriteAction(std::bind(funcPointer, s3.get(), s3->m_position.add(vec3(10, 10, 0.0f))), GLFW_KEY_S);
 
-	ren.addToDrawCall(s1);
-	ren.addToDrawCall(s2);
-	ren.addToDrawCall(s3);
+	//ren.addToDrawCall(s1);
+	//ren.addToDrawCall(s2);
+	//ren.addToDrawCall(s3);
 	//auto y = glGetUniformLocation(shader.m_shaderID, "lpos");
 	//glUniform2f(y, 0.0f, 0.0f);
 	float inc = -0.1f;
