@@ -4,10 +4,8 @@
 #include "SimpleRenderer.h"
 #include "InputManager.h"
 #include "Application.h"
-
 #include "Rectangle.h"
-
-#include "freetype-gl.h"
+#include "glut.h"
 
 auto main() -> void
 {
