@@ -95,6 +95,7 @@ public:
 
 
 
+
 private:
 
 	float velocityX;
@@ -140,12 +141,12 @@ public:
 			velocityY = -velocityY;
 		}
 
-		//origin = origin.add(vec3(velocityX*0.1f, velocityY* 0.1f, 0.0f));
+		origin = origin.add(vec3(velocityX*0.1f, velocityY* 0.1f, 0.0f));
 		ball->translate(origin);
 	}
 	void onCollision()
 	{
-
+		std::cout << "m-am ciocnit" << std::endl;
 	}
 
 private:
@@ -191,6 +192,7 @@ auto main() -> void
 	//auto funcPointer = static_cast<void(Sprite::*)(const vec3&)>(&Sprite::UpdateLocation);
 	//InputManager::getInstance().registerSpriteAction(std::bind(funcPointer, s3.get(), s3->m_position.add(vec3(10, 10, 0.0f))), GLFW_KEY_S);
 
+
 	ren.addToDrawCall(s1);
 	ren.addToDrawCall(s2);
 	ren.addToDrawCall(s3);
@@ -209,7 +211,7 @@ auto main() -> void
 		auto is = app.isCollided(a, b);
 		if (is)
 		{
-			std::cout << 1 << std::endl;
+			ball.onCollision();
 		}
 		/*auto og = s1->getOrigin();
 		s1->translate(og.add(vec3(-inc*0.1f, -inc* 0.1f, 0.0f)));*/
