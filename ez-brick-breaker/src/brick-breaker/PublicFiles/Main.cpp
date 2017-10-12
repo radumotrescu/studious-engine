@@ -16,7 +16,7 @@ class Pad
 {
 public:
 
-	Pad(SimpleRenderer* renderer, float velocityX = 0.5f, float velocityY = 0.5f)
+	Pad(std::shared_ptr<SimpleRenderer> renderer, float velocityX = 0.5f, float velocityY = 0.5f)
 		:renderer(renderer)
 		, velocityX(velocityX)
 		, velocityY(velocityY)
@@ -34,31 +34,25 @@ public:
 	void moveRight()
 	{
 		auto origin = pad->getOrigin();
-		//std::cout << origin.x << std::endl;
-		/*if (!SE::Utils::inRange(origin.x, LEFT_MOVING_LIMIT, RIGHT_MOVING_LIMIT - pad->getWidth()))
-		{
-			velocityX = -velocityX;
-		}*/
 
-		origin = origin.add(vec3(velocityX*8.0f, velocityY*0.0f, 0.0f));
-		pad->translate(origin);
+		if (SE::Utils::inRange(origin.x + 2, LEFT_MOVING_LIMIT, RIGHT_MOVING_LIMIT - pad->getWidth()))
+		{
+
+			origin = origin.add(vec3(velocityX*8.0f, velocityY*0.0f, 0.0f));
+			pad->translate(origin);
+		}
+
 	}
 
 	void moveLeft()
 	{
 		auto origin = pad->getOrigin();
-		//std::cout << origin.x << std::endl;
-		/*if (!SE::Utils::inRange(origin.x, LEFT_MOVING_LIMIT, RIGHT_MOVING_LIMIT - pad->getWidth()))
+
+		if (SE::Utils::inRange(origin.x - 2, LEFT_MOVING_LIMIT, RIGHT_MOVING_LIMIT - pad->getWidth()))
 		{
-		velocityX = -velocityX;
-		}*/
-
-		origin = origin.add(vec3(-velocityX*8.0f, velocityY*0.0f, 0.0f));
-		pad->translate(origin);
-	}
-
-	void stopMoving()
-	{
+			origin = origin.add(vec3(-velocityX*8.0f, velocityY*0.0f, 0.0f));
+			pad->translate(origin);
+		}
 
 	}
 
@@ -66,7 +60,7 @@ private:
 
 	float velocityX;
 	float velocityY;
-	SimpleRenderer* renderer;
+	std::shared_ptr<SimpleRenderer> renderer;
 	std::shared_ptr<SE::Rectangle> pad;
 	static const float LEFT_MOVING_LIMIT;
 	static const float RIGHT_MOVING_LIMIT;
@@ -79,7 +73,7 @@ const float Pad::RIGHT_MOVING_LIMIT = 200.0f;
 class Ball
 {
 public:
-	Ball(SimpleRenderer* renderer, float velocityX = 0.5f, float velocityY = 0.5f)
+	Ball(std::shared_ptr<SimpleRenderer> renderer, float velocityX = 0.5f, float velocityY = 0.5f)
 		: renderer(renderer)
 		, velocityX(velocityX)
 		, velocityY(velocityY)
@@ -97,13 +91,15 @@ public:
 	void move()
 	{
 		auto origin = ball->getOrigin();
-		//std::cout << origin.x << std::endl;
+		if (SE::Utils::definitelyGreaterThan(origin.y, 230.0f))
+		{
+			throw std::string("Game OVER!");
+		}
 		if (!SE::Utils::inRange(origin.x, LEFT_MOVING_LIMIT, RIGHT_MOVING_LIMIT - ball->getWidth()))
 		{
 			velocityX = -velocityX;
 			velocityY = velocityY;
 		}
-
 		origin = origin.add(vec3(velocityX*0.1f, velocityY* 0.1f, 0.0f));
 		ball->translate(origin);
 	}
@@ -123,7 +119,7 @@ private:
 
 	float velocityX;
 	float velocityY;
-	SimpleRenderer* renderer;
+	std::shared_ptr<SimpleRenderer> renderer;
 	std::shared_ptr<SE::Rectangle> ball;
 	static const float LEFT_MOVING_LIMIT;
 	static const float RIGHT_MOVING_LIMIT;
@@ -137,7 +133,7 @@ class Brick
 {
 
 public:
-	Brick(SimpleRenderer* renderer, vec3 position, vec2 size, vec3 color)
+	Brick(std::shared_ptr<SimpleRenderer> renderer, vec3 position, vec2 size, vec3 color)
 		:renderer(renderer)
 		, brick(std::make_shared<SE::Rectangle>(position, size, color, 0))
 	{
@@ -158,7 +154,7 @@ public:
 
 private:
 
-	SimpleRenderer* renderer;
+	std::shared_ptr<SimpleRenderer> renderer;
 	std::shared_ptr<SE::Rectangle> brick;
 };
 
@@ -170,15 +166,15 @@ auto main() -> void
 	//no color backround
 	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 
-	SimpleRenderer ren;
-
+	std::shared_ptr<SimpleRenderer> ren = std::make_shared<SimpleRenderer>();
+	Application app;
 
 	//Rectangle(starting point, size, color)
-	auto s1 = std::make_shared<SE::Rectangle>(vec3(3.0f, 4.0f, 0.0f), vec2(100, 100), vec3(0.0, 1.0, 0.0), 2);
+	/*auto s1 = std::make_shared<SE::Rectangle>(vec3(3.0f, 4.0f, 0.0f), vec2(100, 100), vec3(0.0, 1.0, 0.0), 2);
 	auto s2 = std::make_shared<SE::Rectangle>(vec3(50.0f, 100.0f, 0.0f), vec2(50, 50), vec3(1.0, 0.0, 1.0), 1);
-	auto s3 = std::make_shared<SE::Rectangle>(vec3(25.0f, 33.0f, 0.0f), vec2(25, 25), vec3(0.0, 0.0, 1.0), 0);
+	auto s3 = std::make_shared<SE::Rectangle>(vec3(25.0f, 33.0f, 0.0f), vec2(25, 25), vec3(0.0, 0.0, 1.0), 0);*/
 
-	Application app;
+
 	//auto s1 = std::make_shared<Sprite>(vec3(3.0f, 4.0f, 0.0f), vec2(10,10), vec3(0.0, 1.0, 0.0), 0);
 	//auto s2 = std::make_shared<Sprite >(vec3(50.0f, 100.0f, 0.0f),vec2(50,50), vec3(1.0, 0.0, 1.0), 1);
 
@@ -196,47 +192,43 @@ auto main() -> void
 	//ren.addToDrawCall(s1);
 	//ren.addToDrawCall(s2);
 	//ren.addToDrawCall(s3);
-	//auto y = glGetUniformLocation(shader.m_shaderID, "lpos");
-	//glUniform2f(y, 0.0f, 0.0f);
-	float inc = -0.1f;
+
+	/*float inc = -0.1f;*/
 
 	int brickWidth = 15;
 	int spaceBetweenBricks = 5;
 	std::vector<Brick> bricks;
+
 	for (int i = 0; i < 10; i++)
-		bricks.push_back(Brick(&ren, vec3(i * brickWidth + i*spaceBetweenBricks, 20, 0), vec2(brickWidth, 4), vec3(0.0f, 1.0f, 0.0f)));
+		bricks.push_back(Brick(ren, vec3(i * brickWidth + i*spaceBetweenBricks, 20, 0), vec2(brickWidth, 4), vec3(0.0f, 1.0f, 0.0f)));
 
 	for (int i = 1; i < 9; i++)
-		bricks.push_back(Brick(&ren, vec3(i * brickWidth + i*spaceBetweenBricks, 30, 0), vec2(brickWidth, 4), vec3(1.0f, 0.0f, 1.0f)));
+		bricks.push_back(Brick(ren, vec3(i * brickWidth + i*spaceBetweenBricks, 30, 0), vec2(brickWidth, 4), vec3(1.0f, 0.0f, 1.0f)));
+
+	for (int i = 2; i < 8; i++)
+		bricks.push_back(Brick(ren, vec3(i * brickWidth + i*spaceBetweenBricks, 40, 0), vec2(brickWidth, 4), vec3(0.0f, 0.0f, 1.0f)));
 
 
-	Pad pad(&ren);
+	Pad pad(ren);
 
 	SE::Rectangle*padEntity = pad.getRectangle();
 
 	InputManager::getInstance().init(window.get()->getWindow());
 	InputManager::getInstance().registerSpriteAction(std::bind(&Pad::moveRight, &pad), GLFW_KEY_D);
 	InputManager::getInstance().registerSpriteAction(std::bind(&Pad::moveLeft, &pad), GLFW_KEY_A);
-	/*InputManager::getInstance().registerSpriteAction(std::bind(&SE::Rectangle::moveRight, padEntity), GLFW_KEY_D);
-	InputManager::getInstance().registerSpriteAction(std::bind(&SE::Rectangle::moveUp, padEntity), GLFW_KEY_W);
-	InputManager::getInstance().registerSpriteAction(std::bind(&SE::Rectangle::moveDown, padEntity), GLFW_KEY_S);
-*/
-	/*auto funcPointer = static_cast<void(SE::Rectangle::*)(const vec3&)>(&SE::Rectangle::UpdateLocation);
-	InputManager::getInstance().registerSpriteAction(std::bind(funcPointer, s3.get(), s3->m_position.add(vec3(10, 10, 0.0f))), GLFW_KEY_S);
-*/
-	Ball ball(&ren);
+
+
+	Ball ball(ren);
 	SE::Rectangle* ballEntity = ball.getRectangle();
 	while (!window->closed())
 	{
 		window->clear();
-		//pad.move();
 		ball.move();
-
 
 		if (app.isCollided(ballEntity, padEntity))
 		{
 			ball.onCollisionWithPad();
-			std::cout << "COL";
+			std::cout << "P";
 		}
 		for (auto& brick : bricks)
 		{
@@ -245,17 +237,29 @@ auto main() -> void
 			{
 				ball.onCollisionWithBrick();
 				brick.onCollisionWithBall();
+				std::cout << "B";
 			}
 		}
-		/*auto og = s1->getOrigin();
-		s1->translate(og.add(vec3(-inc*0.1f, -inc* 0.1f, 0.0f)));*/
-		/*if (s1->getOrigin().y > 200 || s1->getOrigin().y < 0)
-			inc = -inc;*/
-			//std::cout << app.isCollided(s1.get(), s2.get());
-		ren.draw();
-		//std::cout << " ---------- " << s1->getOrigin().x << " --------------- " << std::endl;
-
+		ren->draw();
 		window->update();
 	}
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
+
 }
+
+
+/*
+
+TODO:
+1. threaduri diferite pentru input si metoda de update: nu ia coliziunea in timp ce ia inputul
+2. calcularea dinamica a widow-ului pentru limitarile bilei si pad-ului
+3. contructorii de copiere si move in toate clasele, pentru a putea pasa ca paarametrii ai unei metode un shared_ptr
+
+
+
+
+
+
+
+
+*/
