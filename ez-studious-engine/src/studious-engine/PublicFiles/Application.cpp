@@ -1,7 +1,6 @@
 #include "Application.h"
 
 namespace SE {
-	const float Application::EPSILON = std::numeric_limits<float>::epsilon();
 
 	auto Application::isCollided(IEntity * entity1, IEntity * entity2) -> bool
 	{
@@ -34,50 +33,6 @@ namespace SE {
 		return false;
 	}
 
-	auto Application::approximatelyEqual(float a, float b, float epsilon)->bool
-	{
-		return fabs(a - b) <= ((fabs(a) < fabs(b) ? fabs(b) : fabs(a)) * epsilon);
-	}
-
-	auto Application::essentiallyEqual(float a, float b, float epsilon)->bool
-	{
-		return fabs(a - b) <= ((fabs(a) > fabs(b) ? fabs(b) : fabs(a)) * epsilon);
-	}
-
-	auto Application::definitelyGreaterThan(float a, float b, float epsilon)->bool
-	{
-		return (a - b) > ((fabs(a) < fabs(b) ? fabs(b) : fabs(a)) * epsilon);
-	}
-
-	auto Application::definitelyLessThan(float a, float b, float epsilon)->bool
-	{
-		return (b - a) > ((fabs(a) < fabs(b) ? fabs(b) : fabs(a)) * epsilon);
-	}
-
-	auto Application::rangeIntersection(float minRange1, float maxRange1, float minRange2, float maxRange2) -> bool
-	{
-		auto min1 = (std::min)(minRange1, maxRange1);
-		auto min2 = (std::min)(minRange2, maxRange2);
-		auto max1 = (std::max)(minRange1, maxRange1);
-		auto max2 = (std::max)(minRange2, maxRange2);
-		auto minLessOrEqualToValue1 = essentiallyEqual(min1, min2) || definitelyLessThan(min1, min2);
-		auto value1LessOrEqualToMax = essentiallyEqual(min2, max1) || definitelyLessThan(min2, max1);
-
-		auto minLessOrEqualToValue2 = essentiallyEqual(min1, max2) || definitelyLessThan(min1, max2);
-		auto value2LessOrEqualToMax = essentiallyEqual(max2, max1) || definitelyLessThan(max2, max1);
-
-		return  (minLessOrEqualToValue1 && value1LessOrEqualToMax) || (minLessOrEqualToValue2 && value2LessOrEqualToMax);
-	}
-
-	auto Application::inRange(float value, float minRange, float maxRange) -> bool
-	{
-		auto min = (std::min)(minRange, maxRange);
-		auto max = (std::max)(minRange, maxRange);
-		auto minLessOrEqualToValue = essentiallyEqual(min, value) || definitelyLessThan(min, value);
-		auto valueLessOrEqualToMax = essentiallyEqual(value, max) || definitelyLessThan(value, max);
-		return minLessOrEqualToValue && valueLessOrEqualToMax;
-	}
-
 	auto Application::isCollided(Rectangle rect1, Rectangle rect2) -> bool
 	{
 		auto minRange1X = rect1.getOrigin().x;
@@ -89,8 +44,8 @@ namespace SE {
 		auto maxRange1Y = rect1.getOrigin().y + rect1.getHeight();
 		auto minRange2Y = rect2.getOrigin().y;
 		auto maxRange2Y = rect2.getOrigin().y + rect2.getHeight();
-		return rangeIntersection(minRange1X, maxRange1X, minRange2X, maxRange2X) &&
-			rangeIntersection(minRange1Y, maxRange1Y, minRange2Y, maxRange2Y);
+		return Utils::rangeIntersection(minRange1X, maxRange1X, minRange2X, maxRange2X) &&
+			Utils::rangeIntersection(minRange1Y, maxRange1Y, minRange2Y, maxRange2Y);
 	}
 
 	auto Application::isCollided(vec3 point, Rectangle rect) -> bool
@@ -99,7 +54,7 @@ namespace SE {
 		auto maxRangeX = rect.getOrigin().x + rect.getWidth();
 		auto minRangeY = rect.getOrigin().y;
 		auto maxRangeY = rect.getOrigin().y + rect.getHeight();
-		return inRange(point.x, minRangeX, maxRangeX) && inRange(point.y, minRangeY, maxRangeY);
+		return Utils::inRange(point.x, minRangeX, maxRangeX) && Utils::inRange(point.y, minRangeY, maxRangeY);
 	}
 
 	//auto Application::isCollided(Triangle triangle1, Triangle triangle2) -> bool

@@ -3,10 +3,10 @@
 
 namespace SE {
 
-	auto Rectangle::changePointCoordinates(const vec3 & position) -> void
-	{
-		m_origin = position;
-	}
+	//auto Rectangle::changePointCoordinates(const vec3 & position) -> void
+	//{
+	//	m_origin = position;
+	//}
 
 	auto Rectangle::changePriority(const unsigned priority) -> void
 	{
@@ -17,7 +17,7 @@ namespace SE {
 	{
 		matrix = { 0,0,0,dimension.y,dimension.x,dimension.y,dimension.x,0 };
 		colors = { color.x,color.y,color.z,1.0f,color.x,color.y,color.z,1.0f,color.x,color.y,color.z,1.0f,color.x,color.y,color.z,1.0f };
-		m_sprite = Sprite(matrix, colors, indexes);
+		m_sprite = Sprite(std::vector<GLfloat>(matrix.begin(),matrix.end()), std::vector<GLfloat>(colors.begin(),colors.end()), std::vector<GLushort>(indexes.begin(),indexes.end()));
 	}
 
 	auto Rectangle::getPriority() const -> unsigned
@@ -25,6 +25,7 @@ namespace SE {
 		return m_priority;
 	}
 	const float move = 5.0;
+
 	auto Rectangle::moveLeft()->void
 	{
 		translate(m_origin.add(vec3(-move, 0.0, 0.0)));
