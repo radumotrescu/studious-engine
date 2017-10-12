@@ -6,16 +6,20 @@
 #include "Application.h"
 #include "Rectangle.h"
 #include "glut.h"
+#include "LabelManager.h"
+
+static const int WINDOW_WIDTH = 600;
+static const int WINDOW_HEIGHT = 800;
 
 auto main() -> void
 {
-	auto window = std::make_unique<SE::Window>("Test", 600, 800);
+	auto window = std::make_unique<SE::Window>("Test", WINDOW_WIDTH, WINDOW_HEIGHT);
 
 	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 
 	SE::SimpleRenderer ren;
 
-	auto s1 = std::make_shared<SE::Rectangle>(SE::vec3(3.0f, 4.0f, 0.0f), SE::vec2(100, 100), SE::vec3(0.0, 1.0, 0.0), 2);
+	auto s1 = std::make_shared<SE::Rectangle>(SE::vec3(30.0f, 40.0f, 0.0f), SE::vec2(100, 100), SE::vec3(0.0, 1.0, 0.0), 2);
 	auto s2 = std::make_shared<SE::Rectangle>(SE::vec3(50.0f, 100.0f, 0.0f), SE::vec2(50, 50), SE::vec3(1.0, 0.0, 1.0), 1);
 	auto s3 = std::make_shared<SE::Rectangle>(SE::vec3(25.0f, 33.0f, 0.0f), SE::vec2(25, 25), SE::vec3(0.0, 0.0, 1.0), 0);
 
@@ -41,16 +45,16 @@ auto main() -> void
 	//glUniform2f(y, 0.0f, 0.0f);
 	//float inc = -0.1f;
 
+	SE::LabelManager::getInstance().setIsDisplayingFps(true);
+	SE::LabelManager::getInstance().addLabel(SE::Label("Hello World!", 250, 300));
+	std::cout << 550 * 100 / WINDOW_WIDTH;
+
 	while (!window->closed())
 	{
 		window->clear();
-		auto og = s1->getOrigin();
-		//s1->translate(og.add(vec3(-inc*0.1f, -inc* 0.1f, 0.0f)));
-		if (s1->getOrigin().y > 200 || s1->getOrigin().y < 0)
-			inc = -inc;
-		std::cout << app.isCollided(s1.get(), s2.get());
+
 		ren.draw();
-		//std::cout << " ---------- " << s1->getOrigin().x << " --------------- " << std::endl;
+		SE::LabelManager::getInstance().displayAllLabels();
 
 		window->update();
 	}
