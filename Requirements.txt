@@ -10,6 +10,15 @@ Intermediate requirements:
 	PART 2:
 
     fonturi : marius -> radu
-	texturi : adina + george -> radu
+	texturi : adina + george -> radu 
 	brick breaker: marius + miruna
+	
+	Part 3:
+	
+	manager coliziune/text finisat -> marius
+	time step fixing/livrare catre marius -> radu 
+	implement textures in project: rectangle, shader -> george
+	constraints pe window size/ refactoring joc/ diving in randare -> miruna 
+	sunete -> adina 
+	
 

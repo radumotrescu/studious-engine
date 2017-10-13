@@ -38,7 +38,7 @@ public:
 		if (SE::Utils::inRange(origin.x + 2, LEFT_MOVING_LIMIT, RIGHT_MOVING_LIMIT - pad->getWidth()))
 		{
 
-			origin = origin.add(vec3(velocityX*8.0f, velocityY*0.0f, 0.0f));
+			origin = origin.add(vec3(velocityX*5.0f, velocityY*0.0f, 0.0f));
 			pad->translate(origin);
 		}
 
@@ -50,7 +50,7 @@ public:
 
 		if (SE::Utils::inRange(origin.x - 2, LEFT_MOVING_LIMIT, RIGHT_MOVING_LIMIT - pad->getWidth()))
 		{
-			origin = origin.add(vec3(-velocityX*8.0f, velocityY*0.0f, 0.0f));
+			origin = origin.add(vec3(-velocityX*5.0f, velocityY*0.0f, 0.0f));
 			pad->translate(origin);
 		}
 
@@ -94,6 +94,11 @@ public:
 		if (SE::Utils::definitelyGreaterThan(origin.y, 230.0f))
 		{
 			throw std::string("Game OVER!");
+		}
+		if (SE::Utils::definitelyLessThan(origin.y, 2.0f))
+		{
+			velocityX = velocityX;
+			velocityY = -velocityY;
 		}
 		if (!SE::Utils::inRange(origin.x, LEFT_MOVING_LIMIT, RIGHT_MOVING_LIMIT - ball->getWidth()))
 		{
@@ -254,12 +259,5 @@ TODO:
 1. threaduri diferite pentru input si metoda de update: nu ia coliziunea in timp ce ia inputul
 2. calcularea dinamica a widow-ului pentru limitarile bilei si pad-ului
 3. contructorii de copiere si move in toate clasele, pentru a putea pasa ca paarametrii ai unei metode un shared_ptr
-
-
-
-
-
-
-
 
 */
