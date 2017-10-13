@@ -17,7 +17,7 @@ namespace SE {
 		}
 	}
 
-	InputManager& InputManager::getInstance()
+	auto InputManager::getInstance() -> InputManager&
 	{
 		static InputManager instance;
 
