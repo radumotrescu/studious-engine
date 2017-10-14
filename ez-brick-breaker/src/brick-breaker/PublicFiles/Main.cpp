@@ -9,11 +9,11 @@
 #include <Utils.h>
 
 #include <vector>
+#include <chrono>
 
 using namespace SE;
 
-class Pad
-{
+class Pad {
 public:
 
 	Pad(std::shared_ptr<SimpleRenderer> renderer, float velocityX = 0.5f, float velocityY = 0.5f)
@@ -70,8 +70,7 @@ const float Pad::LEFT_MOVING_LIMIT = 2.0f;
 const float Pad::RIGHT_MOVING_LIMIT = 200.0f;
 
 
-class Ball
-{
+class Ball {
 public:
 	Ball(std::shared_ptr<SimpleRenderer> renderer, float velocityX = 0.5f, float velocityY = 0.5f)
 		: renderer(renderer)
@@ -134,8 +133,7 @@ private:
 const float Ball::LEFT_MOVING_LIMIT = 2.0f;
 const float Ball::RIGHT_MOVING_LIMIT = 200.0f;
 
-class Brick
-{
+class Brick {
 
 public:
 	Brick(std::shared_ptr<SimpleRenderer> renderer, vec3 position, vec2 size, vec3 color)
@@ -161,6 +159,30 @@ private:
 
 	std::shared_ptr<SimpleRenderer> renderer;
 	std::shared_ptr<SE::Rectangle> brick;
+};
+
+
+class Timer {
+public:
+	Timer() :
+		m_beg(clock_::now())
+	{
+	}
+	void reset()
+	{
+		m_beg = clock_::now();
+	}
+
+	double elapsed() const
+	{
+		return std::chrono::duration_cast<std::chrono::seconds>(
+			clock_::now() - m_beg).count();
+	}
+
+private:
+	typedef std::chrono::high_resolution_clock clock_;
+	typedef std::chrono::duration<double, std::ratio<1> > second_;
+	std::chrono::time_point<clock_> m_beg;
 };
 
 
@@ -223,29 +245,57 @@ auto main() -> void
 	InputManager::getInstance().registerSpriteAction(std::bind(&Pad::moveLeft, &pad), GLFW_KEY_A);
 
 
-	Ball ball(ren);
+	Ball ball(ren,10,5);
 	SE::Rectangle* ballEntity = ball.getRectangle();
+
+
+	double t = 0.0;
+	double dt = 1 / 120.0;
+
+	Timer timer;
+	double currentTime = glfwGetTime();
+	double accumulator = 0.0;
+
 	while (!window->closed())
 	{
-		window->clear();
-		ball.move();
 
-		if (app.isCollided(ballEntity, padEntity))
+		window->clear();
+
+		double newTime = glfwGetTime();
+		double frameTime = newTime - currentTime;
+		currentTime = newTime;
+
+
+		while (accumulator >= dt)
 		{
-			ball.onCollisionWithPad();
-			std::cout << "P";
-		}
-		for (auto& brick : bricks)
-		{
-			SE::Rectangle * brickEntity = brick.getRectangle();
-			if (app.isCollided(brickEntity, ballEntity))
+			// ---------------
+
+			ball.move();
+			if (app.isCollided(ballEntity, padEntity))
 			{
-				ball.onCollisionWithBrick();
-				brick.onCollisionWithBall();
-				std::cout << "B";
+				ball.onCollisionWithPad();
+				std::cout << "P";
 			}
+			for (auto& brick : bricks)
+			{
+				SE::Rectangle * brickEntity = brick.getRectangle();
+				if (app.isCollided(brickEntity, ballEntity))
+				{
+					ball.onCollisionWithBrick();
+					brick.onCollisionWithBall();
+					std::cout << "B";
+				}
+			}
+
+			// ---------------
+			accumulator -= dt;
+			t += dt;
 		}
+
 		ren->draw();
+
+		accumulator += frameTime;
+
 		window->update();
 	}
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
