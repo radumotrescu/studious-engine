@@ -13,7 +13,7 @@ namespace SE
 
 	auto Label::display() -> void
 	{
-		glColor3f(1.f, 0.3f, 0.f);
+		glColor3f(1.f, 0.0f, 0.f);
 		glMatrixMode(GL_PROJECTION);
 		double *matrix = new double[16];
 		glGetDoublev(GL_PROJECTION_MATRIX, matrix);

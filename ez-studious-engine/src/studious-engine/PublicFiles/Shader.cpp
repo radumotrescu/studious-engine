@@ -65,7 +65,7 @@ void main()
     //gl_Position = vec4(position);
 	//vs_out.position=gl_Position;
 
-				gl_Position=pr_matrix * vw_matrix * ml_matrix * position;
+	gl_Position=pr_matrix * vw_matrix * ml_matrix * position;
 	vs_out.position=ml_matrix * position;
 	vs_out.color=color;	
 })glsl";

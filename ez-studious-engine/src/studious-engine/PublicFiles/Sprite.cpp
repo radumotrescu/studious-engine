@@ -2,12 +2,13 @@
 namespace SE {
 	auto Sprite::Draw()->void
 	{
-
+		glEnable(GL_DEPTH_TEST);
 		m_vao.bind();
 		m_ibo.bind();
 		glDrawElements(GL_TRIANGLES, m_ibo.getCount(), GL_UNSIGNED_SHORT, 0);
 		m_ibo.unbind();
 		m_vao.unbind();
+		glDisable(GL_DEPTH_TEST);
 	}
 
 

@@ -4,7 +4,7 @@ namespace SE {
 
 	SimpleRenderer::SimpleRenderer()
 	{
-		mat4 ortho = mat4::orthographic(0.0f, 200.0f, 200.0f, 0.0f, -1.0f, 1.0f);
+		mat4 ortho = mat4::orthographic(0.0f, 200.0f, 200.0f, 0.0f, -1.0f, 10.0f);
 		m_shader.enable();
 		m_shader.setUniformMat4("pr_matrix", ortho);
 	}
@@ -23,7 +23,7 @@ namespace SE {
 	auto SimpleRenderer::addToDrawCall(std::shared_ptr<Rectangle> sprite) -> void
 	{
 		m_drawVector.push_back(sprite);
-		std::sort(m_drawVector.begin(), m_drawVector.end(), compareSpritePriority);
+		//std::sort(m_drawVector.begin(), m_drawVector.end(), compareSpritePriority);
 	}
 
 	auto SimpleRenderer::draw() -> void
