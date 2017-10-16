@@ -7,6 +7,7 @@
 #include "Rectangle.h"
 
 #include "Utils.h"
+#include "ICollisional.h"
 
 
 namespace SE {
@@ -18,6 +19,7 @@ namespace SE {
 		~Application() = default;
 
 		auto isCollided(IEntity* entity1, IEntity* entity2)->bool;
+		auto isCollided(ICollisional* entity1, ICollisional* entity2) -> bool;
 
 	private:
 
