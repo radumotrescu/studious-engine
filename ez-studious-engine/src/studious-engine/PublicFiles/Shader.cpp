@@ -22,6 +22,11 @@ namespace SE {
 		glUniformMatrix4fv(getUniformLocation(name), 1, GL_FALSE, matrix.elements);
 	}
 
+	auto Shader::setUniform1i(const std::string & name, const int value) -> void
+	{
+		glUniform1i(getUniformLocation(name), value);
+	}
+
 	auto readFile(const std::string& path) -> std::string
 	{
 		std::ifstream fin(path);
@@ -46,6 +51,7 @@ namespace SE {
 			R"glsl(#version 330 core	
 layout(location=0 ) in vec4 position;
 layout(location=1 ) in vec4 color;
+layout(location=2 ) in vec2 textureCoord;
 	
 //out vec4 pos;
 
@@ -57,6 +63,7 @@ out DATA
 {
 	vec4 position;
 	vec4 color;
+	vec2 textureCoord;
 }vs_out;
 
 void main()
@@ -67,6 +74,7 @@ void main()
 
 	gl_Position=pr_matrix * vw_matrix * ml_matrix * position;
 	vs_out.position=ml_matrix * position;
+	vs_out.textureCoord=textureCoord;
 	vs_out.color=color;	
 })glsl";
 
@@ -80,15 +88,22 @@ uniform vec2 lpos=vec2(0.0,0.0);
 
  in DATA
 {
-	vec4 position;
+	vec4 position;	
 	vec4 color;
+	vec2 textureCoord;
+
 } fs_in;
    
+uniform sampler2D tex;
+
 void main()
 {
 		//float intensity = 1.0 / length(fs_in.color.xy - lpos)*1.0;
 		//outColor = vec4(fs_in.color) * intensity;
-		outColor = vec4(fs_in.color);
+		//outColor = vec4(fs_in.color);
+
+		//the texture is set to the outColor
+		outColor = texture(tex, fs_in.textureCoord)*vec4(fs_in.color);
 })glsl";
 
 		glShaderSource(vertex, 1, &vertexSource, NULL);

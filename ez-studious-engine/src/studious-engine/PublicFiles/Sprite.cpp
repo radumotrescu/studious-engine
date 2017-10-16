@@ -44,6 +44,15 @@ namespace SE {
 		m_vao.addBuffer(std::make_shared<Buffer>(colors, colors.size(), 4), 1);
 	}
 
+	auto Sprite::activateVAO(const std::vector<GLfloat>& matrix, const std::vector<GLfloat>& textureCoord, const std::vector<GLfloat>& colors)
+	{
+		m_vao.addBuffer(std::make_shared<Buffer>(matrix, matrix.size(), 2), 0);
+		m_vao.addBuffer(std::make_shared<Buffer>(colors, colors.size(), 4), 1);
+
+		//add texture coord vector to buffer
+		m_vao.addBuffer(std::make_shared<Buffer>(textureCoord, textureCoord.size(), 2), 2);
+	}
+
 	Sprite::Sprite()
 	{
 	}
@@ -52,6 +61,12 @@ namespace SE {
 	{
 		activateIBO(indexes);
 		activateVAO(matrix, colors);
+	}
+
+	Sprite::Sprite(const std::vector<GLfloat>& matrix, const std::vector<GLfloat>& colors, const std::vector<GLfloat>& textureCoord, const std::vector<GLushort>& indexes)
+	{
+		activateIBO(indexes);
+		activateVAO(matrix, textureCoord, colors);
 	}
 
 }

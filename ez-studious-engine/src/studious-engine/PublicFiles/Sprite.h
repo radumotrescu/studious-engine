@@ -15,6 +15,7 @@ namespace SE {
 	public:
 		Sprite();
 		Sprite::Sprite(const std::vector<GLfloat>& matrix, const std::vector<GLfloat>& colors, const std::vector<GLushort>&indexes);
+		Sprite::Sprite(const std::vector<GLfloat>& matrix, const std::vector<GLfloat>& colors, const std::vector<GLfloat>& textureCoord, const std::vector<GLushort>&indexes);
 
 		auto Draw()->void;
 		//auto action() -> void;
@@ -28,6 +29,10 @@ namespace SE {
 
 		auto activateIBO(const std::vector<GLushort>& indexes)->void;
 		auto Sprite::activateVAO(const std::vector<GLfloat>& matrix, const std::vector<GLfloat>& colors)->void;
+	
+		//activates VAO with matrix, texture and colors vectors
+		auto Sprite::activateVAO(const std::vector<GLfloat>& matrix, const std::vector<GLfloat>& textureCoord, const std::vector<GLfloat>& colors);
+
 	};
 
 }

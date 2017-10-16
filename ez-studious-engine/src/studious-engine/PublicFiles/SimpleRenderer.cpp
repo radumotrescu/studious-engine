@@ -31,6 +31,7 @@ namespace SE {
 		for (auto& sprite : m_drawVector)
 		{
 			m_shader.setUniformMat4("ml_matrix", mat4::translation(sprite->getOrigin()));
+			m_shader.setUniform1i("tex", sprite->getTextureId() - 1);
 			sprite->getSprite().Draw();
 		}
 	}

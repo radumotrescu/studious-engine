@@ -20,6 +20,8 @@ namespace SE {
 		auto enable() ->void const;
 		auto disable()->void const;
 		auto setUniformMat4(const std::string& name, const mat4& matrix)->void;
+		auto setUniform1i(const std::string& name, const int value)->void;
+
 		~Shader();
 
 	private:
