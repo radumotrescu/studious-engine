@@ -3,11 +3,14 @@ namespace SE {
 	auto Sprite::Draw()->void
 	{
 		glEnable(GL_DEPTH_TEST);
+		glActiveTexture(GL_TEXTURE0+m_texture.getID());
 		m_vao.bind();
 		m_ibo.bind();
+		m_texture.bind();
 		glDrawElements(GL_TRIANGLES, m_ibo.getCount(), GL_UNSIGNED_SHORT, 0);
 		m_ibo.unbind();
 		m_vao.unbind();
+		m_texture.unbind();
 		glDisable(GL_DEPTH_TEST);
 	}
 
@@ -60,13 +63,20 @@ namespace SE {
 	Sprite::Sprite(const std::vector<GLfloat>& matrix, const std::vector<GLfloat>& colors, const std::vector<GLushort>&indexes)
 	{
 		activateIBO(indexes);
-		activateVAO(matrix, colors);
+		activateVAO(matrix, std::vector<GLfloat>(m_texture.textures.begin(),m_texture.textures.end()),colors);
 	}
 
-	Sprite::Sprite(const std::vector<GLfloat>& matrix, const std::vector<GLfloat>& colors, const std::vector<GLfloat>& textureCoord, const std::vector<GLushort>& indexes)
+	Sprite::Sprite(const std::vector<GLfloat>& matrix, const std::vector<GLfloat>& colors, const Texture & texture, const std::vector<GLushort>& indexes):m_texture(texture)
 	{
+		glActiveTexture(GL_TEXTURE0+m_texture.getID());
 		activateIBO(indexes);
-		activateVAO(matrix, textureCoord, colors);
+		activateVAO(matrix, std::vector<GLfloat>(m_texture.textures.begin(),m_texture.textures.end()),colors);
 	}
+
+	//Sprite::Sprite(const std::vector<GLfloat>& matrix, const std::vector<GLfloat>& colors, const std::vector<GLfloat>& textureCoord, const std::vector<GLushort>& indexes)
+	//{
+	//	activateIBO(indexes);
+	//	activateVAO(matrix, textureCoord, colors);
+	//}
 
 }

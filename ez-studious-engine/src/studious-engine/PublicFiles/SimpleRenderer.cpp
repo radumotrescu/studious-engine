@@ -17,22 +17,22 @@ namespace SE {
 
 	bool compareSpritePriority(std::shared_ptr<Rectangle>s1, std::shared_ptr<Rectangle>s2)
 	{
-		return s1->getPriority() > s2->getPriority();
+		return s1->getPriority() < s2->getPriority();
 	}
 
 	auto SimpleRenderer::addToDrawCall(std::shared_ptr<Rectangle> sprite) -> void
 	{
 		m_drawVector.push_back(sprite);
-		//std::sort(m_drawVector.begin(), m_drawVector.end(), compareSpritePriority);
+		std::sort(m_drawVector.begin(), m_drawVector.end(), compareSpritePriority);
 	}
 
 	auto SimpleRenderer::draw() -> void
 	{
-		for (auto& sprite : m_drawVector)
+		for (auto& rectangle : m_drawVector)
 		{
-			m_shader.setUniformMat4("ml_matrix", mat4::translation(sprite->getOrigin()));
-			m_shader.setUniform1i("tex", sprite->getTextureId() - 1);
-			sprite->getSprite().Draw();
+			m_shader.setUniformMat4("ml_matrix", mat4::translation(rectangle->getOrigin()));
+			m_shader.setUniform1i("tex", rectangle->getTextureID());
+			rectangle->getSprite().Draw();
 		}
 	}
 

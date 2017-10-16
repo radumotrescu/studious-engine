@@ -3,14 +3,18 @@
 #include <string>
 #include <glew.h>
 #include "ImageLoad.h"
+#include <array>
 
-class Texture
-{
+class Texture {
 private:
 	std::string m_fileName;
 	GLuint m_textureID;           //m_TID
 	GLsizei m_width, m_height;
 public:
+	
+	std::array<GLfloat, 8> textures;
+	int activeTextureID=0;
+
 	Texture(const std::string& fileName);
 	Texture() {};
 	~Texture();

@@ -4,6 +4,9 @@ Texture::Texture(const std::string& fileName)
 	: m_fileName(fileName)
 {
 	m_textureID = load();
+	textures = {
+	0,1,0,0,1,0,1,1
+	};
 }
 
 
@@ -40,7 +43,6 @@ const GLsizei Texture::getHeight() const
 GLuint Texture::load()
 {
 	BYTE* pixels = load_image(m_fileName.c_str(), &m_width, &m_height);
-	glEnable(GL_TEXTURE_2D);
 	GLuint result;
 	glGenTextures(1, &result);
 	glBindTexture(GL_TEXTURE_2D, result);

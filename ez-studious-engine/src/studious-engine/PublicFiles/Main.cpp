@@ -94,13 +94,20 @@ auto main()->int
 	//glActiveTexture(0);
 	//create a rectangle with the uv coord
 	//auto s1 = std::make_shared<SE::Rectangle>(SE::vec3(10, 10, 0.0f), SE::vec2(100, 100), uv, 2);
-	auto s1 = std::make_shared<SE::Rectangle>(SE::vec3(50, 50, 0.0f), SE::vec2(50, 50), SE::vec3(1.0, 0.0, 0.0), 1);
+	//auto s1 = std::make_shared<SE::Rectangle>(SE::vec3(50, 50, 0.0f), SE::vec2(100, 50), SE::vec3(1.0, 1.0, 0.0), 1);
 
 	Texture tex("..\\..\\src\\studious-engine\\PublicFiles\\Textures\\tree.png");
-	auto s2 = std::make_shared<SE::Rectangle>(SE::vec3(70.0f, 70, 0.0f), SE::vec2(100, 100), tex, 2);
+	//tex.activeTextureID = GL_TEXTURE0;
+
+	//auto x = GL_TEXTURE0;
+	Texture tex1("..\\..\\src\\studious-engine\\PublicFiles\\Textures\\test.png");
+	//tex1.activeTextureID = GL_TEXTURE1;
+	auto s2 = std::make_shared<SE::Rectangle>(SE::vec3(70.0f, 70, 0.0f), SE::vec2(100, 100), tex1, 1);
+	auto s1 = std::make_shared<SE::Rectangle>(SE::vec3(50, 50, 0.0f), SE::vec2(100, 50), tex, 2);
 
 	ren.addToDrawCall(s1);
 	ren.addToDrawCall(s2);
+
 
 	while (!window->closed())
 	{
