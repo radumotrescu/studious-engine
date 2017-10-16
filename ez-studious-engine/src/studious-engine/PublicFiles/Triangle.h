@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Entity.h"
+#include "IEntity.h"
 #include "Vec3.h"
 
 #include <glew.h>

@@ -21,6 +21,10 @@ namespace SE {
 		m_sprite = Sprite(std::vector<GLfloat>(matrix.begin(),matrix.end()), std::vector<GLfloat>(colors.begin(),colors.end()), std::vector<GLushort>(indexes.begin(),indexes.end()));
 	}
 
+	auto Rectangle::display() -> void
+	{
+	}
+
 	auto Rectangle::getPriority() const -> unsigned
 	{
 		return m_priority;
@@ -57,22 +61,22 @@ namespace SE {
 
 	}
 
-	auto Rectangle::getWidth() -> float const
+	auto Rectangle::getWidth() const -> float const
 	{
 		return m_dimension.x;
 	}
 
-	auto Rectangle::getHeight() -> float const
+	auto Rectangle::getHeight() const -> float const
 	{
 		return m_dimension.y;
 	}
 
-	auto Rectangle::getOrigin() -> vec3 const
+	auto Rectangle::getOrigin() const -> vec3 const
 	{
 		return m_origin;
 	}
 
-	auto Rectangle::getSprite() -> Sprite
+	auto Rectangle::getSprite() const -> Sprite
 	{
 		return m_sprite;
 	}
