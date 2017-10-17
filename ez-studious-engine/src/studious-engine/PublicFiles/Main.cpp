@@ -17,7 +17,7 @@
 static const int WINDOW_WIDTH = 600;
 static const int WINDOW_HEIGHT = 800;
 
-#if 1
+#if 0
 auto main() -> void
 {
 	FT_Library ft;
@@ -79,45 +79,31 @@ auto main() -> void
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 }
 
-#else if
+#else
 
 auto main()->int
 {
 	glEnable(GL_DEPTH_TEST);
-
-
 	auto window = std::make_unique<SE::Window>("Test", WINDOW_WIDTH, WINDOW_HEIGHT);
-	//auto s1 = std::make_shared<SE::Rectangle>(SE::vec3(30.0f, 40.0f, 0.0f), SE::vec2(100, 100), SE::vec3(0.0, 1.0, 0.0), 2);
 
-	//std::vector<GLuint> a;
-	//a.push_back(GL_TEXTURE0);
-
-	//glActiveTexture(a[0]);
-	//activate, create and bind texture
-	//glActiveTexture(GL_TEXTURE0);
-	//Texture nullTexture("..\\..\\src\\studious-engine\\PublicFiles\\Textures\\nothing.png");
 	SE::SimpleRenderer ren;
 
-
-
-
-	//glActiveTexture(0);
-	//create a rectangle with the uv coord
-	//auto s1 = std::make_shared<SE::Rectangle>(SE::vec3(10, 10, 0.0f), SE::vec2(100, 100), uv, 2);
-	//auto s1 = std::make_shared<SE::Rectangle>(SE::vec3(50, 50, 0.0f), SE::vec2(100, 50), SE::vec3(1.0, 1.0, 0.0), 1);
-
 	Texture tex("..\\..\\src\\studious-engine\\PublicFiles\\Textures\\tree.png");
-	//tex.activeTextureID = GL_TEXTURE0;
-
-	//auto x = GL_TEXTURE0;
 	Texture tex1("..\\..\\src\\studious-engine\\PublicFiles\\Textures\\test.png");
-	//tex1.activeTextureID = GL_TEXTURE1;
-	auto s2 = std::make_shared<SE::Rectangle>(SE::vec3(70.0f, 70, 0.0f), SE::vec2(100, 100), tex1, 1);
-	auto s1 = std::make_shared<SE::Rectangle>(SE::vec3(50, 50, 0.0f), SE::vec2(100, 50), tex, 2);
+
+	auto s1 = std::make_shared<SE::Rectangle>(SE::vec3(50, 50, 0.0f), SE::vec2(100, 50), tex, 5);
+	//auto s2 = std::make_shared<SE::Rectangle>(SE::vec3(70.0f, 70, 0.0f), SE::vec2(100, 100), tex1, 4);
+	//auto s3 = std::make_shared<SE::Rectangle>(SE::vec3(150.0f, 10, 0.0f), SE::vec2(10, 10), SE::vec3(1, 0, 0), 0);
+	//auto s4 = std::make_shared<SE::Rectangle>(SE::vec3(10.0f, 10, 0.0f), SE::vec2(100, 100), SE::vec3(0, 1, 0), 3);
+
+	Texture tex2("..\\..\\src\\studious-engine\\PublicFiles\\Textures\\kitty.png");
+	auto s3 = std::make_shared<SE::Rectangle>(SE::vec3(100.0f, 100.0f, 0.0f), SE::vec2(50, 50), SE::vec3(1, 0, 0), tex2, 0);
+
 
 	ren.addToDrawCall(s1);
-	ren.addToDrawCall(s2);
-
+	//ren.addToDrawCall(s2);
+	ren.addToDrawCall(s3);
+	//ren.addToDrawCall(s4);
 
 	while (!window->closed())
 	{
