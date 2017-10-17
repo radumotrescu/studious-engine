@@ -32,7 +32,12 @@ namespace SE {
 
 		m_origin.z = priority;
 		matrix = { 0,0,0,dimension.y,dimension.x,dimension.y,dimension.x,0 };
-		colors = { color.x,color.y,color.z,1.0f,color.x,color.y,color.z,1.0f,color.x,color.y,color.z,1.0f,color.x,color.y,color.z,1.0f };
+		colors = { 
+			color.x, color.y, color.z, 1.0f,
+			color.x, color.y, color.z, 1.0f,
+			color.x, color.y, color.z, 1.0f,
+			color.x, color.y, color.z, 1.0f 
+		};
 		m_sprite = Sprite(std::vector<GLfloat>(matrix.begin(), matrix.end()), std::vector<GLfloat>(colors.begin(), colors.end()), tex, std::vector<GLushort>(indexes.begin(), indexes.end()));
 
 	}
@@ -48,6 +53,21 @@ namespace SE {
 			1.0f, 1.0f, 1.0f, 1.0f
 		};
 		m_sprite = Sprite(std::vector<GLfloat>(matrix.begin(), matrix.end()), std::vector<GLfloat>(colors.begin(), colors.end()),texture, std::vector<GLushort>(indexes.begin(), indexes.end()));
+	}
+
+	Rectangle::Rectangle(const vec3 & position, const vec2 & dimension, const vec3 & color, const Texture & texture, const unsigned priority)
+		:m_origin(position), m_dimension(dimension), m_priority(priority)
+	{
+		m_origin.z = priority;
+		matrix = { 0,0,0,dimension.y,dimension.x,dimension.y,dimension.x,0 };
+		colors = { 
+			color.x, color.y, color.z, 1.0f,
+			color.x, color.y, color.z, 1.0f,
+			color.x, color.y, color.z, 1.0f,
+			color.x, color.y, color.z, 1.0f 
+		};
+		m_sprite = Sprite(std::vector<GLfloat>(matrix.begin(), matrix.end()), std::vector<GLfloat>(colors.begin(), colors.end()), texture, std::vector<GLushort>(indexes.begin(), indexes.end()));
+
 	}
 	
 	auto Rectangle::display() -> void

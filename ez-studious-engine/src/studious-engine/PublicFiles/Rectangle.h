@@ -32,12 +32,11 @@ namespace SE {
 		};
 
 
-		//defaults are setted for a normal image
-
 	public:
 		Rectangle();
 		Rectangle(const vec3& position, const vec2& dimension, const vec3& color, const unsigned priority);
 		Rectangle(const vec3& position, const vec2& dimension, const Texture& texture, const unsigned priority);
+		Rectangle(const vec3& position, const vec2& dimension, const vec3& color, const Texture& texture, const unsigned priority);
 
 		auto display() -> void override;
 		//auto changePointCoordinates(const vec3 & vertex)->void;

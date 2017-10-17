@@ -91,16 +91,19 @@ auto main()->int
 	Texture tex("..\\..\\src\\studious-engine\\PublicFiles\\Textures\\tree.png");
 	Texture tex1("..\\..\\src\\studious-engine\\PublicFiles\\Textures\\test.png");
 
-	auto s1 = std::make_shared<SE::Rectangle>(SE::vec3(50, 50, 0.0f), SE::vec2(100, 50), tex, 2);
-	auto s2 = std::make_shared<SE::Rectangle>(SE::vec3(70.0f, 70, 0.0f), SE::vec2(100, 100), tex1, 1);
-	auto s3 = std::make_shared<SE::Rectangle>(SE::vec3(150.0f, 10, 0.0f), SE::vec2(10, 10), SE::vec3(1, 0, 0), 0);
-	auto s4 = std::make_shared<SE::Rectangle>(SE::vec3(10.0f, 10, 0.0f), SE::vec2(100, 100), SE::vec3(0, 1, 0), 3);
+	auto s1 = std::make_shared<SE::Rectangle>(SE::vec3(50, 50, 0.0f), SE::vec2(100, 50), tex, 5);
+	//auto s2 = std::make_shared<SE::Rectangle>(SE::vec3(70.0f, 70, 0.0f), SE::vec2(100, 100), tex1, 4);
+	//auto s3 = std::make_shared<SE::Rectangle>(SE::vec3(150.0f, 10, 0.0f), SE::vec2(10, 10), SE::vec3(1, 0, 0), 0);
+	//auto s4 = std::make_shared<SE::Rectangle>(SE::vec3(10.0f, 10, 0.0f), SE::vec2(100, 100), SE::vec3(0, 1, 0), 3);
+
+	Texture tex2("..\\..\\src\\studious-engine\\PublicFiles\\Textures\\kitty.png");
+	auto s3 = std::make_shared<SE::Rectangle>(SE::vec3(100.0f, 100.0f, 0.0f), SE::vec2(50, 50), SE::vec3(1, 0, 0), tex2, 0);
 
 
 	ren.addToDrawCall(s1);
-	ren.addToDrawCall(s2);
+	//ren.addToDrawCall(s2);
 	ren.addToDrawCall(s3);
-	ren.addToDrawCall(s4);
+	//ren.addToDrawCall(s4);
 
 	while (!window->closed())
 	{
