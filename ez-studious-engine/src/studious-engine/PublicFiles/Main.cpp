@@ -17,7 +17,7 @@
 static const int WINDOW_WIDTH = 600;
 static const int WINDOW_HEIGHT = 800;
 
-#if 0
+#if 1
 auto main() -> void
 {
 	FT_Library ft;

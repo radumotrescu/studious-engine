@@ -69,10 +69,6 @@ namespace SE {
 		m_sprite = Sprite(std::vector<GLfloat>(matrix.begin(), matrix.end()), std::vector<GLfloat>(colors.begin(), colors.end()), texture, std::vector<GLushort>(indexes.begin(), indexes.end()));
 
 	}
-	
-	auto Rectangle::display() -> void
-	{
-	}
 
 	auto Rectangle::getPriority() const -> unsigned
 	{
