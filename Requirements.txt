@@ -21,4 +21,15 @@ Intermediate requirements:
 	constraints pe window size/ refactoring joc/ diving in randare -> miruna 
 	sunete -> adina 
 	
-
+	PART 4:
+	(sunete) -> adina 
+	fix manager coliziune / fix text finisat/ sterg display -> marius
+	forward draw pe rectangle/ texturi pe brick breaker ->george
+	teste coliziune ->miruna
+	lumini/ remove to draw list/(wraper fizica) /(backgroung miscator) ->radu
+	
+	
+	
+	
+	
+	
