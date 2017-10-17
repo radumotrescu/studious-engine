@@ -8,8 +8,6 @@
 #include "glut.h"
 #include "LabelManager.h"
 #include "CollisionManager.h"
-#include "TestCollisionalRectangle1.h"
-#include "TestCollisionalRectangle2.h"
 #include "ft2build.h"
 
 #include FT_FREETYPE_H
@@ -18,6 +16,19 @@ static const int WINDOW_WIDTH = 600;
 static const int WINDOW_HEIGHT = 800;
 
 #if 1
+
+namespace SE
+{
+	class test
+	{
+	public:
+		void method(Rectangle* t1, Rectangle* t2)
+		{
+			t1->moveLeft();
+		}
+	};
+}
+
 auto main() -> void
 {
 	FT_Library ft;
@@ -35,8 +46,8 @@ auto main() -> void
 	//auto s2 = std::make_shared<SE::TestCollisionalRectangle1>(SE::vec3(50.0f, 100.0f, 0.0f), SE::vec2(50, 50), SE::vec3(1.0, 0.0, 1.0), 8);
 	//auto s1 = std::make_shared<SE::TestCollisionalRectangle2>(SE::vec3(30.0f, 40.0f, 0.0f), SE::vec2(100, 100), SE::vec3(0.0, 1.0, 0.0), 7);
 
-	auto s2 = std::make_shared<SE::TestCollisionalRectangle2>(SE::vec3(70.0f, 70, 0.0f), SE::vec2(100, 100), tex1, 1);
-	auto s1 = std::make_shared<SE::TestCollisionalRectangle1>(SE::vec3(50, 50, 0.0f), SE::vec2(100, 50), tex, 2);
+	auto s2 = std::make_shared<SE::Rectangle>(SE::vec3(70.0f, 70, 0.0f), SE::vec2(100, 100), tex1, 1);
+	auto s1 = std::make_shared<SE::Rectangle>(SE::vec3(50, 50, 0.0f), SE::vec2(100, 50), tex, 2);
 
 	SE::Application app;
 	//auto s1 = std::make_shared<Sprite>(vec3(3.0f, 4.0f, 0.0f), vec2(10,10), vec3(0.0, 1.0, 0.0), 0);
@@ -64,8 +75,11 @@ auto main() -> void
 	SE::LabelManager::getInstance().addLabel(SE::Label("Hello World!", 250, 300));
 	std::cout << 550 * 100 / WINDOW_WIDTH;
 
-	SE::CollisionManager::addCollisionalEntities(s1, s2);
-		
+
+	SE::test *t1 = new SE::test();
+
+	SE::CollisionManager::addCollisionalEntities(s1, s2, std::bind(&SE::test::method, t1, std::placeholders::_1, std::placeholders::_2));
+
 	while (!window->closed())
 	{
 		window->clear();
@@ -78,7 +92,6 @@ auto main() -> void
 	}
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 }
-
 #else
 
 auto main()->int

@@ -6,7 +6,7 @@
 
 namespace SE
 {
-	std::list<std::tuple<std::shared_ptr<ICollisional>, std::shared_ptr<ICollisional>>> CollisionManager::m_collisionalEntities;
+	std::list<std::tuple<std::shared_ptr<Rectangle>, std::shared_ptr<Rectangle>, std::function<void(Rectangle*, Rectangle*)>>> CollisionManager::m_collisionalEntities;
 	Application CollisionManager::m_app;
 
 	auto CollisionManager::getInstance()-> CollisionManager&
@@ -16,19 +16,19 @@ namespace SE
 		return collisionManager;
 	}
 
-	auto CollisionManager::addCollisionalEntities(std::shared_ptr<ICollisional> collidedObject, std::shared_ptr<ICollisional> objectToColide) -> void
+	auto CollisionManager::addCollisionalEntities(std::shared_ptr<Rectangle> collidedObject, std::shared_ptr<Rectangle> objectToColide, std::function<void(Rectangle*, Rectangle*)> func) -> void
 	{
-		m_collisionalEntities.push_back(std::make_tuple(std::move(collidedObject), std::move(objectToColide)));
+		m_collisionalEntities.push_back(std::make_tuple(std::move(collidedObject), std::move(objectToColide), func));
 	}
 
 	auto CollisionManager::checkCollisions() -> void
 	{
-		for(auto &tupleEntities : m_collisionalEntities)
+		for(auto &&tupleEntities : m_collisionalEntities)
 		{
 			if(m_app.isCollided(std::get<0>(tupleEntities).get(), std::get<1>(tupleEntities).get()))
-			{
-				std::get<0>(tupleEntities).get()->onCollision();
-				std::get<1>(tupleEntities).get()->onCollision();
+			{ 
+				auto test = std::get<0>(tupleEntities).get();
+				std::get<2>(tupleEntities)(std::get<0>(tupleEntities).get(), std::get<1>(tupleEntities).get());
 			}
 		}
 	}
