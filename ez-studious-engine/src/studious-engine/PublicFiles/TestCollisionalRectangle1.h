@@ -8,8 +8,15 @@ namespace SE
 	class TestCollisionalRectangle1 : public SE::Rectangle, virtual public SE::ICollisional
 	{
 	public:
-		TestCollisionalRectangle1(const SE::vec3& position, const SE::vec2& dimension, const SE::vec3& color, unsigned priority)
+
+
+		TestCollisionalRectangle1(const vec3& position, const vec2& dimension, const vec3& color, unsigned priority)
 			: Rectangle(position, dimension, color, priority)
+		{
+		}
+
+		TestCollisionalRectangle1(const vec3& position, const vec2& dimension, const Texture& texture, unsigned priority)
+			: Rectangle(position, dimension, texture, priority)
 		{
 		}
 

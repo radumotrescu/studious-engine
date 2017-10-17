@@ -15,7 +15,7 @@
 static const int WINDOW_WIDTH = 600;
 static const int WINDOW_HEIGHT = 800;
 
-#if 0
+#if 1
 auto main() -> void
 {
 	auto window = std::make_unique<SE::Window>("Test", WINDOW_WIDTH, WINDOW_HEIGHT);
@@ -24,19 +24,25 @@ auto main() -> void
 
 	SE::SimpleRenderer ren;
 
-	auto s3 = std::make_shared<SE::Rectangle>(SE::vec3(25.0f, 33.0f, 0.0f), SE::vec2(25, 25), SE::vec3(0.0, 0.0, 1.0), 1);
-	auto s2 = std::make_shared<SE::TestCollisionalRectangle1>(SE::vec3(50.0f, 100.0f, 0.0f), SE::vec2(50, 50), SE::vec3(1.0, 0.0, 1.0), 8);
-	auto s1 = std::make_shared<SE::TestCollisionalRectangle2>(SE::vec3(30.0f, 40.0f, 0.0f), SE::vec2(100, 100), SE::vec3(0.0, 1.0, 0.0), 7);
+	Texture tex1("..\\..\\src\\studious-engine\\PublicFiles\\Textures\\test.png");
+	Texture tex("..\\..\\src\\studious-engine\\PublicFiles\\Textures\\tree.png");
+
+	//auto s3 = std::make_shared<SE::Rectangle>(SE::vec3(25.0f, 33.0f, 0.0f), SE::vec2(25, 25), SE::vec3(0.0, 0.0, 1.0), 1);
+	//auto s2 = std::make_shared<SE::TestCollisionalRectangle1>(SE::vec3(50.0f, 100.0f, 0.0f), SE::vec2(50, 50), SE::vec3(1.0, 0.0, 1.0), 8);
+	//auto s1 = std::make_shared<SE::TestCollisionalRectangle2>(SE::vec3(30.0f, 40.0f, 0.0f), SE::vec2(100, 100), SE::vec3(0.0, 1.0, 0.0), 7);
+
+	auto s2 = std::make_shared<SE::TestCollisionalRectangle2>(SE::vec3(70.0f, 70, 0.0f), SE::vec2(100, 100), tex1, 1);
+	auto s1 = std::make_shared<SE::TestCollisionalRectangle1>(SE::vec3(50, 50, 0.0f), SE::vec2(100, 50), tex, 2);
 
 	SE::Application app;
 	//auto s1 = std::make_shared<Sprite>(vec3(3.0f, 4.0f, 0.0f), vec2(10,10), vec3(0.0, 1.0, 0.0), 0);
 	//auto s2 = std::make_shared<Sprite >(vec3(50.0f, 100.0f, 0.0f),vec2(50,50), vec3(1.0, 0.0, 1.0), 1);
 
 	SE::InputManager::getInstance().init(window.get()->getWindow());
-	SE::InputManager::getInstance().registerSpriteAction(std::bind(&SE::Rectangle::moveLeft, s2.get()), GLFW_KEY_A);
-	SE::InputManager::getInstance().registerSpriteAction(std::bind(&SE::Rectangle::moveRight, s2.get()), GLFW_KEY_D);
-	SE::InputManager::getInstance().registerSpriteAction(std::bind(&SE::Rectangle::moveUp, s2.get()), GLFW_KEY_W);
-	SE::InputManager::getInstance().registerSpriteAction(std::bind(&SE::Rectangle::moveDown, s2.get()), GLFW_KEY_S);
+	SE::InputManager::getInstance().registerSpriteAction(std::bind(&SE::Rectangle::moveLeft, s1.get()), GLFW_KEY_A);
+	SE::InputManager::getInstance().registerSpriteAction(std::bind(&SE::Rectangle::moveRight, s1.get()), GLFW_KEY_D);
+	SE::InputManager::getInstance().registerSpriteAction(std::bind(&SE::Rectangle::moveUp, s1.get()), GLFW_KEY_W);
+	SE::InputManager::getInstance().registerSpriteAction(std::bind(&SE::Rectangle::moveDown, s1.get()), GLFW_KEY_S);
 	//or even
 
 	float inc = -2.0f;
@@ -45,7 +51,7 @@ auto main() -> void
 
 	ren.addToDrawCall(s1);
 	ren.addToDrawCall(s2);
-	ren.addToDrawCall(s3);
+	//ren.addToDrawCall(s3);
 	//auto y = glGetUniformLocation(shader.m_shaderID, "lpos");
 	//glUniform2f(y, 0.0f, 0.0f);
 	//float inc = -0.1f;
@@ -68,8 +74,8 @@ auto main() -> void
 	}
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 }
-#endif
 
+#else if
 
 auto main()->int
 {
@@ -122,3 +128,4 @@ auto main()->int
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 	return 0;
 }
+#endif

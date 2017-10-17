@@ -11,9 +11,12 @@ namespace SE {
 	{
 		const auto range = m_actionKey.equal_range(key);
 
-		for (auto it = range.first; it != range.second; ++it)
+		if (action != GLFW_RELEASE)
 		{
-			it->second();
+			for (auto it = range.first; it != range.second; ++it)
+			{
+				it->second();
+			}
 		}
 	}
 
