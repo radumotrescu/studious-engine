@@ -40,6 +40,13 @@ const GLsizei Texture::getHeight() const
 	return m_height;
 }
 
+auto Texture::getNullTexture() -> Texture
+{
+	static Texture nullTexture("..\\..\\src\\studious-engine\\PublicFiles\\Textures\\nothing.png");
+	return nullTexture;
+}
+
+
 GLuint Texture::load()
 {
 	BYTE* pixels = load_image(m_fileName.c_str(), &m_width, &m_height);
