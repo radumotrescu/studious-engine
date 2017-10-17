@@ -10,7 +10,9 @@
 #include "CollisionManager.h"
 #include "TestCollisionalRectangle1.h"
 #include "TestCollisionalRectangle2.h"
+#include "ft2build.h"
 
+#include FT_FREETYPE_H
 
 static const int WINDOW_WIDTH = 600;
 static const int WINDOW_HEIGHT = 800;
@@ -18,6 +20,8 @@ static const int WINDOW_HEIGHT = 800;
 #if 1
 auto main() -> void
 {
+	FT_Library ft;
+
 	auto window = std::make_unique<SE::Window>("Test", WINDOW_WIDTH, WINDOW_HEIGHT);
 
 	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
