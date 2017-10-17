@@ -25,6 +25,8 @@ public:
 
 	const GLsizei getWidth() const;
 	const GLsizei getHeight() const;
+
+	static auto getNullTexture()->Texture;
 private:
 	GLuint load();
 };

@@ -28,10 +28,12 @@ namespace SE {
 		//glActiveTexture(GL_TEXTURE0);
 		//m_texture = std::make_shared<Texture>("..\\..\\src\\studious-engine\\PublicFiles\\Textures\\kitty.png");
 
+		Texture tex = Texture::getNullTexture();
+
 		m_origin.z = priority;
 		matrix = { 0,0,0,dimension.y,dimension.x,dimension.y,dimension.x,0 };
 		colors = { color.x,color.y,color.z,1.0f,color.x,color.y,color.z,1.0f,color.x,color.y,color.z,1.0f,color.x,color.y,color.z,1.0f };
-		m_sprite = Sprite(std::vector<GLfloat>(matrix.begin(), matrix.end()), std::vector<GLfloat>(colors.begin(), colors.end()), std::vector<GLushort>(indexes.begin(), indexes.end()));
+		m_sprite = Sprite(std::vector<GLfloat>(matrix.begin(), matrix.end()), std::vector<GLfloat>(colors.begin(), colors.end()), tex, std::vector<GLushort>(indexes.begin(), indexes.end()));
 
 	}
 	Rectangle::Rectangle(const vec3 & position, const vec2 & dimension, const Texture& texture, const unsigned priority)
