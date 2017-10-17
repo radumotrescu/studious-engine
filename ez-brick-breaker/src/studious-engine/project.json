@@ -1,4 +1,5 @@
 {
     "name":"studious-engine",
-    "type":"ExternalStatic"
+    "type":"ExternalStatic",
+	"dependencies": ["FreeImage", "freetype28d"]
 }
