@@ -31,18 +31,22 @@ auto BrickBreakerGame::addBricksToRenderer()->void
 	const int maxRowIndexOnRow2 = 9;
 	const int maxRowIndexOnRow3 = 8;
 
+	Texture brickTexture1("..\\..\\src\\studious-engine\\PublicFiles\\Textures\\brick_1.png");
+	Texture brickTexture2("..\\..\\src\\studious-engine\\PublicFiles\\Textures\\brick_2.png");
+	//Texture brickTexture3("..\\..\\src\\studious-engine\\PublicFiles\\Textures\\brick_3.png");
+
 	for (int i = minRowIndexOnRow1; i < maxBrickIndexOnRow1; i++)
 	{
-		m_bricks.push_back(Brick(m_renderer.get(), vec3(i * BRICK_WIDTH + i*SPACE_BETWEEN_BRICKS, 20, 0), vec2(BRICK_WIDTH, 4), vec3(0.0f, 1.0f, 0.0f)));
+		m_bricks.push_back(Brick(m_renderer.get(), vec3(i * BRICK_WIDTH + i*SPACE_BETWEEN_BRICKS, 20, 0), vec2(BRICK_WIDTH, 10), vec3(1.0f, 1.0f, 1.0f), brickTexture1));
 	}
 	for (int i = minRowIndexOnRow2; i < maxRowIndexOnRow2; i++)
 	{
-		m_bricks.push_back(Brick(m_renderer.get(), vec3(i * BRICK_WIDTH + i*SPACE_BETWEEN_BRICKS, 30, 0), vec2(BRICK_WIDTH, 4), vec3(1.0f, 0.0f, 1.0f)));
+		m_bricks.push_back(Brick(m_renderer.get(), vec3(i * BRICK_WIDTH + i*SPACE_BETWEEN_BRICKS, 30, 0), vec2(BRICK_WIDTH, 10), vec3(1.0f, 1.0f, 1.0f), brickTexture2));
 	}
 
 	for (int i = minRowIndexOnRow3; i < maxRowIndexOnRow3; i++)
 	{
-		m_bricks.push_back(Brick(m_renderer.get(), vec3(i * BRICK_WIDTH + i*SPACE_BETWEEN_BRICKS, 40, 0), vec2(BRICK_WIDTH, 4), vec3(0.0f, 0.0f, 1.0f)));
+		m_bricks.push_back(Brick(m_renderer.get(), vec3(i * BRICK_WIDTH + i*SPACE_BETWEEN_BRICKS, 40, 0), vec2(BRICK_WIDTH, 10), vec3(1.0f, 1.0f, 1.0f), brickTexture1));
 	}
 }
 

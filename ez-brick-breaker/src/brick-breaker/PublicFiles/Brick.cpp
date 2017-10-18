@@ -1,8 +1,8 @@
 #include "Brick.h"
 
-Brick::Brick(SE::SimpleRenderer* renderer, SE::vec3 position, SE::vec2 size, SE::vec3 color)
+Brick::Brick(SE::SimpleRenderer* renderer, SE::vec3 position, SE::vec2 size, SE::vec3 color, const Texture& texture)
 	:renderer(renderer)
-	, brick(std::make_shared<SE::Rectangle>(position, size, color, 0))
+	, brick(std::make_shared<SE::Rectangle>(position, size, color,texture, 0))
 {
 	renderer->addToDrawCall(brick);
 }
