@@ -10,7 +10,7 @@ Ball::Ball(SE::SimpleRenderer* renderer, float velocityX, float velocityY)
 	, m_velocityY(velocityY)
 	, m_ball(std::make_shared<SE::Rectangle>(SE::vec3(5.0f, 40.0f, 1.0f), SE::vec2(5, 5), SE::vec3(1.0f, 1.0f, 1.0f), Texture("..\\..\\src\\studious-engine\\PublicFiles\\Textures\\meteor_1.png"), 0))
 {
-	renderer->addToDrawCall(m_ball);
+	renderer->addRectangleToDrawCall(m_ball);
 }
 
 auto Ball::getRectangle() ->SE::Rectangle*

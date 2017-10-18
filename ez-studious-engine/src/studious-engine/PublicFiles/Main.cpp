@@ -17,7 +17,7 @@
 static const int WINDOW_WIDTH = 600;
 static const int WINDOW_HEIGHT = 800;
 
-#if 0
+#if 1
 
 namespace SE
 {
@@ -66,8 +66,8 @@ auto main() -> void
 	//auto funcPointer = static_cast<void(Sprite::*)(const vec3&)>(&Sprite::UpdateLocation);
 	//InputManager::getInstance().registerSpriteAction(std::bind(funcPointer, s3.get(), s3->m_position.add(vec3(10, 10, 0.0f))), GLFW_KEY_S);
 
-	ren.addToDrawCall(s1);
-	ren.addToDrawCall(s2);
+	ren.addRectangleToDrawCall(s1);
+	ren.addRectangleToDrawCall(s2);
 	//ren.addToDrawCall(s3);
 	//auto y = glGetUniformLocation(shader.m_shaderID, "lpos");
 	//glUniform2f(y, 0.0f, 0.0f);
