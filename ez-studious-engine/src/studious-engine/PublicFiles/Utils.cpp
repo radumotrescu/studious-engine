@@ -38,7 +38,18 @@ namespace SE
 		auto minLessOrEqualToValue2 = essentiallyEqual(min1, max2) || definitelyLessThan(min1, max2);
 		auto value2LessOrEqualToMax = essentiallyEqual(max2, max1) || definitelyLessThan(max2, max1);
 
-		return  (minLessOrEqualToValue1 && value1LessOrEqualToMax) || (minLessOrEqualToValue2 && value2LessOrEqualToMax);
+		auto range2inRange1 = (minLessOrEqualToValue1 && value1LessOrEqualToMax) || (minLessOrEqualToValue2 && value2LessOrEqualToMax);
+
+		auto minLessOrEqualToValue1B = essentiallyEqual(min2, min1) || definitelyLessThan(min2, min1);
+		auto value1BLessOrEqualToMax = essentiallyEqual(min1, max2) || definitelyLessThan(min1, max2);
+
+		auto minLessOrEqualToValue2B = essentiallyEqual(min2, max1) || definitelyLessThan(min2, max1);
+		auto value2BLessOrEqualToMax = essentiallyEqual(max1, max2) || definitelyLessThan(max1, max2);
+
+		auto range1inRange2 = (minLessOrEqualToValue1B && value1BLessOrEqualToMax) || (minLessOrEqualToValue2B && value2BLessOrEqualToMax);
+
+		return range1inRange2 || range2inRange1;
+
 	}
 
 	auto Utils::inRange(float value, float minRange, float maxRange) -> bool
