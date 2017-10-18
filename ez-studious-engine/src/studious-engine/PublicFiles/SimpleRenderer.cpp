@@ -30,6 +30,11 @@ namespace SE {
 		std::sort(m_drawVector.begin(), m_drawVector.end(), compareSpritePriority);
 	}
 
+	auto SimpleRenderer::removeRectangleFromDrawCall(std::shared_ptr<Rectangle> sprite) -> void
+	{
+		m_drawVector.erase(std::remove(m_drawVector.begin(), m_drawVector.end(), sprite), m_drawVector.end());
+	}
+
 	auto SimpleRenderer::addLightToDrawCall(std::shared_ptr<Light> light) -> void
 	{
 		m_light = light;
