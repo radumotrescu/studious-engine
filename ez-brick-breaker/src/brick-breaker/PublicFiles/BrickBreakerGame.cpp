@@ -3,23 +3,21 @@
 const int BrickBreakerGame::BRICK_WIDTH = 15;
 const int BrickBreakerGame::SPACE_BETWEEN_BRICKS = 5;
 
-BrickBreakerGame::BrickBreakerGame()
-{
-	// window && glClearColor first!
-	m_window = std::make_shared<SE::Window>("Test", 600, 800);
-	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
-	//renderer depeds on window context
-	m_renderer = std::make_shared<SimpleRenderer>();
-	m_ball = std::make_shared<Ball>(m_renderer.get(), 10, 5);
-	m_pad = std::make_shared<Pad>(m_renderer.get());
-}
-
 auto BrickBreakerGame::start() ->void
 {
+	init();
 	addBricksToRenderer();
 	connectKeySignalsToPadMovement();
 	connectBehaviorOnCollision();
-	update();
+	run();
+	glBindBuffer(GL_ARRAY_BUFFER, 0);
+}
+
+auto BrickBreakerGame::init() -> void
+{
+	Game::init();
+	m_ball = std::make_shared<Ball>(m_renderer.get(), 10, 5);
+	m_pad = std::make_shared<Pad>(m_renderer.get());
 }
 
 auto BrickBreakerGame::addBricksToRenderer()->void
@@ -67,44 +65,10 @@ auto BrickBreakerGame::connectBehaviorOnCollision() -> void
 	}
 }
 
-
-auto BrickBreakerGame::update() ->void
+auto BrickBreakerGame::update() -> void
 {
-
-	double t = 0.0;
-	double dt = 1 / 120.0;
-
-	double currentTime = glfwGetTime();
-	double accumulator = 0.0;
-
-	while (!m_window->closed())
-	{
-
-		m_window->clear();
-
-		double newTime = glfwGetTime();
-		double frameTime = newTime - currentTime;
-		currentTime = newTime;
-
-
-		while (accumulator >= dt)
-		{
-			// ---------------
-
-			m_ball->move();
-			SE::CollisionManager::checkCollisions();
-
-			// ---------------
-			accumulator -= dt;
-			t += dt;
-		}
-
-		m_renderer->draw();
-
-		accumulator += frameTime;
-
-		m_window->update();
-	}
-	glBindBuffer(GL_ARRAY_BUFFER, 0);
+	m_ball->move();
+	SE::CollisionManager::checkCollisions();
 }
+
 
