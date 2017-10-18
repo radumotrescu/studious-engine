@@ -12,8 +12,8 @@ public:
 	~Ball() {};
 	auto getRectangle() -> std::shared_ptr<SE::Rectangle>;
 	auto move() ->void;
-	auto onCollisionWithPad(SE::Rectangle* ball, SE::Rectangle* pad) ->void;
-	auto onCollisionWithBrick(SE::Rectangle* ball, SE::Rectangle* brick) ->void;
+	auto onCollisionWithPad(std::shared_ptr<SE::Rectangle> ball, std::shared_ptr<SE::Rectangle>  pad) ->void;
+	auto onCollisionWithBrick(std::shared_ptr<SE::Rectangle>  ball, std::shared_ptr<SE::Rectangle>  brick) ->void;
 
 private:
 

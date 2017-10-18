@@ -40,13 +40,13 @@ auto Ball::move() ->void
 }
 
 
-auto Ball::onCollisionWithPad(SE::Rectangle* ball, SE::Rectangle* pad) ->void
+auto Ball::onCollisionWithPad(std::shared_ptr<SE::Rectangle> ball, std::shared_ptr<SE::Rectangle> pad) ->void
 {
 	m_velocityY = -m_velocityY;
 	m_velocityX = m_velocityX;
 }
 
-auto Ball::onCollisionWithBrick(SE::Rectangle* ball, SE::Rectangle* brick) ->void
+auto Ball::onCollisionWithBrick(std::shared_ptr<SE::Rectangle> ball , std::shared_ptr<SE::Rectangle>  brick) ->void
 {
 	m_velocityY = -m_velocityY;
 	m_velocityX = m_velocityX;

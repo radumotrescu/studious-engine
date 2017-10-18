@@ -16,6 +16,7 @@ namespace SE {
 		SimpleRenderer();
 		~SimpleRenderer();
 		auto addRectangleToDrawCall(std::shared_ptr<Rectangle> sprite) ->void;
+		auto removeRectangleFromDrawCall(std::shared_ptr<Rectangle> sprite) ->void;
 		auto addLightToDrawCall(std::shared_ptr<Light> light) -> void;
 		auto draw() -> void;
 
