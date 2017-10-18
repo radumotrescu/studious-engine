@@ -23,8 +23,6 @@ namespace SE
 	class IEntity
 	{
 	public:
-		virtual auto display() -> void = 0;
-
 		virtual auto getPriority() const -> unsigned = 0;
 		virtual auto getType() const->Type = 0;
 
