@@ -28,7 +28,14 @@ Intermediate requirements:
 	teste coliziune ->miruna
 	lumini/ remove to draw list/(wraper fizica) /(backgroung miscator) ->radu
 	
+	PART5:
 	
+	sunete -> adina
+	integrare audio/forward draw pe rectangle ->george
+	fix text inlocuire cu glut ->marius
+	fix text integrare label in randare ->radu
+	fix coliziune/wraper fizica ->miruna
+	->TODO: backgroung miscator
 	
 	
 	
