@@ -32,7 +32,7 @@ Intermediate requirements:
 	
 	sunete -> adina
 	integrare audio/forward draw pe rectangle ->george
-	fix text inlocuire cu glut ->marius
+	fix text inlocuire cu glut/integrare unit teste ->marius
 	fix text integrare label in randare ->radu
 	fix coliziune/wraper fizica ->miruna
 	->TODO: backgroung miscator
