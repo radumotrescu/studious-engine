@@ -24,7 +24,7 @@ namespace SE
 	class test
 	{
 	public:
-		void method(Rectangle* t1, Rectangle* t2)
+		void method(std::shared_ptr<Rectangle> t1, std::shared_ptr<Rectangle> t2)
 		{
 			t1->moveLeft();
 		}
@@ -67,7 +67,9 @@ auto main() -> void
 	//InputManager::getInstance().registerSpriteAction(std::bind(funcPointer, s3.get(), s3->m_position.add(vec3(10, 10, 0.0f))), GLFW_KEY_S);
 
 	ren.addRectangleToDrawCall(s1);
+	
 	ren.addRectangleToDrawCall(s2);
+	ren.removeRectangleFromDrawCall(s2);
 	//ren.addToDrawCall(s3);
 	//auto y = glGetUniformLocation(shader.m_shaderID, "lpos");
 	//glUniform2f(y, 0.0f, 0.0f);
