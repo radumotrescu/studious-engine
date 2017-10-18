@@ -11,6 +11,7 @@ namespace SE {
 		//m_shader.setUniform1f("lintensity", 23.0f);
 		m_shader.setUniform2f("lpos", vec2(100, 75));
 		//m_shader.setUniform3f("lcolor",vec3())
+		m_shader.disable();
 	}
 
 
@@ -35,15 +36,11 @@ namespace SE {
 		m_drawVector.erase(std::remove(m_drawVector.begin(), m_drawVector.end(), sprite), m_drawVector.end());
 	}
 
-	auto SimpleRenderer::addLightToDrawCall(std::shared_ptr<Light> light) -> void
-	{
-		m_light = light;
-	}
-
 
 
 	auto SimpleRenderer::draw() -> void
 	{
+		m_shader.enable();
 		for (auto& rectangle : m_drawVector)
 		{
 			m_shader.setUniformMat4("ml_matrix", mat4::translation(rectangle->getOrigin()));
@@ -51,8 +48,6 @@ namespace SE {
 			//m_shader.setUniform3fv("light", m_light->getLightVector());
 			rectangle->getSprite().Draw();
 
-			for (int i = 0; i < 2;i++)
-				m_shader.setUniform2f("lpos", vec2(100+50*i, 75+50*i));
 
 			//for (auto& light : m_lightVector)
 			//{
@@ -60,6 +55,7 @@ namespace SE {
 			//	m_shader.setUniform1f("lintensity", light->getIntensity());
 			//}
 		}
+		m_shader.disable();
 
 
 	}

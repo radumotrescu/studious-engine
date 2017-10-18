@@ -7,7 +7,6 @@
 #include "Sprite.h"
 #include "Rectangle.h"
 #include "Shader.h"
-#include "Light.h"
 
 namespace SE {
 	class SimpleRenderer {
@@ -17,7 +16,6 @@ namespace SE {
 		~SimpleRenderer();
 		auto addRectangleToDrawCall(std::shared_ptr<Rectangle> sprite) ->void;
 		auto removeRectangleFromDrawCall(std::shared_ptr<Rectangle> sprite) ->void;
-		auto addLightToDrawCall(std::shared_ptr<Light> light) -> void;
 		auto draw() -> void;
 
 	private:
@@ -26,7 +24,6 @@ namespace SE {
 		//Shader m_shader = Shader(vertPath, fragPath);
 		Shader m_shader = Shader();
 		std::vector<std::shared_ptr<Rectangle>> m_drawVector;
-		std::shared_ptr<Light> m_light;
 	};
 
 

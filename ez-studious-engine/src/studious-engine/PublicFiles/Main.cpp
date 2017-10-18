@@ -9,20 +9,19 @@
 #include "LabelManager.h"
 #include "CollisionManager.h"
 #include "ft2build.h"
-#include "Light.h"
 #include "Vec3.h"
+
+#include "gltext.h"
 
 #include FT_FREETYPE_H
 
 static const int WINDOW_WIDTH = 600;
 static const int WINDOW_HEIGHT = 800;
 
-#if 1
+#if 0
 
-namespace SE
-{
-	class test
-	{
+namespace SE {
+	class test {
 	public:
 		void method(std::shared_ptr<Rectangle> t1, std::shared_ptr<Rectangle> t2)
 		{
@@ -67,7 +66,7 @@ auto main() -> void
 	//InputManager::getInstance().registerSpriteAction(std::bind(funcPointer, s3.get(), s3->m_position.add(vec3(10, 10, 0.0f))), GLFW_KEY_S);
 
 	ren.addRectangleToDrawCall(s1);
-	
+
 	ren.addRectangleToDrawCall(s2);
 	ren.removeRectangleFromDrawCall(s2);
 	//ren.addToDrawCall(s3);
@@ -116,15 +115,15 @@ auto main()->int
 	Texture tex2("..\\..\\src\\studious-engine\\PublicFiles\\Textures\\kitty.png");
 	auto s3 = std::make_shared<SE::Rectangle>(SE::vec3(100.0f, 100.0f, 0.0f), SE::vec2(50, 50), SE::vec3(1, 1, 1), tex, 2);
 
-	auto l1 = std::make_shared<SE::Light>();
-	l1->addLight("l1", SE::vec3(0, 0, 50));
-	l1->addLight("l2", SE::vec3(200, 200, 25));
-	
 	ren.addRectangleToDrawCall(s1);
 	//ren.addToDrawCall(s2);
 	ren.addRectangleToDrawCall(s3);
 	//ren.addToDrawCall(s4);
-	ren.addLightToDrawCall(l1);
+
+	gltInit();
+
+	auto text = gltCreateText();
+	gltSetText(text, "Hello!");
 
 
 	while (!window->closed())
@@ -132,11 +131,19 @@ auto main()->int
 		//nullTexture.bind();
 		window->clear();
 
+
 		ren.draw();
+
+		gltColor(1.0f, 0.0f, 0.5f, 1.0f);
+		gltDrawText2D(text, 300, 300, 2.0);
+
 
 		window->update();
 		//nullTexture.unbind();
 	}
+
+	gltDeleteText(text);
+	gltTerminate();
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 	return 0;
 }

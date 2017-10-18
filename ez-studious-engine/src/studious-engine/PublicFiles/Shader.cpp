@@ -125,7 +125,7 @@ void main()
 	float distance = length(lpos - fs_in.position.xy);
 	float attenuation = 1.0 / distance*40;
 
-	outColor = texture(tex, fs_in.textureCoord)*vec4(fs_in.color);
+	outColor = texture(tex, fs_in.textureCoord)*vec4(attenuation,attenuation,attenuation,pow(attenuation,3))*vec4(fs_in.color);
 })glsl";
 
 		glShaderSource(vertex, 1, &vertexSource, NULL);
