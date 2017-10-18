@@ -11,13 +11,15 @@
 #include "TestCollisionalRectangle1.h"
 #include "TestCollisionalRectangle2.h"
 #include "ft2build.h"
+#include "Light.h"
+#include "Vec3.h"
 
 #include FT_FREETYPE_H
 
 static const int WINDOW_WIDTH = 600;
 static const int WINDOW_HEIGHT = 800;
 
-#if 1
+#if 0
 auto main() -> void
 {
 	FT_Library ft;
@@ -91,19 +93,24 @@ auto main()->int
 	Texture tex("..\\..\\src\\studious-engine\\PublicFiles\\Textures\\tree.png");
 	Texture tex1("..\\..\\src\\studious-engine\\PublicFiles\\Textures\\test.png");
 
-	auto s1 = std::make_shared<SE::Rectangle>(SE::vec3(50, 50, 0.0f), SE::vec2(100, 50), tex, 5);
+	auto s1 = std::make_shared<SE::Rectangle>(SE::vec3(0, 0, 0.0f), SE::vec2(200, 200), tex1, 1);
 	//auto s2 = std::make_shared<SE::Rectangle>(SE::vec3(70.0f, 70, 0.0f), SE::vec2(100, 100), tex1, 4);
 	//auto s3 = std::make_shared<SE::Rectangle>(SE::vec3(150.0f, 10, 0.0f), SE::vec2(10, 10), SE::vec3(1, 0, 0), 0);
 	//auto s4 = std::make_shared<SE::Rectangle>(SE::vec3(10.0f, 10, 0.0f), SE::vec2(100, 100), SE::vec3(0, 1, 0), 3);
 
 	Texture tex2("..\\..\\src\\studious-engine\\PublicFiles\\Textures\\kitty.png");
-	auto s3 = std::make_shared<SE::Rectangle>(SE::vec3(100.0f, 100.0f, 0.0f), SE::vec2(50, 50), SE::vec3(1, 0, 0), tex2, 0);
+	auto s3 = std::make_shared<SE::Rectangle>(SE::vec3(100.0f, 100.0f, 0.0f), SE::vec2(50, 50), SE::vec3(1, 1, 1), tex, 2);
 
-
-	ren.addToDrawCall(s1);
+	auto l1 = std::make_shared<SE::Light>();
+	l1->addLight("l1", SE::vec3(0, 0, 50));
+	l1->addLight("l2", SE::vec3(200, 200, 25));
+	
+	ren.addRectangleToDrawCall(s1);
 	//ren.addToDrawCall(s2);
-	ren.addToDrawCall(s3);
+	ren.addRectangleToDrawCall(s3);
 	//ren.addToDrawCall(s4);
+	ren.addLightToDrawCall(l1);
+
 
 	while (!window->closed())
 	{

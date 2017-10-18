@@ -26,6 +26,24 @@ namespace SE {
 	{
 		glUniform1i(getUniformLocation(name), value);
 	}
+	void Shader::setUniform1f(const GLchar* name, float value)
+	{
+		glUniform1f(getUniformLocation(name), value);
+	}
+
+	void Shader::setUniform2f(const GLchar* name, const vec2& vector)
+	{
+		glUniform2f(getUniformLocation(name), vector.x, vector.y);
+	}
+		void Shader::setUniform3f(const GLchar* name, const vec3& vector)
+	{
+		glUniform3f(getUniformLocation(name), vector.x, vector.y, vector.z);
+	}
+
+	void Shader::setUniform3fv(const GLchar*name, const std::array<float, 30>& arr)
+	{
+		glUniform3fv(getUniformLocation(name), 10, arr.data());
+	}
 
 	auto readFile(const std::string& path) -> std::string
 	{
@@ -48,6 +66,7 @@ namespace SE {
 		//const char* fragSource = fragSourceString.c_str();
 
 		const char* vertexSource =
+
 			R"glsl(#version 330 core	
 layout(location=0 ) in vec4 position;
 layout(location=1 ) in vec4 color;
@@ -79,31 +98,34 @@ void main()
 })glsl";
 
 		const char* fragmentSource =
+
 			R"glsl(#version 330 core
 layout (location = 0) out vec4 outColor;	
 
 uniform vec4 colour=vec4(1.0,0.0,0.0,1.0);
 uniform vec2 lpos=vec2(0.0,0.0);
+uniform vec3 lcolor=vec3(1.0,1.0,1.0);
+//uniform float lintensity=1.0f;
+uniform vec3 light[10];
 
 
- in DATA
+in DATA
 {
 	vec4 position;	
 	vec4 color;
 	vec2 textureCoord;
-
 } fs_in;
-   
+
+																																	   
 uniform sampler2D tex;
 
 void main()
 {
-		//float intensity = 1.0 / length(fs_in.color.xy - lpos)*1.0;
-		//outColor = vec4(fs_in.color) * intensity;
-		//outColor = vec4(fs_in.color);
 
-		//the texture is set to the outColor
-		outColor = texture(tex, fs_in.textureCoord)*vec4(fs_in.color);
+	float distance = length(lpos - fs_in.position.xy);
+	float attenuation = 1.0 / distance*40;
+
+	outColor = texture(tex, fs_in.textureCoord)*vec4(attenuation, attenuation, attenuation, pow(attenuation, 5)) * vec4(lcolor,1);
 })glsl";
 
 		glShaderSource(vertex, 1, &vertexSource, NULL);
