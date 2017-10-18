@@ -13,9 +13,9 @@ Ball::Ball(SE::SimpleRenderer* renderer, float velocityX, float velocityY)
 	renderer->addRectangleToDrawCall(m_ball);
 }
 
-auto Ball::getRectangle() ->SE::Rectangle*
+auto Ball::getRectangle() ->std::shared_ptr<SE::Rectangle>
 {
-	return m_ball.get();
+	return m_ball;
 }
 
 auto Ball::move() ->void
@@ -40,13 +40,13 @@ auto Ball::move() ->void
 }
 
 
-auto Ball::onCollisionWithPad() ->void
+auto Ball::onCollisionWithPad(SE::Rectangle* ball, SE::Rectangle* pad) ->void
 {
 	m_velocityY = -m_velocityY;
 	m_velocityX = m_velocityX;
 }
 
-auto Ball::onCollisionWithBrick() ->void
+auto Ball::onCollisionWithBrick(SE::Rectangle* ball, SE::Rectangle* brick) ->void
 {
 	m_velocityY = -m_velocityY;
 	m_velocityX = m_velocityX;

@@ -9,8 +9,8 @@ class Pad {
 public:
 
 	Pad(SE::SimpleRenderer* renderer, float velocityX = 0.5f, float velocityY = 0.5f);
-	 ~Pad() {};
-	auto getRectangle() ->SE::Rectangle *;
+	~Pad() {};
+	auto getRectangle()->std::shared_ptr<SE::Rectangle >;
 	auto moveRight() ->void;
 	auto moveLeft() ->void;
 

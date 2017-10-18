@@ -10,10 +10,10 @@ public:
 	Ball(SE::SimpleRenderer* renderer, float velocityX = 0.5f, float velocityY = 0.5f);
 
 	~Ball() {};
-	auto getRectangle() ->SE::Rectangle *;
+	auto getRectangle() -> std::shared_ptr<SE::Rectangle>;
 	auto move() ->void;
-	auto onCollisionWithPad() ->void;
-	auto onCollisionWithBrick() ->void;
+	auto onCollisionWithPad(SE::Rectangle* ball, SE::Rectangle* pad) ->void;
+	auto onCollisionWithBrick(SE::Rectangle* ball, SE::Rectangle* brick) ->void;
 
 private:
 

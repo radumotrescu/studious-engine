@@ -11,7 +11,7 @@
 #include "Application.h"
 #include "Rectangle.h"
 #include "Utils.h"
-
+#include "CollisionManager.h"
 #include <vector>
 #include <memory>
 
@@ -29,15 +29,16 @@ public:
 private:
 	auto addBricksToRenderer() ->void;
 	auto connectKeySignalsToPadMovement() ->void;
+	auto connectBehaviorOnCollision()->void;
 	auto update() ->void;
 
 private:
 
-	std::unique_ptr<SE::Window> m_window;
-	std::unique_ptr<SimpleRenderer> m_renderer;
+	std::shared_ptr<SE::Window> m_window;
+	std::shared_ptr<SimpleRenderer> m_renderer;
 	Application m_app;
-	std::unique_ptr<Ball> m_ball;
-	std::unique_ptr<Pad> m_pad;
+	std::shared_ptr<Ball> m_ball;
+	std::shared_ptr<Pad> m_pad;
 	std::vector<Brick> m_bricks;
 	static const int BRICK_WIDTH;
 	static const int SPACE_BETWEEN_BRICKS;

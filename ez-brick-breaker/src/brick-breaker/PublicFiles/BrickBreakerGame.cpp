@@ -6,18 +6,19 @@ const int BrickBreakerGame::SPACE_BETWEEN_BRICKS = 5;
 BrickBreakerGame::BrickBreakerGame()
 {
 	// window && glClearColor first!
-	m_window = std::make_unique<SE::Window>("Test", 600, 800);
+	m_window = std::make_shared<SE::Window>("Test", 600, 800);
 	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 	//renderer depeds on window context
-	m_renderer = std::make_unique<SimpleRenderer>();
-	m_ball = std::make_unique<Ball>(m_renderer.get(), 10, 5);
-	m_pad = std::make_unique<Pad>(m_renderer.get());
+	m_renderer = std::make_shared<SimpleRenderer>();
+	m_ball = std::make_shared<Ball>(m_renderer.get(), 10, 5);
+	m_pad = std::make_shared<Pad>(m_renderer.get());
 }
 
 auto BrickBreakerGame::start() ->void
 {
 	addBricksToRenderer();
 	connectKeySignalsToPadMovement();
+	connectBehaviorOnCollision();
 	update();
 }
 
@@ -57,6 +58,15 @@ auto BrickBreakerGame::connectKeySignalsToPadMovement() ->void
 	InputManager::getInstance().registerSpriteAction(std::bind(&Pad::moveLeft, m_pad.get()), GLFW_KEY_A);
 }
 
+auto BrickBreakerGame::connectBehaviorOnCollision() -> void
+{
+	SE::CollisionManager::addCollisionalEntities(m_ball->getRectangle(), m_pad->getRectangle(), std::bind(&Ball::onCollisionWithPad, m_ball.get(), std::placeholders::_1, std::placeholders::_2));
+	for (auto& brick : m_bricks)
+	{
+		SE::CollisionManager::addCollisionalEntities(m_ball->getRectangle(), brick.getRectangle(), std::bind(&Brick::onCollisionWithBall, &brick, std::placeholders::_1, std::placeholders::_2));
+	}
+}
+
 
 auto BrickBreakerGame::update() ->void
 {
@@ -82,21 +92,7 @@ auto BrickBreakerGame::update() ->void
 			// ---------------
 
 			m_ball->move();
-			if (m_app.isCollided(m_ball->getRectangle(), m_pad->getRectangle()))
-			{
-				m_ball->onCollisionWithPad();
-				std::cout << "P";
-			}
-			for (auto& brick : m_bricks)
-			{
-				SE::Rectangle * brickEntity = brick.getRectangle();
-				if (m_app.isCollided(brickEntity, m_ball->getRectangle()))
-				{
-					m_ball->onCollisionWithBrick();
-					brick.onCollisionWithBall();
-					std::cout << "B";
-				}
-			}
+			SE::CollisionManager::checkCollisions();
 
 			// ---------------
 			accumulator -= dt;
@@ -111,3 +107,4 @@ auto BrickBreakerGame::update() ->void
 	}
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 }
+

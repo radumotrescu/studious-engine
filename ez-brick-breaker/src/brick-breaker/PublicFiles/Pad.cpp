@@ -14,9 +14,9 @@ Pad::Pad(SE::SimpleRenderer* renderer, float velocityX, float velocityY)
 
 
 
-auto Pad::getRectangle() ->SE::Rectangle *
+auto Pad::getRectangle() ->std::shared_ptr<SE::Rectangle>
 {
-	return m_pad.get();
+	return m_pad;
 }
 
 auto Pad::moveRight() ->void
