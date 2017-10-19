@@ -8,12 +8,13 @@ namespace SE
 	{
 	public:
 		static auto getInstance() -> LabelManager&;
+		static auto init() -> void;
 		static auto addLabel(const Label&) -> void;
-		auto displayAllLabels() const -> void;
-		auto setIsDisplayingFps(bool) -> void;
+		static auto displayAllLabels() -> void;
+		static auto setIsDisplayingFps(bool) -> void;
 	private:
 
-		bool m_displayFPS = false;
+		static bool m_displayFPS;
 		static std::list<Label> m_labels;
 		static int m_frames;
 		static int m_initialTime;

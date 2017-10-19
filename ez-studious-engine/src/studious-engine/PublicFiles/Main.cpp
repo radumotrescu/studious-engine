@@ -120,11 +120,11 @@ auto main()->int
 	ren.addRectangleToDrawCall(s3);
 	//ren.addToDrawCall(s4);
 
-	gltInit();
-
-	auto text = gltCreateText();
-	gltSetText(text, "Hello!");
-
+	SE::LabelManager::init();
+	SE::LabelManager::setIsDisplayingFps(true);
+	auto label = SE::Label("Salut", 55, 66, 2.0);
+	label.setColor(SE::vec3(0.2, 0.6, 0.01));
+	SE::LabelManager::addLabel(label);
 
 	while (!window->closed())
 	{
@@ -134,15 +134,14 @@ auto main()->int
 
 		ren.draw();
 
-		gltColor(1.0f, 0.0f, 0.5f, 1.0f);
-		gltDrawText2D(text, 300, 300, 2.0);
+		SE::LabelManager::displayAllLabels();
 
 
 		window->update();
 		//nullTexture.unbind();
 	}
 
-	gltDeleteText(text);
+	//gltDeleteText(text);
 	gltTerminate();
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 	return 0;

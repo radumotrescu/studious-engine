@@ -1,14 +1,17 @@
 #pragma once
-#include "LabelManager.h"
+
 #include <ctime>
 #include <string>
+
+#include "LabelManager.h"
 
 namespace SE
 {
 	std::list<Label> LabelManager::m_labels;
 	int LabelManager::m_frames;
 	int LabelManager::m_initialTime;
-	Label LabelManager::m_FPSLabel("FPS", 15, 580);
+	Label LabelManager::m_FPSLabel;
+	bool LabelManager::m_displayFPS;
 
 	auto LabelManager::getInstance() -> LabelManager&
 	{
@@ -17,12 +20,17 @@ namespace SE
 		return labelManager;
 	}
 
+	auto LabelManager::init() -> void
+	{
+		m_FPSLabel = Label("FPS ", 15, 15, 1.0);
+	}
+
 	auto LabelManager::addLabel(const Label& label) -> void
 	{
 		m_labels.push_back(label);
 	}
 
-	auto LabelManager::displayAllLabels() const -> void
+	auto LabelManager::displayAllLabels() -> void
 	{
 		if (m_displayFPS)
 		{
@@ -30,7 +38,7 @@ namespace SE
 			m_FPSLabel.display();
 		}
 
-		for (auto &element : this->m_labels)
+		for (auto &element : m_labels)
 		{
 			element.display();
 		}
