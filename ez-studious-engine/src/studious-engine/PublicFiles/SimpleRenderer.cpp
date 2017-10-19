@@ -46,7 +46,7 @@ namespace SE {
 			m_shader.setUniformMat4("ml_matrix", mat4::translation(rectangle->getOrigin()));
 			m_shader.setUniform1i("tex", rectangle->getTextureID());
 			//m_shader.setUniform3fv("light", m_light->getLightVector());
-			rectangle->getSprite().Draw();
+			rectangle->draw();
 
 
 			//for (auto& light : m_lightVector)

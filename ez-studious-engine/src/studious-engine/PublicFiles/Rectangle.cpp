@@ -18,6 +18,11 @@ namespace SE {
 		return m_sprite.m_texture.getID();
 	}
 
+	auto Rectangle::draw() -> void const
+	{
+		m_sprite.Draw();
+	}
+
 	Rectangle::Rectangle()
 	{
 	}

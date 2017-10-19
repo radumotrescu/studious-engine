@@ -66,5 +66,8 @@ namespace SE {
 
 		auto getTextureID()->GLuint;
 
+
+		auto draw() -> void const;
+
 	};
 }
