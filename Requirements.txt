@@ -38,5 +38,11 @@ Intermediate requirements:
 	->TODO: backgroung miscator
 	
 	
+	PART6:
 	
-	
+	Sunete (engine+joc) -> George + Adina
+	Lumina, background -> Radu
+	Testat joc la greu -> Miruna
+	Text + inimioare pentru scor -> Marius
+	Documentatie -> toti
+	Refactoring cod -> toti
