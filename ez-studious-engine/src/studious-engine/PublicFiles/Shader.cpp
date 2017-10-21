@@ -106,7 +106,6 @@ uniform vec4 colour=vec4(1.0,0.0,0.0,1.0);
 uniform vec2 lpos=vec2(0.0,0.0);
 uniform vec3 lcolor=vec3(1.0,1.0,1.0);
 //uniform float lintensity=1.0f;
-uniform vec3 light[10];
 
 
 in DATA
@@ -118,14 +117,25 @@ in DATA
 
 																																	   
 uniform sampler2D tex;
+uniform vec2 scrollingSpeed=vec2(0.1,0.1);
+uniform bool lightEnabled=false;
 
 void main()
 {
+	if(lightEnabled==true){
 
 	float distance = length(lpos - fs_in.position.xy);
-	float attenuation = 1.0 / distance*40;
+	float attenuation = 1.0 / distance*200;
 
-	outColor = texture(tex, fs_in.textureCoord)*vec4(attenuation,attenuation,attenuation,pow(attenuation,3))*vec4(fs_in.color);
+	//outColor = texture(tex, fs_in.textureCoord)*vec4(attenuation,attenuation,attenuation,pow(attenuation,1))*vec4(fs_in.color);
+	outColor = texture(tex, vec2(scrollingSpeed.x+fs_in.textureCoord.x,scrollingSpeed.y+fs_in.textureCoord.y))*vec4(attenuation,attenuation,attenuation,pow(attenuation,0.5))*vec4(fs_in.color);
+	}
+else
+{
+
+	outColor = texture(tex, vec2(scrollingSpeed.x+fs_in.textureCoord.x,scrollingSpeed.y+fs_in.textureCoord.y))*vec4(fs_in.color);
+}
+
 })glsl";
 
 		glShaderSource(vertex, 1, &vertexSource, NULL);

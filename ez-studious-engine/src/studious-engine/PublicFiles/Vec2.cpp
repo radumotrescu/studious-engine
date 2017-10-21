@@ -64,6 +64,11 @@ namespace SE {
 		return left.divide(right);
 	}
 
+	vec2 operator*(vec2 left, const float right)
+	{
+		return vec2(left.x*right,left.y*right);
+	}
+
 	vec2& vec2::operator+=(const vec2& other)
 	{
 		return add(other);

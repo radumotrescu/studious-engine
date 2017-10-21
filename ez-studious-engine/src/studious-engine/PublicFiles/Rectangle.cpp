@@ -101,6 +101,11 @@ namespace SE {
 		translate(m_origin.add(vec3(0.0, move, 0.0)));
 	}
 
+	auto Rectangle::setScrollingSpeed(const vec2 scrollingSpeed) -> void
+	{
+		m_scrollingSpeed = scrollingSpeed;
+	}
+
 	auto Rectangle::translate(const vec3& translate) -> void
 	{
 		m_origin = translate;
@@ -124,6 +129,11 @@ namespace SE {
 	auto Rectangle::getOrigin() const -> vec3 const
 	{
 		return m_origin;
+	}
+
+	auto Rectangle::getScrollingSpeed() const -> vec2
+	{
+		return m_scrollingSpeed;
 	}
 
 	//auto Rectangle::getTextureId() -> unsigned int const

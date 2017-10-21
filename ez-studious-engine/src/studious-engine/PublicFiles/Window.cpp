@@ -46,6 +46,8 @@ namespace SE {
 		glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 		glEnable(GL_BLEND);
 		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
+		setVSync(true);
 		
 		return true;
 	}
@@ -56,6 +58,25 @@ namespace SE {
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	}
 
+auto Window::setVSync(bool sync)->void
+	{
+		typedef BOOL(APIENTRY *PFNWGLSWAPINTERVALPROC)(int);
+		PFNWGLSWAPINTERVALPROC wglSwapIntervalEXT = 0;
+
+		const char *extensions = (char*)glGetString(GL_EXTENSIONS);
+
+		if (strstr(extensions, "WGL_EXT_swap_control") == 0)
+		{
+			return;
+		}
+		else
+		{
+			wglSwapIntervalEXT = (PFNWGLSWAPINTERVALPROC)wglGetProcAddress("wglSwapIntervalEXT");
+
+			if (wglSwapIntervalEXT)
+				wglSwapIntervalEXT(sync);
+		}
+	}
 	auto Window::getHeight() const -> int
 	{
 		return m_height;

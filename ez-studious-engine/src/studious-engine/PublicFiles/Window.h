@@ -23,6 +23,7 @@ namespace SE {
 		bool m_closed;
 		std::string m_name;
 		std::unique_ptr<GLFWwindow*> m_window;
+		auto setVSync(bool sync)->void;
 
 		auto init() -> bool;
 	};
