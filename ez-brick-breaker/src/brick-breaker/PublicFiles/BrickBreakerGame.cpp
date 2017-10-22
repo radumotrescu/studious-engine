@@ -32,7 +32,6 @@ auto BrickBreakerGame::addBricksToRenderer()->void
 
 	Texture brickTexture1("..\\..\\src\\studious-engine\\PublicFiles\\Textures\\brick_1.png");
 	Texture brickTexture2("..\\..\\src\\studious-engine\\PublicFiles\\Textures\\brick_2.png");
-	//Texture brickTexture3("..\\..\\src\\studious-engine\\PublicFiles\\Textures\\brick_3.png");
 
 	for (int i = minRowIndexOnRow1; i < maxBrickIndexOnRow1; i++)
 	{
@@ -58,9 +57,10 @@ auto BrickBreakerGame::connectKeySignalsToPadMovement() ->void
 
 auto BrickBreakerGame::connectBehaviorOnCollision() -> void
 {
-	SE::CollisionManager::addCollisionalEntities(m_ball->getRectangle(), m_pad->getRectangle(), std::bind(&Ball::onCollisionWithPad, m_ball.get(), std::placeholders::_1, std::placeholders::_2));
+	SE::CollisionManager::addCollisionalEntities(m_ball->getRectangle(), m_pad->getRectangle(), std::bind(&Ball::onCollisionWithPad, m_ball, std::placeholders::_1, std::placeholders::_2));
 	for (auto& brick : m_bricks)
 	{
+		SE::CollisionManager::addCollisionalEntities(m_ball->getRectangle(), brick.getRectangle(), std::bind(&Ball::onCollisionWithBrick, m_ball, std::placeholders::_1, std::placeholders::_2));
 		SE::CollisionManager::addCollisionalEntities(m_ball->getRectangle(), brick.getRectangle(), std::bind(&Brick::onCollisionWithBall, &brick, std::placeholders::_1, std::placeholders::_2));
 	}
 }

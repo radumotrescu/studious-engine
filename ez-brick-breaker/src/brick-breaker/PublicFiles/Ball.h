@@ -1,5 +1,6 @@
 #pragma once
 #include <memory>
+#include <chrono>
 #include "Rectangle.h"
 #include"SimpleRenderer.h"
 #include "Utils.h"

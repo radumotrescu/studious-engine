@@ -16,6 +16,6 @@ auto Brick::getRectangle() ->std::shared_ptr<SE::Rectangle>
 
 auto Brick::onCollisionWithBall(std::shared_ptr<SE::Rectangle> ball, std::shared_ptr<SE::Rectangle> brick) ->void
 {
-	//brick->translate(SE::vec3(1.0, 1.0, 0.0));
+	brick->translate(SE::vec3(500.0, 500.0, 0.0));
 	renderer->removeRectangleFromDrawCall(brick);
 }

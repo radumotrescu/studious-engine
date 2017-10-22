@@ -42,11 +42,29 @@ auto Ball::move() ->void
 
 auto Ball::onCollisionWithPad(std::shared_ptr<SE::Rectangle> ball, std::shared_ptr<SE::Rectangle> pad) ->void
 {
-	m_velocityY = -m_velocityY;
-	m_velocityX = m_velocityX;
+	static bool isFirstCollisionWithPad = true;
+	static auto lastCollisionTime = std::chrono::system_clock::now();
+
+	auto currentCollisionTime = std::chrono::system_clock::now();
+	std::chrono::duration<float> passedTime = currentCollisionTime - lastCollisionTime;
+	std::chrono::duration<float> latency(0.5f);
+
+	if (passedTime >= latency || isFirstCollisionWithPad)
+	{
+		std::cout << "collision with pad counted" << std::endl;
+		m_velocityY = -m_velocityY;
+		m_velocityX = m_velocityX;
+		lastCollisionTime = currentCollisionTime;
+		isFirstCollisionWithPad = false;
+	}
+	else
+	{
+		std::cout << "collision with pad NOT counted" << std::endl;
+	}
+
 }
 
-auto Ball::onCollisionWithBrick(std::shared_ptr<SE::Rectangle> ball , std::shared_ptr<SE::Rectangle>  brick) ->void
+auto Ball::onCollisionWithBrick(std::shared_ptr<SE::Rectangle> ball, std::shared_ptr<SE::Rectangle>  brick) ->void
 {
 	m_velocityY = -m_velocityY;
 	m_velocityX = m_velocityX;
