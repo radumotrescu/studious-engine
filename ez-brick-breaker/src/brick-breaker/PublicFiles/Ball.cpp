@@ -21,6 +21,7 @@ auto Ball::getRectangle() const -> std::shared_ptr<SE::Rectangle>
 
 auto Ball::move() ->void
 {
+	m_renderer->setLightPosition(SE::vec2(m_ball->getOrigin().x + m_ball->getWidth() / 2, m_ball->getOrigin().y + m_ball->getHeight() / 2));
 	if (!this->isMoving)
 	{
 		auto origin = m_ball->getOrigin();
