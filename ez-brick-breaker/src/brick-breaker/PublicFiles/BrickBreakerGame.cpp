@@ -18,6 +18,11 @@ auto BrickBreakerGame::init() -> void
 	Game::init();
 	m_ball = std::make_shared<Ball>(m_renderer.get(), 10, 5);
 	m_pad = std::make_shared<Pad>(m_renderer.get());
+
+	auto starsTexture = Texture("..\\..\\src\\studious-engine\\PublicFiles\\Textures\\stars.png");
+	auto background = std::make_shared<SE::Rectangle>(SE::vec3(0, 0, 0), SE::vec2(200, 200), SE::vec3(1, 1, 1), starsTexture, 0);
+	background->setScrollingSpeed(SE::vec2(0, -0.3));
+	m_renderer->addRectangleToDrawCall(background);
 }
 
 auto BrickBreakerGame::addBricksToRenderer()->void

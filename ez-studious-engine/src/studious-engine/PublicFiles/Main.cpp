@@ -8,13 +8,11 @@
 #include "glut.h"
 #include "LabelManager.h"
 #include "CollisionManager.h"
-#include "ft2build.h"
 #include "Vec3.h"
 #include "Light.h"
 
 #include "gltext.h"
 
-#include FT_FREETYPE_H
 
 static const int WINDOW_WIDTH = 600;
 static const int WINDOW_HEIGHT = 800;
@@ -109,22 +107,25 @@ auto main()->int
 	Texture tex1("..\\..\\src\\studious-engine\\PublicFiles\\Textures\\test.png");
 
 	auto s1 = std::make_shared<SE::Rectangle>(SE::vec3(0, 0, 0.0f), SE::vec2(WINDOW_WIDTH, WINDOW_HEIGHT), tex, 1);
-	s1->setScrollingSpeed(SE::vec2(-2, 0));
+	s1->setScrollingSpeed(SE::vec2(1, 0));
 	//auto s2 = std::make_shared<SE::Rectangle>(SE::vec3(70.0f, 70, 0.0f), SE::vec2(100, 100), tex1, 4);
 	//auto s3 = std::make_shared<SE::Rectangle>(SE::vec3(150.0f, 10, 0.0f), SE::vec2(10, 10), SE::vec3(1, 0, 0), 0);
 	//auto s4 = std::make_shared<SE::Rectangle>(SE::vec3(10.0f, 10, 0.0f), SE::vec2(100, 100), SE::vec3(0, 1, 0), 3);
 
 	Texture tex2("..\\..\\src\\studious-engine\\PublicFiles\\Textures\\kitty.png");
 	auto s3 = std::make_shared<SE::Rectangle>(SE::vec3(100.0f, 100.0f, 0.0f), SE::vec2(50, 50), SE::vec3(1, 1, 1), tex2, 2);
+	s3->setScrollingSpeed(SE::vec2(1, -4));
 
 	ren.addRectangleToDrawCall(s1);
 	ren.addRectangleToDrawCall(s3);
 
 	SE::LabelManager::init();
 	SE::LabelManager::setIsDisplayingFps(true);
-	//ren.setLightStatus(true);
+	ren.setLightStatus(true);
 	ren.setLightPosition(SE::vec2(300, 300));
-	auto label = SE::Label("Salut", 55, 66, 2.0);
+	ren.setLightRadius(200.f);
+	ren.setLightIntensity(100.0f);
+	auto label = SE::Label("Salut", 1, 66, 2.0);
 	label.setColor(SE::vec3(0.2, 0.6, 0.01));
 	SE::LabelManager::addLabel(label);
 

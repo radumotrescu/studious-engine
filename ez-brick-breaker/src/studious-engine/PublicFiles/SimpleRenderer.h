@@ -13,20 +13,21 @@ namespace SE {
 	class SimpleRenderer {
 
 	public:
-		SimpleRenderer();
+		SimpleRenderer::SimpleRenderer(const float screenWidth, const float screenHeight);
 		~SimpleRenderer();
 		auto addRectangleToDrawCall(std::shared_ptr<Rectangle> sprite) ->void;
 		auto removeRectangleFromDrawCall(std::shared_ptr<Rectangle> sprite) ->void;
-		auto addLightToDrawCall(std::shared_ptr<Light> light) -> void;
+		auto setLightStatus(const bool enabled)->void;
+		auto setLightPosition(const vec2 position)->void;
 		auto draw() -> void;
 
 	private:
 		//const std::string fragPath = "basic.frag";
 		//const std::string vertPath = "basic.vert";
 		//Shader m_shader = Shader(vertPath, fragPath);
+
 		Shader m_shader = Shader();
 		std::vector<std::shared_ptr<Rectangle>> m_drawVector;
-		std::shared_ptr<Light> m_light;
 	};
 
 

@@ -20,6 +20,8 @@ namespace SE {
 		unsigned m_priority;
 		vec3 m_color;
 
+		vec2 m_scrollingSpeed=vec2(0,0);
+
 		//texture coord for all 4 vertices
 
 
@@ -51,6 +53,7 @@ namespace SE {
 		auto getWidth() const ->float const;
 		auto getHeight() const ->float const;
 		auto getOrigin() const ->vec3 const;
+		auto getScrollingSpeed() const->vec2;
 
 		//auto getTextureId()->unsigned int const;
 
@@ -64,7 +67,12 @@ namespace SE {
 		auto moveUp()->void;
 		auto moveDown()->void;
 
+		auto setScrollingSpeed(const vec2 scrollingSpeed)->void;
+
 		auto getTextureID()->GLuint;
+
+
+		auto draw() -> void const;
 
 	};
 }
