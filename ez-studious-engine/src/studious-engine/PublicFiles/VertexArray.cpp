@@ -4,7 +4,8 @@ namespace SE {
 
 	VertexArray::VertexArray()
 	{
-		glGenVertexArrays(1, &m_arrayID);
+		const int vertexArrayObjectsNumber = 1;
+		glGenVertexArrays(vertexArrayObjectsNumber, &m_arrayID);
 	}
 
 
@@ -18,7 +19,9 @@ namespace SE {
 		bind();
 		buffer->bind();
 
-		glVertexAttribPointer(index, buffer->getComponentCount(), GL_FLOAT, GL_FALSE, 0, 0);
+		const int stride = 0;  // Stride is the distance from the beginning of one entity, to the begginging of the following entity.
+		const void* offsetPointer = nullptr;
+		glVertexAttribPointer(index, buffer->getComponentCount(), GL_FLOAT, GL_FALSE, stride, offsetPointer);
 		glEnableVertexAttribArray(index);
 
 		buffer->unbind();

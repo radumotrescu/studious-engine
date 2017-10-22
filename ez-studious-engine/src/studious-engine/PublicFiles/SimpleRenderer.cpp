@@ -2,9 +2,17 @@
 
 namespace SE {
 
-	SimpleRenderer::SimpleRenderer(const float screenWidth, const float screenHeight)
+	const float notMovingValue = 0.0f;
+	const float fullLoopFPSValues = 1000.0f;
+	const float loopIncrementValue = 1.0f;
+	const float startingLoopValue = 0.0f;
+
+	SimpleRenderer::SimpleRenderer(const float screenWidth, const float screenHeight, const float depthLevel)
 	{
-		mat4 ortho = mat4::orthographic(0.0f, screenWidth, screenHeight, 0.0f, -1.0f, 10.0f);
+		const float nearPlane = -1.0f;
+		const float minViewportWidth = 0.0f;
+		const float minViewportHeight = 0.0f;
+		mat4 ortho = mat4::orthographic(minViewportWidth, screenWidth, screenHeight, minViewportHeight, nearPlane, depthLevel);
 		m_shader.enable();
 		m_shader.setUniformMat4("pr_matrix", ortho);
 		m_shader.setUniform2f("lpos", Light::getPosition());
@@ -28,14 +36,18 @@ namespace SE {
 		m_drawVector.push_back(sprite);
 		std::sort(m_drawVector.begin(), m_drawVector.end(), compareSpritePriority);
 		LoopStruct loopStruct;
-		if (sprite->getScrollingSpeed().x != 0)
-			loopStruct.m_loopInterval.x = 1000 / std::abs(sprite->getScrollingSpeed().x);
+
+
+
+		if (sprite->getScrollingSpeed().x != notMovingValue)
+			loopStruct.m_loopInterval.x = fullLoopFPSValues / std::abs(sprite->getScrollingSpeed().x);
 		else
-			loopStruct.m_loopInterval.x = 0;
-		if (sprite->getScrollingSpeed().y != 0)
-			loopStruct.m_loopInterval.y = 1000 / std::abs(sprite->getScrollingSpeed().y);
+			loopStruct.m_loopInterval.x = notMovingValue;
+
+		if (sprite->getScrollingSpeed().y != notMovingValue)
+			loopStruct.m_loopInterval.y = fullLoopFPSValues / std::abs(sprite->getScrollingSpeed().y);
 		else
-			loopStruct.m_loopInterval.y = 0;
+			loopStruct.m_loopInterval.y = notMovingValue;
 
 		scrollingMap[sprite] = loopStruct;
 
@@ -50,7 +62,7 @@ namespace SE {
 	{
 		Light::setEnabled(enabled);
 		m_shader.enable();
-		m_shader.setUniform1i("lightEnabled", Light::getEnabled());
+		m_shader.setUniform1i("lightEnabled", enabled);
 		m_shader.disable();
 	}
 
@@ -58,7 +70,7 @@ namespace SE {
 	{
 		Light::setPosition(position);
 		m_shader.enable();
-		m_shader.setUniform2f("lpos", Light::getPosition());
+		m_shader.setUniform2f("lpos", position);
 		m_shader.disable();
 	}
 
@@ -78,20 +90,19 @@ namespace SE {
 		m_shader.disable();
 	}
 
-
-
 	auto SimpleRenderer::draw() -> void
 	{
 
+
 		for (auto& rectangle : scrollingMap)
 		{
-			rectangle.second.m_loopValue.x += 1;
+			rectangle.second.m_loopValue.x += loopIncrementValue;
 			if (rectangle.second.m_loopValue.x > rectangle.second.m_loopInterval.x)
-				rectangle.second.m_loopValue.x = 0;
+				rectangle.second.m_loopValue.x = startingLoopValue;
 
-			rectangle.second.m_loopValue.y += 1;
+			rectangle.second.m_loopValue.y += loopIncrementValue;
 			if (rectangle.second.m_loopValue.y > rectangle.second.m_loopInterval.y)
-				rectangle.second.m_loopValue.y = 0;
+				rectangle.second.m_loopValue.y = startingLoopValue;
 		}
 
 		m_shader.enable();
@@ -99,8 +110,8 @@ namespace SE {
 		{
 			m_shader.setUniformMat4("ml_matrix", mat4::translation(rectangle->getOrigin()));
 			m_shader.setUniform1i("tex", rectangle->getTextureID());
-			vec2 scrollingSpeedVec2 = vec2(rectangle->getScrollingSpeed().x*(scrollingMap[rectangle].m_loopValue.x / 1000), rectangle->getScrollingSpeed().y*(scrollingMap[rectangle].m_loopValue.y / 1000));
-			m_shader.setUniform2f("scrollingSpeed", scrollingSpeedVec2);
+			vec2 scrollingOffset = vec2(rectangle->getScrollingSpeed().x*(scrollingMap[rectangle].m_loopValue.x / 1000), rectangle->getScrollingSpeed().y*(scrollingMap[rectangle].m_loopValue.y / fullLoopFPSValues));
+			m_shader.setUniform2f("scrollingOffset", scrollingOffset);
 			rectangle->draw();
 
 		}

@@ -14,16 +14,6 @@ namespace SE {
 		glDisable(GL_DEPTH_TEST);
 	}
 
-
-
-	//auto Sprite::action() -> void
-	//{
-	//	float inc = -5.0f;
-	//	this->UpdateLocation(this->m_position.add(vec3(-inc*0.1f, -inc* 0.1f, 0.0f)));
-	//	if (this->m_position.y > 200 || this->m_position.y < 0)
-	//		inc = -inc;
-	//}
-
 	auto Sprite::getVAO() -> VertexArray
 	{
 		return m_vao;
@@ -72,11 +62,4 @@ namespace SE {
 		activateIBO(indexes);
 		activateVAO(matrix, std::vector<GLfloat>(m_texture.textures.begin(),m_texture.textures.end()),colors);
 	}
-
-	//Sprite::Sprite(const std::vector<GLfloat>& matrix, const std::vector<GLfloat>& colors, const std::vector<GLfloat>& textureCoord, const std::vector<GLushort>& indexes)
-	//{
-	//	activateIBO(indexes);
-	//	activateVAO(matrix, textureCoord, colors);
-	//}
-
 }

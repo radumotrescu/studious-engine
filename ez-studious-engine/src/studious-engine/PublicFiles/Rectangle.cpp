@@ -3,11 +3,6 @@
 
 namespace SE {
 
-	//auto Rectangle::changePointCoordinates(const vec3 & position) -> void
-	//{
-	//	m_origin = position;
-	//}
-
 	auto Rectangle::changePriority(const unsigned priority) -> void
 	{
 		m_priority = priority;
@@ -27,15 +22,10 @@ namespace SE {
 	{
 	}
 
-	// unused constructor
-	Rectangle::Rectangle(const vec3 & position, const vec2 & dimension, const vec3 & color, const unsigned priority) :m_origin(position), m_dimension(dimension), m_color(color), m_priority(priority)
+	Rectangle::Rectangle(const vec2 & position, const vec2 & dimension, const vec3 & color, const unsigned priority) 
+		:m_origin(vec3(position.x,position.y,priority)), m_dimension(dimension), m_color(color), m_priority(priority)
 	{
-		//glActiveTexture(GL_TEXTURE0);
-		//m_texture = std::make_shared<Texture>("..\\..\\src\\studious-engine\\PublicFiles\\Textures\\kitty.png");
-
 		Texture tex = Texture::getNullTexture();
-
-		m_origin.z = priority;
 		matrix = { 0,0,0,dimension.y,dimension.x,dimension.y,dimension.x,0 };
 		colors = { 
 			color.x, color.y, color.z, 1.0f,
@@ -46,10 +36,9 @@ namespace SE {
 		m_sprite = Sprite(std::vector<GLfloat>(matrix.begin(), matrix.end()), std::vector<GLfloat>(colors.begin(), colors.end()), tex, std::vector<GLushort>(indexes.begin(), indexes.end()));
 
 	}
-	Rectangle::Rectangle(const vec3 & position, const vec2 & dimension, const Texture& texture, const unsigned priority)
-		:m_origin(position), m_dimension(dimension), m_priority(priority)
+	Rectangle::Rectangle(const vec2 & position, const vec2 & dimension, const Texture& texture, const unsigned priority)
+		:m_origin(vec3(position.x,position.y,priority)), m_dimension(dimension), m_priority(priority)
 	{
-		m_origin.z = priority;
 		matrix = { 0,0,0,dimension.y,dimension.x,dimension.y,dimension.x,0 };
 		colors = {
 			1.0f, 1.0f, 1.0f, 1.0f,
@@ -60,10 +49,9 @@ namespace SE {
 		m_sprite = Sprite(std::vector<GLfloat>(matrix.begin(), matrix.end()), std::vector<GLfloat>(colors.begin(), colors.end()),texture, std::vector<GLushort>(indexes.begin(), indexes.end()));
 	}
 
-	Rectangle::Rectangle(const vec3 & position, const vec2 & dimension, const vec3 & color, const Texture & texture, const unsigned priority)
-		:m_origin(position), m_dimension(dimension), m_priority(priority)
+	Rectangle::Rectangle(const vec2 & position, const vec2 & dimension, const vec3 & color, const Texture & texture, const unsigned priority)
+		:m_origin(vec3(position.x,position.y,priority)), m_dimension(dimension), m_priority(priority)
 	{
-		m_origin.z = priority;
 		matrix = { 0,0,0,dimension.y,dimension.x,dimension.y,dimension.x,0 };
 		colors = { 
 			color.x, color.y, color.z, 1.0f,

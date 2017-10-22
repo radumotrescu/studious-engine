@@ -25,6 +25,16 @@ namespace SE {
 		return m_enabled;
 	}
 
+	auto Light::getRadius() -> const float
+	{
+		return m_radius;
+	}
+
+	auto Light::getIntensity() -> const float
+	{
+		return m_intensity;
+	}
+
 	auto Light::setPosition(const vec2 position) -> void
 	{
 		m_position = position;

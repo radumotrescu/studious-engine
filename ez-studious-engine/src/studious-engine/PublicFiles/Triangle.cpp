@@ -6,12 +6,7 @@ namespace SE {
 
 	Triangle::Triangle()
 	{
-		// the points are assigned counterclockwise starting from the lower left corner
-
 	}
-
-
-
 	auto Triangle::getPoints() const -> std::vector<vec3>
 	{
 		// the points are assigned counterclockwise starting from the lower left corner

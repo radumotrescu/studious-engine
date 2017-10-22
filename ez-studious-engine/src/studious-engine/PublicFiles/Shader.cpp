@@ -118,7 +118,7 @@ in DATA
 
 																																	   
 uniform sampler2D tex;
-uniform vec2 scrollingSpeed=vec2(0.1,0.1);
+uniform vec2 scrollingOffset=vec2(0.1,0.1);
 uniform bool lightEnabled=false;
 
 void main()
@@ -129,17 +129,18 @@ void main()
 	float attenuation = 1.0 / distance*lradius;
 
 	//outColor = texture(tex, fs_in.textureCoord)*vec4(attenuation,attenuation,attenuation,pow(attenuation,lintensity))*vec4(fs_in.color);
-	outColor = texture(tex, vec2(scrollingSpeed.x+fs_in.textureCoord.x,scrollingSpeed.y+fs_in.textureCoord.y))*vec4(attenuation,attenuation,attenuation,pow(attenuation,lintensity))*vec4(fs_in.color);
+	outColor = texture(tex, vec2(scrollingOffset.x+fs_in.textureCoord.x,scrollingOffset.y+fs_in.textureCoord.y))*vec4(attenuation,attenuation,attenuation,pow(attenuation,lintensity))*vec4(fs_in.color);
 	}
 else
 {
 
-	outColor = texture(tex, vec2(scrollingSpeed.x+fs_in.textureCoord.x,scrollingSpeed.y+fs_in.textureCoord.y))*vec4(fs_in.color);
+	outColor = texture(tex, vec2(scrollingOffset.x+fs_in.textureCoord.x,scrollingOffset.y+fs_in.textureCoord.y))*vec4(fs_in.color);
 }
 
 })glsl";
-
-		glShaderSource(vertex, 1, &vertexSource, NULL);
+		const int shaderNumber = 1;
+		const int shaderLenght = 0;
+		glShaderSource(vertex, shaderNumber, &vertexSource, shaderLenght);
 		glCompileShader(vertex);
 
 		GLint result;
@@ -155,7 +156,7 @@ else
 			return 0;
 		}
 
-		glShaderSource(fragment, 1, &fragmentSource, NULL);
+		glShaderSource(fragment, shaderNumber, &fragmentSource, shaderLenght);
 		glCompileShader(fragment);
 
 		glGetShaderiv(fragment, GL_COMPILE_STATUS, &result);
@@ -198,5 +199,4 @@ else
 	{
 		glDeleteProgram(m_shaderID);
 	}
-
 }

@@ -4,7 +4,6 @@ namespace SE {
 
 	auto Application::isCollided(IEntity * entity1, IEntity * entity2) -> bool
 	{
-		//Point3D missing from the IEntity hierarchy
 		if ((entity1->getType() == Type::RECTANGLE) && (entity2->getType() == Type::RECTANGLE))
 		{
 			Rectangle* rect1 = dynamic_cast<Rectangle*>(entity1);

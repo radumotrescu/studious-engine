@@ -1,6 +1,6 @@
 #pragma once
 
-#include <FreeImage.h> // minutul 10 in 15
+#include <FreeImage.h>
 
 static BYTE* load_image(const char* filename, GLsizei* width, GLsizei* height)
 {
