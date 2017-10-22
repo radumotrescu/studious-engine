@@ -7,11 +7,8 @@ namespace SE {
 		mat4 ortho = mat4::orthographic(0.0f, screenWidth, screenHeight, 0.0f, -1.0f, 10.0f);
 		m_shader.enable();
 		m_shader.setUniformMat4("pr_matrix", ortho);
-		//m_shader.setUniform3fv("light", std::array<float, 6>{50, 50, 50, 0, 0, 100});
-		//m_shader.setUniform1f("lintensity", 23.0f);
 		m_shader.setUniform2f("lpos", Light::getPosition());
 		m_shader.setUniform1i("lightEnabled", Light::getEnabled());
-		//m_shader.setUniform3f("lcolor",vec3())
 		m_shader.disable();
 	}
 
@@ -104,7 +101,6 @@ namespace SE {
 			m_shader.setUniform1i("tex", rectangle->getTextureID());
 			vec2 scrollingSpeedVec2 = vec2(rectangle->getScrollingSpeed().x*(scrollingMap[rectangle].m_loopValue.x / 1000), rectangle->getScrollingSpeed().y*(scrollingMap[rectangle].m_loopValue.y / 1000));
 			m_shader.setUniform2f("scrollingSpeed", scrollingSpeedVec2);
-			//m_shader.setUniform3fv("light", m_light->getLightVector());
 			rectangle->draw();
 
 		}
