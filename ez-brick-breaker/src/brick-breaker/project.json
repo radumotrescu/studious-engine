@@ -1,6 +1,6 @@
 {
     "name":"brick-breaker",
     "type":"Executable",
-    "dependencies": ["glew32s","glfw3","opengl32","studious-engine","FreeImage", "freetype28d"],
+    "dependencies": ["glew32s","glfw3","opengl32","studious-engine","FreeImage"],
     "additionalCMakeCommands": ["if(WIN32)", "add_definitions(-DGLEW_STATIC)", "endif(WIN32)"]
 }

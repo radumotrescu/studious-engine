@@ -8,10 +8,14 @@ auto Game::init() -> void
 	t = 0.0;
 	accumulator = 0.0;
 	// window && glClearColor first!
-	m_window = std::make_shared<SE::Window>("Test", 600, 800);
+	const float screenWidth = 600;
+	const float screenHeight = 800;
+	m_window = std::make_shared<SE::Window>("Test", screenWidth, screenHeight);
 	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 	//renderer depeds on window context
-	m_renderer = std::make_shared<SE::SimpleRenderer>();
+	m_renderer = std::make_shared<SE::SimpleRenderer>(200,200);
+
+
 }
 
 auto Game::run() -> void

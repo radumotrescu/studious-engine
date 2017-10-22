@@ -2,7 +2,7 @@
 
 Brick::Brick(SE::SimpleRenderer* renderer, SE::vec3 position, SE::vec2 size, SE::vec3 color, const Texture& texture)
 	:renderer(renderer)
-	, brick(std::make_shared<SE::Rectangle>(position, size, color, texture, 0))
+	, brick(std::make_shared<SE::Rectangle>(position, size, color, texture, 3))
 {
 	renderer->addRectangleToDrawCall(brick);
 }
