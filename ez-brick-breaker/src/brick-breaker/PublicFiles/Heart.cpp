@@ -6,3 +6,8 @@ Heart::Heart(SE::SimpleRenderer* renderer, SE::vec3 pos)
 {
 	renderer->addRectangleToDrawCall(m_heart);
 }
+
+Heart::~Heart()
+{
+	m_renderer->removeRectangleFromDrawCall(m_heart);
+}

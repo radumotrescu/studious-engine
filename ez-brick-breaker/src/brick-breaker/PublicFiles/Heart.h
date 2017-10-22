@@ -6,6 +6,7 @@ class Heart
 {
 public:
 	Heart(SE::SimpleRenderer* renderer, SE::vec3 pos);
+	~Heart();
 
 private:
 	SE::SimpleRenderer* m_renderer;

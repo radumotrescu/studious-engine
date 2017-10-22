@@ -13,6 +13,7 @@ public:
 	auto getRectangle()->std::shared_ptr<SE::Rectangle >;
 	auto moveRight() ->void;
 	auto moveLeft() ->void;
+	auto setPosition(SE::vec3 position) -> void;
 
 private:
 

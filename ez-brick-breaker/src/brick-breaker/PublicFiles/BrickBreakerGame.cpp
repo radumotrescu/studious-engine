@@ -19,9 +19,9 @@ auto BrickBreakerGame::init() -> void
 	Game::init();
 	m_ball = std::make_shared<Ball>(m_renderer.get());
 	m_pad = std::make_shared<Pad>(m_renderer.get());
-	m_heart[0] = std::make_shared<Heart>(m_renderer.get(), SE::vec3(185.f, 5.f, 66.6f));
-	m_heart[1] = std::make_shared<Heart>(m_renderer.get(), SE::vec3(175.f, 5.f, 66.6f));
-	m_heart[2] = std::make_shared<Heart>(m_renderer.get(), SE::vec3(165.f, 5.f, 66.6f));
+	m_hearts.push_back(std::make_shared<Heart>(m_renderer.get(), SE::vec3(185.f, 5.f, 66.6f)));
+	m_hearts.push_back(std::make_shared<Heart>(m_renderer.get(), SE::vec3(175.f, 5.f, 66.6f)));
+	m_hearts.push_back(std::make_shared<Heart>(m_renderer.get(), SE::vec3(165.f, 5.f, 66.6f)));
 	auto starsTexture = Texture("..\\..\\src\\studious-engine\\PublicFiles\\Textures\\stars.png");
 	auto background = std::make_shared<SE::Rectangle>(SE::vec3(0, 0, 0), SE::vec2(200, 200), SE::vec3(1, 1, 1), starsTexture, 0);
 	background->setScrollingSpeed(SE::vec2(0, -0.3));
@@ -61,6 +61,7 @@ auto BrickBreakerGame::connectKeySignalsToPadMovement() const -> void
 	InputManager::getInstance().init(m_window->getWindow());
 	InputManager::getInstance().registerSpriteAction(std::bind(&Pad::moveRight, m_pad.get()), GLFW_KEY_D);
 	InputManager::getInstance().registerSpriteAction(std::bind(&Pad::moveLeft, m_pad.get()), GLFW_KEY_A);
+	InputManager::getInstance().registerSpriteAction(std::bind(&Ball::toggleIsMoving, m_ball.get()), GLFW_KEY_SPACE);
 }
 
 auto BrickBreakerGame::connectBehaviorOnCollision() -> void
@@ -82,9 +83,17 @@ auto BrickBreakerGame::update() -> void
 	}
 	catch(std::string ex)
 	{
-
+		onBallOutOfScope();
 	}
 	SE::CollisionManager::checkCollisions();
+}
+
+auto BrickBreakerGame::onBallOutOfScope() -> void
+{
+	m_ball->toggleIsMoving();
+	m_ball->setPosition(vec3(98.0f, 184.0f, 1.0f));
+	m_pad->setPosition(vec3(90.0f, 190.0f, 0.0f));
+	m_hearts.pop_back();
 }
 
 
