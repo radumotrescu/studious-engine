@@ -10,6 +10,8 @@ namespace SE {
 
 		static auto getPosition()->const vec2;
 		static auto getEnabled()->const bool;
+		static auto getRadius()->const float;
+		static auto getIntensity()->const float;
 
 		static auto setPosition(const vec2 position)->void;
 		static auto setEnabled(const bool enabled)->void;

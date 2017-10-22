@@ -20,11 +20,11 @@ auto BrickBreakerGame::init() -> void
 	m_ball = std::make_shared<Ball>(m_renderer.get());
 	m_pad = std::make_shared<Pad>(m_renderer.get());
 
-	m_hearts.push_back(std::make_shared<Heart>(m_renderer.get(), SE::vec3(185.f, 5.f, 66.6f)));
-	m_hearts.push_back(std::make_shared<Heart>(m_renderer.get(), SE::vec3(175.f, 5.f, 66.6f)));
-	m_hearts.push_back(std::make_shared<Heart>(m_renderer.get(), SE::vec3(165.f, 5.f, 66.6f)));
+	m_hearts.push(std::make_shared<Heart>(m_renderer.get(), SE::vec2(185.f, 5.f)));
+	m_hearts.push(std::make_shared<Heart>(m_renderer.get(), SE::vec2(175.f, 5.f)));
+	m_hearts.push(std::make_shared<Heart>(m_renderer.get(), SE::vec2(165.f, 5.f)));
 	auto starsTexture = Texture("..\\..\\src\\studious-engine\\PublicFiles\\Textures\\stars.png");
-	auto background = std::make_shared<SE::Rectangle>(SE::vec3(0, 0, 0), SE::vec2(200, 200), SE::vec3(1, 1, 1), starsTexture, 0);
+	auto background = std::make_shared<SE::Rectangle>(SE::vec2(0, 0), SE::vec2(200, 200), SE::vec3(1, 1, 1), starsTexture, 0);
 
 	background->setScrollingSpeed(SE::vec2(0, -0.3));
 	m_renderer->addRectangleToDrawCall(background);
@@ -48,16 +48,16 @@ auto BrickBreakerGame::addBricksToRenderer()->void
 
 	for (int i = minRowIndexOnRow1; i < maxBrickIndexOnRow1; i++)
 	{
-		m_bricks.push_back(Brick(m_renderer.get(), vec3(i * BRICK_WIDTH + i*SPACE_BETWEEN_BRICKS, 20, 0), vec2(BRICK_WIDTH, 10), vec3(1.0f, 1.0f, 1.0f), brickTexture1));
+		m_bricks.push_back(Brick(m_renderer.get(), vec2(i * BRICK_WIDTH + i*SPACE_BETWEEN_BRICKS, 20), vec2(BRICK_WIDTH, 10), vec3(1.0f, 1.0f, 1.0f), brickTexture1));
 	}
 	for (int i = minRowIndexOnRow2; i < maxRowIndexOnRow2; i++)
 	{
-		m_bricks.push_back(Brick(m_renderer.get(), vec3(i * BRICK_WIDTH + i*SPACE_BETWEEN_BRICKS, 30, 0), vec2(BRICK_WIDTH, 10), vec3(1.0f, 1.0f, 1.0f), brickTexture2));
+		m_bricks.push_back(Brick(m_renderer.get(), vec2(i * BRICK_WIDTH + i*SPACE_BETWEEN_BRICKS, 30), vec2(BRICK_WIDTH, 10), vec3(1.0f, 1.0f, 1.0f), brickTexture2));
 	}
 
 	for (int i = minRowIndexOnRow3; i < maxRowIndexOnRow3; i++)
 	{
-		m_bricks.push_back(Brick(m_renderer.get(), vec3(i * BRICK_WIDTH + i*SPACE_BETWEEN_BRICKS, 40, 0), vec2(BRICK_WIDTH, 10), vec3(1.0f, 1.0f, 1.0f), brickTexture1));
+		m_bricks.push_back(Brick(m_renderer.get(), vec2(i * BRICK_WIDTH + i*SPACE_BETWEEN_BRICKS, 40), vec2(BRICK_WIDTH, 10), vec3(1.0f, 1.0f, 1.0f), brickTexture1));
 	}
 }
 
@@ -96,9 +96,9 @@ auto BrickBreakerGame::update() -> void
 auto BrickBreakerGame::onBallOutOfScope() -> void
 {
 	m_ball->toggleIsMoving();
-	m_ball->setPosition(vec3(98.0f, 184.0f, 1.0f));
-	m_pad->setPosition(vec3(90.0f, 190.0f, 0.0f));
-	m_hearts.pop_back();
+	m_ball->setPosition(vec2(98.0f, 184.0f));
+	m_pad->setPosition(vec2(90.0f, 190.0f));
+	m_hearts.pop();
 }
 
 

@@ -1,6 +1,6 @@
 #include "Brick.h"
 
-Brick::Brick(SE::SimpleRenderer* renderer, SE::vec3 position, SE::vec2 size, SE::vec3 color, const Texture& texture)
+Brick::Brick(SE::SimpleRenderer* renderer, SE::vec2 position, SE::vec2 size, SE::vec3 color, const Texture& texture)
 	:renderer(renderer)
 	, brick(std::make_shared<SE::Rectangle>(position, size, color, texture, 3))
 {

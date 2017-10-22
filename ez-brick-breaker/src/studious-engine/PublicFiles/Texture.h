@@ -8,7 +8,7 @@
 class Texture {
 private:
 	std::string m_fileName;
-	GLuint m_textureID;           //m_TID
+	GLuint m_textureID; 
 	GLsizei m_width, m_height;
 public:
 	
@@ -31,13 +31,3 @@ private:
 	GLuint load();
 };
 
-/*
-Texture texture("test.png");
-Simple2DRenderer simple;
-Sprite* testTexture = new Sprite(0, 0, 4, 4, maths::vec4(1, 1, 1, 1));
-while(!window.closed())
-{
-simple.submit(testTexture);
-simple.flush();
-}
-*/

@@ -7,7 +7,7 @@ Pad::Pad(SE::SimpleRenderer* renderer, float velocityX, float velocityY)
 	:m_renderer(renderer)
 	, m_velocityX(velocityX)
 	, m_velocityY(velocityY)
-	, m_pad(std::make_shared<SE::Rectangle>(SE::vec3(90.0f, 190.0f, 0.0f), SE::vec2(20, 5), SE::vec3(1, 1, 1), Texture("..\\..\\src\\studious-engine\\PublicFiles\\Textures\\platform_1.png"), 0))
+	, m_pad(std::make_shared<SE::Rectangle>(SE::vec2(90.0f, 190.0f), SE::vec2(20, 5), SE::vec3(1, 1, 1), Texture("..\\..\\src\\studious-engine\\PublicFiles\\Textures\\platform_1.png"), 1))
 {
 	renderer->addRectangleToDrawCall(m_pad);
 }
@@ -42,7 +42,7 @@ auto Pad::moveLeft() ->void
 	}
 }
 
-auto Pad::setPosition(SE::vec3 position) -> void
+auto Pad::setPosition(SE::vec2 position) -> void
 {
-	this->m_pad->translate(position);
+	this->m_pad->translate(SE::vec3(position.x,position.y,m_pad->getPriority()));
 }

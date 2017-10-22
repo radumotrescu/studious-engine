@@ -15,7 +15,7 @@ namespace SE {
 	class SimpleRenderer {
 
 	public:
-		SimpleRenderer::SimpleRenderer(const float screenWidth, const float screenHeight);
+		SimpleRenderer(const float screenWidth, const float screenHeight, const float depthLevel);
 		~SimpleRenderer();
 		auto addRectangleToDrawCall(std::shared_ptr<Rectangle> sprite) ->void;
 		auto removeRectangleFromDrawCall(std::shared_ptr<Rectangle> sprite) ->void;

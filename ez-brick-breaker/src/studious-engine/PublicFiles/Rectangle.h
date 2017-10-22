@@ -37,9 +37,9 @@ namespace SE {
 	public:
 
 		Rectangle();
-		Rectangle(const vec3& position, const vec2& dimension, const vec3& color, const unsigned priority);
-		Rectangle(const vec3& position, const vec2& dimension, const Texture& texture, const unsigned priority);
-		Rectangle(const vec3& position, const vec2& dimension, const vec3& color, const Texture& texture, const unsigned priority);
+		Rectangle(const vec2& position, const vec2& dimension, const vec3& color, const unsigned priority);
+		Rectangle(const vec2& position, const vec2& dimension, const Texture& texture, const unsigned priority);
+		Rectangle(const vec2& position, const vec2& dimension, const vec3& color, const Texture& texture, const unsigned priority);
 
 		//auto changePointCoordinates(const vec3 & vertex)->void;
 		auto changePriority(const unsigned priority) -> void;

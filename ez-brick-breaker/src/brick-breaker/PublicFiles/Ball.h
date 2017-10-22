@@ -17,7 +17,7 @@ public:
 	auto onCollisionWithPad(std::shared_ptr<SE::Rectangle> ball, std::shared_ptr<SE::Rectangle>  pad) ->void;
 	auto onCollisionWithBrick(std::shared_ptr<SE::Rectangle>  ball, std::shared_ptr<SE::Rectangle>  brick) ->void;
 	auto toggleIsMoving() -> void;
-	auto setPosition(SE::vec3 position) -> void;
+	auto setPosition(SE::vec2 position) -> void;
 
 private:
 	bool isMoving;

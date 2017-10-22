@@ -5,7 +5,7 @@
 class Heart
 {
 public:
-	Heart(SE::SimpleRenderer* renderer, SE::vec3 pos);
+	Heart(SE::SimpleRenderer* renderer, SE::vec2 pos);
 	~Heart();
 
 private:

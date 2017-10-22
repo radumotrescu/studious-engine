@@ -113,7 +113,6 @@ namespace SE {
 			vec2 scrollingOffset = vec2(rectangle->getScrollingSpeed().x*(scrollingMap[rectangle].m_loopValue.x / 1000), rectangle->getScrollingSpeed().y*(scrollingMap[rectangle].m_loopValue.y / fullLoopFPSValues));
 			m_shader.setUniform2f("scrollingOffset", scrollingOffset);
 			rectangle->draw();
-
 		}
 		m_shader.disable();
 

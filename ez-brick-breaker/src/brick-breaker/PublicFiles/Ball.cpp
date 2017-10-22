@@ -8,7 +8,7 @@ Ball::Ball(SE::SimpleRenderer* renderer, float velocityX, float velocityY, float
 	, m_velocityX(velocityX)
 	, m_velocityY(velocityY)
 	, m_speed(speed)
-	, m_ball(std::make_shared<SE::Rectangle>(SE::vec3(98.0f, 184.0f, 1.0f), SE::vec2(5, 5), SE::vec3(1.0f, 1.0f, 1.0f), Texture("..\\..\\src\\studious-engine\\PublicFiles\\Textures\\meteor_1.png"), 2))
+	, m_ball(std::make_shared<SE::Rectangle>(SE::vec2(98.0f, 184.0f), SE::vec2(5, 5), SE::vec3(1.0f, 1.0f, 1.0f), Texture("..\\..\\src\\studious-engine\\PublicFiles\\Textures\\meteor_1.png"), 2))
 {
 	renderer->addRectangleToDrawCall(m_ball);
 	this->isMoving = true;
@@ -94,7 +94,7 @@ auto Ball::toggleIsMoving() -> void
 	this->isMoving = !this->isMoving;
 }
 
-auto Ball::setPosition(SE::vec3 position) -> void
+auto Ball::setPosition(SE::vec2 position) -> void
 {
-	this->m_ball.get()->translate(position);
+	this->m_ball.get()->translate(SE::vec3(position.x,position.y,m_ball.get()->getPriority()));
 }

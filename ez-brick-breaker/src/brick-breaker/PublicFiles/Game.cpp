@@ -10,10 +10,11 @@ auto Game::init() -> void
 	// window && glClearColor first!
 	const float screenWidth = 600;
 	const float screenHeight = 800;
+	const float depthLevel = 10;
 	m_window = std::make_shared<SE::Window>("Awesome Brick-Breaker!", screenWidth, screenHeight);
 	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 	//renderer depeds on window context
-	m_renderer = std::make_shared<SE::SimpleRenderer>(200,200);
+	m_renderer = std::make_shared<SE::SimpleRenderer>(200,200,depthLevel);
 
 	// init labels
 	SE::LabelManager::init();

@@ -114,7 +114,7 @@ auto main()->int
 	//auto s4 = std::make_shared<SE::Rectangle>(SE::vec3(10.0f, 10, 0.0f), SE::vec2(100, 100), SE::vec3(0, 1, 0), 3);
 
 	Texture tex2("..\\..\\src\\studious-engine\\PublicFiles\\Textures\\tree.png");
-	auto s3 = std::make_shared<SE::Rectangle>(SE::vec2(100.0f, 100.0f), SE::vec2(50, 50), SE::vec3(1, 1, 1), tex2, 2);
+	auto s3 = std::make_shared<SE::Rectangle>(SE::vec2(100.0f, 100.0f), SE::vec2(50, 50), SE::vec3(1, 1, 1), tex2, 3);
 	//s3->setScrollingSpeed(SE::vec2(1, -4));
 
 	ren.addRectangleToDrawCall(s1);
