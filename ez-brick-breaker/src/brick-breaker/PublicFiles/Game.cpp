@@ -10,12 +10,18 @@ auto Game::init() -> void
 	// window && glClearColor first!
 	const float screenWidth = 600;
 	const float screenHeight = 800;
-	m_window = std::make_shared<SE::Window>("Test", screenWidth, screenHeight);
+	m_window = std::make_shared<SE::Window>("Awesome Brick-Breaker!", screenWidth, screenHeight);
 	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 	//renderer depeds on window context
 	m_renderer = std::make_shared<SE::SimpleRenderer>(200,200);
 
-
+	// init labels
+	SE::LabelManager::init();
+	SE::LabelManager::setIsDisplayingFps(true);
+	m_scoreLabel = std::make_shared<Score>();
+	auto label = m_scoreLabel.get()->getLabel();
+	label.setColor(SE::vec3(0.5f, 0.6f, 0.01f));
+	SE::LabelManager::addLabel(label);
 }
 
 auto Game::run() -> void
@@ -27,7 +33,9 @@ auto Game::run() -> void
 		///////////////////////////////////////////////////////
 		onTick();
 		///////////////////////////////////////////////////////
+
 		m_renderer->draw();
+		SE::LabelManager::displayAllLabels();
 		m_window->update();
 	}
 }
