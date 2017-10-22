@@ -16,7 +16,7 @@ auto BrickBreakerGame::start() ->void
 auto BrickBreakerGame::init() -> void
 {
 	Game::init();
-	m_ball = std::make_shared<Ball>(m_renderer.get(), 10, 5);
+	m_ball = std::make_shared<Ball>(m_renderer.get());
 	m_pad = std::make_shared<Pad>(m_renderer.get());
 
 	auto starsTexture = Texture("..\\..\\src\\studious-engine\\PublicFiles\\Textures\\stars.png");
