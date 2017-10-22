@@ -13,6 +13,7 @@
 #include <vector>
 #include <memory>
 #include "Game.h"
+#include "Heart.h"
 using namespace SE;
 
 class BrickBreakerGame : public Game
@@ -35,6 +36,7 @@ private:
 	Application m_app;
 	std::shared_ptr<Ball> m_ball;
 	std::shared_ptr<Pad> m_pad;
+	std::array<std::shared_ptr<Heart>, 3> m_heart;
 	std::vector<Brick> m_bricks;
 	static const int BRICK_WIDTH;
 	static const int SPACE_BETWEEN_BRICKS;

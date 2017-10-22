@@ -19,7 +19,9 @@ auto BrickBreakerGame::init() -> void
 	Game::init();
 	m_ball = std::make_shared<Ball>(m_renderer.get());
 	m_pad = std::make_shared<Pad>(m_renderer.get());
-
+	m_heart[0] = std::make_shared<Heart>(m_renderer.get(), SE::vec3(185.f, 5.f, 66.6f));
+	m_heart[1] = std::make_shared<Heart>(m_renderer.get(), SE::vec3(175.f, 5.f, 66.6f));
+	m_heart[2] = std::make_shared<Heart>(m_renderer.get(), SE::vec3(165.f, 5.f, 66.6f));
 	auto starsTexture = Texture("..\\..\\src\\studious-engine\\PublicFiles\\Textures\\stars.png");
 	auto background = std::make_shared<SE::Rectangle>(SE::vec3(0, 0, 0), SE::vec2(200, 200), SE::vec3(1, 1, 1), starsTexture, 0);
 	background->setScrollingSpeed(SE::vec2(0, -0.3));

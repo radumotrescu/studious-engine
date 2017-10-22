@@ -4,7 +4,7 @@
 
 Score::Score()
 {
-	this->m_scoreLabel = SE::Label("Score: 0", 600, 15, 2);
+	this->m_scoreLabel = SE::Label("Score: 0", 515, 15, 2);
 }
 
 auto Score::getLabel() const -> SE::Label
