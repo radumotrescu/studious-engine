@@ -1,6 +1,5 @@
 #include "Ball.h"
 
-
 const float Ball::LEFT_MOVING_LIMIT = 2.0f;
 const float Ball::RIGHT_MOVING_LIMIT = 200.0f;
 
@@ -14,7 +13,7 @@ Ball::Ball(SE::SimpleRenderer* renderer, float velocityX, float velocityY, float
 	renderer->addRectangleToDrawCall(m_ball);
 }
 
-auto Ball::getRectangle() ->std::shared_ptr<SE::Rectangle>
+auto Ball::getRectangle() const -> std::shared_ptr<SE::Rectangle>
 {
 	return m_ball;
 }
@@ -26,11 +25,13 @@ auto Ball::move() ->void
 	{
 		throw std::string("Game OVER!");
 	}
+
 	if (SE::Utils::definitelyLessThan(origin.y, 2.0f))
 	{
 		m_velocityX = m_velocityX;
 		m_velocityY = -m_velocityY;
 	}
+
 	if (!SE::Utils::inRange(origin.x, LEFT_MOVING_LIMIT, RIGHT_MOVING_LIMIT - m_ball->getWidth()))
 	{
 		m_velocityX = -m_velocityX;
@@ -59,7 +60,7 @@ auto Ball::onCollisionWithPad(std::shared_ptr<SE::Rectangle> ball, std::shared_p
 		auto maxAngle = 5 * M_PI / 12; //75 grade
 		auto repulsionAngle = ratio * maxAngle;
 		m_velocityX = (-std::sin(repulsionAngle));
-			
+
 		m_velocityY = (-std::cos(repulsionAngle));
 
 		lastCollisionTime = currentCollisionTime;
@@ -80,5 +81,5 @@ auto Ball::onCollisionWithBrick(std::shared_ptr<SE::Rectangle> ball, std::shared
 	auto repulsionAngle = ratio * maxAngle;
 	m_velocityX = (-std::sin(repulsionAngle));
 	m_velocityY = (std::cos(repulsionAngle));
-	
+
 }

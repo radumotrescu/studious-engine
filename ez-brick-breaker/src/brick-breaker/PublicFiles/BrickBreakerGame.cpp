@@ -1,4 +1,5 @@
 #include "BrickBreakerGame.h"
+#include "Score.h"
 
 const int BrickBreakerGame::BRICK_WIDTH = 15;
 const int BrickBreakerGame::SPACE_BETWEEN_BRICKS = 5;
@@ -35,8 +36,8 @@ auto BrickBreakerGame::addBricksToRenderer()->void
 	const int maxRowIndexOnRow2 = 9;
 	const int maxRowIndexOnRow3 = 8;
 
-	Texture brickTexture1("..\\..\\src\\studious-engine\\PublicFiles\\Textures\\brick_1.png");
-	Texture brickTexture2("..\\..\\src\\studious-engine\\PublicFiles\\Textures\\brick_2.png");
+	const Texture brickTexture1("..\\..\\src\\studious-engine\\PublicFiles\\Textures\\brick_1.png");
+	const Texture brickTexture2("..\\..\\src\\studious-engine\\PublicFiles\\Textures\\brick_2.png");
 
 	for (int i = minRowIndexOnRow1; i < maxBrickIndexOnRow1; i++)
 	{
@@ -53,7 +54,7 @@ auto BrickBreakerGame::addBricksToRenderer()->void
 	}
 }
 
-auto BrickBreakerGame::connectKeySignalsToPadMovement() ->void
+auto BrickBreakerGame::connectKeySignalsToPadMovement() const -> void
 {
 	InputManager::getInstance().init(m_window->getWindow());
 	InputManager::getInstance().registerSpriteAction(std::bind(&Pad::moveRight, m_pad.get()), GLFW_KEY_D);
@@ -66,13 +67,21 @@ auto BrickBreakerGame::connectBehaviorOnCollision() -> void
 	for (auto& brick : m_bricks)
 	{
 		SE::CollisionManager::addCollisionalEntities(m_ball->getRectangle(), brick.getRectangle(), std::bind(&Ball::onCollisionWithBrick, m_ball, std::placeholders::_1, std::placeholders::_2));
+		SE::CollisionManager::addCollisionalEntities(m_ball->getRectangle(), brick.getRectangle(), std::bind(&Score::increaseScore, this->m_scoreLabel.get(), std::placeholders::_1, std::placeholders::_2));
 		SE::CollisionManager::addCollisionalEntities(m_ball->getRectangle(), brick.getRectangle(), std::bind(&Brick::onCollisionWithBall, &brick, std::placeholders::_1, std::placeholders::_2));
 	}
 }
 
 auto BrickBreakerGame::update() -> void
 {
-	m_ball->move();
+	try
+	{
+		m_ball->move();
+	}
+	catch(std::string ex)
+	{
+
+	}
 	SE::CollisionManager::checkCollisions();
 }
 

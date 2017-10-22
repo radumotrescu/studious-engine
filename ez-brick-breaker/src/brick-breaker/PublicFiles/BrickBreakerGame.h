@@ -27,7 +27,7 @@ public:
 
 private:
 	auto addBricksToRenderer() ->void;
-	auto connectKeySignalsToPadMovement() ->void;
+	auto connectKeySignalsToPadMovement() const ->void;
 	auto connectBehaviorOnCollision()->void;
 	auto update() ->void;
 
