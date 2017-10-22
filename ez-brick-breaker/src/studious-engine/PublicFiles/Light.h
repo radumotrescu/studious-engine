@@ -13,11 +13,15 @@ namespace SE {
 
 		static auto setPosition(const vec2 position)->void;
 		static auto setEnabled(const bool enabled)->void;
+		static auto setRadius(const float radius)->void;
+		static auto setIntensity(const float intensity)->void;
 
 	private:
 		Light();
 		~Light();
 		static vec2 m_position;
 		static bool m_enabled;
+		static float m_radius;
+		static float m_intensity;
 	};
 }

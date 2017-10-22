@@ -23,6 +23,10 @@ auto BrickBreakerGame::init() -> void
 	auto background = std::make_shared<SE::Rectangle>(SE::vec3(0, 0, 0), SE::vec2(200, 200), SE::vec3(1, 1, 1), starsTexture, 0);
 	background->setScrollingSpeed(SE::vec2(0, -0.3));
 	m_renderer->addRectangleToDrawCall(background);
+	m_renderer->setLightStatus(true);
+	m_renderer->setLightRadius(50);
+	m_renderer->setLightPosition(vec2(100, 190));
+	m_renderer->setLightIntensity(0.5);
 }
 
 auto BrickBreakerGame::addBricksToRenderer()->void

@@ -35,6 +35,7 @@ namespace SE {
 
 
 	public:
+
 		Rectangle();
 		Rectangle(const vec3& position, const vec2& dimension, const vec3& color, const unsigned priority);
 		Rectangle(const vec3& position, const vec2& dimension, const Texture& texture, const unsigned priority);

@@ -113,9 +113,9 @@ auto main()->int
 	//auto s3 = std::make_shared<SE::Rectangle>(SE::vec3(150.0f, 10, 0.0f), SE::vec2(10, 10), SE::vec3(1, 0, 0), 0);
 	//auto s4 = std::make_shared<SE::Rectangle>(SE::vec3(10.0f, 10, 0.0f), SE::vec2(100, 100), SE::vec3(0, 1, 0), 3);
 
-	Texture tex2("..\\..\\src\\studious-engine\\PublicFiles\\Textures\\kitty.png");
+	Texture tex2("..\\..\\src\\studious-engine\\PublicFiles\\Textures\\tree.png");
 	auto s3 = std::make_shared<SE::Rectangle>(SE::vec3(100.0f, 100.0f, 0.0f), SE::vec2(50, 50), SE::vec3(1, 1, 1), tex2, 2);
-	s3->setScrollingSpeed(SE::vec2(1, -4));
+	//s3->setScrollingSpeed(SE::vec2(1, -4));
 
 	ren.addRectangleToDrawCall(s1);
 	ren.addRectangleToDrawCall(s3);
@@ -123,9 +123,9 @@ auto main()->int
 	SE::LabelManager::init();
 	SE::LabelManager::setIsDisplayingFps(true);
 	ren.setLightStatus(true);
-	ren.setLightPosition(SE::vec2(300, 300));
+	ren.setLightPosition(SE::vec2(100, 100));
 	ren.setLightRadius(200.f);
-	ren.setLightIntensity(100.0f);
+	ren.setLightIntensity(1.0f);
 	auto label = SE::Label("Salut", 1, 66, 2.0);
 	label.setColor(SE::vec3(0.2, 0.6, 0.01));
 	SE::LabelManager::addLabel(label);
