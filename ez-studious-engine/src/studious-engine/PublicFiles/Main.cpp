@@ -10,6 +10,7 @@
 #include "CollisionManager.h"
 #include "Vec3.h"
 #include "Light.h"
+#include"SoundManager.h"
 
 #include "gltext.h"
 
@@ -129,6 +130,21 @@ auto main()->int
 	label.setColor(SE::vec3(0.2, 0.6, 0.01));
 	SE::LabelManager::addLabel(label);
 
+
+	SoundManager::init();
+
+	auto sound = std::make_shared<Sound>("acdc", "..\\..\\src\\studious-engine\\PublicFiles\\Sounds\\acdc.mp3");
+	auto sound2 = std::make_shared<Sound>("hit", "..\\..\\src\\studious-engine\\PublicFiles\\Sounds\\hit2.wav");
+
+	SoundManager::add(sound);
+	SoundManager::add(sound2);
+
+	SoundManager::get("acdc")->loop();
+
+
+
+	//number of frames
+	int i = 0;
 	while (!window->closed())
 	{
 		//nullTexture.bind();
@@ -138,6 +154,26 @@ auto main()->int
 		ren.draw();
 
 		SE::LabelManager::displayAllLabels();
+
+		i++;
+		if (i == 200)
+		{
+			SoundManager::get("hit")->loop();
+		}
+		if (i == 350)
+		{
+			SoundManager::get("acdc")->pause();
+		}
+		if (i == 500)
+		{
+			SoundManager::get("acdc")->play();
+		}
+		if (i == 650)
+		{
+			SoundManager::get("hit")->stop();
+		}
+		std::cout << i << std::endl;
+
 
 
 		window->update();
