@@ -3,20 +3,91 @@
 studious-engine is a small framework designed to make it easy for game makers to create a game in a small time frame.
 
 # Summary
+#### 1. Window
+#### 2. InputManager
+#### 3. Vectors and Matrices
+#### 4. Shader
+#### 5. Buffer and VertexArray
+#### 6. SimpleRenderer
+#### 7. Rectangle
+#### 8. Shader
+#### 9. Texture
+#### 10. CollisionChecker and CollisionManager
+#### 11. Font
+#### 12. Sound and Sound Manager
+#### 13. Light
+#### 14. Application
+
+
 ### 1. Window
+
+**TODO**
+
+
 ### 2. InputManager
+
+**TODO**
+
+
 ### 3. Vectors and Matrices
+
+**TODO**
+
+
 ### 4. Shader
+
+**TODO**
+
+
 ### 5. Buffer and VertexArray
+
+**TODO**
+
+
 ### 6. SimpleRenderer
+
+**TODO**
+
+
 ### 7. Rectangle
+
+**TODO**
+
+
 ### 8. Shader
+
+**TODO**
+
+
 ### 9. Texture
+
+**TODO**
+
+
 ### 10. CollisionChecker and CollisionManager
+
+**TODO**
+
+
 ### 11. Font
+
+**TODO**
+
+
 ### 12. Sound and Sound Manager
+
+**TODO**
+
+
 ### 13. Light
+
+**TODO**
+
+
 ### 14. Application
+
+**TODO**
+
 
 # Code examples
 
@@ -76,75 +147,6 @@ To enable the light and configuring its parameters you will need to call these m
     SE::Game::m_renderer->setLightIntensity(lightIntensity);
 
 You can always call these methods in your game loop, being possible to make your light move and pulse.
-
-### 1. Window
-
-**TODO**
-
-
-### 2. InputManager
-
-**TODO**
-
-
-### 3. Vectors and Matrices
-
-**TODO**
-
-
-### 4. Shader
-
-**TODO**
-
-
-### 5. Buffer and VertexArray
-
-**TODO**
-
-
-### 6. SimpleRenderer
-
-**TODO**
-
-
-### 7. Rectangle
-
-**TODO**
-
-
-### 8. Shader
-
-**TODO**
-
-
-### 9. Texture
-
-**TODO**
-
-
-### 10. CollisionChecker and CollisionManager
-
-**TODO**
-
-
-### 11. Font
-
-**TODO**
-
-
-### 12. Sound and Sound Manager
-
-**TODO**
-
-
-### 13. Light
-
-**TODO**
-
-
-### 14. Application
-
-**TODO**
 
 
 # Motivation
