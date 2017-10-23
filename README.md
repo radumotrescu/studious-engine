@@ -148,7 +148,30 @@ To enable the light and configuring its parameters you will need to call these m
 
 You can always call these methods in your game loop, being possible to make your light move and pulse.
 
+**Adding a custom behavior on collision with other sprites**
 
+The collision manager binds the signal isCollided and the onCollision slot of a certain sprite. 
+To add a custom behavior on a collision, first we must know that this future behavior must be part of a class. In other words, if we would want to define a new kind of a rectangle, let's say a RedRectangle, it would have a method called onCollisionWithClassicRectangle with a void return type and two parameters of shared_ptr<Rectangle>& type.
+```
+auto RedRectangle::onCollisionWithClassicRectangle(std::shared_ptr<SE::Rectangle>& thisRectangle, std::shared_ptr<SE::Rectangle>& thatRectangle) ->void;
+```
+
+This method is going to be passed to the collision manager like it follows:
+```
+	RedRectangle redRectangle;
+	SE::CollisionManager::addCollisionalEntities(rectangle, redRectangle, std::bind(&RedRectangle::onCollisionWithClassicRectangle, &redRectangle, std::placeholders::_1, std::placeholders::_2));
+
+```
+Note that the manager requires not only the method pointer, but also an instance pointer of the class containing the method. This makes the context identifiable and the behavior customizable for each and every object.
+
+**Recalling the custom behaviors declared on different collisions**	
+
+To call the behaviors declared previously, all you need to do is call the checkCollisions found in CollisionManager:
+
+```
+SE::CollisionManager::checkCollisions();
+``` 
+	
 # Motivation
 
 This framwork was created because most game engines are hard to get started with and they come in large file sizes, but also because we wanted to learn modern C++, and what better way to write hardcore C++ than within a game engine?
