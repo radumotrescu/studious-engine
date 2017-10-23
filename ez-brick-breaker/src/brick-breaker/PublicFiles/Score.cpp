@@ -12,7 +12,7 @@ auto Score::getLabel() const -> SE::Label
 	return this->m_scoreLabel;
 }
 
-auto Score::increaseScore(std::shared_ptr<SE::Rectangle> ball, std::shared_ptr<SE::Rectangle> brick) -> void
+auto Score::increaseScore(std::shared_ptr<SE::Rectangle>& ball, std::shared_ptr<SE::Rectangle>& brick) -> void
 {
 	this->m_score++;
 	this->m_scoreLabel.setMessage("Score: " + std::to_string(this->m_score));

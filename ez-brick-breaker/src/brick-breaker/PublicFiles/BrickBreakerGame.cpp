@@ -1,5 +1,5 @@
 #include "BrickBreakerGame.h"
-#include "Score.h"
+
 
 const int BrickBreakerGame::BRICK_WIDTH = 15;
 const int BrickBreakerGame::SPACE_BETWEEN_BRICKS = 5;

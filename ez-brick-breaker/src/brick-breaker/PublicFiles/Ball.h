@@ -4,9 +4,9 @@
 #include <memory>
 #include <chrono>
 #include "Rectangle.h"
-#include"SimpleRenderer.h"
+#include "SimpleRenderer.h"
 #include "Utils.h"
-#include"SoundManager.h"
+#include "SoundManager.h"
 
 
 class Ball {
@@ -15,13 +15,13 @@ public:
 	~Ball() {};
 	auto getRectangle() const ->std::shared_ptr<SE::Rectangle>;
 	auto move() ->void;
-	auto onCollisionWithPad(std::shared_ptr<SE::Rectangle> ball, std::shared_ptr<SE::Rectangle>  pad) ->void;
-	auto onCollisionWithBrick(std::shared_ptr<SE::Rectangle>  ball, std::shared_ptr<SE::Rectangle>  brick) ->void;
+	auto onCollisionWithPad(std::shared_ptr<SE::Rectangle>& ball, std::shared_ptr<SE::Rectangle>&  pad) ->void;
+	auto onCollisionWithBrick(std::shared_ptr<SE::Rectangle>&  ball, std::shared_ptr<SE::Rectangle>&  brick) ->void;
 	auto toggleIsMoving() -> void;
 	auto setPosition(SE::vec2 position) -> void;
 
 private:
-	bool isMoving;
+	bool m_isMoving;
 	float m_speed;
 	float m_velocityX;
 	float m_velocityY;

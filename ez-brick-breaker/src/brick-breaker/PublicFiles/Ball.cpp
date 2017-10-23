@@ -11,7 +11,7 @@ Ball::Ball(SE::SimpleRenderer* renderer, float velocityX, float velocityY, float
 	, m_ball(std::make_shared<SE::Rectangle>(SE::vec2(98.0f, 184.0f), SE::vec2(5, 5), SE::vec3(1.0f, 1.0f, 1.0f), Texture("..\\..\\src\\studious-engine\\PublicFiles\\Textures\\meteor_1.png"), 2))
 {
 	renderer->addRectangleToDrawCall(m_ball);
-	this->isMoving = true;
+	this->m_isMoving = true;
 }
 
 auto Ball::getRectangle() const -> std::shared_ptr<SE::Rectangle>
@@ -22,7 +22,7 @@ auto Ball::getRectangle() const -> std::shared_ptr<SE::Rectangle>
 auto Ball::move() ->void
 {
 	m_renderer->setLightPosition(SE::vec2(m_ball->getOrigin().x + m_ball->getWidth() / 2, m_ball->getOrigin().y + m_ball->getHeight() / 2));
-	if (!this->isMoving)
+	if (!this->m_isMoving)
 	{
 		auto origin = m_ball->getOrigin();
 		if (SE::Utils::definitelyGreaterThan(origin.y, 230.0f))
@@ -47,7 +47,7 @@ auto Ball::move() ->void
 }
 
 
-auto Ball::onCollisionWithPad(std::shared_ptr<SE::Rectangle> ball, std::shared_ptr<SE::Rectangle> pad) ->void
+auto Ball::onCollisionWithPad(std::shared_ptr<SE::Rectangle>& ball, std::shared_ptr<SE::Rectangle>& pad) ->void
 {
 	static bool isFirstCollisionWithPad = true;
 	static auto lastCollisionTime = std::chrono::system_clock::now();
@@ -80,7 +80,7 @@ auto Ball::onCollisionWithPad(std::shared_ptr<SE::Rectangle> ball, std::shared_p
 
 }
 
-auto Ball::onCollisionWithBrick(std::shared_ptr<SE::Rectangle> ball, std::shared_ptr<SE::Rectangle>  brick) ->void
+auto Ball::onCollisionWithBrick(std::shared_ptr<SE::Rectangle>& ball, std::shared_ptr<SE::Rectangle>&  brick) ->void
 {
 	auto relativeIntersection = (brick->getOrigin().x + ((brick->getWidth()) / 2)) - m_ball->getOrigin().x;
 	auto ratio = relativeIntersection / (brick->getWidth() / 2);
@@ -93,7 +93,7 @@ auto Ball::onCollisionWithBrick(std::shared_ptr<SE::Rectangle> ball, std::shared
 
 auto Ball::toggleIsMoving() -> void
 {
-	this->isMoving = !this->isMoving;
+	this->m_isMoving = !this->m_isMoving;
 }
 
 auto Ball::setPosition(SE::vec2 position) -> void
