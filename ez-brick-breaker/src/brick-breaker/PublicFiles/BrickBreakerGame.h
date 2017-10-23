@@ -15,6 +15,7 @@
 #include "Game.h"
 #include "Heart.h"
 #include <stack>
+#include"SoundManager.h"
 using namespace SE;
 
 class BrickBreakerGame : public Game

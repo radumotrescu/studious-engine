@@ -3,6 +3,7 @@
 #include "Rectangle.h"
 #include"SimpleRenderer.h"
 #include "Utils.h"
+#include"SoundManager.h"
 
 
 class Brick {

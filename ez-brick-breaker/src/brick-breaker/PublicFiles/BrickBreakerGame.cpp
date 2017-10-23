@@ -10,6 +10,7 @@ auto BrickBreakerGame::start() ->void
 	addBricksToRenderer();
 	connectKeySignalsToPadMovement();
 	connectBehaviorOnCollision();
+	SoundManager::get("background")->loop();
 	run();
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 }
@@ -31,6 +32,17 @@ auto BrickBreakerGame::init() -> void
 	m_renderer->setLightStatus(true);
 	m_renderer->setLightRadius(50);
 	m_renderer->setLightIntensity(0.5);
+
+	SoundManager::init();
+	
+	auto hitWithPadSound = std::make_shared<Sound>("hitWithPad","..\\..\\src\\studious-engine\\PublicFiles\\Sounds\\hit2.wav");
+	auto hithWithBrickSound= std::make_shared<Sound>("hitWithBrick","..\\..\\src\\studious-engine\\PublicFiles\\Sounds\\hit.wav");
+	auto backgroundSound = std::make_shared<Sound>("background", "..\\..\\src\\studious-engine\\PublicFiles\\Sounds\\acdc.mp3");
+
+
+	SoundManager::add(hitWithPadSound);
+	SoundManager::add(hithWithBrickSound);
+	SoundManager::add(backgroundSound);
 }
 
 auto BrickBreakerGame::addBricksToRenderer()->void

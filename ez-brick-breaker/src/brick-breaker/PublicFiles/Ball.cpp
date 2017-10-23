@@ -70,6 +70,8 @@ auto Ball::onCollisionWithPad(std::shared_ptr<SE::Rectangle> ball, std::shared_p
 
 		lastCollisionTime = currentCollisionTime;
 		isFirstCollisionWithPad = false;
+
+		SoundManager::get("hitWithPad")->play();
 	}
 	else
 	{
