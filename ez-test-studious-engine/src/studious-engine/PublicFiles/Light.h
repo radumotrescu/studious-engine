@@ -1,32 +1,29 @@
 #pragma once
 
 #include "Vec2.h"
-#include "Vec3.h"
-
-#include <map>
-#include <unordered_map>
-#include <string>
-#include <array>
 
 namespace SE {
+
 	class Light {
 
 	public:
-		Light();
-		auto addLight(const std::string& name, const vec3& light)->void;
-		auto getLightVector()const->std::array<float, 30>;
 
-		auto getPosition()const->vec2;
-		auto getIntensity()const->float;
+		static auto getPosition()->const vec2;
+		static auto getEnabled()->const bool;
+		static auto getRadius()->const float;
+		static auto getIntensity()->const float;
+
+		static auto setPosition(const vec2 position)->void;
+		static auto setEnabled(const bool enabled)->void;
+		static auto setRadius(const float radius)->void;
+		static auto setIntensity(const float intensity)->void;
 
 	private:
-
-		const unsigned maxLights = 10;
-		std::unordered_map<std::string, vec3> lightMap;
-
-		vec2 m_position;
-		float m_intensity;
-
+		Light();
+		~Light();
+		static vec2 m_position;
+		static bool m_enabled;
+		static float m_radius;
+		static float m_intensity;
 	};
-
 }
