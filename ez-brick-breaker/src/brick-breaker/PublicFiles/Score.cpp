@@ -1,6 +1,7 @@
-#include "Score.h"
 #include <string>
 #include <Rectangle.h>
+
+#include "Score.h"
 
 Score::Score()
 {

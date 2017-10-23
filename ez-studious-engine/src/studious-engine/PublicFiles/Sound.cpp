@@ -28,12 +28,12 @@ auto Sound::loop() -> void
 	SoundManager::m_system->playSound(m_sound, 0, false, &m_channel);
 }
 
-auto Sound::pause() -> void
+auto Sound::pause() const -> void
 {
 	m_channel->setPaused(true);
 }
 
-auto Sound::stop() -> void
+auto Sound::stop() const -> void
 {
 	m_channel->stop();
 }
@@ -48,7 +48,7 @@ auto Sound::getFileName() const -> const std::string&
 	return m_fileName;
 }
 
-auto Sound::searchFreeChannel() -> FMOD::Channel*
+auto Sound::searchFreeChannel() const -> FMOD::Channel*
 {
 
 	for (const auto channel : SoundManager::m_channels)

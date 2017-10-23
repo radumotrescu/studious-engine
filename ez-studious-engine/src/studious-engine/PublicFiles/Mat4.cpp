@@ -1,14 +1,14 @@
 #include "Mat4.h"
 
-
-namespace SE {
+namespace SE
+{
 	mat4::mat4()
 	{
 		for (int i = 0; i < 4 * 4; i++)
 			elements[i] = 0.0f;
 	}
 
-	mat4::mat4(float diagonal)
+	mat4::mat4(const float diagonal)
 	{
 		for (int i = 0; i < 4 * 4; i++)
 			elements[i] = 0.0f;
@@ -52,7 +52,7 @@ namespace SE {
 		return multiply(other);
 	}
 
-	mat4 mat4::orthographic(float left, float right, float bottom, float top, float near, float far)
+	mat4 mat4::orthographic(const float left, const float right, const float bottom, const float top, const float near, const float far)
 	{
 		mat4 result(1.0f);
 
@@ -68,11 +68,11 @@ namespace SE {
 
 		return result;
 	}
-	float toRadians(float degrees)
+	float toRadians(const float degrees)
 	{
 		return degrees * (M_PI / 180.0f);
 	}
-	mat4 mat4::perspective(float fov, float aspectRatio, float near, float far)
+	mat4 mat4::perspective(const float fov, const float aspectRatio, const float near, const float far)
 	{
 		mat4 result(1.0f);
 

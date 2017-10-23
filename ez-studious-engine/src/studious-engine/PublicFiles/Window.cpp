@@ -1,5 +1,7 @@
 #include "Window.h"
-namespace SE {
+
+namespace SE
+{
 	Window::Window(std::string name, int width, int height)
 		: m_width(width),
 		m_height(height),
@@ -104,5 +106,4 @@ auto Window::setVSync(bool sync)->void
 	{
 		glfwTerminate();
 	}
-
 }

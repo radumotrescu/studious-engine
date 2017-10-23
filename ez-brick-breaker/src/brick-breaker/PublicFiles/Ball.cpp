@@ -1,9 +1,10 @@
 #include "Ball.h"
+#include <corecrt_math_defines.h>
 
 const float Ball::LEFT_MOVING_LIMIT = 2.0f;
 const float Ball::RIGHT_MOVING_LIMIT = 200.0f;
 
-Ball::Ball(SE::SimpleRenderer* renderer, float velocityX, float velocityY, float speed)
+Ball::Ball(SE::SimpleRenderer* renderer, const float velocityX, const float velocityY, const float speed)
 	: m_renderer(renderer)
 	, m_velocityX(velocityX)
 	, m_velocityY(velocityY)
@@ -52,18 +53,18 @@ auto Ball::onCollisionWithPad(std::shared_ptr<SE::Rectangle>& ball, std::shared_
 	static bool isFirstCollisionWithPad = true;
 	static auto lastCollisionTime = std::chrono::system_clock::now();
 
-	auto currentCollisionTime = std::chrono::system_clock::now();
-	std::chrono::duration<float> passedTime = currentCollisionTime - lastCollisionTime;
-	std::chrono::duration<float> latency(0.3f);
+	const auto currentCollisionTime = std::chrono::system_clock::now();
+	const std::chrono::duration<float> passedTime = currentCollisionTime - lastCollisionTime;
+	const std::chrono::duration<float> latency(0.3f);
 
 	if (passedTime >= latency || isFirstCollisionWithPad)
 	{
 		std::cout << "collision with pad counted" << std::endl;
 
-		auto relativeIntersection = (pad->getOrigin().x + ((pad->getWidth()) / 2)) - m_ball->getOrigin().x;
-		auto ratio = relativeIntersection / (pad->getWidth() / 2);
-		auto maxAngle = 5 * M_PI / 12; //75 grade
-		auto repulsionAngle = ratio * maxAngle;
+		const auto relativeIntersection = (pad->getOrigin().x + ((pad->getWidth()) / 2)) - m_ball->getOrigin().x;
+		const auto ratio = relativeIntersection / (pad->getWidth() / 2);
+		const auto maxAngle = 5 * M_PI / 12; //75 grade
+		const auto repulsionAngle = ratio * maxAngle;
 		m_velocityX = (-std::sin(repulsionAngle));
 
 		m_velocityY = (-std::cos(repulsionAngle));
@@ -77,15 +78,14 @@ auto Ball::onCollisionWithPad(std::shared_ptr<SE::Rectangle>& ball, std::shared_
 	{
 		std::cout << "collision with pad NOT counted" << std::endl;
 	}
-
 }
 
 auto Ball::onCollisionWithBrick(std::shared_ptr<SE::Rectangle>& ball, std::shared_ptr<SE::Rectangle>&  brick) ->void
 {
-	auto relativeIntersection = (brick->getOrigin().x + ((brick->getWidth()) / 2)) - m_ball->getOrigin().x;
-	auto ratio = relativeIntersection / (brick->getWidth() / 2);
-	auto maxAngle = 5 * M_PI / 12; //75 grade
-	auto repulsionAngle = ratio * maxAngle;
+	const auto relativeIntersection = (brick->getOrigin().x + ((brick->getWidth()) / 2)) - m_ball->getOrigin().x;
+	const auto ratio = relativeIntersection / (brick->getWidth() / 2);
+	const auto maxAngle = 5 * M_PI / 12; //75 grade
+	const auto repulsionAngle = ratio * maxAngle;
 	m_velocityX = (-std::sin(repulsionAngle));
 	m_velocityY = (std::cos(repulsionAngle));
 
@@ -96,7 +96,7 @@ auto Ball::toggleIsMoving() -> void
 	this->m_isMoving = !this->m_isMoving;
 }
 
-auto Ball::setPosition(SE::vec2 position) -> void
+auto Ball::setPosition(const SE::vec2 position) const -> void
 {
 	this->m_ball.get()->translate(SE::vec3(position.x,position.y,m_ball.get()->getPriority()));
 }

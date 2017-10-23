@@ -1,15 +1,18 @@
 #pragma once
-#define _USE_MATH_DEFINES
+
 #include <math.h>
 #include <memory>
 #include <chrono>
+
 #include "Rectangle.h"
 #include "SimpleRenderer.h"
 #include "Utils.h"
 #include "SoundManager.h"
 
+#define _USE_MATH_DEFINES
 
-class Ball {
+class Ball 
+{
 public:
 	Ball(SE::SimpleRenderer* renderer, float velocityX = 0.9f, float velocityY = 0.4f, float speed = 0.8f);
 	~Ball() {};
@@ -18,7 +21,7 @@ public:
 	auto onCollisionWithPad(std::shared_ptr<SE::Rectangle>& ball, std::shared_ptr<SE::Rectangle>&  pad) ->void;
 	auto onCollisionWithBrick(std::shared_ptr<SE::Rectangle>&  ball, std::shared_ptr<SE::Rectangle>&  brick) ->void;
 	auto toggleIsMoving() -> void;
-	auto setPosition(SE::vec2 position) -> void;
+	auto setPosition(SE::vec2 position) const -> void;
 
 private:
 	bool m_isMoving;

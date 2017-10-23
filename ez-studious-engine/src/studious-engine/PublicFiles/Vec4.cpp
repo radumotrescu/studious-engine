@@ -1,6 +1,7 @@
 #include "Vec4.h"
 
-namespace SE {
+namespace SE
+{
 	vec4::vec4(const float& x, const float& y, const float& z, const float& w)
 	{
 		this->x = x;
@@ -89,12 +90,12 @@ namespace SE {
 		return divide(other);
 	}
 
-	bool vec4::operator==(const vec4& other)
+	bool vec4::operator==(const vec4& other) const
 	{
 		return x == other.x && y == other.y && z == other.z && w == other.w;
 	}
 
-	bool vec4::operator!=(const vec4& other)
+	bool vec4::operator!=(const vec4& other) const
 	{
 		return !(*this == other);
 	}

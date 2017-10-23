@@ -3,7 +3,7 @@
 const float Pad::LEFT_MOVING_LIMIT = 2.0f;
 const float Pad::RIGHT_MOVING_LIMIT = 200.0f;
 
-Pad::Pad(SE::SimpleRenderer* renderer, float velocityX, float velocityY)
+Pad::Pad(SE::SimpleRenderer* renderer, const float velocityX, const float velocityY)
 	:m_renderer(renderer)
 	, m_velocityX(velocityX)
 	, m_velocityY(velocityY)
@@ -14,12 +14,12 @@ Pad::Pad(SE::SimpleRenderer* renderer, float velocityX, float velocityY)
 
 
 
-auto Pad::getRectangle() ->std::shared_ptr<SE::Rectangle>
+auto Pad::getRectangle() const ->std::shared_ptr<SE::Rectangle>
 {
 	return m_pad;
 }
 
-auto Pad::moveRight() ->void
+auto Pad::moveRight() const ->void
 {
 	auto origin = m_pad->getOrigin();
 
@@ -31,7 +31,7 @@ auto Pad::moveRight() ->void
 	}
 }
 
-auto Pad::moveLeft() ->void
+auto Pad::moveLeft() const ->void
 {
 	auto origin = m_pad->getOrigin();
 
@@ -42,7 +42,7 @@ auto Pad::moveLeft() ->void
 	}
 }
 
-auto Pad::setPosition(SE::vec2 position) -> void
+auto Pad::setPosition(const SE::vec2 position) const -> void
 {
 	this->m_pad->translate(SE::vec3(position.x,position.y,m_pad->getPriority()));
 }

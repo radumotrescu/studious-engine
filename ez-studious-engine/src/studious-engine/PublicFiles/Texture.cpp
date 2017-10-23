@@ -24,17 +24,17 @@ void Texture::unbind() const
 	glBindTexture(GL_TEXTURE_2D, 0);
 }
 
-auto Texture::getID() -> GLuint const
+auto Texture::getID() const -> GLuint
 {
 	return m_textureID;
 }
 
-const GLsizei Texture::getWidth() const
+auto Texture::getWidth() const -> GLsizei
 {
 	return m_width;
 }
 
-const GLsizei Texture::getHeight() const
+auto Texture::getHeight() const -> GLsizei
 {
 	return m_height;
 }
@@ -44,7 +44,6 @@ auto Texture::getNullTexture() -> Texture
 	static Texture nullTexture("..\\..\\src\\studious-engine\\PublicFiles\\Textures\\nothing.png");
 	return nullTexture;
 }
-
 
 GLuint Texture::load()
 {

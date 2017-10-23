@@ -1,12 +1,11 @@
 #include "Triangle.h"
 
-namespace SE {
-
-
-
+namespace SE
+{
 	Triangle::Triangle()
 	{
 	}
+
 	auto Triangle::getPoints() const -> std::vector<vec3>
 	{
 		// the points are assigned counterclockwise starting from the lower left corner
@@ -17,8 +16,7 @@ namespace SE {
 	{
 		return m_priority;
 	}
-
-
+	
 	auto Triangle::translate(const vec3 & translate) -> void
 	{
 	}
@@ -26,8 +24,7 @@ namespace SE {
 	auto Triangle::resize(const vec3 & resize) -> void
 	{
 	}
-
-
+	
 	auto Triangle::getType() const -> Type
 	{
 		return Type::TRIANGLE;
@@ -36,5 +33,4 @@ namespace SE {
 	auto Triangle::rotate(const vec3 & translate, const vec3 & axis) -> void
 	{
 	}
-
-}
+	}

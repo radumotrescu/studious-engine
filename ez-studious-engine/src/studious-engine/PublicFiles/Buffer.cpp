@@ -1,7 +1,8 @@
 #include "Buffer.h"
 
-namespace SE {
-	Buffer::Buffer(std::vector<GLfloat> data, GLsizei count, GLuint componentCount) :m_componentCount(componentCount)
+namespace SE 
+{
+	Buffer::Buffer(std::vector<GLfloat> data, const GLsizei count, const GLuint componentCount) :m_componentCount(componentCount)
 	{
 		const int bufferObjectsNumber = 1;
 		glGenBuffers(bufferObjectsNumber, &m_bufferID);

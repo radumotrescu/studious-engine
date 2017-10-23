@@ -1,12 +1,13 @@
 #pragma once
 
 #include <unordered_map>
-
 #include <glfw3.h>
 #include <functional>
 
-namespace SE {
-	class InputManager {
+namespace SE
+{
+	class InputManager
+	{
 	public:
 		static auto getInstance()->InputManager&;
 

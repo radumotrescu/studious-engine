@@ -1,8 +1,7 @@
 #include "Rectangle.h"
 
-
-namespace SE {
-
+namespace SE
+{
 	auto Rectangle::changePriority(const unsigned priority) -> void
 	{
 		m_priority = priority;
@@ -22,22 +21,22 @@ namespace SE {
 	{
 	}
 
-	Rectangle::Rectangle(const vec2 & position, const vec2 & dimension, const vec3 & color, const unsigned priority) 
-		:m_origin(vec3(position.x,position.y,priority)), m_dimension(dimension), m_color(color), m_priority(priority)
+	Rectangle::Rectangle(const vec2 & position, const vec2 & dimension, const vec3 & color, const unsigned priority)
+		:m_origin(vec3(position.x, position.y, priority)), m_dimension(dimension), m_color(color), m_priority(priority)
 	{
 		Texture tex = Texture::getNullTexture();
 		matrix = { 0,0,0,dimension.y,dimension.x,dimension.y,dimension.x,0 };
-		colors = { 
+		colors = {
 			color.x, color.y, color.z, 1.0f,
 			color.x, color.y, color.z, 1.0f,
 			color.x, color.y, color.z, 1.0f,
-			color.x, color.y, color.z, 1.0f 
+			color.x, color.y, color.z, 1.0f
 		};
 		m_sprite = Sprite(std::vector<GLfloat>(matrix.begin(), matrix.end()), std::vector<GLfloat>(colors.begin(), colors.end()), tex, std::vector<GLushort>(indexes.begin(), indexes.end()));
 
 	}
 	Rectangle::Rectangle(const vec2 & position, const vec2 & dimension, const Texture& texture, const unsigned priority)
-		:m_origin(vec3(position.x,position.y,priority)), m_dimension(dimension), m_priority(priority)
+		:m_origin(vec3(position.x, position.y, priority)), m_dimension(dimension), m_priority(priority)
 	{
 		matrix = { 0,0,0,dimension.y,dimension.x,dimension.y,dimension.x,0 };
 		colors = {
@@ -46,18 +45,18 @@ namespace SE {
 			1.0f, 1.0f, 1.0f, 1.0f,
 			1.0f, 1.0f, 1.0f, 1.0f
 		};
-		m_sprite = Sprite(std::vector<GLfloat>(matrix.begin(), matrix.end()), std::vector<GLfloat>(colors.begin(), colors.end()),texture, std::vector<GLushort>(indexes.begin(), indexes.end()));
+		m_sprite = Sprite(std::vector<GLfloat>(matrix.begin(), matrix.end()), std::vector<GLfloat>(colors.begin(), colors.end()), texture, std::vector<GLushort>(indexes.begin(), indexes.end()));
 	}
 
 	Rectangle::Rectangle(const vec2 & position, const vec2 & dimension, const vec3 & color, const Texture & texture, const unsigned priority)
-		:m_origin(vec3(position.x,position.y,priority)), m_dimension(dimension), m_priority(priority)
+		:m_origin(vec3(position.x, position.y, priority)), m_dimension(dimension), m_priority(priority)
 	{
 		matrix = { 0,0,0,dimension.y,dimension.x,dimension.y,dimension.x,0 };
-		colors = { 
+		colors = {
 			color.x, color.y, color.z, 1.0f,
 			color.x, color.y, color.z, 1.0f,
 			color.x, color.y, color.z, 1.0f,
-			color.x, color.y, color.z, 1.0f 
+			color.x, color.y, color.z, 1.0f
 		};
 		m_sprite = Sprite(std::vector<GLfloat>(matrix.begin(), matrix.end()), std::vector<GLfloat>(colors.begin(), colors.end()), texture, std::vector<GLushort>(indexes.begin(), indexes.end()));
 
@@ -151,6 +150,5 @@ namespace SE {
 	auto Rectangle::getType() const -> Type
 	{
 		return Type::RECTANGLE;
-
 	}
 }

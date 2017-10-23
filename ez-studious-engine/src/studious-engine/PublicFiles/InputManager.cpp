@@ -1,13 +1,14 @@
 #include "InputManager.h"
 
-namespace SE {
+namespace SE 
+{
 	std::unordered_multimap<int, std::function<void()>> InputManager::m_actionKey;
 
 	InputManager::InputManager()
 	{
 	}
 
-	auto InputManager::keyCallback(GLFWwindow* window, int key, int scancode, int action, int mods) -> void
+	auto InputManager::keyCallback(GLFWwindow* window, const int key, int scancode, const int action, int mods) -> void
 	{
 		const auto range = m_actionKey.equal_range(key);
 

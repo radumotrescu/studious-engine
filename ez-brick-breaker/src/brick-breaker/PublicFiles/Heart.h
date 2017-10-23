@@ -1,4 +1,5 @@
 #pragma once
+
 #include <Rectangle.h>
 #include <SimpleRenderer.h>
 

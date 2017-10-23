@@ -1,7 +1,7 @@
 #include "Light.h"
 
-namespace SE {
-
+namespace SE
+{
 	 vec2 Light::m_position = vec2(0, 0);
 	 bool Light::m_enabled = false;
 	 float Light::m_intensity = 0.0f;
@@ -54,5 +54,4 @@ namespace SE {
 	{
 		m_intensity = intensity;
 	}
-
 }

@@ -2,12 +2,12 @@
 
 
 namespace SE {
-	auto Shader::getUniformLocation(const std::string & name) -> GLint
+	auto Shader::getUniformLocation(const std::string & name) const -> GLint
 	{
 		return glGetUniformLocation(m_shaderID, name.data());
 	}
 
-	auto Shader::enable() -> void const
+	auto Shader::enable() const -> void
 	{
 		glUseProgram(m_shaderID);
 	}
@@ -17,30 +17,31 @@ namespace SE {
 		m_shaderID = load();
 	}
 
-	auto Shader::setUniformMat4(const std::string & name, const mat4 & matrix)->void
+	auto Shader::setUniformMat4(const std::string & name, const mat4 & matrix) const ->void
 	{
 		glUniformMatrix4fv(getUniformLocation(name), 1, GL_FALSE, matrix.elements);
 	}
 
-	auto Shader::setUniform1i(const std::string & name, const int value) -> void
+	auto Shader::setUniform1i(const std::string & name, const int value) const -> void
 	{
 		glUniform1i(getUniformLocation(name), value);
 	}
-	void Shader::setUniform1f(const GLchar* name, float value)
+
+	auto Shader::setUniform1f(const GLchar* name, float value) const -> void
 	{
 		glUniform1f(getUniformLocation(name), value);
 	}
 
-	void Shader::setUniform2f(const GLchar* name, const vec2& vector)
+	void Shader::setUniform2f(const GLchar* name, const vec2& vector) const
 	{
 		glUniform2f(getUniformLocation(name), vector.x, vector.y);
 	}
-	void Shader::setUniform3f(const GLchar* name, const vec3& vector)
+	void Shader::setUniform3f(const GLchar* name, const vec3& vector) const
 	{
 		glUniform3f(getUniformLocation(name), vector.x, vector.y, vector.z);
 	}
 
-	void Shader::setUniform3fv(const GLchar*name, const std::array<float, 30>& arr)
+	void Shader::setUniform3fv(const GLchar*name, const std::array<float, 30>& arr) const
 	{
 		glUniform3fv(getUniformLocation(name), 10, arr.data());
 	}
@@ -55,9 +56,9 @@ namespace SE {
 
 	GLuint Shader::load()
 	{
-		GLuint program = glCreateProgram();
-		GLuint vertex = glCreateShader(GL_VERTEX_SHADER);
-		GLuint fragment = glCreateShader(GL_FRAGMENT_SHADER);
+		const GLuint program = glCreateProgram();
+		const GLuint vertex = glCreateShader(GL_VERTEX_SHADER);
+		const GLuint fragment = glCreateShader(GL_FRAGMENT_SHADER);
 
 		//std::string vertSourceString = readFile(m_vertexPath);
 		//std::string fragSourceString = readFile(m_fragmentPath);
@@ -191,7 +192,7 @@ else
 		return program;
 
 	}
-	auto Shader::disable() -> void const
+	auto Shader::disable() const -> void
 	{
 		glUseProgram(0);
 	}

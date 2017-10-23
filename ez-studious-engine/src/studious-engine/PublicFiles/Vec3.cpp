@@ -1,7 +1,7 @@
 #include "Vec3.h"
 
-namespace SE {
-
+namespace SE 
+{
 	vec3::vec3()
 	{
 		x = 0.0f;
@@ -92,7 +92,7 @@ namespace SE {
 		return divide(other);
 	}
 
-	bool vec3::operator==(const vec3& other)
+	bool vec3::operator==(const vec3& other) const
 	{
 		return x == other.x && y == other.y && z == other.z;
 	}
@@ -107,5 +107,4 @@ namespace SE {
 		stream << "vec3: (" << vector.x << ", " << vector.y << ", " << vector.z << ")";
 		return stream;
 	}
-
 }

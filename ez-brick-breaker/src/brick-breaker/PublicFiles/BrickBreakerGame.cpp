@@ -41,10 +41,10 @@ auto BrickBreakerGame::init() -> void
 	m_renderer->setLightIntensity(0.5);
 
 	SoundManager::init();
-	
-	auto hitWithPadSound = std::make_shared<Sound>("hitWithPad","..\\..\\src\\studious-engine\\PublicFiles\\Sounds\\hit2.wav");
-	auto hithWithBrickSound= std::make_shared<Sound>("hitWithBrick","..\\..\\src\\studious-engine\\PublicFiles\\Sounds\\hit.wav");
-	auto backgroundSound = std::make_shared<Sound>("background", "..\\..\\src\\studious-engine\\PublicFiles\\Sounds\\acdc.mp3");
+
+	const auto hitWithPadSound = std::make_shared<Sound>("hitWithPad","..\\..\\src\\studious-engine\\PublicFiles\\Sounds\\hit2.wav");
+	const auto hithWithBrickSound= std::make_shared<Sound>("hitWithBrick","..\\..\\src\\studious-engine\\PublicFiles\\Sounds\\hit.wav");
+	const auto backgroundSound = std::make_shared<Sound>("background", "..\\..\\src\\studious-engine\\PublicFiles\\Sounds\\acdc.mp3");
 
 
 	SoundManager::add(hitWithPadSound);

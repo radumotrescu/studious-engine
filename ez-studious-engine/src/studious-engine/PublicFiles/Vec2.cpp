@@ -1,5 +1,7 @@
 #include "Vec2.h"
-namespace SE {
+
+namespace SE 
+{
 	vec2::vec2()
 	{
 		x = 0.0f;
@@ -89,12 +91,12 @@ namespace SE {
 		return divide(other);
 	}
 
-	bool vec2::operator==(const vec2& other)
+	bool vec2::operator==(const vec2& other) const
 	{
 		return x == other.x && y == other.y;
 	}
 
-	bool vec2::operator!=(const vec2& other)
+	bool vec2::operator!=(const vec2& other) const
 	{
 		return !(*this == other);
 	}
