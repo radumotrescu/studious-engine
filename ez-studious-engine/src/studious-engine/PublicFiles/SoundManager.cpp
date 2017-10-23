@@ -57,37 +57,3 @@ auto SoundManager::clean() -> void
 	m_system->close();
 	m_system->release();
 }
-
-
-/*
-minutul 34:15
-in window.h - include "SoundManager.h"
-in destructor clean
-in constructor init 
-pana la 35:27
-*/
-
-/*
-39:09 create a function pointer to loop
-in ga_internal.h in struct ga_Handle
-void(*loop)() 
-ce e mai sus e de fapt gresit 
-40:47
-void* sound;
-*/
-
-/*
-de la minutul 43:28 in 23
-inainte de while(!window) dupa #include "SoundManager"
-SoundManager::add(new Sound("Evacuate", "Evacuate.wav");
-SoundManager::get("Evacuate")->play();
-
-*/
-
-/*
-de la minutul 49:51
-sub while(!window.closed())
-{
-SoundManager::update();
-exact mai sus de window.update(); frames++;
-*/
