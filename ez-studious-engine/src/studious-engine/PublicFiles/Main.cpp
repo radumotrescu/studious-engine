@@ -153,7 +153,7 @@ auto main()->int
 
 
 		ren.draw();
-
+		std::cout << window->getWidth() << ", " << window->getHeight() << std::endl;
 		SE::LabelManager::displayAllLabels();
 
 		i++;
