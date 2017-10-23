@@ -2,76 +2,94 @@
 
 studious-engine is a small framework designed to make it easy for game makers to create a game in a small time frame.
 
+# Summary
+### 1. Window
+### 2. InputManager
+### 3. Vectors and Matrices
+### 4. Shader
+### 5. Buffer and VertexArray
+### 6. SimpleRenderer
+### 7. Rectangle
+### 8. Shader
+### 9. Texture
+### 10. CollisionChecker and CollisionManager
+### 11. Font
+### 12. Sound and Sound Manager
+### 13. Light
+### 14. Application
+
+
+
 # Code Example
 
 Show what the library does as concisely as possible, developers should be able to figure out **how** your project solves their problem by looking at the code example. Make sure the API you are showing off is obvious, and that your code is short and concise.
 
-### Window
+### 1. Window
 
 **TODO**
 
 
-### InputManager
+### 2. InputManager
 
 **TODO**
 
 
-### Vectors and Matrices
+### 3. Vectors and Matrices
 
 **TODO**
 
 
-### Shader
+### 4. Shader
 
 **TODO**
 
 
-### Buffer and VertexArray
+### 5. Buffer and VertexArray
 
 **TODO**
 
 
-### SimpleRenderer
+### 6. SimpleRenderer
 
 **TODO**
 
 
-### Rectangle
+### 7. Rectangle
 
 **TODO**
 
 
-### Shader
+### 8. Shader
 
 **TODO**
 
 
-### Texture
+### 9. Texture
 
 **TODO**
 
 
-### Collision
+### 10. CollisionChecker and CollisionManager
 
 **TODO**
 
 
-### Font
+### 11. Font
 
 **TODO**
 
 
-### Sound and Sound Manager
+### 12. Sound and Sound Manager
 
 **TODO**
 
 
-### Light
+### 13. Light
 
 **TODO**
 
 
-### Application
+### 14. Application
 
 **TODO**
 
