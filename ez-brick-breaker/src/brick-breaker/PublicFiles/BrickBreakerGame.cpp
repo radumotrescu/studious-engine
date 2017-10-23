@@ -20,6 +20,13 @@ auto BrickBreakerGame::init() -> void
 	Game::init();
 	m_ball = std::make_shared<Ball>(m_renderer.get());
 	m_pad = std::make_shared<Pad>(m_renderer.get());
+	// init labels
+	SE::LabelManager::init();
+	SE::LabelManager::setIsDisplayingFps(true);
+	m_scoreLabel = std::make_shared<Score>();
+	auto label = m_scoreLabel.get()->getLabel();
+	label.setColor(SE::vec3(0.5f, 0.6f, 0.01f));
+	SE::LabelManager::addLabel(label);
 
 	m_hearts.push(std::make_shared<Heart>(m_renderer.get(), SE::vec2(185.f, 5.f)));
 	m_hearts.push(std::make_shared<Heart>(m_renderer.get(), SE::vec2(175.f, 5.f)));

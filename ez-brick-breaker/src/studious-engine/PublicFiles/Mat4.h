@@ -2,6 +2,7 @@
 #include"Vec4.h"
 #include"Vec3.h"
 namespace SE {
+	
 	struct mat4 {
 		union {
 			float elements[4 * 4];

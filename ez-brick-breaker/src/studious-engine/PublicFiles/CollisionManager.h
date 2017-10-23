@@ -3,7 +3,7 @@
 #include <list>
 #include <memory>
 
-#include "Application.h"
+#include "CollisionChecker.h"
 #include <functional>
 
 namespace SE
@@ -21,6 +21,6 @@ namespace SE
 
 	private:
 		static std::list<std::tuple<std::shared_ptr<Rectangle>, std::shared_ptr<Rectangle>, std::function<void(std::shared_ptr<Rectangle>, std::shared_ptr<Rectangle>)>>> m_collisionalEntities;
-		static Application m_app;
+		static CollisionChecker m_app;
 	};
 }

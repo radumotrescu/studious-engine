@@ -7,7 +7,7 @@
 namespace SE
 {
 	std::list<std::tuple<std::shared_ptr<Rectangle>, std::shared_ptr<Rectangle>, std::function<void(std::shared_ptr<Rectangle> ,std::shared_ptr<Rectangle> )>>> CollisionManager::m_collisionalEntities;
-	Application CollisionManager::m_app;
+	CollisionChecker CollisionManager::m_app;
 
 	auto CollisionManager::getInstance()-> CollisionManager&
 	{
