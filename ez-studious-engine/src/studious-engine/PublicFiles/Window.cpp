@@ -96,6 +96,7 @@ auto Window::setVSync(bool sync)->void
 	{
 		glfwSwapBuffers(*this->m_window.get());
 		glfwGetFramebufferSize(*this->m_window.get(), &this->m_width, &this->m_height);
+		glViewport(0, 0, m_width, m_height);
 		glfwPollEvents();
 	}
 

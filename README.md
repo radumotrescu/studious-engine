@@ -1,12 +1,24 @@
-## Synopsis
+# Synopsis
 
 studious-engine is a small framework designed to make it easy for game makers to create a game in a small time frame.
 
-## Code Example
+# Summary
+### 1. Window
+### 2. InputManager
+### 3. Vectors and Matrices
+### 4. Shader
+### 5. Buffer and VertexArray
+### 6. SimpleRenderer
+### 7. Rectangle
+### 8. Shader
+### 9. Texture
+### 10. CollisionChecker and CollisionManager
+### 11. Font
+### 12. Sound and Sound Manager
+### 13. Light
+### 14. Application
 
-**TODO**
-
-Show what the library does as concisely as possible, developers should be able to figure out **how** your project solves their problem by looking at the code example. Make sure the API you are showing off is obvious, and that your code is short and concise.
+# Code examples
 
 **Creating your graphics context**
 
@@ -65,12 +77,81 @@ To enable the light and configuring its parameters you will need to call these m
 
 You can always call these methods in your game loop, being possible to make your light move and pulse.
 
+### 1. Window
 
-## Motivation
+**TODO**
+
+
+### 2. InputManager
+
+**TODO**
+
+
+### 3. Vectors and Matrices
+
+**TODO**
+
+
+### 4. Shader
+
+**TODO**
+
+
+### 5. Buffer and VertexArray
+
+**TODO**
+
+
+### 6. SimpleRenderer
+
+**TODO**
+
+
+### 7. Rectangle
+
+**TODO**
+
+
+### 8. Shader
+
+**TODO**
+
+
+### 9. Texture
+
+**TODO**
+
+
+### 10. CollisionChecker and CollisionManager
+
+**TODO**
+
+
+### 11. Font
+
+**TODO**
+
+
+### 12. Sound and Sound Manager
+
+**TODO**
+
+
+### 13. Light
+
+**TODO**
+
+
+### 14. Application
+
+**TODO**
+
+
+# Motivation
 
 This framwork was created because most game engines are hard to get started with and they come in large file sizes, but also because we wanted to learn modern C++, and what better way to write hardcore C++ than within a game engine?
 
-## Installation
+# Installation
 
 Install these first:
 
@@ -89,14 +170,14 @@ https://github.com/radumotrescu/studious-engine
 In terminal, go to studious-engine, and enter any of the folders starting with "ez-", then execute: ez-gen. This will generate a Visual Studio solution for you, where you can start making your game.
 
 
-## API Reference
+# API Reference
 
 
 
-## Contributors
+# Contributors
 
 Let people know how they can dive into the project, include important links to things like issue trackers, irc, twitter accounts if applicable.
 
-## License
+# License
 
 A short snippet describing the license (MIT, Apache, etc.)
