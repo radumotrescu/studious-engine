@@ -3,7 +3,7 @@
 #include <list>
 #include <memory>
 
-#include "CollisionChecker.h"
+#include <CollisionChecker.h>
 #include <functional>
 
 namespace SE

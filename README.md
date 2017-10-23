@@ -16,7 +16,7 @@ studious-engine is a small framework designed to make it easy for game makers to
 #### 11. Font
 #### 12. Sound and Sound Manager
 #### 13. Light
-#### 14. Application
+#### 14. Game
 
 
 ### 1. Window
@@ -188,6 +188,28 @@ Its default behavior is to count in a collision all the edges of the sprite. In 
 If it is desired to change that fact, it is possible through extending the CollisionChecker class and overriding the isCollided method.
 
 Note that the default CollisionManager makes use of the default collision also.
+
+**Making your own game**
+
+Our framework delivers a quick way to write your own 2D game. To get started you have to include the specific header.
+```
+#include "Game.h"
+``` 
+The Game class is an abstract class. By extending it, you are allowed to come with your own implementations and visions for the coming game.
+
+```
+virtual auto update() ->void = 0;
+virtual auto start() ->void = 0;
+virtual auto init() ->void;
+virtual auto run() ->void;
+virtual auto onTick() ->void;
+```
+
+The init method, sets the widow size to 600 width x 800 height and sets-up the renderer of the game.
+The run method, assures the loop circuit of the game at an assessed time. This time is given by the onTick method. 
+The default tick is set to 120 fpms. On every tick, the update method is called.
+The start method must be implemented as well, and it is a point of stability and personalization in the further development of the new game. It is also an entry point for every other foreign behaviors. 
+
 	
 # Motivation
 
