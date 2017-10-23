@@ -20,6 +20,8 @@ namespace SE {
 		unsigned m_priority;
 		vec3 m_color;
 
+		vec2 m_scrollingSpeed=vec2(0,0);
+
 		//texture coord for all 4 vertices
 
 
@@ -31,12 +33,15 @@ namespace SE {
 			1,2,0
 		};
 
+		bool m_affectedByLighting = true;
+
 
 	public:
+
 		Rectangle();
-		Rectangle(const vec3& position, const vec2& dimension, const vec3& color, const unsigned priority);
-		Rectangle(const vec3& position, const vec2& dimension, const Texture& texture, const unsigned priority);
-		Rectangle(const vec3& position, const vec2& dimension, const vec3& color, const Texture& texture, const unsigned priority);
+		Rectangle(const vec2& position, const vec2& dimension, const vec3& color, const unsigned priority);
+		Rectangle(const vec2& position, const vec2& dimension, const Texture& texture, const unsigned priority);
+		Rectangle(const vec2& position, const vec2& dimension, const vec3& color, const Texture& texture, const unsigned priority);
 
 		//auto changePointCoordinates(const vec3 & vertex)->void;
 		auto changePriority(const unsigned priority) -> void;
@@ -51,6 +56,10 @@ namespace SE {
 		auto getWidth() const ->float const;
 		auto getHeight() const ->float const;
 		auto getOrigin() const ->vec3 const;
+		auto getScrollingSpeed() const->vec2;
+		auto getAffectedByLighting()const->bool;
+		
+		auto setAffectedByLighting(const bool affectedByLighting)->void;
 
 		//auto getTextureId()->unsigned int const;
 
@@ -64,7 +73,12 @@ namespace SE {
 		auto moveUp()->void;
 		auto moveDown()->void;
 
+		auto setScrollingSpeed(const vec2 scrollingSpeed)->void;
+
 		auto getTextureID()->GLuint;
+
+
+		auto draw() -> void const;
 
 	};
 }
