@@ -2,7 +2,7 @@ Basic requirements:
     basic window - Marius
     primitive ( transformari ) - George + Adina
     input + event handling - Marius
-    randare - Radu
+    randare - Radu 
 
 Intermediate requirements:
     coliziuni - Miruna
@@ -52,5 +52,5 @@ Intermediate requirements:
 	Unbind managers + refactorizare consturi-> Marius
 	Application implementation -> Miruna
 	Game over "screen" -> Adina
-	Resize window, index Documentatie -> George
+	Resize window, cuprins Documentatie -> George
 	

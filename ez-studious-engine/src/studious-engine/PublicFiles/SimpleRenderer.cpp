@@ -108,6 +108,7 @@ namespace SE {
 		m_shader.enable();
 		for (auto& rectangle : m_drawVector)
 		{
+			m_shader.setUniform1i("affectedByLighting", rectangle->getAffectedByLighting());
 			m_shader.setUniformMat4("ml_matrix", mat4::translation(rectangle->getOrigin()));
 			m_shader.setUniform1i("tex", rectangle->getTextureID());
 			vec2 scrollingOffset = vec2(rectangle->getScrollingSpeed().x*(scrollingMap[rectangle].m_loopValue.x / 1000), rectangle->getScrollingSpeed().y*(scrollingMap[rectangle].m_loopValue.y / fullLoopFPSValues));

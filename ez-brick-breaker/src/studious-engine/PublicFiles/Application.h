@@ -13,8 +13,8 @@ namespace SE {
 
 	class Application {
 	public:
-		Application() {};
-		//Application() = default;
+		//Application() {};
+		Application() = default;
 		~Application() = default;
 
 		auto isCollided(IEntity* entity1, IEntity* entity2)->bool;
@@ -26,9 +26,6 @@ namespace SE {
 
 		auto isCollided(Rectangle rect1, SE::Rectangle rect2)->bool;
 		auto isCollided(vec3 point, SE::Rectangle rect)->bool;
-		//auto isCollided(Triangle triangle1, Triangle triangle2)->bool;
-		//auto isCollided(Point3D point, Triangle triangle)->bool;
-		//auto isCollided(Rectangle rect, Triangle triangle)->bool;
 
 	};
 }

@@ -102,12 +102,12 @@ auto main()->int
 	glEnable(GL_DEPTH_TEST);
 	auto window = std::make_unique<SE::Window>("Test", WINDOW_WIDTH, WINDOW_HEIGHT);
 
-	SE::SimpleRenderer ren(WINDOW_WIDTH,WINDOW_HEIGHT,10);
+	SE::SimpleRenderer ren(WINDOW_WIDTH, WINDOW_HEIGHT, 10);
 
 	Texture tex("..\\..\\src\\studious-engine\\PublicFiles\\Textures\\cer.png");
 	Texture tex1("..\\..\\src\\studious-engine\\PublicFiles\\Textures\\test.png");
 
-	auto s1 = std::make_shared<SE::Rectangle>(SE::vec2(0, 0 ), SE::vec2(WINDOW_WIDTH, WINDOW_HEIGHT), tex, 1);
+	auto s1 = std::make_shared<SE::Rectangle>(SE::vec2(0, 0), SE::vec2(WINDOW_WIDTH, WINDOW_HEIGHT), tex, 1);
 	s1->setScrollingSpeed(SE::vec2(1, 0));
 	//auto s2 = std::make_shared<SE::Rectangle>(SE::vec3(70.0f, 70, 0.0f), SE::vec2(100, 100), tex1, 4);
 	//auto s3 = std::make_shared<SE::Rectangle>(SE::vec3(150.0f, 10, 0.0f), SE::vec2(10, 10), SE::vec3(1, 0, 0), 0);
@@ -115,6 +115,7 @@ auto main()->int
 
 	Texture tex2("..\\..\\src\\studious-engine\\PublicFiles\\Textures\\tree.png");
 	auto s3 = std::make_shared<SE::Rectangle>(SE::vec2(100.0f, 100.0f), SE::vec2(50, 50), SE::vec3(1, 1, 1), tex2, 3);
+	s3->setAffectedByLighting(false);
 	//s3->setScrollingSpeed(SE::vec2(1, -4));
 
 	ren.addRectangleToDrawCall(s1);
