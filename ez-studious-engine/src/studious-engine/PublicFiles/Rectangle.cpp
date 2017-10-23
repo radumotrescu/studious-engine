@@ -124,6 +124,16 @@ namespace SE {
 		return m_scrollingSpeed;
 	}
 
+	auto Rectangle::getAffectedByLighting() const -> bool
+	{
+		return m_affectedByLighting;
+	}
+
+	auto Rectangle::setAffectedByLighting(const bool affectedByLighting) -> void
+	{
+		m_affectedByLighting = affectedByLighting;
+	}
+
 	//auto Rectangle::getTextureId() -> unsigned int const
 	//{
 	//	return m_texture->getID();

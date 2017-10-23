@@ -35,7 +35,7 @@ namespace SE {
 	{
 		glUniform2f(getUniformLocation(name), vector.x, vector.y);
 	}
-		void Shader::setUniform3f(const GLchar* name, const vec3& vector)
+	void Shader::setUniform3f(const GLchar* name, const vec3& vector)
 	{
 		glUniform3f(getUniformLocation(name), vector.x, vector.y, vector.z);
 	}
@@ -116,20 +116,26 @@ in DATA
 	vec2 textureCoord;
 } fs_in;
 
-																																	   
+uniform bool ambientLight=true;																															   
 uniform sampler2D tex;
 uniform vec2 scrollingOffset=vec2(0.1,0.1);
 uniform bool lightEnabled=false;
+uniform bool affectedByLighting=false;
 
 void main()
 {
 	if(lightEnabled==true){
-
+	
 	float distance = length(lpos - fs_in.position.xy);
 	float attenuation = 1.0 / distance*lradius;
 
 	//outColor = texture(tex, fs_in.textureCoord)*vec4(attenuation,attenuation,attenuation,pow(attenuation,lintensity))*vec4(fs_in.color);
+if(affectedByLighting==true)
+	
 	outColor = texture(tex, vec2(scrollingOffset.x+fs_in.textureCoord.x,scrollingOffset.y+fs_in.textureCoord.y))*vec4(attenuation,attenuation,attenuation,pow(attenuation,lintensity))*vec4(fs_in.color);
+else
+ 
+	outColor = texture(tex, vec2(scrollingOffset.x+fs_in.textureCoord.x,scrollingOffset.y+fs_in.textureCoord.y))*vec4(fs_in.color);
 	}
 else
 {

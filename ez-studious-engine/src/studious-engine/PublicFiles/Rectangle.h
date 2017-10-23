@@ -33,6 +33,8 @@ namespace SE {
 			1,2,0
 		};
 
+		bool m_affectedByLighting = true;
+
 
 	public:
 
@@ -55,6 +57,9 @@ namespace SE {
 		auto getHeight() const ->float const;
 		auto getOrigin() const ->vec3 const;
 		auto getScrollingSpeed() const->vec2;
+		auto getAffectedByLighting()const->bool;
+		
+		auto setAffectedByLighting(const bool affectedByLighting)->void;
 
 		//auto getTextureId()->unsigned int const;
 
