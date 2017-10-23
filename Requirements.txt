@@ -46,3 +46,11 @@ Intermediate requirements:
 	Text + inimioare pentru scor -> Marius
 	Documentatie -> toti
 	Refactoring cod -> toti
+
+	PART7:
+	HUD vizibil-> Radu
+	Unbind managers + refactorizare consturi-> Marius
+	Application implementation -> Miruna
+	Game over "screen" -> Adina
+	Resize window, index Documentatie -> George
+	
