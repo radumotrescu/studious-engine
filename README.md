@@ -6,8 +6,65 @@ studious-engine is a small framework designed to make it easy for game makers to
 
 **TODO**
 
-
 Show what the library does as concisely as possible, developers should be able to figure out **how** your project solves their problem by looking at the code example. Make sure the API you are showing off is obvious, and that your code is short and concise.
+
+**Creating your graphics context**
+
+The header need to have access to the window and render functionality is in Game.h.
+
+    #include <Game.h>
+
+Initialising the Game:
+
+    SE::Game::init();
+
+This will create your OpenGL window context and your game renderer. You can access the window height and window width by calling:
+
+    SE::Game::m_window->getHeight();
+    SE::Game::m_window->getWidth();
+
+**Using the Rectangle and Texture classes**
+
+Now, lets add something to our screen. What about a rectangle with a texture on it? First, lets include the Rectangle and Texture classes:
+
+    #include <Rectangle.h>
+    #include <Texture.h>
+
+To make a new texture, you will need to call its constructor like so, remembering that only PNG files will work.
+
+    SE::Texture texture("path/to/image.png");
+
+As in most game engines, the (0,0) coordinate is in the top left of the screen. Keeping that in mind, lets add a new rectangle to our screen:
+
+    auto rectanglePosition=SE::vec2(xCoordinate, yCoordinate); 
+    auto rectangleSize=SE::vec2(width,height);
+    auto rectangleColor=SE::vec3(R,G,B); // the RGB values need to be given as values from 0.0 to 1.0, 0.0 being no color, and 1.0 being full color
+    float priority=2 // this will set the desired priority of the rectangle, because you might want some objects to be in front of others
+    auto rectangle=std::make_shared<SE::Rectangle>(rectanglePosition,rectangleSize,rectangleColor,texture, priority);
+
+Having the rectangle instantiated, we need to add it to the render draw cycle:
+
+    SE::Game::m_renderer->addRectangleToDrawCall(rectangle);
+
+You will now see your rectangle drawn on screen.
+
+**Enabling and using the light**
+
+To enable the light and configuring its parameters you will need to call these methods:
+
+    SE::Game::m_renderer->setLightStatus(true);
+
+    auto lightPosition=SE::vec2(xCoordinate, yCoordinate);
+    SE::Game::m_renderer->setLightPosition(lightPosition);
+
+    float lightRadius=100.0f;
+    SE::Game::m_renderer->setLightRadius(lightRadius);
+
+    float lightIntensity=2.0f;
+    SE::Game::m_renderer->setLightIntensity(lightIntensity);
+
+You can always call these methods in your game loop, being possible to make your light move and pulse.
+
 
 ## Motivation
 
@@ -34,7 +91,7 @@ In terminal, go to studious-engine, and enter any of the folders starting with "
 
 ## API Reference
 
-Depending on the size of the project, if it is small and simple enough the reference docs can be added to the README. For medium size to larger projects it is important to at least provide a link to where the API reference docs live.
+
 
 ## Contributors
 
