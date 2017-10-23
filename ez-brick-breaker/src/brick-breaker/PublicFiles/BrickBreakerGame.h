@@ -6,7 +6,7 @@
 #include "Shader.h"
 #include "Sprite.h"
 #include "InputManager.h"
-#include "Application.h"
+#include "CollisionChecker.h"
 #include "Rectangle.h"
 #include "Utils.h"
 #include "CollisionManager.h"
@@ -16,6 +16,9 @@
 #include "Heart.h"
 #include <stack>
 #include"SoundManager.h"
+#include "LabelManager.h"
+#include "Score.h"
+
 using namespace SE;
 
 class BrickBreakerGame : public Game
@@ -36,7 +39,9 @@ private:
 	auto onBallOutOfScope() -> void;
 
 private:
-	Application m_app;
+	CollisionChecker m_app;
+	std::shared_ptr<SE::LabelManager> m_labelManager;
+	std::shared_ptr<Score> m_scoreLabel;
 	std::shared_ptr<Ball> m_ball;
 	std::shared_ptr<Pad> m_pad;
 	std::stack <std::shared_ptr<Heart>> m_hearts;

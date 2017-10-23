@@ -3,7 +3,7 @@
 #include "Sprite.h"
 #include "SimpleRenderer.h"
 #include "InputManager.h"
-#include "Application.h"
+#include "CollisionChecker.h"
 #include "Rectangle.h"
 #include "glut.h"
 #include "LabelManager.h"
