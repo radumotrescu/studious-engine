@@ -29,7 +29,7 @@ public:
 		texture2 = Texture("..//..//src//demo//PublicFiles//Textures//texture2.png");
 
 		rectangle1 = std::make_shared<SE::Rectangle>(SE::vec2(40, 40), SE::vec2(50, 50), texture1, 2);
-		rectangle2 = std::make_shared<SE::Rectangle>(SE::vec2(150, 40), SE::vec2(50, 50), texture2, 2);
+		rectangle2 = std::make_shared<SE::Rectangle>(SE::vec2(150, 40), SE::vec2(50, 50), texture2, 3);
 
 		sound1 = std::make_shared<Sound>("sunet1", "..//..//src//demo//PublicFiles//Sounds//cat_growl.wav");
 		sound2 = std::make_shared<Sound>("sunet2", "..//..//src//demo//PublicFiles//Sounds//dog_bark.wav");
@@ -49,11 +49,11 @@ public:
 
 	auto moveRectangle1()->void
 	{
-		rectangle1->translate(SE::vec3(rectangle1->getOrigin().x+1, rectangle1->getOrigin().y, rectangle1->getPriority()));
+		rectangle1->translate(SE::vec3(rectangle1->getOrigin().x + 1, rectangle1->getOrigin().y, rectangle1->getPriority()));
 	}
 	auto moveRectangle2()->void
 	{
-		rectangle2->translate(SE::vec3(rectangle2->getOrigin().x-1, rectangle2->getOrigin().y, rectangle2->getPriority()));
+		rectangle2->translate(SE::vec3(rectangle2->getOrigin().x - 1, rectangle2->getOrigin().y, rectangle2->getPriority()));
 	}
 
 	auto bindKeyToRectangles()->void
@@ -64,21 +64,18 @@ public:
 
 	auto rectangleCollision(std::shared_ptr<SE::Rectangle> rectangle1, std::shared_ptr<SE::Rectangle> rectangle2)->void
 	{
-		static bool x= false;
+		static bool x = false;
 		if (x == false)
 		{
 			SoundManager::get("sunet1")->play();
 			SoundManager::get("sunet2")->play();
 			x = true;
-		std::cout << 3;
 		}
 	}
 
 	auto bindRectangleToCollisionManager()->void
 	{
-		//const auto th = std::make_shared<MyGame>(this);
-		aux x;
-		SE::CollisionManager::addCollisionalEntities(rectangle1, rectangle2, std::bind(&MyGame::rectangleCollision ,this, std::placeholders::_1, std::placeholders::_2));
+		SE::CollisionManager::addCollisionalEntities(rectangle1, rectangle2, std::bind(&MyGame::rectangleCollision, this, std::placeholders::_1, std::placeholders::_2));
 	}
 
 	~MyGame()
@@ -86,7 +83,7 @@ public:
 		SoundManager::clean();
 	}
 
-	
+
 
 private:
 	Texture texture1;
@@ -105,5 +102,6 @@ int main()
 {
 	MyGame myGame;
 	myGame.start();
+
 	return 0;
 }
