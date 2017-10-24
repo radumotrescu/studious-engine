@@ -131,6 +131,18 @@ Having the rectangle instantiated, we need to add it to the render draw cycle:
 
 You will now see your rectangle drawn on screen.
 
+Advanced rectangle methods:
+
+By default, the rectangles are affected by the light on the screen. If you want to disable this feature, for example, to make a rectangle part of a HUD and you dont want it to be affected by light, you will call the "setAffectedByLighting" method.To turn this back on, just call the method with the "true" argument.
+
+    rectangle->setAffectedByLighting(false);
+    rectangle->setAffectedByLighting(true);
+
+Also by default, textures on rectangle dont loop around themselves. If you want the textures to loop in a certain direction, you will use the "setScrollingSpeedMethod". This will enable you to do background images that scroll endlessly. Remember, for this to look good, you will need a really good texture image.
+
+    rectangle->setScrollingSpeed(SE::vec2(-0.5,4));  // this will scroll the texture to the right and upwards.
+
+
 **Enabling and using the light**
 
 To enable the light and configuring its parameters you will need to call these methods:

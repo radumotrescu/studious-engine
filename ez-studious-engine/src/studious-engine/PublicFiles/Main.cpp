@@ -108,7 +108,7 @@ auto main()->int
 	Texture tex1("..\\..\\src\\studious-engine\\PublicFiles\\Textures\\test.png");
 
 	auto s1 = std::make_shared<SE::Rectangle>(SE::vec2(0, 0), SE::vec2(WINDOW_WIDTH, WINDOW_HEIGHT), tex, 1);
-	s1->setScrollingSpeed(SE::vec2(1, 0));
+	s1->setScrollingSpeed(SE::vec2(-1, 0));
 	//auto s2 = std::make_shared<SE::Rectangle>(SE::vec3(70.0f, 70, 0.0f), SE::vec2(100, 100), tex1, 4);
 	//auto s3 = std::make_shared<SE::Rectangle>(SE::vec3(150.0f, 10, 0.0f), SE::vec2(10, 10), SE::vec3(1, 0, 0), 0);
 	//auto s4 = std::make_shared<SE::Rectangle>(SE::vec3(10.0f, 10, 0.0f), SE::vec2(100, 100), SE::vec3(0, 1, 0), 3);
