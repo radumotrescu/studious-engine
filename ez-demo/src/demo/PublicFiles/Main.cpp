@@ -25,7 +25,8 @@ public:
 		loadSounds();
 		initDrawableSprite();
 
-		glClearColor(1.0, 0.0, 0.0, 1.0);
+		Game::m_window->setTitle("My Demo Game!");
+		Game::m_window->setBackgroundColor(vec3(1.0, 0.0, 0.0));
 
 		connectKeyPressedBehaviors();
 		connectOnCollisionBehaviors();
@@ -87,7 +88,7 @@ private:
 	auto initDrawableSprite() ->void
 	{
 		rectangle1 = std::make_shared<SE::Rectangle>(SE::vec2(40, 40), SE::vec2(50, 50), texture1, 2);
-		rectangle2 = std::make_shared<SE::Rectangle>(SE::vec2(150, 40), SE::vec2(50, 50), texture2, 2);
+		rectangle2 = std::make_shared<SE::Rectangle>(SE::vec2(150, 40), SE::vec2(50, 50), texture2, 3);
 		Game::m_renderer->addRectangleToDrawCall(rectangle1);
 		Game::m_renderer->addRectangleToDrawCall(rectangle2);
 	}

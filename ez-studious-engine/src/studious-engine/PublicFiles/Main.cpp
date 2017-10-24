@@ -102,6 +102,9 @@ auto main()->int
 	glEnable(GL_DEPTH_TEST);
 	auto window = std::make_unique<SE::Window>("Test", WINDOW_WIDTH, WINDOW_HEIGHT);
 
+	window->setTitle("hey");
+	window->setBackgroundColor(SE::vec3(1.0, 0.0, 0.0));
+
 	SE::SimpleRenderer ren(WINDOW_WIDTH, WINDOW_HEIGHT, 10);
 
 	SE::Texture tex("..\\..\\src\\studious-engine\\PublicFiles\\Textures\\cer.png");

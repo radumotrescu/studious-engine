@@ -1,7 +1,6 @@
 #include "Window.h"
 
-namespace SE
-{
+namespace SE {
 	Window::Window(std::string name, int width, int height)
 		: m_width(width),
 		m_height(height),
@@ -45,12 +44,12 @@ namespace SE
 			return false;
 		}
 
-		glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+		setBackgroundColor(vec3(0.0f, 0.0f, 0.0f));
 		glEnable(GL_BLEND);
 		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
 		setVSync(true);
-		
+
 		return true;
 	}
 
@@ -60,7 +59,18 @@ namespace SE
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	}
 
-auto Window::setVSync(bool sync)->void
+	auto Window::setTitle(const std::string & name) -> void
+	{
+		glfwSetWindowTitle(*m_window, name.c_str());
+	}
+
+	auto Window::setBackgroundColor(const vec3 & backgroundColor) -> void
+	{
+		m_backgroundColor = backgroundColor;
+		glClearColor(m_backgroundColor.x, m_backgroundColor.y, m_backgroundColor.z, 1.0f);
+	}
+
+	auto Window::setVSync(bool sync)->void
 	{
 		typedef BOOL(APIENTRY *PFNWGLSWAPINTERVALPROC)(int);
 		PFNWGLSWAPINTERVALPROC wglSwapIntervalEXT = 0;
