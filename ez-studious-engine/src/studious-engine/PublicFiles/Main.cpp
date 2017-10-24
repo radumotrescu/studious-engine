@@ -104,8 +104,8 @@ auto main()->int
 
 	SE::SimpleRenderer ren(WINDOW_WIDTH, WINDOW_HEIGHT, 10);
 
-	Texture tex("..\\..\\src\\studious-engine\\PublicFiles\\Textures\\cer.png");
-	Texture tex1("..\\..\\src\\studious-engine\\PublicFiles\\Textures\\test.png");
+	SE::Texture tex("..\\..\\src\\studious-engine\\PublicFiles\\Textures\\cer.png");
+	SE::Texture tex1("..\\..\\src\\studious-engine\\PublicFiles\\Textures\\test.png");
 
 	auto s1 = std::make_shared<SE::Rectangle>(SE::vec2(0, 0), SE::vec2(WINDOW_WIDTH, WINDOW_HEIGHT), tex, 1);
 	s1->setScrollingSpeed(SE::vec2(-1, 0));
@@ -113,13 +113,23 @@ auto main()->int
 	//auto s3 = std::make_shared<SE::Rectangle>(SE::vec3(150.0f, 10, 0.0f), SE::vec2(10, 10), SE::vec3(1, 0, 0), 0);
 	//auto s4 = std::make_shared<SE::Rectangle>(SE::vec3(10.0f, 10, 0.0f), SE::vec2(100, 100), SE::vec3(0, 1, 0), 3);
 
-	Texture tex2("..\\..\\src\\studious-engine\\PublicFiles\\Textures\\tree.png");
+	SE::Texture tex2("..\\..\\src\\studious-engine\\PublicFiles\\Textures\\tree.png");
 	auto s3 = std::make_shared<SE::Rectangle>(SE::vec2(100.0f, 100.0f), SE::vec2(50, 50), SE::vec3(1, 1, 1), tex2, 3);
 	//s3->setAffectedByLighting(false);
 	//s3->setScrollingSpeed(SE::vec2(1, -4));
 
 	ren.addRectangleToDrawCall(s1);
 	ren.addRectangleToDrawCall(s3);
+
+	SE::InputManager::init(window.get()->getWindow());
+
+	SE::InputManager::getInstance().init(window.get()->getWindow());
+	SE::InputManager::getInstance().registerSpriteAction(std::bind(&SE::Rectangle::moveLeft, s3.get()), GLFW_KEY_A);
+	SE::InputManager::getInstance().registerSpriteAction(std::bind(&SE::Rectangle::moveRight, s3.get()), GLFW_KEY_D);
+	SE::InputManager::getInstance().registerSpriteAction(std::bind(&SE::Rectangle::moveUp, s3.get()), GLFW_KEY_W);
+	SE::InputManager::getInstance().registerSpriteAction(std::bind(&SE::Rectangle::moveDown, s3.get()), GLFW_KEY_S);
+
+	SE::InputManager::removeSpriteAction(GLFW_KEY_S);
 
 	SE::LabelManager::init();
 	SE::LabelManager::setIsDisplayingFps(true);
@@ -132,15 +142,15 @@ auto main()->int
 	SE::LabelManager::addLabel(label);
 
 
-	SoundManager::init();
+	SE::SoundManager::init();
 
-	auto sound = std::make_shared<Sound>("acdc", "..\\..\\src\\studious-engine\\PublicFiles\\Sounds\\acdc.mp3");
-	auto sound2 = std::make_shared<Sound>("hit", "..\\..\\src\\studious-engine\\PublicFiles\\Sounds\\hit2.wav");
+	auto sound = std::make_shared<SE::Sound>("acdc", "..\\..\\src\\studious-engine\\PublicFiles\\Sounds\\acdc.mp3");
+	auto sound2 = std::make_shared<SE::Sound>("hit", "..\\..\\src\\studious-engine\\PublicFiles\\Sounds\\hit2.wav");
 
-	SoundManager::add(sound);
-	SoundManager::add(sound2);
+	SE::SoundManager::add(sound);
+	SE::SoundManager::add(sound2);
 
-	SoundManager::get("acdc")->loop();
+	SE::SoundManager::get("acdc")->loop();
 
 
 
@@ -156,24 +166,49 @@ auto main()->int
 		std::cout << window->getWidth() << ", " << window->getHeight() << std::endl;
 		SE::LabelManager::displayAllLabels();
 
+<<<<<<< HEAD
 		i++;
 		if (i == 200)
 		{
-			SoundManager::get("hit")->loop();
+			SE::SoundManager::get("hit")->loop();
 		}
 		if (i == 350)
 		{
-			SoundManager::get("acdc")->pause();
+			SE::SoundManager::get("acdc")->pause();
+			SE::SoundManager::clean();
 		}
+#if 0
 		if (i == 500)
 		{
-			SoundManager::get("acdc")->play();
+			SE::SoundManager::get("acdc")->play();
 		}
 		if (i == 650)
 		{
-			SoundManager::get("hit")->stop();
+			SE::SoundManager::get("hit")->stop();
 		}
+#endif
+
 		std::cout << i << std::endl;
+=======
+		//i++;
+		//if (i == 200)
+		//{
+		//	SoundManager::get("hit")->loop();
+		//}
+		//if (i == 350)
+		//{
+		//	SoundManager::get("acdc")->pause();
+		//}
+		//if (i == 500)
+		//{
+		//	SoundManager::get("acdc")->play();
+		//}
+		//if (i == 650)
+		//{
+		//	SoundManager::get("hit")->stop();
+		//}
+		//std::cout << i << std::endl;
+>>>>>>> 28d4b66cd69c1175355cb9d0f780a47e692d540c
 
 
 

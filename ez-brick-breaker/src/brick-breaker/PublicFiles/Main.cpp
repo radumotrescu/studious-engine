@@ -1,6 +1,6 @@
 #pragma once
 
-#include "BrickBreakerGame.h"
+#include <BrickBreakerGame.h>
 
 auto main() ->void
 {
