@@ -11,9 +11,10 @@
 #include "Shader.h"
 #include "Texture.h"
 
-namespace SE {
-	class Sprite {
-
+namespace SE 
+{
+	class Sprite 
+	{
 	public:
 		Sprite();
 		Sprite::Sprite(const std::vector<GLfloat>& matrix, const std::vector<GLfloat>& colors, const std::vector<GLushort>&indexes);
@@ -22,9 +23,10 @@ namespace SE {
 		auto Draw()->void;
 		//auto action() -> void;
 
-		auto getVAO()->VertexArray;
-		auto getIBO()->IndexBuffer;
+		auto getVAO() const ->VertexArray;
+		auto getIBO() const ->IndexBuffer;
 		Texture m_texture;
+
 	private:
 		VertexArray m_vao;
 		IndexBuffer m_ibo;

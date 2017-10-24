@@ -1,22 +1,23 @@
 #pragma once
+
 #include <memory>
+
 #include "Rectangle.h"
-#include"SimpleRenderer.h"
+#include "SimpleRenderer.h"
 #include "Utils.h"
 
 
-class Pad {
+class Pad 
+{
 public:
-
 	Pad(SE::SimpleRenderer* renderer, float velocityX = 0.5f, float velocityY = 0.5f);
 	~Pad() {};
-	auto getRectangle()->std::shared_ptr<SE::Rectangle >;
-	auto moveRight() ->void;
-	auto moveLeft() ->void;
-	auto setPosition(SE::vec2 position) -> void;
+	auto getRectangle() const ->std::shared_ptr<SE::Rectangle >;
+	auto moveRight() const ->void;
+	auto moveLeft() const ->void;
+	auto setPosition(SE::vec2 position) const -> void;
 
 private:
-
 	float m_velocityX;
 	float m_velocityY;
 	SE::SimpleRenderer* m_renderer;

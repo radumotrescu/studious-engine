@@ -1,6 +1,7 @@
 #include "IndexBuffer.h"
 
-namespace SE {
+namespace SE 
+{
 
 	IndexBuffer::IndexBuffer()
 	{

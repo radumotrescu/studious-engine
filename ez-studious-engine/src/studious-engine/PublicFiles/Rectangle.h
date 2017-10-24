@@ -1,18 +1,18 @@
 #pragma once
 
-#include "IEntity.h"
-#include "vec2.h"
-#include "Sprite.h"
-#include"Texture.h"
-
 #include <glew.h>
 #include <iostream>
 
+#include "IEntity.h"
+#include "vec2.h"
+#include "Sprite.h"
+#include "Texture.h"
 
-namespace SE {
-	class Rectangle : virtual public IEntity {
+namespace SE 
+{
+	class Rectangle : virtual public IEntity 
+	{
 	private:
-
 		Sprite m_sprite;
 
 		vec3 m_origin;
@@ -23,12 +23,12 @@ namespace SE {
 		vec2 m_scrollingSpeed=vec2(0,0);
 
 		//texture coord for all 4 vertices
-
-
+		
 		std::array<GLfloat, 8> matrix;
 		std::array<GLfloat, 16> colors;
 
-		std::array<GLushort, 6> indexes = {
+		std::array<GLushort, 6> indexes =
+		{
 			0,2,3,
 			1,2,0
 		};
@@ -46,7 +46,7 @@ namespace SE {
 		//auto changePointCoordinates(const vec3 & vertex)->void;
 		auto changePriority(const unsigned priority) -> void;
 
-		auto getPriority() const -> unsigned;
+		auto getPriority() const -> unsigned override;
 
 		auto getType() const->Type override;
 
@@ -76,9 +76,7 @@ namespace SE {
 		auto setScrollingSpeed(const vec2 scrollingSpeed)->void;
 
 		auto getTextureID()->GLuint;
-
-
+		
 		auto draw() -> void const;
-
 	};
 }

@@ -1,5 +1,9 @@
 #pragma once
 
+#include <vector>
+#include <memory>
+#include <stack>
+
 #include "Ball.h"
 #include "Pad.h"
 #include "Brick.h"
@@ -10,12 +14,9 @@
 #include "Rectangle.h"
 #include "Utils.h"
 #include "CollisionManager.h"
-#include <vector>
-#include <memory>
 #include "Game.h"
 #include "Heart.h"
-#include <stack>
-#include"SoundManager.h"
+#include "SoundManager.h"
 #include "LabelManager.h"
 #include "Score.h"
 
@@ -23,22 +24,20 @@ using namespace SE;
 
 class BrickBreakerGame : public Game
 {
-
-public:
+	public:
 
 	BrickBreakerGame() = default;
 	~BrickBreakerGame() = default;
-	auto start() ->void;
-	auto init()->void;
+	auto start() ->void override;
+	auto init()->void override;
 
 private:
 	auto addBricksToRenderer() ->void;
 	auto connectKeySignalsToPadMovement() const ->void;
 	auto connectBehaviorOnCollision()->void;
-	auto update() ->void;
+	auto update() ->void override;
 	auto onBallOutOfScope() -> void;
 
-private:
 	CollisionChecker m_app;
 	std::shared_ptr<SE::LabelManager> m_labelManager;
 	std::shared_ptr<Score> m_scoreLabel;
@@ -48,5 +47,4 @@ private:
 	std::vector<Brick> m_bricks;
 	static const int BRICK_WIDTH;
 	static const int SPACE_BETWEEN_BRICKS;
-
 };

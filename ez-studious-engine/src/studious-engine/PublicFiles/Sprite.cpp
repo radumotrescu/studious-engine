@@ -1,5 +1,7 @@
 #include "Sprite.h"
-namespace SE {
+
+namespace SE 
+{
 	auto Sprite::Draw()->void
 	{
 		glEnable(GL_DEPTH_TEST);
@@ -14,12 +16,12 @@ namespace SE {
 		glDisable(GL_DEPTH_TEST);
 	}
 
-	auto Sprite::getVAO() -> VertexArray
+	auto Sprite::getVAO() const -> VertexArray
 	{
 		return m_vao;
 	}
 
-	auto Sprite::getIBO() -> IndexBuffer
+	auto Sprite::getIBO() const -> IndexBuffer
 	{
 		return m_ibo;
 	}

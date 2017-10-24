@@ -1,7 +1,7 @@
 #include "SimpleRenderer.h"
 
-namespace SE {
-
+namespace SE 
+{
 	const float notMovingValue = 0.0f;
 	const float fullLoopFPSValues = 1000.0f;
 	const float loopIncrementValue = 1.0f;
@@ -19,26 +19,23 @@ namespace SE {
 		m_shader.setUniform1i("lightEnabled", Light::getEnabled());
 		m_shader.disable();
 	}
-
-
+	
 	SimpleRenderer::~SimpleRenderer()
 	{
 		m_shader.disable();
 	}
 
-	bool compareSpritePriority(std::shared_ptr<Rectangle>s1, std::shared_ptr<Rectangle>s2)
+	bool compareSpritePriority(const std::shared_ptr<Rectangle> s1, const std::shared_ptr<Rectangle> s2)
 	{
 		return s1->getPriority() < s2->getPriority();
 	}
 
-	auto SimpleRenderer::addRectangleToDrawCall(std::shared_ptr<Rectangle> sprite) -> void
+	auto SimpleRenderer::addRectangleToDrawCall(const std::shared_ptr<Rectangle> sprite) -> void
 	{
 		m_drawVector.push_back(sprite);
 		std::sort(m_drawVector.begin(), m_drawVector.end(), compareSpritePriority);
 		LoopStruct loopStruct;
-
-
-
+		
 		if (sprite->getScrollingSpeed().x != notMovingValue)
 			loopStruct.m_loopInterval.x = fullLoopFPSValues / std::abs(sprite->getScrollingSpeed().x);
 		else
@@ -50,7 +47,6 @@ namespace SE {
 			loopStruct.m_loopInterval.y = notMovingValue;
 
 		scrollingMap[sprite] = loopStruct;
-
 	}
 
 	auto SimpleRenderer::removeRectangleFromDrawCall(std::shared_ptr<Rectangle> sprite) -> void
@@ -58,7 +54,7 @@ namespace SE {
 		m_drawVector.erase(std::remove(m_drawVector.begin(), m_drawVector.end(), sprite), m_drawVector.end());
 	}
 
-	auto SimpleRenderer::setLightStatus(const bool enabled) -> void
+	auto SimpleRenderer::setLightStatus(const bool enabled) const -> void
 	{
 		Light::setEnabled(enabled);
 		m_shader.enable();
@@ -66,7 +62,7 @@ namespace SE {
 		m_shader.disable();
 	}
 
-	auto SimpleRenderer::setLightPosition(const vec2 position) -> void
+	auto SimpleRenderer::setLightPosition(const vec2 position) const -> void
 	{
 		Light::setPosition(position);
 		m_shader.enable();
@@ -74,7 +70,7 @@ namespace SE {
 		m_shader.disable();
 	}
 
-	auto SimpleRenderer::setLightRadius(const float radius) -> void
+	auto SimpleRenderer::setLightRadius(const float radius) const -> void
 	{
 		Light::setRadius(radius);
 		m_shader.enable();
@@ -82,7 +78,7 @@ namespace SE {
 		m_shader.disable();
 	}
 
-	auto SimpleRenderer::setLightIntensity(const float intensity) -> void
+	auto SimpleRenderer::setLightIntensity(const float intensity) const -> void
 	{
 		Light::setIntensity(intensity);
 		m_shader.enable();
@@ -92,8 +88,6 @@ namespace SE {
 
 	auto SimpleRenderer::draw() -> void
 	{
-
-
 		for (auto& rectangle : scrollingMap)
 		{
 			rectangle.second.m_loopValue.x += loopIncrementValue;
@@ -106,12 +100,13 @@ namespace SE {
 		}
 
 		m_shader.enable();
+
 		for (auto& rectangle : m_drawVector)
 		{
 			m_shader.setUniform1i("affectedByLighting", rectangle->getAffectedByLighting());
 			m_shader.setUniformMat4("ml_matrix", mat4::translation(rectangle->getOrigin()));
 			m_shader.setUniform1i("tex", rectangle->getTextureID());
-			vec2 scrollingOffset = vec2(rectangle->getScrollingSpeed().x*(scrollingMap[rectangle].m_loopValue.x / 1000), rectangle->getScrollingSpeed().y*(scrollingMap[rectangle].m_loopValue.y / fullLoopFPSValues));
+			const vec2 scrollingOffset = vec2(rectangle->getScrollingSpeed().x*(scrollingMap[rectangle].m_loopValue.x / 1000), rectangle->getScrollingSpeed().y*(scrollingMap[rectangle].m_loopValue.y / fullLoopFPSValues));
 			m_shader.setUniform2f("scrollingOffset", scrollingOffset);
 			rectangle->draw();
 		}

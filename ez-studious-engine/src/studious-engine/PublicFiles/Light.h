@@ -2,10 +2,10 @@
 
 #include "Vec2.h"
 
-namespace SE {
-
-	class Light {
-
+namespace SE
+{
+	class Light
+	{
 	public:
 
 		static auto getPosition()->const vec2;

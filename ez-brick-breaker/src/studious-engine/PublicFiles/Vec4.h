@@ -1,8 +1,11 @@
 #pragma once
 
 #include <iostream>
-namespace SE {
-	struct vec4 {
+
+namespace SE 
+{
+	struct vec4
+	{
 		float x, y, z, w;
 
 		vec4() = default;
@@ -18,8 +21,8 @@ namespace SE {
 		friend vec4 operator*(vec4 left, const vec4& right);
 		friend vec4 operator/(vec4 left, const vec4& right);
 
-		bool operator==(const vec4& other);
-		bool operator!=(const vec4& other);
+		bool operator==(const vec4& other) const;
+		bool operator!=(const vec4& other) const;
 
 		vec4& operator+=(const vec4& other);
 		vec4& operator-=(const vec4& other);

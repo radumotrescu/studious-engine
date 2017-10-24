@@ -2,10 +2,12 @@
 
 #include <string>
 #include <glew.h>
-#include "ImageLoad.h"
 #include <array>
 
-class Texture {
+#include "ImageLoad.h"
+
+class Texture 
+{
 private:
 	std::string m_fileName;
 	GLuint m_textureID; 
@@ -21,10 +23,10 @@ public:
 	void bind() const;
 	void unbind() const;
 
-	auto getID()->GLuint const;
+	auto getID() const ->GLuint;
 
-	const GLsizei getWidth() const;
-	const GLsizei getHeight() const;
+	GLsizei getWidth() const;
+	GLsizei getHeight() const;
 
 	static auto getNullTexture()->Texture;
 private:

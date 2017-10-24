@@ -1,10 +1,16 @@
 #pragma once
+
 #include"Vec4.h"
 #include"Vec3.h"
-namespace SE {
+
+namespace SE 
+{
 	const double M_PI = 3.14159265359;
-	struct mat4 {
-		union {
+
+	struct mat4 
+	{
+		union 
+		{
 			float elements[4 * 4];
 			vec4 columns[4];
 		};
@@ -12,7 +18,7 @@ namespace SE {
 		mat4();
 		mat4(float diagonal);
 
-		vec4 getColumn(int index)
+		vec4 getColumn(int index) const
 		{
 			index *= 4;
 			return vec4(elements[index], elements[index + 1], elements[index + 2], elements[index + 3]);

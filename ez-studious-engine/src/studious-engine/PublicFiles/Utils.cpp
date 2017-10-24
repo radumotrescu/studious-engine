@@ -1,6 +1,5 @@
 #include "Utils.h"
 
-
 namespace SE
 {
 	float Utils::EPSILON = std::numeric_limits<float>::epsilon();
@@ -49,7 +48,6 @@ namespace SE
 		auto range1inRange2 = (minLessOrEqualToValue1B && value1BLessOrEqualToMax) || (minLessOrEqualToValue2B && value2BLessOrEqualToMax);
 
 		return range1inRange2 || range2inRange1;
-
 	}
 
 	auto Utils::inRange(float value, float minRange, float maxRange) -> bool

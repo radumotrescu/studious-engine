@@ -4,11 +4,11 @@
 #include <memory>
 #include <vector>
 
-namespace SE {
-
-	class Buffer {
-
-	public:
+namespace SE
+{
+	class Buffer
+	{
+		public:
 		Buffer(std::vector<GLfloat> data, GLsizei count, GLuint componentCount);
 		auto bind()const->void;
 		auto unbind()const->void;
@@ -18,6 +18,5 @@ namespace SE {
 	private:
 		GLuint m_bufferID;
 		GLuint m_componentCount;
-
 	};
 }

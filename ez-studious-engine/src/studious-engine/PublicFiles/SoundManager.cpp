@@ -21,7 +21,7 @@ auto SoundManager::init() -> void
 		m_channels.push_back(nullptr);
 }
 
-auto SoundManager::add(Sound_ptr sound) -> void
+auto SoundManager::add(const Sound_ptr sound) -> void
 {
 	m_sounds.push_back(sound);
 }
@@ -38,19 +38,11 @@ auto SoundManager::get(const std::string& name)->Sound_ptr
 
 auto SoundManager::update() -> void
 {
-	//gau_manager_update(m_manager);
 	m_system->update();
 }
 
 auto SoundManager::clean() -> void
 {
-	//for (int i = 0; i < m_sounds.size(); ++i)
-	//	delete m_sounds[i];
-
-	//gau_manager_destroy(m_manager);
-	//gc_shutdown();
-
-
 	for (int i = 0; i < m_channels.size(); i++)
 		delete m_channels[i];
 

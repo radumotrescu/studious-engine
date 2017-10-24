@@ -1,20 +1,19 @@
 #include "VertexArray.h"
 
-namespace SE {
-
+namespace SE
+{
 	VertexArray::VertexArray()
 	{
 		const int vertexArrayObjectsNumber = 1;
 		glGenVertexArrays(vertexArrayObjectsNumber, &m_arrayID);
 	}
 
-
 	VertexArray::~VertexArray()
 	{
 		m_buffers.clear();
 	}
 
-	auto VertexArray::addBuffer(std::shared_ptr<Buffer>& buffer, GLuint index) ->void
+	auto VertexArray::addBuffer(std::shared_ptr<Buffer>& buffer, GLuint index) const ->void
 	{
 		bind();
 		buffer->bind();

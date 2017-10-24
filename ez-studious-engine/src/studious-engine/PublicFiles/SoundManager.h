@@ -2,7 +2,8 @@
 
 #include <vector>
 #include <fmod.hpp>
-#include<memory>
+#include <memory>
+
 #include "Sound.h"
 
 #define GAU_THREAD_POLICY_MULTI 2
@@ -10,9 +11,10 @@
 class SoundManager
 {
 private:
+	SoundManager() { }
+
 	typedef std::shared_ptr<Sound> Sound_ptr;
 
-private:
 	friend class Sound;
 
 	static FMOD::System *m_system;
@@ -26,7 +28,7 @@ public:
 
 	//adds a sound
 	static auto add(Sound_ptr sound) -> void;
-	
+
 	//returns a sound
 	static auto get(const std::string& name)->Sound_ptr;
 
@@ -35,6 +37,4 @@ public:
 
 	//clears all sounds
 	static auto clean() -> void;
-private:
-	SoundManager() { }
 };

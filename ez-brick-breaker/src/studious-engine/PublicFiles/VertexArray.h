@@ -5,13 +5,15 @@
 #include <vector>
 
 #include "Buffer.h"
-namespace SE {
-	class VertexArray {
 
+namespace SE
+{
+	class VertexArray 
+	{
 	public:
 		VertexArray();
 		~VertexArray();
-		auto addBuffer(std::shared_ptr<Buffer>& buffer, GLuint index)->void;
+		auto addBuffer(std::shared_ptr<Buffer>& buffer, GLuint index) const ->void;
 		auto bind()const ->void;
 		auto unbind()const ->void;
 
@@ -19,6 +21,4 @@ namespace SE {
 		GLuint m_arrayID;
 		std::vector<std::shared_ptr<Buffer>>m_buffers;
 	};
-
-
 }

@@ -7,12 +7,10 @@ Brick::Brick(SE::SimpleRenderer* renderer, SE::vec2 position, SE::vec2 size, SE:
 	renderer->addRectangleToDrawCall(brick);
 }
 
-
 auto Brick::getRectangle() const -> std::shared_ptr<SE::Rectangle>
 {
 	return brick;
 }
-
 
 auto Brick::onCollisionWithBall(std::shared_ptr<SE::Rectangle> ball, std::shared_ptr<SE::Rectangle> brick) const -> void
 {

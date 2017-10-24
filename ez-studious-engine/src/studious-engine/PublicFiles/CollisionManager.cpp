@@ -1,7 +1,7 @@
 #include <list>
+#include <tuple>
 
 #include "CollisionManager.h"
-#include <tuple>
 
 
 namespace SE
