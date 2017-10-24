@@ -222,7 +222,106 @@ The run method, assures the loop circuit of the game at an assessed time. This t
 The default tick is set to 120 fpms. On every tick, the update method is called.
 The start method must be implemented as well, and it is a point of stability and personalization in the further development of the new game. It is also an entry point for every other foreign behaviors. 
 
-	
+**Labels**
+Header: Label.h
+There is one constructor available:
+
+```
+Label(const std::string& message, const int& pos, const int& pos1, const int& size);
+```
+
+You can also set the position, color and message by using the methods:
+
+```
+auto setMessage(const std::string&) const -> void;
+auto setPosition(const int& xPos, const int& yPos) -> void;
+auto setColor(const vec3& colors) -> void;
+```
+
+You can also use the display() method to render the text, but it's strongly recommended usage of LabelManager instead.
+
+Example:
+```
+auto label = SE::Label("My text", 270, 270, 3);
+```
+
+**Using the LabelManager**
+Header: LabelManager.h
+The main purpose of this class is to ease the management of Labels. It also gives the possibility to render a message with current FPS.
+Chiefest of all, you have to use the static method init()
+
+Signature:
+```
+static auto init() -> void;
+```
+
+After the initialization of the manager, you can use the already defined method for displaying the FPS in top-left corner.
+
+Signature:
+```
+static auto setIsDisplayingFps(bool) -> void;
+```
+
+No message will be displayed until the displayAllLabels method is called in the main loop of the game.
+
+Signature
+```
+static auto displayAllLabels() -> void;
+```
+
+You can also add your own labels.
+
+Signature
+```
+static auto addLabel(const Label&) -> void;
+```
+
+Example
+```
+auto label = SE::Label("Game over", 270, 270, 3);
+label.setColor(vec3(1.f, 0.f, 0.f));
+SE::LabelManager::addLabel(label);
+```
+
+**Using the InputManager*
+Header: InputManager.h
+Use this class to bind buttons with sprites and actions. It gives you the posibility to define your own behavior.
+First of all, you have to init the signature. The instance of the window is needed.
+
+Signature
+```
+static auto init(GLFWwindow* window) -> void;
+```
+
+Use the method registerSpriteAction to bind buttons with sprite and methods.
+
+Signature
+```
+static auto registerSpriteAction(std::function<void(void)>, int) -> void;
+```
+
+Example
+```
+InputManager::getInstance().registerSpriteAction(std::bind(&Pad::moveRight, m_pad.get()), GLFW_KEY_D);
+```
+&Pad::moveRight is the function pointer to the method with custom behavior.
+m_pad.get() is the context where the moveRight method can be found.
+GLFW_KEY_D is a integer.
+
+You can also unbind buttons. The method is: removeSpriteAction(int).
+
+Signature
+```
+static auto removeSpriteAction(int) -> void;
+```
+
+Example
+```
+SE::InputManager::removeSpriteAction(GLFW_KEY_SPACE);
+```
+Obs: All bindings are deleted in the order of registration. Beware if you defined one button for more than one Sprite!
+
+
 # Motivation
 
 This framework was created because most game engines are hard to get started with and they come in large file sizes, but also because we wanted to learn modern C++, and what better way to write hardcore C++ than within a game engine?
