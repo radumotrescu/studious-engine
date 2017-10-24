@@ -121,6 +121,16 @@ auto main()->int
 	ren.addRectangleToDrawCall(s1);
 	ren.addRectangleToDrawCall(s3);
 
+	SE::InputManager::init(window.get()->getWindow());
+
+	SE::InputManager::getInstance().init(window.get()->getWindow());
+	SE::InputManager::getInstance().registerSpriteAction(std::bind(&SE::Rectangle::moveLeft, s3.get()), GLFW_KEY_A);
+	SE::InputManager::getInstance().registerSpriteAction(std::bind(&SE::Rectangle::moveRight, s3.get()), GLFW_KEY_D);
+	SE::InputManager::getInstance().registerSpriteAction(std::bind(&SE::Rectangle::moveUp, s3.get()), GLFW_KEY_W);
+	SE::InputManager::getInstance().registerSpriteAction(std::bind(&SE::Rectangle::moveDown, s3.get()), GLFW_KEY_S);
+
+	SE::InputManager::removeSpriteAction(GLFW_KEY_S);
+
 	SE::LabelManager::init();
 	SE::LabelManager::setIsDisplayingFps(true);
 	ren.setLightStatus(true);
@@ -156,24 +166,24 @@ auto main()->int
 		std::cout << window->getWidth() << ", " << window->getHeight() << std::endl;
 		SE::LabelManager::displayAllLabels();
 
-		i++;
-		if (i == 200)
-		{
-			SoundManager::get("hit")->loop();
-		}
-		if (i == 350)
-		{
-			SoundManager::get("acdc")->pause();
-		}
-		if (i == 500)
-		{
-			SoundManager::get("acdc")->play();
-		}
-		if (i == 650)
-		{
-			SoundManager::get("hit")->stop();
-		}
-		std::cout << i << std::endl;
+		//i++;
+		//if (i == 200)
+		//{
+		//	SoundManager::get("hit")->loop();
+		//}
+		//if (i == 350)
+		//{
+		//	SoundManager::get("acdc")->pause();
+		//}
+		//if (i == 500)
+		//{
+		//	SoundManager::get("acdc")->play();
+		//}
+		//if (i == 650)
+		//{
+		//	SoundManager::get("hit")->stop();
+		//}
+		//std::cout << i << std::endl;
 
 
 

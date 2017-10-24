@@ -42,8 +42,8 @@ auto BrickBreakerGame::init() -> void
 
 	SoundManager::init();
 
-	const auto hitWithPadSound = std::make_shared<Sound>("hitWithPad","..\\..\\src\\studious-engine\\PublicFiles\\Sounds\\hit2.wav");
-	const auto hithWithBrickSound= std::make_shared<Sound>("hitWithBrick","..\\..\\src\\studious-engine\\PublicFiles\\Sounds\\hit.wav");
+	const auto hitWithPadSound = std::make_shared<Sound>("hitWithPad", "..\\..\\src\\studious-engine\\PublicFiles\\Sounds\\hit2.wav");
+	const auto hithWithBrickSound = std::make_shared<Sound>("hitWithBrick", "..\\..\\src\\studious-engine\\PublicFiles\\Sounds\\hit.wav");
 	const auto backgroundSound = std::make_shared<Sound>("background", "..\\..\\src\\studious-engine\\PublicFiles\\Sounds\\acdc.mp3");
 
 
@@ -105,7 +105,7 @@ auto BrickBreakerGame::update() -> void
 	{
 		m_ball->move();
 	}
-	catch(std::string ex)
+	catch (std::string ex)
 	{
 		onBallOutOfScope();
 	}
@@ -117,7 +117,19 @@ auto BrickBreakerGame::onBallOutOfScope() -> void
 	m_ball->toggleIsMoving();
 	m_ball->setPosition(vec2(98.0f, 184.0f));
 	m_pad->setPosition(vec2(90.0f, 190.0f));
+
 	m_hearts.pop();
+
+	if (m_hearts.size() < 1)
+	{
+		auto label = SE::Label("Game over", 270, 270, 3);
+		label.setColor(vec3(1.f, 0.f, 0.f));
+		SE::LabelManager::addLabel(label);
+
+		SE::InputManager::removeSpriteAction(GLFW_KEY_SPACE);
+		SE::InputManager::removeSpriteAction(GLFW_KEY_A);
+		SE::InputManager::removeSpriteAction(GLFW_KEY_D);
+	}
 }
 
 

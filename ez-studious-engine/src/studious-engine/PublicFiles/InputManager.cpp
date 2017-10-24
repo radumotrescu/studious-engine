@@ -38,4 +38,16 @@ namespace SE
 		m_actionKey.insert(std::make_pair(key, action));
 	}
 
+	auto InputManager::removeSpriteAction(const int key) -> void
+	{
+		for(auto it = m_actionKey.begin(); it != m_actionKey.end(); ++it)
+		{
+			if(it->first == key)
+			{
+				it = m_actionKey.erase(it);
+
+				return;
+			}
+		}
+	}
 }
