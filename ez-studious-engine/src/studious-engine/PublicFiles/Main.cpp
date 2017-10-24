@@ -115,7 +115,7 @@ auto main()->int
 
 	Texture tex2("..\\..\\src\\studious-engine\\PublicFiles\\Textures\\tree.png");
 	auto s3 = std::make_shared<SE::Rectangle>(SE::vec2(100.0f, 100.0f), SE::vec2(50, 50), SE::vec3(1, 1, 1), tex2, 3);
-	s3->setAffectedByLighting(false);
+	//s3->setAffectedByLighting(false);
 	//s3->setScrollingSpeed(SE::vec2(1, -4));
 
 	ren.addRectangleToDrawCall(s1);
@@ -124,9 +124,9 @@ auto main()->int
 	SE::LabelManager::init();
 	SE::LabelManager::setIsDisplayingFps(true);
 	ren.setLightStatus(true);
-	ren.setLightPosition(SE::vec2(100, 100));
+	ren.setLightPosition(SE::vec2(400, 400));
 	ren.setLightRadius(200.f);
-	ren.setLightIntensity(1.0f);
+	ren.setLightIntensity(0.5f);
 	auto label = SE::Label("Salut", 1, 66, 2.0);
 	label.setColor(SE::vec3(0.2, 0.6, 0.01));
 	SE::LabelManager::addLabel(label);

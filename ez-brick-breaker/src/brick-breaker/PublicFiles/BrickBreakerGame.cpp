@@ -37,8 +37,8 @@ auto BrickBreakerGame::init() -> void
 	background->setScrollingSpeed(SE::vec2(0, -0.3));
 	m_renderer->addRectangleToDrawCall(background);
 	m_renderer->setLightStatus(true);
-	m_renderer->setLightRadius(50);
-	m_renderer->setLightIntensity(0.5);
+	m_renderer->setLightRadius(100);
+	m_renderer->setLightIntensity(0.4);
 
 	SoundManager::init();
 

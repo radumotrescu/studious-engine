@@ -133,7 +133,7 @@ void main()
 	//outColor = texture(tex, fs_in.textureCoord)*vec4(attenuation,attenuation,attenuation,pow(attenuation,lintensity))*vec4(fs_in.color);
 if(affectedByLighting==true)
 	
-	outColor = texture(tex, vec2(scrollingOffset.x+fs_in.textureCoord.x,scrollingOffset.y+fs_in.textureCoord.y))*vec4(attenuation,attenuation,attenuation,pow(attenuation,lintensity))*vec4(fs_in.color);
+	outColor = texture(tex, vec2(scrollingOffset.x+fs_in.textureCoord.x,scrollingOffset.y+fs_in.textureCoord.y))*vec4(attenuation,attenuation,attenuation,pow(attenuation*2,0.5))*vec4(fs_in.color);
 else
  
 	outColor = texture(tex, vec2(scrollingOffset.x+fs_in.textureCoord.x,scrollingOffset.y+fs_in.textureCoord.y))*vec4(fs_in.color);

@@ -2,9 +2,9 @@
 
 #include <list>
 #include <memory>
-
-#include <CollisionChecker.h>
 #include <functional>
+
+#include "CollisionChecker.h"
 
 namespace SE
 {
