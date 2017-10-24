@@ -1,0 +1,5 @@
+{
+    "name":"studious-engine",
+    "type":"ExternalStatic",
+	"dependencies": ["FreeImage", "fmod64_vc"]
+}

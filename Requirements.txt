@@ -53,4 +53,15 @@ Intermediate requirements:
 	Application implementation -> Miruna
 	Game over "screen" -> Adina
 	Resize window, cuprins Documentatie -> George
+
+	PART8:
+	Prezentare: -> template radu
+		Diagrama -> George
+		Tehnologii
+		Ce, de ce si cum?
+	Demo: azi 24.10.2017 -> Miruna scrie
+	Joc
+	Namespaceuri
+	Documentatie
+
 	
