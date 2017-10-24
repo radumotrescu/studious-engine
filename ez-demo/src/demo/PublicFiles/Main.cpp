@@ -75,13 +75,7 @@ public:
 
 	auto bindRectangleToCollisionManager()->void
 	{
-<<<<<<< HEAD
-		//const auto th = std::make_shared<MyGame>(this);
-		//aux x;
-		SE::CollisionManager::addCollisionalEntities(rectangle1, rectangle2, std::bind(&MyGame::rectangleCollision ,this, std::placeholders::_1, std::placeholders::_2));
-=======
 		SE::CollisionManager::addCollisionalEntities(rectangle1, rectangle2, std::bind(&MyGame::rectangleCollision, this, std::placeholders::_1, std::placeholders::_2));
->>>>>>> c68e477470da945b06df93f63c2ec8c697193f17
 	}
 
 	~MyGame()
