@@ -3,9 +3,10 @@
 #include <limits>
 #include <algorithm>
 
-namespace SE{
-    class Utils{
-
+namespace SE
+{
+    class Utils
+	{
 	public:
 		static float EPSILON;
 		static auto approximatelyEqual(float a, float b, float epsilon = EPSILON)->bool;

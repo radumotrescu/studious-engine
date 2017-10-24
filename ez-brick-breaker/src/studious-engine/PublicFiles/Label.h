@@ -1,7 +1,8 @@
 #pragma once
-#include <iostream>
 
+#include <iostream>
 #include <glew.h>
+
 #include "gltext.h"
 #include "Vec3.h"
 

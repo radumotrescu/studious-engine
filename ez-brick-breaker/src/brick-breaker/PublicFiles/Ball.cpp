@@ -1,5 +1,5 @@
 #include "Ball.h"
-#include <corecrt_math_defines.h>
+#include <math.h>
 
 const float Ball::LEFT_MOVING_LIMIT = 2.0f;
 const float Ball::RIGHT_MOVING_LIMIT = 200.0f;

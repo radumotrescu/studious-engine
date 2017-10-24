@@ -3,9 +3,10 @@
 #include <glew.h>
 #include <vector>
 
-namespace SE {
-	class IndexBuffer {
-
+namespace SE 
+{
+	class IndexBuffer
+	{
 	public:
 		IndexBuffer();
 		IndexBuffer::IndexBuffer(std::vector<GLushort> data, const GLsizei count);

@@ -1,7 +1,11 @@
 #pragma once
+
 #include<iostream>
-namespace SE {
-	struct vec2 {
+
+namespace SE 
+{
+	struct vec2
+	{
 		float x, y;
 
 		vec2();
@@ -18,8 +22,8 @@ namespace SE {
 		friend vec2 operator/(vec2 left, const vec2& right);
 		friend vec2 operator*(vec2 left, const float right);
 
-		bool operator==(const vec2& other);
-		bool operator!=(const vec2& other);
+		bool operator==(const vec2& other) const;
+		bool operator!=(const vec2& other) const;
 
 		vec2& operator+=(const vec2& other);
 		vec2& operator-=(const vec2& other);
@@ -28,5 +32,4 @@ namespace SE {
 
 		friend std::ostream& operator<<(std::ostream& stream, const vec2& vector);
 	};
-
 }

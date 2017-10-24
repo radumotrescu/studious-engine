@@ -5,9 +5,11 @@
 #include <glfw3.h>
 #include <iostream>
 #include <memory>
-namespace SE {
-	class Window {
 
+namespace SE
+{
+	class Window 
+	{
 	public:
 		Window(std::string name, int width, int height);
 		auto getWidth() const -> int;

@@ -19,16 +19,14 @@ public:
 	Sound(const std::string& name, const std::string& filepath);
 	~Sound();
 
-	
 	auto play() -> void;
 	auto loop() -> void;
-	auto pause() -> void;
-	auto stop() -> void;
-
+	auto pause() const -> void;
+	auto stop() const -> void;
 
 	auto getName() const -> const std::string&;
 	auto getFileName() const -> const std::string&;
 
 private:
-	auto searchFreeChannel()->FMOD::Channel*;
+	auto searchFreeChannel() const->FMOD::Channel*;
 };
