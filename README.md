@@ -223,6 +223,7 @@ The default tick is set to 120 fpms. On every tick, the update method is called.
 The start method must be implemented as well, and it is a point of stability and personalization in the further development of the new game. It is also an entry point for every other foreign behaviors. 
 
 **Labels**
+
 Header: Label.h
 There is one constructor available:
 
@@ -246,6 +247,7 @@ auto label = SE::Label("My text", 270, 270, 3);
 ```
 
 **Using the LabelManager**
+
 Header: LabelManager.h
 The main purpose of this class is to ease the management of Labels. It also gives the possibility to render a message with current FPS.
 Chiefest of all, you have to use the static method init()
@@ -264,19 +266,19 @@ static auto setIsDisplayingFps(bool) -> void;
 
 No message will be displayed until the displayAllLabels method is called in the main loop of the game.
 
-Signature
+Signature:
 ```
 static auto displayAllLabels() -> void;
 ```
 
 You can also add your own labels.
 
-Signature
+Signature:
 ```
 static auto addLabel(const Label&) -> void;
 ```
 
-Example
+Example:
 ```
 auto label = SE::Label("Game over", 270, 270, 3);
 label.setColor(vec3(1.f, 0.f, 0.f));
@@ -284,23 +286,24 @@ SE::LabelManager::addLabel(label);
 ```
 
 **Using the InputManager*
+
 Header: InputManager.h
 Use this class to bind buttons with sprites and actions. It gives you the posibility to define your own behavior.
 First of all, you have to init the signature. The instance of the window is needed.
 
-Signature
+Signature:
 ```
 static auto init(GLFWwindow* window) -> void;
 ```
 
 Use the method registerSpriteAction to bind buttons with sprite and methods.
 
-Signature
+Signature:
 ```
 static auto registerSpriteAction(std::function<void(void)>, int) -> void;
 ```
 
-Example
+Example:
 ```
 InputManager::getInstance().registerSpriteAction(std::bind(&Pad::moveRight, m_pad.get()), GLFW_KEY_D);
 ```
@@ -310,12 +313,12 @@ GLFW_KEY_D is a integer.
 
 You can also unbind buttons. The method is: removeSpriteAction(int).
 
-Signature
+Signature:
 ```
 static auto removeSpriteAction(int) -> void;
 ```
 
-Example
+Example:
 ```
 SE::InputManager::removeSpriteAction(GLFW_KEY_SPACE);
 ```
