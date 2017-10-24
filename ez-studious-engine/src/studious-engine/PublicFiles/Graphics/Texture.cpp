@@ -45,9 +45,31 @@ auto Texture::getNullTexture() -> Texture
 	return nullTexture;
 }
 
+BYTE* Texture::load_image(const char* filename, GLsizei* width, GLsizei* height)
+{
+	FREE_IMAGE_FORMAT fif = FIF_UNKNOWN;
+	FIBITMAP *dib = nullptr;
+	fif = FreeImage_GetFileType(filename, 0);
+	if (fif == FIF_UNKNOWN)
+		fif = FreeImage_GetFIFFromFilename(filename);
+	if (fif == FIF_UNKNOWN)
+		return nullptr;
+
+	if (FreeImage_FIFSupportsReading(fif))
+		dib = FreeImage_Load(fif, filename);
+	if (!dib)
+		return nullptr;
+
+	BYTE* result = FreeImage_GetBits(dib);
+	*width = FreeImage_GetWidth(dib);
+	*height = FreeImage_GetHeight(dib);
+
+	return result;
+}
+
 GLuint Texture::load()
 {
-	BYTE* pixels = load_image(m_fileName.c_str(), &m_width, &m_height);
+	BYTE* pixels = Texture::load_image(m_fileName.c_str(), &m_width, &m_height);
 	GLuint result;
 	glGenTextures(1, &result);
 	glBindTexture(GL_TEXTURE_2D, result);

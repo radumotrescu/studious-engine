@@ -1,10 +1,10 @@
 #pragma once
 
+#include<FreeImage.h>
 #include <string>
 #include <glew.h>
 #include <array>
 
-#include "ImageLoad.h"
 
 class Texture 
 {
@@ -31,5 +31,6 @@ public:
 	static auto getNullTexture()->Texture;
 private:
 	GLuint load();
+	static auto load_image(const char* filename, GLsizei* width, GLsizei* height)->BYTE*;
 };
 
