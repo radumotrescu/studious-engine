@@ -13,6 +13,7 @@ namespace SE
 
 		static auto init(GLFWwindow* window) -> void;
 		static auto registerSpriteAction(std::function<void(void)>, int) -> void;
+		static auto removeSpriteAction(int) -> void;
 
 		InputManager(InputManager const&) = delete;
 		void operator=(InputManager const&) const = delete;
