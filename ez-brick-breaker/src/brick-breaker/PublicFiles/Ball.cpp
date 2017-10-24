@@ -9,7 +9,7 @@ Ball::Ball(SE::SimpleRenderer* renderer, const float velocityX, const float velo
 	, m_velocityX(velocityX)
 	, m_velocityY(velocityY)
 	, m_speed(speed)
-	, m_ball(std::make_shared<SE::Rectangle>(SE::vec2(98.0f, 184.0f), SE::vec2(5, 5), SE::vec3(1.0f, 1.0f, 1.0f), Texture("..\\..\\src\\studious-engine\\PublicFiles\\Textures\\meteor_1.png"), 2))
+	, m_ball(std::make_shared<SE::Rectangle>(SE::vec2(98.0f, 184.0f), SE::vec2(5, 5), SE::vec3(1.0f, 1.0f, 1.0f), SE::Texture("..\\..\\src\\studious-engine\\PublicFiles\\Textures\\meteor_1.png"), 2))
 {
 	renderer->addRectangleToDrawCall(m_ball);
 	this->m_isMoving = true;
@@ -72,7 +72,7 @@ auto Ball::onCollisionWithPad(std::shared_ptr<SE::Rectangle>& ball, std::shared_
 		lastCollisionTime = currentCollisionTime;
 		isFirstCollisionWithPad = false;
 
-		SoundManager::get("hitWithPad")->play();
+		SE::SoundManager::get("hitWithPad")->play();
 	}
 	else
 	{

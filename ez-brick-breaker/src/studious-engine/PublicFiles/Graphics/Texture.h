@@ -1,35 +1,38 @@
 #pragma once
 
+#include<FreeImage.h>
 #include <string>
 #include <glew.h>
 #include <array>
 
-#include "ImageLoad.h"
-
-class Texture 
+namespace SE
 {
-private:
-	std::string m_fileName;
-	GLuint m_textureID; 
-	GLsizei m_width, m_height;
-public:
-	
-	std::array<GLfloat, 8> textures;
-	int activeTextureID=0;
+	class Texture
+	{
+	private:
+		std::string m_fileName;
+		GLuint m_textureID;
+		GLsizei m_width, m_height;
+	public:
 
-	Texture(const std::string& fileName);
-	Texture() {};
-	~Texture();
-	void bind() const;
-	void unbind() const;
+		std::array<GLfloat, 8> textures;
+		int activeTextureID = 0;
 
-	auto getID() const ->GLuint;
+		Texture(const std::string& fileName);
+		Texture() {};
+		~Texture();
+		void bind() const;
+		void unbind() const;
 
-	GLsizei getWidth() const;
-	GLsizei getHeight() const;
+		auto getID() const->GLuint;
 
-	static auto getNullTexture()->Texture;
-private:
-	GLuint load();
-};
+		GLsizei getWidth() const;
+		GLsizei getHeight() const;
 
+		static auto getNullTexture()->Texture;
+	private:
+		GLuint load();
+		static auto load_image(const char* filename, GLsizei* width, GLsizei* height)->BYTE*;
+	};
+
+}

@@ -6,25 +6,26 @@
 #include "Window.h"
 #include "LabelManager.h"
 
-class Game
-{
-public:
-	Game() = default;
-	~Game() = default;
+namespace SE {
 
-	virtual auto update() ->void = 0;
-	virtual auto start() ->void = 0;
-	virtual auto init() ->void;
-	virtual auto run() ->void;
-	virtual auto onTick() ->void;
+	class Game {
+	public:
+		Game() = default;
+		~Game() = default;
 
-protected:
-	std::shared_ptr<SE::Window> m_window;
-	std::shared_ptr<SE::SimpleRenderer> m_renderer;
+		virtual auto update() ->void = 0;
+		virtual auto start() ->void = 0;
+		virtual auto init() ->void;
+		virtual auto run() ->void;
+		virtual auto onTick() ->void;
 
-	double currentTime;
-	double t;
-	double accumulator;
-	static const double FPS;
-};
+	protected:
+		std::shared_ptr<SE::Window> m_window;
+		std::shared_ptr<SE::SimpleRenderer> m_renderer;
 
+		double currentTime;
+		double t;
+		double accumulator;
+		static const double FPS;
+	};
+}

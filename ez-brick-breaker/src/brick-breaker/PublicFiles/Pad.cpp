@@ -7,7 +7,7 @@ Pad::Pad(SE::SimpleRenderer* renderer, const float velocityX, const float veloci
 	:m_renderer(renderer)
 	, m_velocityX(velocityX)
 	, m_velocityY(velocityY)
-	, m_pad(std::make_shared<SE::Rectangle>(SE::vec2(90.0f, 190.0f), SE::vec2(20, 5), SE::vec3(1, 1, 1), Texture("..\\..\\src\\studious-engine\\PublicFiles\\Textures\\platform_1.png"), 1))
+	, m_pad(std::make_shared<SE::Rectangle>(SE::vec2(90.0f, 190.0f), SE::vec2(20, 5), SE::vec3(1, 1, 1), SE::Texture("..\\..\\src\\studious-engine\\PublicFiles\\Textures\\platform_1.png"), 1))
 {
 	renderer->addRectangleToDrawCall(m_pad);
 }
