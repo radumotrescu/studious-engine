@@ -51,7 +51,7 @@ As in most game engines, the (0,0) coordinate is in the top left of the screen. 
     auto rectanglePosition=SE::vec2(xCoordinate, yCoordinate); 
     auto rectangleSize=SE::vec2(width,height);
     auto rectangleColor=SE::vec3(R,G,B); // the RGB values need to be given as values from 0.0 to 1.0, 0.0 being no color, and 1.0 being full color
-    float priority=2 // this will set the desired priority of the rectangle, because you might want some objects to be in front of others
+    float priority=2; // this will set the desired priority of the rectangle, because you might want some objects to be in front of others
     auto rectangle=std::make_shared<SE::Rectangle>(rectanglePosition,rectangleSize,rectangleColor,texture, priority);
 
 Having the rectangle instantiated, we need to add it to the render draw cycle:
@@ -155,19 +155,25 @@ This framwork was created because most game engines are hard to get started with
 
 Install these first:
 
-nodeJS: https://nodejs.org/en/download/
+    nodeJS: https://nodejs.org/en/download/
 
-CMake: https://cmake.org/download/
+    CMake: https://cmake.org/download/
 
-ez-gen: https://github.com/hamez0r/ez-gen
+    ez-gen: https://github.com/hamez0r/ez-gen
 
 
-In terminal, go to ez-gen folder, and execute: npm install -g
+In terminal, go to ez-gen folder, and execute: 
+    
+    npm install -g
 
 Clone this repo:
 https://github.com/radumotrescu/studious-engine
 
-In terminal, go to studious-engine, and enter any of the folders starting with "ez-", then execute: ez-gen. This will generate a Visual Studio solution for you, where you can start making your game.
+In terminal, go to studious-engine, and enter any of the folders starting with "ez-", then execute: 
+
+    ez-gen
+    
+This will generate a Visual Studio solution for you, where you can start making your game.
 
 
 # API Reference

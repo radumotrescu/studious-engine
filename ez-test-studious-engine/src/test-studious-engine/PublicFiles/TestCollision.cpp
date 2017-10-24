@@ -24,9 +24,6 @@ namespace UnitTestCollision
 		TEST_METHOD(TestLeftTopCornerCollision)
 		{
 
-			Assert::IsTrue(glewInit());
-			auto window = std::make_shared<SE::Window>("test", 151, 152);
-			auto test = new SE::SimpleRenderer(151,152,10);
 			SE::Rectangle r1(SE::vec2(50, 50), SE::vec2(100, 50), SE::vec3(0.0, 0.0, 0.0), 2);
 			SE::Rectangle r2(SE::vec2(70, 70), SE::vec2(100, 130), SE::vec3(0.0, 0.0, 0.0), 2);
 			bool result = app.isCollided(&r1, &r2);
