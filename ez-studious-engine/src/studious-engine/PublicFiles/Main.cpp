@@ -166,7 +166,7 @@ auto main()->int
 		std::cout << window->getWidth() << ", " << window->getHeight() << std::endl;
 		SE::LabelManager::displayAllLabels();
 
-<<<<<<< HEAD
+//<<<<<<< HEAD
 		i++;
 		if (i == 200)
 		{
@@ -189,7 +189,7 @@ auto main()->int
 #endif
 
 		std::cout << i << std::endl;
-=======
+//=======
 		//i++;
 		//if (i == 200)
 		//{
@@ -208,7 +208,7 @@ auto main()->int
 		//	SoundManager::get("hit")->stop();
 		//}
 		//std::cout << i << std::endl;
->>>>>>> 28d4b66cd69c1175355cb9d0f780a47e692d540c
+//>>>>>>> 28d4b66cd69c1175355cb9d0f780a47e692d540c
 
 
 

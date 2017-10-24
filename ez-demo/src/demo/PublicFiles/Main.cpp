@@ -7,7 +7,7 @@
 
 #include <memory>
 
-class MyGame : public Game {
+class MyGame : public SE::Game {
 
 public:
 	MyGame()
@@ -17,28 +17,28 @@ public:
 	virtual auto update() -> void
 	{
 		SE::CollisionManager::checkCollisions();
-		SoundManager::update();
+		SE::SoundManager::update();
 	}
 	virtual auto start() -> void
 	{
 		Game::init();
 		SE::InputManager::init(Game::m_window->getWindow());
-		SoundManager::init();
+		SE::SoundManager::init();
 
-		texture1 = Texture("..//..//src//demo//PublicFiles//Textures//texture1.png");
-		texture2 = Texture("..//..//src//demo//PublicFiles//Textures//texture2.png");
+		texture1 = SE::Texture("..//..//src//demo//PublicFiles//Textures//texture1.png");
+		texture2 = SE::Texture("..//..//src//demo//PublicFiles//Textures//texture2.png");
 
 		rectangle1 = std::make_shared<SE::Rectangle>(SE::vec2(40, 40), SE::vec2(50, 50), texture1, 2);
 		rectangle2 = std::make_shared<SE::Rectangle>(SE::vec2(150, 40), SE::vec2(50, 50), texture2, 2);
 
-		sound1 = std::make_shared<Sound>("sunet1", "..//..//src//demo//PublicFiles//Sounds//cat_growl.wav");
-		sound2 = std::make_shared<Sound>("sunet2", "..//..//src//demo//PublicFiles//Sounds//dog_bark.wav");
+		sound1 = std::make_shared<SE::Sound>("sunet1", "..//..//src//demo//PublicFiles//Sounds//cat_growl.wav");
+		sound2 = std::make_shared<SE::Sound>("sunet2", "..//..//src//demo//PublicFiles//Sounds//dog_bark.wav");
 
 		Game::m_renderer->addRectangleToDrawCall(rectangle1);
 		Game::m_renderer->addRectangleToDrawCall(rectangle2);
 
-		SoundManager::add(sound1);
-		SoundManager::add(sound2);
+		SE::SoundManager::add(sound1);
+		SE::SoundManager::add(sound2);
 
 		glClearColor(1.0, 0.0, 0.0, 1.0);
 
@@ -67,8 +67,8 @@ public:
 		static bool x= false;
 		if (x == false)
 		{
-			SoundManager::get("sunet1")->play();
-			SoundManager::get("sunet2")->play();
+			SE::SoundManager::get("sunet1")->play();
+			SE::SoundManager::get("sunet2")->play();
 			x = true;
 		std::cout << 3;
 		}
@@ -77,26 +77,26 @@ public:
 	auto bindRectangleToCollisionManager()->void
 	{
 		//const auto th = std::make_shared<MyGame>(this);
-		aux x;
+		//aux x;
 		SE::CollisionManager::addCollisionalEntities(rectangle1, rectangle2, std::bind(&MyGame::rectangleCollision ,this, std::placeholders::_1, std::placeholders::_2));
 	}
 
 	~MyGame()
 	{
-		SoundManager::clean();
+		SE::SoundManager::clean();
 	}
 
 	
 
 private:
-	Texture texture1;
-	Texture texture2;
+	SE::Texture texture1;
+	SE::Texture texture2;
 
 	std::shared_ptr<SE::Rectangle> rectangle1;
 	std::shared_ptr<SE::Rectangle> rectangle2;
 
-	std::shared_ptr<Sound> sound1;
-	std::shared_ptr<Sound> sound2;
+	std::shared_ptr<SE::Sound> sound1;
+	std::shared_ptr<SE::Sound> sound2;
 };
 
 
