@@ -124,6 +124,8 @@ As in most game engines, the (0,0) coordinate is in the top left of the screen. 
     auto rectangleColor=SE::vec3(R,G,B); // the RGB values need to be given as values from 0.0 to 1.0, 0.0 being no color, and 1.0 being full color
     float priority=2; // this will set the desired priority of the rectangle, because you might want some objects to be in front of others
     auto rectangle=std::make_shared<SE::Rectangle>(rectanglePosition,rectangleSize,rectangleColor,texture, priority);
+    auto rectangle=std::make_shared<SE::Rectangle>(rectanglePosition,rectangleSize,rectangleColor, priority);
+    auto rectangle=std::make_shared<SE::Rectangle>(rectanglePosition,rectangleSize,texture, priority);
 
 Having the rectangle instantiated, we need to add it to the render draw cycle:
 
@@ -196,10 +198,43 @@ The isCollided method accessible through:
 #include "CollisionChecker.h"
 ```
 
-Its default behavior is to count in a collision all the edges of the sprite. In out case, all four edges of the rectangle. 
+Its default behavior is to count in a collision all the edges of the sprite, in our case: all four edges of the rectangle. 
 If it is desired to change that fact, it is possible through extending the CollisionChecker class and overriding the isCollided method.
 
 Note that the default CollisionManager makes use of the default collision also.
+
+**Adding sounds**
+
+For adding sounds, you need to include the following header:
+
+	#include<SoundManager.h>
+
+SoundManager allows you to play, loop, pause and stop sounds.
+First of all, you need to initialize a system and the channels you need to use. Don't worry, for that you only need to call init() method:
+
+	SE::SoundManager::init();
+
+Next, you can create sounds and add them to the SoundManager:
+
+	auto sound = std::make_shared<Sound>("soundName", "path/to/sound");
+	SE::SoundManager::add(sound);
+
+For using sound added to the sound manager, you have to call get() method:
+
+	SE::SoundManager::get("soundName")->play();
+
+In the same way, you can use loop(), pause() and stop() methods.
+
+When update() method from your game is called, you have to specifically call:
+
+	SE::SoundManager::update();
+
+After you don't need sounds anymore, you have to free up the memory. The clean() method releases all the sounds and delete all the channels:
+
+	SE::SoundManager::clean();
+
+Remember that after the memory is cleaned up, you need to call init method again.
+
 
 **Making your own game**
 
