@@ -9,7 +9,7 @@
 
 using namespace SE;
 
-//                      ..//..//src//demo//PublicFiles//Textures//texture1.png
+//                      "..//..//src//demo//PublicFiles//Textures//texture1.png"
 //                      "sunet1", "..//..//src//demo//PublicFiles//Sounds//sound1.wav"
 
 class MyDemoGameStruct : public Game
@@ -46,6 +46,21 @@ private:
 
 		Game::m_renderer->addRectangleToDrawCall(rectangle1);
 		Game::m_renderer->addRectangleToDrawCall(rectangle2);
+	}
+
+	auto moveRectangle1()->void
+	{
+		auto newX = rectangle1->getOrigin().x + 1;
+		auto newY = rectangle1->getOrigin().y;
+		auto newPriority = rectangle1->getPriority();
+		rectangle1->translate(SE::vec3(newX, newY, newPriority));
+	}
+	auto moveRectangle2()->void
+	{
+		auto newX = rectangle2->getOrigin().x - 1;
+		auto newY = rectangle2->getOrigin().y;
+		auto newPriority = rectangle2->getPriority();
+		rectangle2->translate(SE::vec3(newX, newY, newPriority));
 	}
 
 private:
