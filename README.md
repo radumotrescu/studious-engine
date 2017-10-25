@@ -236,6 +236,7 @@ After you don't need sounds anymore, you have to free up the memory. The clean()
 Remember that after the memory is cleaned up, you need to call init method again.
 
 
+
 **Making your own game**
 
 Our framework delivers a quick way to write your own 2D game. To get started you have to include the specific header.
