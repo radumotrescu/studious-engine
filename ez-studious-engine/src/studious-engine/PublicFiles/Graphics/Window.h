@@ -5,6 +5,7 @@
 #include <glfw3.h>
 #include <iostream>
 #include <memory>
+#include <Vec3.h>
 
 namespace SE
 {
@@ -18,6 +19,9 @@ namespace SE
 		auto closed() const -> bool;
 		auto update() -> void;
 		auto clear()->void const;
+		auto setTitle(const std::string& name)->void;
+		auto setBackgroundColor(const vec3& backgroundColor)->void;
+		auto setVSync(bool sync)->void;
 		~Window();
 
 	private:
@@ -25,7 +29,7 @@ namespace SE
 		bool m_closed;
 		std::string m_name;
 		std::unique_ptr<GLFWwindow*> m_window;
-		auto setVSync(bool sync)->void;
+		SE::vec3 m_backgroundColor;
 
 		auto init() -> bool;
 	};
