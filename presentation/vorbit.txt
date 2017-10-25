@@ -1,0 +1,47 @@
+Overview:
+Noi suntem echipa The Mechanics, iar prezentarea noastra va fi structurata in 3 parti: un rezumat al proiectului nostru, o parte de live coding, iar la final,
+un exemplu mai ---- .
+
+The team:
+Noi suntem .......
+
+What, why and how?
+What: Noi am construit un framework lightweight pentru realizat jocuri 2D.
+Why: Am dorit sa folosim uneltele moderne pe care le ofera C++-ul, iar un framework de facut jocuri a fost oportunitatea perfecta de a evidentia cunostiintele
+dobandite de-a lungul verii.
+How: Veti vedea cum am reusit asta ;)
+
+What did we used?
+Pentru a ne putea atinge scopul, am decis sa folosim urmatoarele tehnologii:
+    OpenGL, ez-gen si git
+
+Arhitectura:
+In imaginea aceasta puteti vedea structura generala a proiectului nostru, si puteti identifica niste componente de baza unui framework pentru jocuri, precum
+Renderer-ul si Inputul.
+
+Live Coding:
+
+Miruna: ce este deja acolo
+
+Radu: in spate se creeaza o fereastra in context OpenGL la care avem acces, impreuna cu un renderer la care va fi nevoie sa adaugam toate entitatile pentru a 
+putea fi desenate.
+
+Marius: InputManager: ne folosim de functia init din InputManager pentru a seta contextul inputului la fereastra curenta. metoda registerSpriteAction leaga o
+tasta de un apel de functie, cea care se apeleaza la eventurile de apasare ale tastei respective.
+        CollisionManager: functia addCollisionalEntities este metoda care iti permite sa definesti un comportament la coliziunea dintre 2 entitati. Este
+        nevoie de apelul functiei checkCollisions pentru a se realiza concret coliziunile.
+
+Adina:  In continuare dorim sa aplicam texturi peste dreptunghiurile din window. De aceea implementam metoda loadTextures. Pentru a incarca textura in memoria
+programului este suficient sa apelam constructorul care are ca parametru calea catre poza. Ca sa aplicam textura pe dreptunghi, avem un constructor care se
+poate chema etc Am folosit biblioteca FreeImage
+
+GxG: Pentru a adauga sunete, ne vom folosi de clasa SoundManager. Metoda init va crea un sistem care va reda 
+sunete si un vector de canale. Apoi se pot crea cateva sunete. Constructorul va primi 2 parametri de tip string
+care reprezinta numele si filePath-ul melodiei. Metoda SoundManager::add() va adauga sunete la lista de sunete.
+In spate, fiecare sunet este redat pe cate un canal. La apelul metodei play() se va cauta un canal liber, iar
+acel canal va reda sunetul. In afara de metoda play() mai sunt implementate metodele de loop(), pause() si stop.
+Metoda SoundManager::clear() va elibera resursele: va face release pe fiecare sunet si va sterge fiecare canal.
+
+Brick-breaker:
+
+

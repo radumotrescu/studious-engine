@@ -243,7 +243,8 @@ In terminal, go to ez-gen folder, and execute:
     npm install -g
 
 Clone this repo:
-https://github.com/radumotrescu/studious-engine
+
+    https://github.com/radumotrescu/studious-engine
 
 In terminal, go to studious-engine, and enter any of the folders starting with "ez-", then execute: 
 
