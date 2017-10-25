@@ -22,7 +22,9 @@ public:
 		Game::init();
 		initDrawableSprite();
 		Game::m_window->setTitle("My Demo Game!");
-		/*Game::m_window->setBackgroundColor(vec3(1.0, 1.0, 0.0));*/
+		
+
+
 		Game::run();
 	}
 private:
@@ -46,6 +48,17 @@ private:
 
 		Game::m_renderer->addRectangleToDrawCall(rectangle1);
 		Game::m_renderer->addRectangleToDrawCall(rectangle2);
+	}
+
+
+	auto onCollision() ->void
+	{
+		static bool isFirstCollision = true;
+		if (isFirstCollision)
+		{
+			std::cout << "Poc";
+			isFirstCollision = false;
+		}
 	}
 
 	auto moveRectangle1()->void
@@ -87,7 +100,7 @@ public:
 		initDrawableSprite();
 
 		Game::m_window->setTitle("My Demo Game!");
-		Game::m_window->setBackgroundColor(vec3(1.0, 0.0, 0.0));
+		Game::m_window->setBackgroundColor(vec3(1.0, 1.0, 0.0));
 
 		connectKeyPressedBehaviors();
 		connectOnCollisionBehaviors();
