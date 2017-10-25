@@ -2,95 +2,7 @@
 
 studious-engine is a small framework designed to make it easy for game makers to create a game in a small time frame.
 
-# Summary
-#### 1. Window
-#### 2. InputManager
-#### 3. Vectors and Matrices
-#### 4. Shader
-#### 5. Buffer and VertexArray
-#### 6. SimpleRenderer
-#### 7. Rectangle
-#### 8. Shader
-#### 9. Texture
-#### 10. CollisionChecker and CollisionManager
-#### 11. Font
-#### 12. Sound and Sound Manager
-#### 13. Light
-#### 14. Game
-
-
-### 1. Window
-
-**TODO**
-
-
-### 2. InputManager
-
-**TODO**
-
-
-### 3. Vectors and Matrices
-
-**TODO**
-
-
-### 4. Shader
-
-**TODO**
-
-
-### 5. Buffer and VertexArray
-
-**TODO**
-
-
-### 6. SimpleRenderer
-
-**TODO**
-
-
-### 7. Rectangle
-
-**TODO**
-
-
-### 8. Shader
-
-**TODO**
-
-
-### 9. Texture
-
-**TODO**
-
-
-### 10. CollisionChecker and CollisionManager
-
-**TODO**
-
-
-### 11. Font
-
-**TODO**
-
-
-### 12. Sound and Sound Manager
-
-**TODO**
-
-
-### 13. Light
-
-**TODO**
-
-
-### 14. Game
-
-**TODO**
-
-
-# Code examples
-
+# Walkthrough
 **Creating your graphics context**
 
 The header needed to have access to the window and render functionality is in Game.h.
@@ -124,6 +36,8 @@ As in most game engines, the (0,0) coordinate is in the top left of the screen. 
     auto rectangleColor=SE::vec3(R,G,B); // the RGB values need to be given as values from 0.0 to 1.0, 0.0 being no color, and 1.0 being full color
     float priority=2; // this will set the desired priority of the rectangle, because you might want some objects to be in front of others
     auto rectangle=std::make_shared<SE::Rectangle>(rectanglePosition,rectangleSize,rectangleColor,texture, priority);
+    auto rectangle=std::make_shared<SE::Rectangle>(rectanglePosition,rectangleSize,rectangleColor, priority);
+    auto rectangle=std::make_shared<SE::Rectangle>(rectanglePosition,rectangleSize,texture, priority);
 
 Having the rectangle instantiated, we need to add it to the render draw cycle:
 
@@ -196,10 +110,44 @@ The isCollided method accessible through:
 #include "CollisionChecker.h"
 ```
 
-Its default behavior is to count in a collision all the edges of the sprite. In out case, all four edges of the rectangle. 
+Its default behavior is to count in a collision all the edges of the sprite, in our case: all four edges of the rectangle. 
 If it is desired to change that fact, it is possible through extending the CollisionChecker class and overriding the isCollided method.
 
 Note that the default CollisionManager makes use of the default collision also.
+
+**Adding sounds**
+
+For adding sounds, you need to include the following header:
+
+	#include<SoundManager.h>
+
+SoundManager allows you to play, loop, pause and stop sounds.
+First of all, you need to initialize a system and the channels you need to use. Don't worry, for that you only need to call init() method:
+
+	SE::SoundManager::init();
+
+Next, you can create sounds and add them to the SoundManager:
+
+	auto sound = std::make_shared<Sound>("soundName", "path/to/sound");
+	SE::SoundManager::add(sound);
+
+For using sound added to the sound manager, you have to call get() method:
+
+	SE::SoundManager::get("soundName")->play();
+
+In the same way, you can use loop(), pause() and stop() methods.
+
+When update() method from your game is called, you have to specifically call:
+
+	SE::SoundManager::update();
+
+After you don't need sounds anymore, you have to free up the memory. The clean() method releases all the sounds and delete all the channels:
+
+	SE::SoundManager::clean();
+
+Remember that after the memory is cleaned up, you need to call init method again.
+
+
 
 **Making your own game**
 
