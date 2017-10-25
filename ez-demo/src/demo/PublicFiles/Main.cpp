@@ -9,6 +9,47 @@
 
 using namespace SE;
 
+class MyDemoGameStruct : public Game
+{
+public:
+	MyDemoGameStruct() = default;
+	~MyDemoGameStruct() = default;
+	virtual auto start() -> void
+	{
+		Game::init();
+		initDrawableSprite();
+		Game::run();
+	}
+private:
+	virtual auto update() -> void
+	{
+	}
+
+	auto initDrawableSprite() ->void
+	{
+		auto coordinatesForRectangle1 = SE::vec2(40, 40);
+		auto sizeForRectangle1 = SE::vec2(50, 50);
+		auto colorForRectangle1 = vec3(1.0f, 0.0f, 0.0f);
+		auto drawPriorityForRectangle1 = 2;
+		rectangle1 = std::make_shared<SE::Rectangle>(coordinatesForRectangle1, sizeForRectangle1, colorForRectangle1, drawPriorityForRectangle1);
+
+		auto coordinatesForRectangle2 = SE::vec2(120, 40);
+		auto sizeForRectangle2 = SE::vec2(50, 50);
+		auto colorForRectangle2 = vec3(0.0f, 1.0f, 0.0f);
+		auto drawPriorityForRectangle2 = 2;
+		rectangle2 = std::make_shared<SE::Rectangle>(coordinatesForRectangle2, sizeForRectangle2, colorForRectangle2, drawPriorityForRectangle2);
+
+		Game::m_renderer->addRectangleToDrawCall(rectangle1);
+		Game::m_renderer->addRectangleToDrawCall(rectangle2);
+	}
+
+private:
+
+	std::shared_ptr<SE::Rectangle> rectangle1;
+	std::shared_ptr<SE::Rectangle> rectangle2;
+};
+
+
 class MyDemoGame : public Game {
 
 public:
@@ -115,7 +156,10 @@ private:
 
 int main()
 {
-	MyDemoGame myGame;
-	myGame.start();
+	/*MyDemoGame myGame;
+	myGame.start();*/
+
+	MyDemoGameStruct game;
+	game.start();
 	return 0;
 }
