@@ -9,6 +9,52 @@
 
 using namespace SE;
 
+//                      ..//..//src//demo//PublicFiles//Textures//texture1.png
+//                      "sunet1", "..//..//src//demo//PublicFiles//Sounds//sound1.wav"
+
+class MyDemoGameStruct : public Game
+{
+public:
+	MyDemoGameStruct() = default;
+	~MyDemoGameStruct() = default;
+	virtual auto start() -> void
+	{
+		Game::init();
+		initDrawableSprite();
+		Game::m_window->setTitle("My Demo Game!");
+		/*Game::m_window->setBackgroundColor(vec3(1.0, 1.0, 0.0));*/
+		Game::run();
+	}
+private:
+	virtual auto update() -> void
+	{
+	}
+
+	auto initDrawableSprite() ->void
+	{
+		auto coordinatesForRectangle1 = SE::vec2(40, 40);
+		auto sizeForRectangle1 = SE::vec2(50, 50);
+		auto colorForRectangle1 = vec3(1.0f, 0.0f, 0.0f);
+		auto drawPriorityForRectangle1 = 2;
+		rectangle1 = std::make_shared<SE::Rectangle>(coordinatesForRectangle1, sizeForRectangle1, colorForRectangle1, drawPriorityForRectangle1);
+
+		auto coordinatesForRectangle2 = SE::vec2(120, 40);
+		auto sizeForRectangle2 = SE::vec2(50, 50);
+		auto colorForRectangle2 = vec3(0.0f, 1.0f, 0.0f);
+		auto drawPriorityForRectangle2 = 3;
+		rectangle2 = std::make_shared<SE::Rectangle>(coordinatesForRectangle2, sizeForRectangle2, colorForRectangle2, drawPriorityForRectangle2);
+
+		Game::m_renderer->addRectangleToDrawCall(rectangle1);
+		Game::m_renderer->addRectangleToDrawCall(rectangle2);
+	}
+
+private:
+
+	std::shared_ptr<SE::Rectangle> rectangle1;
+	std::shared_ptr<SE::Rectangle> rectangle2;
+};
+
+
 class MyDemoGame : public Game {
 
 public:
@@ -96,8 +142,8 @@ private:
 	auto loadSounds() ->void
 	{
 		SoundManager::init();
-		sound1 = std::make_shared<Sound>("sunet1", "..//..//src//demo//PublicFiles//Sounds//cat_growl.wav");
-		sound2 = std::make_shared<Sound>("sunet2", "..//..//src//demo//PublicFiles//Sounds//dog_bark.wav");
+		sound1 = std::make_shared<Sound>("sunet1", "..//..//src//demo//PublicFiles//Sounds//sound1.wav");
+		sound2 = std::make_shared<Sound>("sunet2", "..//..//src//demo//PublicFiles//Sounds//sound2.wav");
 
 		SoundManager::add(sound1);
 		SoundManager::add(sound2);
@@ -116,7 +162,10 @@ private:
 
 int main()
 {
-	MyDemoGame myGame;
-	myGame.start();
+	/*MyDemoGame myGame;
+	myGame.start();*/
+
+	MyDemoGameStruct game;
+	game.start();
 	return 0;
 }
