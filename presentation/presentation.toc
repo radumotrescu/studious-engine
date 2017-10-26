@@ -5,4 +5,3 @@
 \beamer@subsectionintoc {2}{3}{The Architecture}{6}{0}{2}
 \beamer@sectionintoc {3}{Live Coding}{7}{0}{3}
 \beamer@sectionintoc {4}{Our Brick-Breaker}{8}{0}{4}
-\beamer@sectionintoc {5}{Questions}{9}{0}{5}
