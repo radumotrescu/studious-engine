@@ -51,7 +51,7 @@ private:
 	}
 
 
-	auto onCollision() ->void
+	auto onCollision(std::shared_ptr<Rectangle>&r1, std::shared_ptr<Rectangle>&r2) ->void
 	{
 		static bool isFirstCollision = true;
 		if (isFirstCollision)
