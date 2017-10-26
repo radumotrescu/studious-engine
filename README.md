@@ -199,16 +199,3 @@ In terminal, go to studious-engine, and enter any of the folders starting with "
     ez-gen
     
 This will generate a Visual Studio solution for you, where you can start making your game.
-
-
-# API Reference
-
-
-
-# Contributors
-
-Let people know how they can dive into the project, include important links to things like issue trackers, irc, twitter accounts if applicable.
-
-# License
-
-A short snippet describing the license (MIT, Apache, etc.)
