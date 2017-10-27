@@ -2,7 +2,7 @@
 \beamer@sectionintoc {2}{Project Summary}{4}{0}{2}
 \beamer@subsectionintoc {2}{1}{What, why and how?}{4}{0}{2}
 \beamer@subsectionintoc {2}{2}{Technologies used}{5}{0}{2}
-\beamer@subsectionintoc {2}{3}{The UML}{6}{0}{2}
+\beamer@subsectionintoc {2}{3}{The Class Diagram}{6}{0}{2}
 \beamer@subsectionintoc {2}{4}{The Components}{7}{0}{2}
 \beamer@sectionintoc {3}{Live Coding}{8}{0}{3}
 \beamer@sectionintoc {4}{Our Brick-Breaker}{9}{0}{4}

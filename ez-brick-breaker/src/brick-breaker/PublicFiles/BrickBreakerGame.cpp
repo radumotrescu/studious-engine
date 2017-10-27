@@ -27,6 +27,7 @@ auto BrickBreakerGame::init() -> void
 	auto label = m_scoreLabel.get()->getLabel();
 	label.setColor(SE::vec3(0.5f, 0.6f, 0.01f));
 	SE::LabelManager::addLabel(label);
+	m_window->setVSync(false);
 
 	m_hearts.push(std::make_shared<Heart>(m_renderer.get(), SE::vec2(185.f, 5.f)));
 	m_hearts.push(std::make_shared<Heart>(m_renderer.get(), SE::vec2(175.f, 5.f)));
