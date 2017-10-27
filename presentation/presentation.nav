@@ -16,25 +16,28 @@
 \headcommand {\beamer@subsectionentry {0}{2}{2}{5}{Technologies used}}\headcommand {\beamer@subsectionpages {4}{4}}
 \headcommand {\slideentry {2}{2}{1}{5/5}{Technologies used}{0}}
 \headcommand {\beamer@framepages {5}{5}}
-\headcommand {\beamer@subsectionentry {0}{2}{3}{6}{The Architecture}}\headcommand {\beamer@subsectionpages {5}{5}}
-\headcommand {\slideentry {2}{3}{1}{6/6}{The Architecture}{0}}
+\headcommand {\beamer@subsectionentry {0}{2}{3}{6}{The UML}}\headcommand {\beamer@subsectionpages {5}{5}}
+\headcommand {\slideentry {2}{3}{1}{6/6}{The UML}{0}}
 \headcommand {\beamer@framepages {6}{6}}
-\headcommand {\sectionentry {3}{Live Coding}{7}{Live Coding}{0}}
-\headcommand {\beamer@sectionpages {4}{6}}
-\headcommand {\beamer@subsectionpages {6}{6}}
-\headcommand {\slideentry {3}{0}{1}{7/7}{}{0}}
+\headcommand {\beamer@subsectionentry {0}{2}{4}{7}{The Components}}\headcommand {\beamer@subsectionpages {6}{6}}
+\headcommand {\slideentry {2}{4}{1}{7/7}{The Components}{0}}
 \headcommand {\beamer@framepages {7}{7}}
-\headcommand {\sectionentry {4}{Our Brick-Breaker}{8}{Our Brick-Breaker}{0}}
-\headcommand {\beamer@sectionpages {7}{7}}
+\headcommand {\sectionentry {3}{Live Coding}{8}{Live Coding}{0}}
+\headcommand {\beamer@sectionpages {4}{7}}
 \headcommand {\beamer@subsectionpages {7}{7}}
-\headcommand {\slideentry {4}{0}{1}{8/8}{}{0}}
+\headcommand {\slideentry {3}{0}{1}{8/8}{}{0}}
 \headcommand {\beamer@framepages {8}{8}}
-\headcommand {\slideentry {4}{0}{2}{9/9}{}{0}}
+\headcommand {\sectionentry {4}{Our Brick-Breaker}{9}{Our Brick-Breaker}{0}}
+\headcommand {\beamer@sectionpages {8}{8}}
+\headcommand {\beamer@subsectionpages {8}{8}}
+\headcommand {\slideentry {4}{0}{1}{9/9}{}{0}}
 \headcommand {\beamer@framepages {9}{9}}
-\headcommand {\slideentry {4}{0}{3}{10/10}{}{0}}
+\headcommand {\slideentry {4}{0}{2}{10/10}{}{0}}
 \headcommand {\beamer@framepages {10}{10}}
-\headcommand {\beamer@partpages {1}{10}}
-\headcommand {\beamer@subsectionpages {8}{10}}
-\headcommand {\beamer@sectionpages {8}{10}}
-\headcommand {\beamer@documentpages {10}}
-\headcommand {\def \inserttotalframenumber {10}}
+\headcommand {\slideentry {4}{0}{3}{11/11}{}{0}}
+\headcommand {\beamer@framepages {11}{11}}
+\headcommand {\beamer@partpages {1}{11}}
+\headcommand {\beamer@subsectionpages {9}{11}}
+\headcommand {\beamer@sectionpages {9}{11}}
+\headcommand {\beamer@documentpages {11}}
+\headcommand {\def \inserttotalframenumber {11}}

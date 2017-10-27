@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6350 64-bit) (preloaded format=pdflatex 2017.10.25)  26 OCT 2017 12:17
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6350 64-bit) (preloaded format=pdflatex 2017.10.25)  26 OCT 2017 16:10
 entering extended mode
 **./presentation.tex
 (presentation.tex
@@ -862,29 +862,43 @@ Dictionary: translator-theorem-dictionary, Language: English
 {C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map}] (presentation.toc)
 [2
 
-] [3
+] <team.jpg, id=127, 3276.24pt x 1842.885pt>
+File: team.jpg Graphic file (type jpg)
+ <use team.jpg>
+Package pdftex.def Info: team.jpg used on input line 123.
+(pdftex.def)             Requested size: 342.29065pt x 130.22429pt.
+ [3
 
-] [4
+ <./team.jpg>]
+[4
 
 ] [5
 
-]
-<Studious-Engine_Diagram.png, id=198, 630.85687pt x 374.90062pt>
+] <ClassDiagram.png, id=205, 845.559pt x 344.487pt>
+File: ClassDiagram.png Graphic file (type png)
+
+<use ClassDiagram.png>
+Package pdftex.def Info: ClassDiagram.png used on input line 168.
+(pdftex.def)             Requested size: 342.2947pt x 182.33543pt.
+ [6
+
+ <./ClassDiagram.png>]
+<Studious-Engine_Diagram.png, id=233, 630.85687pt x 374.90062pt>
 File: Studious-Engine_Diagram.png Graphic file (type png)
 
 <use Studious-Engine_Diagram.png>
-Package pdftex.def Info: Studious-Engine_Diagram.png used on input line 165.
+Package pdftex.def Info: Studious-Engine_Diagram.png used on input line 178.
 (pdftex.def)             Requested size: 342.29407pt x 182.33571pt.
- [6
+ [7
 
- <./Studious-Engine_Diagram.png>] [7
+ <./Studious-Engine_Diagram.png>] [8
 
 ]
-[8
-
-] [9
+[9
 
 ] [10
+
+] [11
 
 ]
 \tf@nav=\write6
@@ -896,19 +910,19 @@ Package pdftex.def Info: Studious-Engine_Diagram.png used on input line 165.
 \tf@snm=\write8
 \openout8 = `presentation.snm'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 193.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 193.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 206.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 206.
  (presentation.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 193.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 193.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 206.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 206.
 Package rerunfilecheck Info: File `presentation.out' has not changed.
-(rerunfilecheck)             Checksum: 9ACBB0D6CFE0DECF313634C5336D1DC3;396.
+(rerunfilecheck)             Checksum: 8981B3BC7A1B994DD953AAAF1B15E46B;451.
  ) 
 Here is how much of TeX's memory you used:
- 17134 strings out of 493323
- 327625 string characters out of 3139068
+ 17153 strings out of 493323
+ 327868 string characters out of 3139068
  397723 words of memory out of 3000000
- 20259 multiletter control sequences out of 15000+200000
+ 20272 multiletter control sequences out of 15000+200000
  6063 words of font info for 22 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  56i,15n,62p,781b,584s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -916,9 +930,9 @@ Here is how much of TeX's memory you used:
 ogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmss12.pfb><C:/Program Fi
 les/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmss17.pfb><C:/Program Files/MiKT
 eX 2.9/fonts/type1/public/amsfonts/cm/cmss8.pfb>
-Output written on presentation.pdf (10 pages, 126287 bytes).
+Output written on presentation.pdf (11 pages, 923842 bytes).
 PDF statistics:
- 351 PDF objects out of 1000 (max. 8388607)
- 28 named destinations out of 1000 (max. 500000)
- 140 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 386 PDF objects out of 1000 (max. 8388607)
+ 31 named destinations out of 1000 (max. 500000)
+ 158 words of extra memory for PDF output out of 10000 (max. 10000000)
 

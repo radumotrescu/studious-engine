@@ -6,7 +6,7 @@ The team:
 Noi suntem .......
 
 What, why and how?
-What: Noi am construit un framework lightweight pentru realizat jocuri 2D.
+What: Noi am construit un framework lightweight pentru realizat jocuri 2D, precum si un joculet 
 Why: Am dorit sa folosim uneltele moderne pe care le ofera C++-ul, iar un framework de facut jocuri a fost oportunitatea perfecta de a evidentia cunostiintele
 dobandite de-a lungul verii.
 How: Veti vedea cum am reusit asta ;)
