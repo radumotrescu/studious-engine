@@ -2,21 +2,69 @@
 
 studious-engine is a small framework designed to make it easy for game makers to create a game in a small time frame.
 
+# Motivation
+
+This framework was created because most game engines are hard to get started with and they come in large file sizes, but also because we wanted to learn modern C++, and what better way to write hardcore C++ than within a game engine?
+
+# Installation
+
+Install these first:
+
+    nodeJS: https://nodejs.org/en/download/
+
+    CMake: https://cmake.org/download/
+
+    ez-gen: https://github.com/hamez0r/ez-gen
+
+
+In terminal, go to ez-gen folder, and execute: 
+    
+    npm install -g
+
+Clone this repo:
+
+    https://github.com/radumotrescu/studious-engine
+
+In terminal, go to studious-engine, and enter any of the folders starting with "ez-", then execute: 
+
+    ez-gen
+    
+This will generate a Visual Studio solution for you, where you can start making your game.
+
+
 # Walkthrough
-**Creating your graphics context**
 
-The header needed to have access to the window and render functionality is in Game.h.
+**Making your own game**
 
-    #include <Game.h>
+Our framework delivers a quick way to write your own 2D game. To get started you have to include the specific header.
+```
+#include "Game.h"
+``` 
+The Game class is an abstract class. By extending it, you are allowed to come with your own implementations and visions for the coming game.
 
-Initialising the Game:
+```
+virtual auto update() ->void = 0;
+virtual auto start() ->void = 0;
+virtual auto init() ->void;
+virtual auto run() ->void;
+virtual auto onTick() ->void;
+```
 
-    SE::Game::init();
+The init method, sets the widow size to 600 width x 800 height and sets-up the renderer of the game.
+The run method, assures the loop circuit of the game at an assessed time. This time is given by the onTick method. 
+The default tick is set to 120 fpms. On every tick, the update method is called.
+The start method must be implemented as well, and it is a point of stability and personalization in the further development of the new game. It is also an entry point for every other foreign behaviors. 
 
-This will create your OpenGL window context and your game renderer. You can access the window height and window width by calling:
+**Accessing your graphics context**
+
+ You can access the window height and window width by calling:
 
     SE::Game::m_window->getHeight();
     SE::Game::m_window->getWidth();
+
+And you can access the renderer by using:
+
+    SE::Game::m_renderer
 
 **Using the Rectangle and Texture classes**
 
@@ -148,67 +196,3 @@ After you don't need sounds anymore, you have to free up the memory. The clean()
 Remember that after the memory is cleaned up, you need to call init method again.
 
 
-
-**Making your own game**
-
-Our framework delivers a quick way to write your own 2D game. To get started you have to include the specific header.
-```
-#include "Game.h"
-``` 
-The Game class is an abstract class. By extending it, you are allowed to come with your own implementations and visions for the coming game.
-
-```
-virtual auto update() ->void = 0;
-virtual auto start() ->void = 0;
-virtual auto init() ->void;
-virtual auto run() ->void;
-virtual auto onTick() ->void;
-```
-
-The init method, sets the widow size to 600 width x 800 height and sets-up the renderer of the game.
-The run method, assures the loop circuit of the game at an assessed time. This time is given by the onTick method. 
-The default tick is set to 120 fpms. On every tick, the update method is called.
-The start method must be implemented as well, and it is a point of stability and personalization in the further development of the new game. It is also an entry point for every other foreign behaviors. 
-
-	
-# Motivation
-
-This framework was created because most game engines are hard to get started with and they come in large file sizes, but also because we wanted to learn modern C++, and what better way to write hardcore C++ than within a game engine?
-
-# Installation
-
-Install these first:
-
-    nodeJS: https://nodejs.org/en/download/
-
-    CMake: https://cmake.org/download/
-
-    ez-gen: https://github.com/hamez0r/ez-gen
-
-
-In terminal, go to ez-gen folder, and execute: 
-    
-    npm install -g
-
-Clone this repo:
-
-    https://github.com/radumotrescu/studious-engine
-
-In terminal, go to studious-engine, and enter any of the folders starting with "ez-", then execute: 
-
-    ez-gen
-    
-This will generate a Visual Studio solution for you, where you can start making your game.
-
-
-# API Reference
-
-
-
-# Contributors
-
-Let people know how they can dive into the project, include important links to things like issue trackers, irc, twitter accounts if applicable.
-
-# License
-
-A short snippet describing the license (MIT, Apache, etc.)
