@@ -78,6 +78,7 @@
 
 \usepackage{graphicx} % Allows including images
 \usepackage{booktabs} % Allows the use of \toprule, \midrule and \bottomrule in tables
+\usepackage{wrapfig}
 
 %----------------------------------------------------------------------------------------
 %	TITLE PAGE
@@ -136,13 +137,17 @@
 \item Because we wanted to learn modern C++
 \item You will see!
 \end{itemize}
+
 \end{frame}
 
 %------------------------------------------------
 \subsection{Technologies used}
 %------------------------------------------------
+
 \begin{frame}
-\frametitle{What do we used?}
+\frametitle{Technologies used}
+\begin{columns}[T]
+\begin{column}{0.3\textwidth}
 \begin{itemize}
 \item OpenGL
     \begin {itemize}
@@ -155,6 +160,20 @@
 \item ez-gen
 \item git
 \end{itemize}
+\end{column}
+\begin{column}{0.7\textwidth}
+    \begin {figure}
+    \includegraphics[width=1in,height=0.50in]{opengl-logo}
+    \end {figure}
+    \begin {figure}
+    \includegraphics[width=1in,height=0.55in]{ez-gen}
+    \end {figure}
+    \begin {figure}
+    \includegraphics[width=1in,height=0.50in]{git-logo}
+    \end {figure}
+
+\end{column}
+\end{columns}
 \end{frame}
 
 %------------------------------------------------
